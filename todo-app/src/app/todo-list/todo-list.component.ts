@@ -6,16 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  _itemsCount:number;
+  itemsCount:number;
   items:string[];
 
   constructor() {
     this.items = ["Todo1", "Todo2", "Todo3", "Todo4", "Todo5"];
-    this._itemsCount = this.items.length;
+    this.itemsCount = this.items.length;
   }
 
-  get itemsCount():number {
-    return this._itemsCount;
+  getItemsCount():number {
+    return this.itemsCount;
   }
 
   ngOnInit(): void {
@@ -23,14 +23,23 @@ export class TodoListComponent implements OnInit {
 
   addItem(): void {
     this.items.push("Todo" + (this.itemsCount + 1));
-    this._itemsCount += 1;
+    this.itemsCount += 1;
   }
+
 
   removeTopItem(): void {
     this.items.shift();
+    this.itemsCount -= 1;
+    if(this.itemsCount < 0) {
+      this.itemsCount = 0;
+    }
   }
 
-  removeItem(item: string): void {
-    this.items = this.items.filter(i => i !== item);
+  removeItemById(id: number): void {
+    this.items.splice(id, 1);
+    this.itemsCount -= 1;
+    if(this.itemsCount < 0) {
+      this.itemsCount = 0;
+    }
   }
 }
