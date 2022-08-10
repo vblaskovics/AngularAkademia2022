@@ -29,7 +29,13 @@ export class TodoListComponent implements OnInit {
   }
 
   removeItem(): void {
-    this.items.splice(0,1);
-  }
+     this.items.splice(0,1);
+   }
+
+  // deleteItem(event: Event){
+  //   const target = <HTMLLIElement>.target.textContent;
+  //   const index = this.items.indexOf( target );
+  //   this.items.splice(index, 1)
+  // }
 
 }

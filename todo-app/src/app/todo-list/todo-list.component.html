@@ -3,11 +3,13 @@
 <!-- {{}} javascript expression -->
 
 <button (click)="addItem()">Add item</button>
+<!-- <button (click)="removeItem()">X</button> -->
 
 
 <ul>
     <li *ngFor="let itemElem of items; let i = index"> {{ itemElem }}
         <button (click)="removeItem()">X</button>
+        <!-- <button (click)="deleteItem($event)">X</button> -->
     </li>
     <!-- <li> {{items[1]}} </li>
     <li> {{items[2]}} </li> ha nem használunk iterációt, indexekkel ki tudjuk iratni az elemeket-->
