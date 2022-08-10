@@ -1,1 +1,1 @@
-Angular akadémia kurzus 2022
+Angular akadémia kurzus 2022 | Bernath Mark Bence
