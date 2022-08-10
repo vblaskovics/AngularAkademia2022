@@ -1,0 +1,16 @@
+<p>Items count: {{ itemsCount }}</p>
+<!-- <p>Items count: {{ items.length }}</p> -->
+
+
+<button (click)="addItem()">Add item</button>
+
+<button (click)="removeItem()">Remove item</button>
+
+<ul>
+    <!-- <li>{{ items[0] }}</li>
+    <li>{{ items[1] }}</li>
+    <li>{{ items[2] }}</li> -->
+    <li *ngFor="let item of items" (mouseenter) = "removeHover()">
+      {{ item }}
+    </li>
+</ul>
