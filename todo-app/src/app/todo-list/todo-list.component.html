@@ -1,0 +1,14 @@
+<p>Items count: {{ itemsCount }}</p>
+
+<button (click)="addItem()">Add item</button>
+<button (click)="removeItem()">Remove item</button>
+
+
+<ul>
+    <li *ngFor="let item of items">
+        {{ item }}
+        <a (click)="deleteItem(item)">X</a>
+    </li>
+</ul>
+
+
