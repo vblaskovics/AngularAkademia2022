@@ -7,24 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  _itemsCount:number;
+  nextId:number;
   items:string[];
 
   constructor() {
     this.items = ["Todo1", "Todo2", "Todo3", "Todo4", "Todo5"];
-    this._itemsCount = this.items.length;
+    this.nextId = this.items.length + 1;
   }
 
   get itemsCount():number {
-    return this._itemsCount;
+    return this.items.length;
   }
 
   ngOnInit(): void {
   }
 
   addItem(): void {
-    this.items.push("Todo" + (this.itemsCount + 1));
-    this._itemsCount += 1;
+    this.items.push("Todo" + this.nextId);
+    this.nextId += 1;
   }
 
   removeTopItem(): void {
