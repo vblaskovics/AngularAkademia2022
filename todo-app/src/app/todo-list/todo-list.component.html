@@ -1,9 +1,9 @@
 <p>Items count: {{ itemsCount }}</p>
-<button (click)="onAddToDo()">Add</button>
-<button (click)="onRemoveToDo()">Remove</button>
+<button class="btn btn-primary" (click)="onAddToDo()">Add</button>
+<button class="btn btn-danger" (click)="onRemoveToDo()">Remove</button>
 <ul>
-  <li *ngFor="let item of items">
+  <a href="#" (click)="onSelectItem()" *ngFor="let item of items"><li>
     {{ item }}
-    <a href="#" (click)="onRemoveItem(item)">Del</a>
-  </li>
+    <a class="delete-button" href="#" (click)="onRemoveItem(item)">X</a>
+  </li></a>
 </ul>
