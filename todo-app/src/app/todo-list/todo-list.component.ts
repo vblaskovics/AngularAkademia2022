@@ -32,10 +32,17 @@ export class TodoListComponent implements OnInit {
      this.items.splice(0,1);
    }
 
-  // deleteItem(event: Event){
-  //   const target = <HTMLLIElement>.target.textContent;
-  //   const index = this.items.indexOf( target );
-  //   this.items.splice(index, 1)
-  // }
+  deleteItem(): void{
+    // const target = <HTMLLIElement>.target.textContent;
+    // const index = this.items.indexOf( target );
+    // this.items.splice(index, 1)
+
+    const index = this.items.indexOf(this.items[1]);
+    if ( index > 0){
+      this.items.splice(index,1);
+    
+    }
+  
+  }
 
 }
