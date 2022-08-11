@@ -9,7 +9,6 @@ import { Todo } from 'src/app/models/todo';
 export class TodoItem2Component implements OnInit {
   @Input() todo?: Todo;
   @Output() deleteMe: EventEmitter<Todo> = new EventEmitter<Todo>();
-  @Output() deleteMeSub: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   constructor() {}
 
