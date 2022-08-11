@@ -10,8 +10,21 @@
   </li>
 </ul>
 <hr />
+<h5>Todo List #2</h5>
 <ul>
-  <li *ngFor="let item of items; let i = index">
-    <div *ngIf="i % 2 === 1">{{ item }}</div>
+  <ng-container *ngFor="let item of items; let i = index">
+    <li *ngIf="i % 2 === 1">{{ item }}</li>
+  </ng-container>
+</ul>
+<hr />
+<h5>Todo List #3</h5>
+<ul>
+  <li
+    *ngFor="let item of items; let i = index"
+    [class.greyBackgroundColor]="i % 2 === 1"
+    [class.redColor]="items.length > 8"
+    [class.bold]="isPrime(i + 1)"
+  >
+    {{ item }}
   </li>
 </ul>
