@@ -35,4 +35,17 @@ export class TodoListComponent implements OnInit {
     this.items.splice(this.items.indexOf(clickedItem), 1);
   }
 
+  isP(item: number) {
+    let isP = true;
+    for (let i = 2; i < 10; i++) {
+      if (item % i === 0 && item !== i) {
+        isP = false;
+      }
+    }
+    if (item === 0 || item === 1) {
+      isP = false;
+    }
+    return isP;
+  }
+
 }

@@ -13,8 +13,20 @@
 
 <p>Páros ToDo List</p>
 <ul>
-  <li *ngFor="let item of items; let i=index">
-    <p *ngIf="i % 2 === 1">{{ item }}</p>
-    <button *ngIf="i % 2 === 1" (click)="removeItem(item)">X</button>
-  </li>
+  <ng-container *ngFor="let item of items; let i=index">
+    <li *ngIf="i % 2 === 1">
+      {{ item }}
+      <button *ngIf="i % 2 === 1" (click)="removeItem(item)">X</button>
+    </li>
+  </ng-container>
+</ul>
+
+<p>Class Binding ToDo List</p>
+<ul>
+  <ng-container *ngFor="let item of items; let i=index">
+    <li [class.grey-background]="i % 2 === 1" [class.red-text]="items.length > 8" [class.bold]="isP(i+1)">
+      {{ item }}
+      <button (click)="removeItem(item)">X</button>
+    </li>
+  </ng-container>
 </ul>
