@@ -1,16 +1,29 @@
 <p>Items count: {{ items.length }}</p>  <!-- javascript expression {{ }}-->
 
 <button (click)="addItem()">Add item</button>
-<button (click)="removeItem()">Remove item</button>
+<button (click)="removeFirstItem()">Remove First Item</button>
+<button (click)="addItemTwo()">Add item 2</button>
 
 <ul>
     <li *ngFor="let item of items">
       {{ item }}
+      <button (click)="removeAnyItem(item)">Remove</button>
     </li>
-    <!-- <button
-      *ngFor="let item of items"
-      (click)="">
-      Remove this item
-    </button> -->
-    <p></p>
 </ul>
+
+<ul>
+  <ng-container *ngFor="let item of items, let i = index">
+    <li *ngIf="(i + 1) % 2 === 0">{{ item }}</li>
+  </ng-container>
+</ul>
+
+<ul>
+  <ng-container *ngFor="let item of items, let i = index">
+    <li
+      [class.color-grey]="(i + 1) % 2 === 0"
+      [class.color-red]="items.length > 8"
+      [class.bold]=""
+    >{{ item }}</li>
+  </ng-container>
+</ul>
+

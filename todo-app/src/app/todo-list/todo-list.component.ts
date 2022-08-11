@@ -9,10 +9,13 @@ export class TodoListComponent implements OnInit {
 
   // itemsCount: number;
   items: string [];
+  serial: number;
 
   constructor() {
-    this.items = ["Todo1", "Todo2", "Todo3", "Todo4", "Todo5"];
+    this.items = [];
+    this.serial = 0;
   }
+
 
   get itemsCount(): number {
     return this.items.length;
@@ -21,17 +24,31 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addItem(): void {
-    this.items.push("Todo" + (this.itemsCount + 1));
+  addItem(): any {
+    this.serial ++;
+    this.items.push("Todo" + this.serial);
   }
 
-  removeItem(): void {
-    const remove = document.querySelector("li");
-    remove?.remove()
+  removeFirstItem(): void {
+    this.items.shift();
+
   }
 
-  /* serialNumber(): void {
+  removeAnyItem(item: string): void {
+    const index = this.items.indexOf(item);
+    this.items.splice(index, 1);
+  }
 
+  addItemTwo(): void {
+
+  }
+
+
+  /* primeNumber(): number {
+    let numbers = 0;
+    for(let i = 1; i <= this.items.length; i++) {
+
+    }
   } */
 
 }

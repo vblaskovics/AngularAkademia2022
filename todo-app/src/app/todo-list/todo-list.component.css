@@ -1,3 +1,11 @@
 li {
     list-style-type: none;
 }
+
+.color-grey {
+  background-color: grey;
+}
+
+.color-red {
+  background-color: red;
+}
