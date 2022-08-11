@@ -19,13 +19,13 @@
 
 <p>Páros Todo list</p>
 
-<ul>
+<!-- <ul>
   <div *ngFor="let item of items; let i = index">
     <div *ngIf="i % 2 !== 0">
       <li> {{ item }}</li>
     </div>
   </div>
-</ul>
+</ul> -->
 
 <!-- <hr>
 
@@ -44,3 +44,31 @@
        {{ item }}
     </li>
 </ul> -->
+
+<ul>
+  <ng-container *ngFor="let item of items; let i = index">
+    <li *ngIf="(i+1) % 2 === 0">
+       {{ item }}
+    </li>
+  </ng-container>
+</ul>
+
+<hr>
+
+<ul>
+  <ng-container *ngFor="let item of items; let i = index">
+    <li [class.greyBack] = "(i+1) % 2 === 0">
+       {{ item }}
+    </li>
+  </ng-container>
+</ul>
+
+<hr>
+
+<ul [class.tooManyTodos]="isTooManyTodos">
+
+       <li *ngFor="let item of items; let i = index">
+         {{ item }}
+        </li>
+
+</ul>

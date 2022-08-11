@@ -1,3 +1,19 @@
 ul {
     list-style-type: none;
 }
+
+.greyBack {
+  background-color: gray;
+}
+
+.redColor {
+  color: red;
+}
+
+.tooManyTodos li {
+  color: red;
+}
+
+.prime {
+  font-weight: bold;
+}

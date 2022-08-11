@@ -19,6 +19,10 @@ export class TodoListComponent implements OnInit {
     return this.items.length;
   }
 
+  get isTooManyTodos(): boolean {
+    return this.items.length > 8;
+  }
+
   ngOnInit(): void {
   }
 
