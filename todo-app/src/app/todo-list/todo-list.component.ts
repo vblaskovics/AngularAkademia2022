@@ -13,7 +13,7 @@ export class TodoListComponent implements OnInit {
 
   constructor() {
     this.items = [];
-    this.serial = 0;
+    this.serial = this.items.length + 1;
   }
 
 
@@ -40,7 +40,13 @@ export class TodoListComponent implements OnInit {
   }
 
   addItemTwo(): void {
-
+    let maxId = 0;
+    this.items.forEach((i) => {
+      let todoId = parseInt(i.split('Todo')[1]);
+      maxId = todoId > maxId ? todoId : maxId;
+    });
+    this.items.push('Todo' + (maxId + 1));
+    this.serial += 1;
   }
 
 

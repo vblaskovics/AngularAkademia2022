@@ -20,7 +20,7 @@
 <ul>
   <ng-container *ngFor="let item of items, let i = index">
     <li
-      [class.color-grey]="(i + 1) % 2 === 0"
+      [class.color-grey]="i % 2 === 0"
       [class.color-red]="items.length > 8"
       [class.bold]=""
     >{{ item }}</li>
