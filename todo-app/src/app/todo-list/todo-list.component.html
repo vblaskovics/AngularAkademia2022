@@ -10,3 +10,11 @@
 </ul>
 
 <button (click)="removeFirstItem()">Remove item</button>
+
+<p>Páros ToDo List</p>
+<ul>
+  <li *ngFor="let item of items; let i=index">
+    <p *ngIf="i % 2 === 1">{{ item }}</p>
+    <button *ngIf="i % 2 === 1" (click)="removeItem(item)">X</button>
+  </li>
+</ul>

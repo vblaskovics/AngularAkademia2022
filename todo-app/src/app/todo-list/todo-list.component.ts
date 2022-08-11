@@ -24,7 +24,7 @@ export class TodoListComponent implements OnInit {
 
   addItem(): void {
     this.items.push("ToDo" + (this.itemsCount + 1))
-    this.itemsCopy.push("a");
+    this.itemsCopy.push("ToDo" + (this.itemsCount + 1));
   }
 
   removeFirstItem(): void {
