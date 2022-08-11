@@ -9,11 +9,13 @@ export class TodoListComponent implements OnInit {
   // itemsCount: number;
   items: string[];
   index: number;
+  indexArray: number[];
 
   constructor() {
     this.items = ['Todo 1', 'Todo 2', 'Todo 3', 'Todo 4', 'Todo 5'];
     // this.itemsCount = this.items.length;
     this.index = this.items.length;
+    this.indexArray = [];
   }
 
   get itemsCount(): number {
@@ -29,7 +31,16 @@ export class TodoListComponent implements OnInit {
 
   removeItem(): void {
     this.items.splice(0, 1);
+    // this.items.shift();
   }
 
-  removeSelectedItem(): void {}
+  removeSelectedItem(element: string): void {
+    this.items.forEach((value, index) => {
+      if (value == element) this.items.splice(index, 1);
+    });
+  }
+
+  // removeSelectedItem(item: string): void {
+  //   this.items = this.items.filter(i => i !== item);
+  // }
 }

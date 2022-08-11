@@ -5,6 +5,13 @@
 
 <ul>
   <li *ngFor="let item of items">
-    {{ item }} <button (click)="removeSelectedItem()">Remove</button>
+    {{ item }}
+    <button (click)="removeSelectedItem(item)">Remove</button>
+  </li>
+</ul>
+<hr />
+<ul>
+  <li *ngFor="let item of items; let i = index">
+    <div *ngIf="i % 2 === 1">{{ item }}</div>
   </li>
 </ul>
