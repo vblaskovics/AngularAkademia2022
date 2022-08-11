@@ -17,3 +17,9 @@ a {
 .delete-button:hover{
   color: red;
 }
+.red {
+  color: grey;;
+}
+.allRed a li{
+  color: red;
+}
