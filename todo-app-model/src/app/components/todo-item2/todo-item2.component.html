@@ -1,0 +1,10 @@
+<li>
+  {{ todo?.title }} ({{ todo?.createDate }}) <a (click)="clickDelete()">🔴</a>
+</li>
+<ul *ngIf="todo?.subToDos">
+  <app-todo-item2
+    *ngFor="let item of todo?.subToDos"
+    [todo]="item"
+    (deleteMe)="clickDeleteSub($event)"
+  ></app-todo-item2>
+</ul>

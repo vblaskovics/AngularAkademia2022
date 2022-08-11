@@ -17,7 +17,7 @@ export class TodoListComponent implements OnInit {
     });
     this.items.push({
       id: 2,
-      title: 'Pay incoie',
+      title: 'Pay invoice',
       createDate: '2022-08-05',
     });
     this.items.push({
