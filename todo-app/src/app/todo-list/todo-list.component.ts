@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class TodoListComponent implements OnInit {
   items: string[];
   itemsCounter: number;
+  isSelected: boolean = false;
+
 
   constructor() {
     this.items = [];
@@ -24,7 +26,11 @@ export class TodoListComponent implements OnInit {
     this.items.push('Todo' + (this.itemsCounter + 1));
     this.itemsCounter++;
   }
-
+  onAddToDo2(){
+    this.itemsCounter = this.items.length;
+    this.items.push('Todo' + (this.itemsCounter + 1));
+    this.itemsCounter++;
+  }
   onRemoveToDo() {
     this.items.shift();
   }
@@ -32,11 +38,10 @@ export class TodoListComponent implements OnInit {
   onRemoveItem(item: string){
     const id = this.items.indexOf(item);
     this.items.splice(id, 1);
-    console.log(this.itemsCounter);
   }
 
-  onSelectItem(){
-
+  onSelectItem(item: string){
+    this.isSelected = true;
   }
 }
 
