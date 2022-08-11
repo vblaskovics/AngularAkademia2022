@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { max } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -15,7 +16,8 @@ export class TodoListComponent implements OnInit {
     this.addItem()
     this.addItem()
     this.addItem()
-    this.addItem()
+    
+   // setInterval(()=>this.addItem(), 5000)
    
    }
 
@@ -26,12 +28,30 @@ export class TodoListComponent implements OnInit {
   }
   addItem(){
     this.idCounter ++
-    this.items.push('item'+(this.idCounter))
+    this.items.push('item '+this.idCounter)
+  }
+  addItem2(){
+    let maxID = 0
+    this.items.forEach(item => {
+      let id:number = parseInt(item.split(' ')[item.split(' ').length - 1])
+      if(id >maxID){
+        maxID = id
+      }
+    });
+    this.idCounter ++
+    this.items.push('item '+(maxID + 1))
+
+    console.log(maxID)
   }
   removeItem():void{
     this.items.splice(0,1)
   }
   onDestroy(index:number):void{
     this.items.splice(index, 1)
+  }
+  handleChange(e:Event,target:string){
+    console.log(e)
+
+   // target += e.target.value
   }
 }

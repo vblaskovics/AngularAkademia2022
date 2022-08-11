@@ -1,6 +1,33 @@
-<p>Items Count: {{ itemsCount}}</p>
-<button (click)="addItem()">Add Item</button>
-<button (click)="removeItem()">Remove first item</button>
+<p>Items Count: {{ itemsCount }}</p>
+<button class="add" (click)="addItem()">Add Item</button>
+<button class="destroy" (click)="removeItem()">Remove first item</button>
+<button class="add" (click)="addItem2()">AddItem2</button>
+
 <ul>
-  <li *ngFor="let item of items; let i = index">{{item}} <button class="destroy" (click)="onDestroy(i)">DESTROY</button></li>
+  <li *ngFor="let item of items; let i = index">
+    
+      <input
+        type="text"
+        [value]="item"
+        appColorGenerator
+        (input)="handleChange($event, item)"
+      />
+      <button class="destroy" (click)="onDestroy(i)">DESTROY</button>
+    
+  </li>
+</ul>
+<h1>paros todo</h1>
+<ul>
+  <li *ngFor="let item of items; let i = index">
+    <div *ngIf="i % 2 != 0">
+      <!-- <input
+        type="text"
+        [value]="item"
+        appColorGenerator
+        (input)="handleChange($event, item)"
+      /> -->
+      <span>{{item}}</span>
+     
+    </div>
+  </li>
 </ul>

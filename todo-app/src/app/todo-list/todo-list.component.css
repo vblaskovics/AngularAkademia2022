@@ -1,17 +1,33 @@
 li{
     list-style-type: none;
 }
-
-.destroy{
+button{
     padding: 10px 15px;
     font-size: 14px;
     margin: 15px;
-    color: whitesmoke;
-    background-color: rgb(241, 60, 60);
-    border: 2px solid rgb(241, 60, 60);
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.2s ease-out;
+}
+.add{
+    color: whitesmoke;
+    background-color: rgb(60, 117, 241);
+    border: 2px solid rgb(123, 142, 247);
+}
+.add:hover{
+    background-color: rgb(97, 142, 241);
+    border: 2px solid rgb(155, 167, 236);
+}
+.add:focus{
+    background-color: rgb(31, 83, 197);
+    border: 2px solid rgb(50, 77, 230);
+}
+.destroy{
+    
+    color: whitesmoke;
+    background-color: rgb(241, 60, 60);
+    border: 2px solid rgb(241, 60, 60);
+    
 }
 .destroy:hover{
     border: 2px solid rgb(235, 111, 111);
