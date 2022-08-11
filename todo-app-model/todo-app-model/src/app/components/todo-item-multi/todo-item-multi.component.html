@@ -1,0 +1,5 @@
+<li> {{todo?.id}} {{todo?.title}} {{todo?.createDate}}</li>
+
+<ul *ngIf="todo?.subTodos">
+  <app-todo-item-multi **ngFor="let item of todo?.subTodos" [todo]="item"></app-todo-item-multi>
+</ul>
