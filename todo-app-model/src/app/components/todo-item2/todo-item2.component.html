@@ -1,6 +1,7 @@
 <li>{{ todo?.title }} {{ todo?.createDate }}
-  <ul>
-    <li *ngFor="let subTodo of todo?.subTodos">{{ subTodo.id }} {{ subTodo.title }} {{ subTodo.createDate }}</li>
+  <ul *ngIf="todo?.subTodos">
+    <app-todo-item2 *ngFor="let item of todo?.subTodos" [todo]="item"></app-todo-item2>
+    <!-- <li *ngFor="let subTodo of todo?.subTodos">{{ subTodo.id }} {{ subTodo.title }} {{ subTodo.createDate }}</li> -->
   </ul>
 </li>
 
