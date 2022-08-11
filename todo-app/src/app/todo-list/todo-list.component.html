@@ -1,12 +1,37 @@
 <p>Items count: {{ itemsCount }}</p>
+<hr>
 
 <button (click)="addItem()"> Add Item </button>
+<button (click)="addItem2()"> Add Item 2 </button>
+<br>
 <button (click)="removeItem()"> Remove Item </button>
+
+
 <ul>
     <li *ngFor="let item of items">
       <button (click)="removeItem()"> Remove Item </button>
       {{ item }}
+
     </li>
 
+</ul>
+
+<p>Páros ToDo List</p>
+<ul>
+  <li *ngFor="let item of matchedItems; let i=index">
+    <p *ngIf="i % 2 === 1">{{ item }}</p>
+  {{ item }}
+  <div>*ngFor="let item of items"</div>
+  </li>
+</ul>
+<h1>színesek</h1>
+<ul>
+
+  <li *ngFor="let item of items; let i=index"
+    [class.classSzurke] ="(i+1) % 2 == 0 ">
+
+  {{ item }}
+
+  </li>
 </ul>
 
