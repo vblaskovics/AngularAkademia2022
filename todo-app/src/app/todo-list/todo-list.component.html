@@ -3,15 +3,29 @@
 <!-- {{}} javascript expression -->
 
 <button (click)="addItem()">Add item</button>
-<!-- <button (click)="removeItem()">X</button> -->
+<button (click)="addPlusItem()">Add item</button>
+<button (click)="removeItem()">Remove Item</button>
 
 
 <ul>
     <li *ngFor="let itemElem of items; let i = index"> {{ itemElem }}
         <!-- <button (click)="removeItem()">X</button> -->
-        <button (click)="deleteItem()">X</button>
+        <button (click)="deleteItem( itemElem)">X</button>
     </li>
-    <!-- <li> {{items[1]}} </li>
-    <li> {{items[2]}} </li> ha nem használunk iterációt, indexekkel ki tudjuk iratni az elemeket-->
-   
 </ul>
+
+    <ul>
+    <h4>Páros ToDo:</h4>
+    <li 
+        *ngFor="let evenItem of items; let i = index"
+        > 
+        <div *ngIf="i % 2 === 1">{{ evenItem }}</div>
+
+        </li>
+    </ul>
+    
+   
+
+
+
+
