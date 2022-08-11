@@ -17,8 +17,8 @@ export class TodoListMultiComponent implements OnInit {
         title: 'Make an invoice',
         createDate: '2022-08-05',
         subTodos: [
-          {id: 4, title: 'Check preview', createDate: '2022-08-11'},
-          {id: 5, title: 'Print invoice', createDate: '2022-08-11'},
+          { id: 4, title: 'Check preview', createDate: '2022-08-11' },
+          { id: 5, title: 'Print invoice', createDate: '2022-08-11' },
         ],
       },
       { id: 3, title: 'Paint a painting', createDate: '2022-07-21' },
@@ -26,4 +26,8 @@ export class TodoListMultiComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  deleteItem(todo: Todo): void {
+    this.items = this.items.filter(i => i.id !== todo.id);
+  }
 }
