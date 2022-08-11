@@ -1,0 +1,9 @@
+.beta_destroy{
+    background-color: rgb(54, 54, 247);
+    color: white;
+}
+li{
+    margin: 25px;
+    border-bottom: 1px solid gray;
+   
+}

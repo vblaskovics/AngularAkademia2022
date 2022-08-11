@@ -1,0 +1,10 @@
+<h2 *ngIf="title">{{ title }}</h2>
+
+<ul>
+  <app-todo-item *ngFor="let item of items" [todo]="item" [todos]="items"
+  (deleteMe)="deleteItem($event)"
+  >
+  </app-todo-item>
+  <!--         <button (click)="onDestroy(item.id)">destroy</button>
+ -->
+</ul>

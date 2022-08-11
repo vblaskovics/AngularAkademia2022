@@ -1,0 +1,14 @@
+<li>
+  <p>{{ todo.title }} ({{ todo.createDate }})</p>
+
+  <ul *ngIf="todo.sublist">
+    <app-todo-item
+      *ngFor="let item of todo.sublist"
+      [todo]="item"
+      [todos]="todo.sublist"
+      (deleteMe)="handleDeleteMe($event)"
+    ></app-todo-item>
+  </ul>
+  <button class="beta_destroy" (click)="handleDestroy()">Destroy Demo</button>
+  <button class="delete" (click)="clickDelete()">Destroy Demo</button>
+</li>
