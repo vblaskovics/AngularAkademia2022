@@ -6,11 +6,41 @@
 
 <button (click)="removeItem()">Remove item</button>
 
+<button (click)="addItem2()">Add item 2</button>
+
 <ul>
     <!-- <li>{{ items[0] }}</li>
     <li>{{ items[1] }}</li>
     <li>{{ items[2] }}</li> -->
-    <li *ngFor="let item of items" (mouseenter) = "removeHover()">
+    <li *ngFor="let item of items; let i = index" (click)="removeSelected(i)">
       {{ item }}
     </li>
 </ul>
+
+<p>Páros Todo list</p>
+
+<ul>
+  <div *ngFor="let item of items; let i = index">
+    <div *ngIf="i % 2 !== 0">
+      <li> {{ item }}</li>
+    </div>
+  </div>
+</ul>
+
+<!-- <hr>
+
+<ul>
+  <div *ngFor="let item of items; let i = index">
+    <li *ngIf="i % 2 !== 0">
+       {{ item }}
+    </li>
+  </div>
+</ul>
+
+<hr>
+
+<ul *ngFor="let item of items; let i = index">
+    <li *ngIf="i % 2 !== 0">
+       {{ item }}
+    </li>
+</ul> -->

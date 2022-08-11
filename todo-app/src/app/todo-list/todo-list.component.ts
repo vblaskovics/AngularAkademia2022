@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  // itemsCount: number;
+  itemsCounter: number;
   items: string[];
 
   constructor() {
     this.items = ["Todo1", "Todo2", "Todo3", "Todo4", "Todo5"];
-    // this.itemsCount = this.items.length;
+    this.itemsCounter = this.items.length;
   }
 
   get itemsCount():number {
@@ -23,15 +23,30 @@ export class TodoListComponent implements OnInit {
   }
 
   addItem(): void {
-    this.items.push('Todo' + (this.itemsCount + 1));
+    this.items.push('Todo' + (this.itemsCounter + 1));
+    this.itemsCounter++;
   }
 
   removeItem(): void {
     this.items.shift();
   }
 
-  removeHover(): void {
+  removeSelected(i: number): void {
+    this.items.splice(i, 1);
+  }
 
+  addItem2(): void {
+    let max =0
+    this.items.forEach((item)=>{
+     let id = parseInt(item.slice(4,item.length))
+     if(max < id){
+       max = id
+     }
+     console.log(id)
+    })
+    console.log(max)
+    this.items.push('Todo' + (max + 1));
+    this.itemsCounter++;
   }
 
 }
