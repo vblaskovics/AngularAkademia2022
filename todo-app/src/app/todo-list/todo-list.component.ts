@@ -26,7 +26,17 @@ export class TodoListComponent implements OnInit {
     this.items.push("Todo" + this.nextId);
     this.nextId += 1;
   }
-
+  
+  addItem2(): void {
+    let maxId = 0;
+    this.items.forEach(i => {
+      let todoId = parseInt(i.split("Todo")[1]);
+      maxId = todoId > maxId ? todoId : maxId;
+    })
+    this.items.push("Todo" + (maxId + 1));
+    this.nextId += 1;
+  }
+  
   removeTopItem(): void {
     this.items.shift();
   }
