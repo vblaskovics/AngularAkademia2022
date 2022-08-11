@@ -23,4 +23,8 @@ export class TodoListMultiComponent implements OnInit {
   ngOnInit(): void {
   }
 
+deleteItem(todo:Todo): void {
+  this.items = this.items.filter(i => i.id !== todo.id)
+}
+
 }
