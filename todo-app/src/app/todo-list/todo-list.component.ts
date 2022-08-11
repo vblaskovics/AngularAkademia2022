@@ -49,8 +49,9 @@ export class TodoListComponent implements OnInit {
   onDestroy(index:number):void{
     this.items.splice(index, 1)
   }
-  handleChange(e:Event,target:string){
-    console.log(e)
+  handleChange(e:Event,index:number){
+    console.log()
+    //this.items[index] = (e.target as HTMLInputElement).value
 
    // target += e.target.value
   }

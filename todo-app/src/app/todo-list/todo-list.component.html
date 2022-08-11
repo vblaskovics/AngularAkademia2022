@@ -10,7 +10,7 @@
         type="text"
         [value]="item"
         appColorGenerator
-        (input)="handleChange($event, item)"
+        (input)="handleChange($event, i)"
       />
       <button class="destroy" (click)="onDestroy(i)">DESTROY</button>
     
@@ -19,15 +19,15 @@
 <h1>paros todo</h1>
 <ul>
   <li *ngFor="let item of items; let i = index">
-    <div *ngIf="i % 2 != 0">
+    <div *ngIf="i>0 &&i % 2 == 0">
       <!-- <input
         type="text"
         [value]="item"
         appColorGenerator
         (input)="handleChange($event, item)"
       /> -->
-      <span>{{item}}</span>
-     
+      <span>{{item}} / index:{{i}}</span>
+
     </div>
   </li>
 </ul>
