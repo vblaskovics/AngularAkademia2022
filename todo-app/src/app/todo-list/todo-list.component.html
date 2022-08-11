@@ -19,11 +19,21 @@
     <li 
         *ngFor="let evenItem of items; let i = index"
         > 
-        <div *ngIf="i % 2 === 1">{{ evenItem }}</div>
+        <div *ngIf="(i+1) % 2 === 0">{{ evenItem }}</div>
 
         </li>
     </ul>
-    
+
+   
+        <h4>Class binding ToDo:</h4>
+        <ul [class.todoMoreThanEight]="onTodoMoreThanEight">
+          <li 
+            *ngFor="let itemElem of items; let i = index" 
+            [class.greyBg]="i % 2 === 1" 
+            [class.prime]="isPrime(i+1)">
+              {{ itemElem }}
+          </li>
+        </ul>
    
 
 

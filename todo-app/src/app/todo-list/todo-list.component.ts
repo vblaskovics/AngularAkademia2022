@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { findIndex } from 'rxjs';
 
 @Component({ //app.comp dekorátor - ez hivja meg a komponenst a bönglszőbe
   selector: 'app-todo-list',
@@ -9,20 +8,38 @@ import { findIndex } from 'rxjs';
 export class TodoListComponent implements OnInit {
 
   // itemsCount: number;
+  grey = 'background-color: gray;';
   nextId: number;
   items: string[];
   // evenItem: string[];
+  // grey: string;
   
 
   constructor() {
     this.items = ["todo1"];
     this.nextId = this.items.length +1;
     // this.evenItem = this.items.filter(x => x % 2 === 0);
+    // this.grey = '';
    }
+
+
+  get onTodoMoreThanEight(): boolean {
+    return this.items.length > 8;
+  }
 
   get itemsCount(): number {
     return this.items.length
   } //változóként kezeli a függvényt a getet. getterés
+
+  isPrime(num: number): boolean {
+    if (num === 0 || num === 1 ) return false;
+    if (num === 2 ) return true;
+    let maxCheck = Math.ceil(Math.sqrt(num));
+    for (let i = 2; i <= maxCheck; i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
 
   ngOnInit(): void {
   }

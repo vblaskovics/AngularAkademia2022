@@ -1,3 +1,19 @@
 li {
     list-style-type:none
 }
+
+/* span {
+    background-color: rgb(127, 255, 172);
+} */
+
+.greyBg {
+    background-color: grey;
+}
+
+.todoMoreThanEight {
+    color:red
+}
+
+.prime {
+    font-weight: 700;
+}
