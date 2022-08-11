@@ -1,3 +1,15 @@
 li {
   list-style-type: none;
 }
+
+.greyBg {
+  background-color: lightgrey;
+}
+
+.tooManyTodos li {
+  color: red;
+}
+
+.prime {
+  font-weight: bold;
+}

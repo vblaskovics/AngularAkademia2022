@@ -11,3 +11,18 @@
   </li>
 </ul>
 
+<p>Páros Todo list</p>
+<ul>
+  <ng-container *ngFor="let item of items; let i = index">
+    <li *ngIf="(i+1) % 2 === 0">
+      {{ item }}
+    </li>
+  </ng-container>
+</ul>
+
+<p>Styled Todo list</p>
+<ul [class.tooManyTodos]="isTooManyTodos">
+  <li *ngFor="let item of items; let i = index" [class.greyBg]="(i+1) % 2 === 0" [class.prime]="isPrime(i+1)">
+      {{ item }}
+  </li>
+</ul>
