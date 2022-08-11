@@ -2,13 +2,39 @@
 
 <button (click)="addItem()">Add item</button>
 <button (click)="removeItem()">Remove item</button>
+<button (click)="addItem2()">Add item 2</button>
 
-
-<ul>
+<!-- <ul>
     <li *ngFor="let item of items">
         {{ item }}
         <a (click)="deleteItem(item)">X</a>
     </li>
 </ul>
+
+<ul>
+    <ng-container *ngFor="let item of items; let i = index">
+        <li *ngIf="(i+1) % 2 === 0">
+            {{ item }}
+            <a (click)="deleteItem(item)">X</a>
+        </li>
+    </ng-container>
+</ul> -->
+
+<ul>
+    <ng-container *ngFor="let item of items; let i = index">
+        <li 
+            [class.grey] = "(i+1) % 2 === 0"
+            [class.red] = "items.length > 8"
+            [class.bold] = "isPrime(i+1)"
+            >
+            {{ item }}
+            <a (click)="deleteItem(item)">X</a>
+        </li>
+    </ng-container>
+</ul>
+
+
+
+
 
 

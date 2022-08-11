@@ -29,7 +29,7 @@ export class TodoListComponent implements OnInit {
 
   // void - nincs vissaztérési érték
 
-  addItem(): void {
+  addItem() {
     this.numberOfTodos++
     this.items.push(`Todo${this.numberOfTodos}`)
   }
@@ -43,6 +43,33 @@ export class TodoListComponent implements OnInit {
     console.log(item)
     this.items.splice(indexOfItem, 1)
   }
+
+  addItem2(): void{
+    let maxId = 0;
+    this.numberOfTodos++
+    this.items.forEach(item => {
+      let serial = parseInt(item.split("Todo")[1])
+      maxId = serial > maxId ? serial : maxId
+    })
+    this.items.push(`Todo${maxId + 1}`)
+  }
+
+  isPrime(index: number) {
+    let isPrime = false;
+    let counter = 0;
+    for(let i = 1; i <= index; i++){
+      if(index % i === 0){
+        counter++
+      }
+    }
+    if(counter <= 2){
+      isPrime = true;
+    }
+    console.log(counter)
+    return isPrime
+  }
+
+
 
   
 
