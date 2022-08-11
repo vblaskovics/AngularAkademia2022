@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  // itemsCount: number;
   items: string[];
   itemsCopy: string[];
 
@@ -17,7 +16,7 @@ export class TodoListComponent implements OnInit {
   }
 
   get itemsCount(): number {
-    return this.items.length;
+    return this.itemsCopy.length;
   }
 
   ngOnInit(): void {
@@ -25,6 +24,7 @@ export class TodoListComponent implements OnInit {
 
   addItem(): void {
     this.items.push("ToDo" + (this.itemsCount + 1))
+    this.itemsCopy.push("a");
   }
 
   removeFirstItem(): void {
