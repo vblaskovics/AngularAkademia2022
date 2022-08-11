@@ -12,22 +12,30 @@
         appColorGenerator
         (input)="handleChange($event, i)"
       />
+      <span>{{item}}</span>
       <button class="destroy" (click)="onDestroy(i)">DESTROY</button>
     
   </li>
 </ul>
 <h1>paros todo</h1>
 <ul>
-  <li *ngFor="let item of items; let i = index">
-    <div *ngIf="i>0 &&i % 2 == 0">
-      <!-- <input
-        type="text"
-        [value]="item"
-        appColorGenerator
-        (input)="handleChange($event, item)"
-      /> -->
-      <span>{{item}} / index:{{i}}</span>
+  <ng-container *ngFor="let item of items; let i = index">
+    <li *ngIf="(i+1) % 2 == 0">
+      {{item}} // index: {{i}}
+    </li>
+  </ng-container>
 
-    </div>
+</ul>
+<h1>szürke sorok</h1>
+<ul>
+  <li *ngFor="let item of items; let i = index"
+   [class.masodik]="((i+1) % 2 == 0)"
+   [style.color]="items.length>8 && 'red'"
+  
+   [style.fontWeight]="isItPrim(i) ? 'bold' : '400'"
+   >
+   <!-- [style.color]="isItPrim(i) ? 'orange' : 'black'" -->
+    {{item}} // index: {{i}}
   </li>
+
 </ul>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { max } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -54,5 +53,17 @@ export class TodoListComponent implements OnInit {
     //this.items[index] = (e.target as HTMLInputElement).value
 
    // target += e.target.value
+  }
+  isItPrim(szam:number){
+    
+    let osztok = 0
+    for (let i = 1; i <= szam; i++) {
+      if(szam % i == 0) osztok ++
+      
+    }
+    
+    console.log(`ennek a szamnak: ${szam}, ennyi osztolya van : ${osztok}`)
+
+    return osztok == 2 ? true : false
   }
 }

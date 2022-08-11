@@ -1,5 +1,6 @@
 li{
     list-style-type: none;
+    padding: 10px;
 }
 button{
     padding: 10px 15px;
@@ -39,4 +40,9 @@ button{
 .destroy:focus{
     border: 2px solid rgb(233, 68, 68);
     background-color: rgb(238, 80, 80);
+}
+
+.masodik{
+    background-color: rgb(180, 180, 180);
+    
 }
