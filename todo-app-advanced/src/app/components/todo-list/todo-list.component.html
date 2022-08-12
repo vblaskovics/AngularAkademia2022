@@ -5,15 +5,19 @@
       <th class="col">Title</th>
       <th class="col">Progress</th>
       <th class="col">Username</th>
+      <th class="col">View details</th>
+      <th class="col">Remove</th>
     </tr>
   </thead>
   <tbody>
     <tr
+      class="centerThis"
       (clickedElement)="selectedTodoHandler($event)"
       [class.begrey]="isSecond(item.id)"
       app-todo-item
-      *ngFor="let item of items"
+      *ngFor="let item of items; let i = index"
       [todo]="item"
+      (deleteItemFromTable)="removeThisItem($event)"
     ></tr>
   </tbody>
 </table>

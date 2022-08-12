@@ -106,4 +106,8 @@ export class TodoListComponent implements OnInit {
   closeTheDetails(event: boolean){
     this.toDoElementSelected = !event;
   }
+  removeThisItem(todo: Todo){
+    let todoIndex = this.items.indexOf(todo)
+    this.items.splice(todoIndex, 1);
+  }
 }
