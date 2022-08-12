@@ -1,20 +1,8 @@
-/* import Todo from "./Models/todo";
-import User from "./Models/user"; */
 
 import { TODO } from './Interfaces/todo.interface';
 import { USER } from './Interfaces/user.interface';
 import {progress} from './progress'
-/* 
-export const MockUsers:User[] = [
-    new User(1, 'Elon Musk', 'elon.musk@gmail.com'),
-    new User(2, 'Jeff Bezos', 'jeff.bezos@gmail.com'),
-    new User(3, 'Bernard Arnault', 'bernard.arnault@gmail.com'),
-    new User(4, 'Bill Gates', 'bill.gates@gmail.com'),
-] */
-/* export const MockTodos:Todo[] = [
-    new Todo(1,'Yoga Class',progress.open,'Go to Yoga Class',new Date('August 21, 2022 '), 1),
-    new Todo(2, 'Skye with mom', progress.done,)
-] */
+
 export const mockUsers: USER[] = [
     {
         id: 1,

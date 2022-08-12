@@ -4,10 +4,9 @@
     <td>{{item.progress}}</td>
     <td>{{item.user_id}}</td>
 </tr> -->
-<ng-container (click)="handleClick()">
-    <th (click)="handleClick()" scope="row">{{ todo.id }}</th>
+
+    <th  scope="row">{{ todo.id }}</th>
     <td>{{ todo.title }}</td>
     <td>{{ todo.progress }}</td>
     <td>{{ findUserById(todo.user_id) }}</td>
-</ng-container>
 

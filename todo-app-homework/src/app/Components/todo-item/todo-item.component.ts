@@ -9,7 +9,6 @@ import { USER } from 'src/app/Interfaces/user.interface';
 export class TodoItemComponent implements OnInit {
   @Input() todo!:TODO
   @Input() users!:USER[]
-  @Output() selectUserEmiter = new EventEmitter<TODO>()
   constructor() { }
 
   ngOnInit(): void {
@@ -22,7 +21,5 @@ export class TodoItemComponent implements OnInit {
     }
     return i < this.users.length && this.users[i].name;
   }
-  handleClick() {
-    this.selectUserEmiter.emit(this.todo)
-  }
+
 }
