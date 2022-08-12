@@ -18,5 +18,5 @@
   </tbody>
 </table>
 <div *ngIf="toDoElementSelected">
-  <app-todo-details [todoItem]="selectedTodo"></app-todo-details>
+  <app-todo-details [todoItem]="selectedTodo" (closeItem)="closeTheDetails($event)"></app-todo-details>
 </div>

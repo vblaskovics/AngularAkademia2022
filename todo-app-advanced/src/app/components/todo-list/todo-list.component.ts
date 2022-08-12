@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { progress, Todo } from 'src/app/shared/todo';
 
 @Component({
@@ -9,8 +9,9 @@ import { progress, Todo } from 'src/app/shared/todo';
 export class TodoListComponent implements OnInit {
   items: Todo[];
   colorGrey: boolean = false;
-  toDoElementSelected: boolean;
+  @Output() toDoElementSelected: boolean;
   @Output() selectedTodo?: Todo;
+
 
   constructor() {
     this.items = [
@@ -100,5 +101,9 @@ export class TodoListComponent implements OnInit {
   selectedTodoHandler(selectedItem: Todo){
     this.selectedTodo = selectedItem;
     this.toDoElementSelected = true;
+  }
+
+  closeTheDetails(event: boolean){
+    this.toDoElementSelected = !event;
   }
 }

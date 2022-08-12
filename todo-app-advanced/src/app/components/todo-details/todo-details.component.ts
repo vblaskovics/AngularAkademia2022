@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/shared/todo';
 
 @Component({
@@ -8,11 +8,15 @@ import { Todo } from 'src/app/shared/todo';
 })
 export class TodoDetailsComponent implements OnInit {
   @Input() todoItem?: Todo;
-
-
+  @Output() closeItem: EventEmitter<boolean> = new EventEmitter<boolean>();
+  closed: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  onClickClose(){
+    this.closeItem.emit(this.closed);
+    console.log(this.closeItem)
   }
 
 }
