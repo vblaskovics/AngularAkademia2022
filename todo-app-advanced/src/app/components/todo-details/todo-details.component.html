@@ -1,0 +1,10 @@
+<table class="table">
+      <tr class="col">Title:   {{todoItem?.title}}</tr>
+      <tr class="col">Status:  {{todoItem?.progress}}</tr>
+      <tr class="col">Details:  {{todoItem?.description}}</tr>
+      <tr class="col">Creation Date:  {{todoItem?.date}}</tr>
+      <tr class="col" *ngFor="let item of todoItem?.user_id ">User:  {{item.name}}</tr>
+      <tr class="col" *ngFor="let item of todoItem?.user_id ">Email:  {{item.email}}</tr>
+</table>
+
+

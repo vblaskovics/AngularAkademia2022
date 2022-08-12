@@ -1,0 +1,4 @@
+<td scope="row" (click)="tableDataClicked()">{{ todo?.id }}</td>
+<td (click)="tableDataClicked()">{{ todo?.title }}</td>
+<td (click)="tableDataClicked()">{{ todo?.progress }}</td>
+<td (click)="tableDataClicked()" *ngFor="let item of todo?.user_id ">{{ item.name }}</td>

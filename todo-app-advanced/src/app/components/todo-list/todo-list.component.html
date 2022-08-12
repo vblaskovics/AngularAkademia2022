@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col">Id</th>
+      <th class="col">Title</th>
+      <th class="col">Progress</th>
+      <th class="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      (clickedElement)="selectedTodoHandler($event)"
+      [class.begrey]="isSecond(item.id)"
+      app-todo-item
+      *ngFor="let item of items"
+      [todo]="item"
+    ></tr>
+  </tbody>
+</table>
+<div *ngIf="toDoElementSelected">
+  <app-todo-details [todoItem]="selectedTodo"></app-todo-details>
+</div>
