@@ -11,8 +11,15 @@ export class AppComponent {
   title = 'todo-app-homework';
   todos:TODO[]
   users:USER[]
+  selectedTodo?:TODO
+
   constructor(){
     this.todos = mockTodos
     this.users = mockUsers
+  }
+  handleSelectTodo(selectedTodo:TODO){
+    
+    selectedTodo == this.selectedTodo ? this.selectedTodo = undefined : this.selectedTodo = selectedTodo
+    
   }
 }

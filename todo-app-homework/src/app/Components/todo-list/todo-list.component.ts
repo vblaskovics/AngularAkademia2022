@@ -1,4 +1,4 @@
-import { Component, Input,Output, OnInit } from '@angular/core';
+import { Component, Input,Output, OnInit, EventEmitter } from '@angular/core';
 import { TODO } from 'src/app/Interfaces/todo.interface';
 import { USER } from 'src/app/Interfaces/user.interface';
 
@@ -10,7 +10,7 @@ import { USER } from 'src/app/Interfaces/user.interface';
 export class TodoListComponent implements OnInit {
   @Input() todos!: TODO[];
   @Input() users!: USER[];
-  selectedTodo?:TODO
+  @Output() selectTodoEmitter = new EventEmitter<TODO>()
 
   inputs: string[];
   constructor() {
@@ -19,6 +19,6 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {}
   handleSelectClick(selectedTodo:TODO){
-    this.selectedTodo = selectedTodo
+    this.selectTodoEmitter.emit(selectedTodo)
   }
 }

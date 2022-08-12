@@ -1,7 +1,13 @@
 <main>
   <h1>ToDo List Advanced</h1>
 
-  <app-todo-list [todos]="todos" [users]="users"></app-todo-list>
+  <app-todo-list [todos]="todos" [users]="users"
+  (selectTodoEmitter)="handleSelectTodo($event)"
+  ></app-todo-list>
+  <app-details
+    *ngIf="selectedTodo"
+    [todo]="selectedTodo"
+    [users]="users"
 
-
+  ></app-details>
 </main>
