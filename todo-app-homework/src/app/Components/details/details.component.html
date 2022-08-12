@@ -1,0 +1,30 @@
+<div class="card text-white bg-dark mb-3" style="width: 85%;margin: auto;">
+    <div class="card-header">Todo Details</div>
+    <div class="card-body">
+        <div class="card-div" *ngIf="todo.title" >
+            <h5 class="card-title">Title</h5>
+            <p class="card-text">{{todo.title}}</p>
+        </div>
+        <div  class="card-div" *ngIf="todo.progress">
+            <h5 class="card-title">Status</h5>
+            <p class="card-text">{{todo.progress}}</p>
+        </div>
+        <div class="card-div" *ngIf="todo.description"> 
+            <h5 class="card-title">Details</h5>
+            <p class="card-text">{{todo.description}}</p>
+        </div>
+        <div class="card-div" *ngIf="todo.date">
+            <h5 class="card-title">Creation Date</h5>
+            <p class="card-text">{{todo.date}}</p>
+        </div>
+        <div class="card-div" *ngIf="todo.date">
+            <h5 class="card-title">User Name</h5>
+            <p class="card-text">{{selectedUserName(todo.user_id)}}</p>
+        </div>
+        <div class="card-div" *ngIf="todo.date">
+            <h5 class="card-title">User Email</h5>
+            <p class="card-text">{{selectedUserEmail(todo.user_id)}}</p>
+        </div>
+      
+    </div>
+  </div>

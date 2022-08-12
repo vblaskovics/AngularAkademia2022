@@ -1,0 +1,24 @@
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th *ngFor="let input of inputs" scope="col">{{ input }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+      app-todo-item
+      [class.table-active]="(i + 1) % 2 == 0"
+      *ngFor="let todo of todos; let i = index"
+      [users]="users"
+      [todo]="todo"
+      (click)="handleSelectClick(todo)"
+    ></tr>
+    <!-- (selectUserEmiter)="handleSelectClick($event)" -->
+  </tbody>
+</table>
+<app-details
+  *ngIf="selectedTodo"
+  [todo]="selectedTodo"
+  [users]="users"
+></app-details>
