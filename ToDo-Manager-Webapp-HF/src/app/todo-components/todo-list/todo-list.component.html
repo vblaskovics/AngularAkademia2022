@@ -1,0 +1,30 @@
+<!-- 
+<app-todo-item *ngFor="let item of items" [todo]="item"></app-todo-item> -->
+<!-- <ul class="list-group list-group-horizontal">
+  <li class="list-group-item">Id</li>
+  <br>
+  <li class="list-group-item">Title</li>
+  <br>
+  <li class="list-group-item">Progress</li>
+  <li class="list-group-item">User name:</li>
+</ul> -->
+
+<table class="table table-bordered text-center bg-secondary text-white">
+  <thead>
+    <tr>
+      <th scope="col" style="width:10%">Id</th>
+      <th scope="col" style="width:60%">Title</th>
+      <th scope="col" style="width:10%">Progress</th>
+      <th scope="col" style="width:20%" >User name</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table> 
+
+<app-todo-item *ngFor="let item of items; let i = index" [class.greyColor]="i % 2 === 1" [todo]="item" >
+  <!-- [class.greyColor]="everySecondItem(i -->
+
+</app-todo-item>
+
+

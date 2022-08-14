@@ -1,0 +1,73 @@
+
+
+<!-- 
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">{{todo?.id}}</li>
+    <li class="list-group-item">{{todo?.title}}</li>
+    <li class="list-group-item">{{todo?.progress}}</li>
+    <li class="list-group-item">{{todo?.user_id}}</li>
+  </ul> -->
+
+<table class="table table-bordered text-center">
+    <thead>
+      <tr class="col-xs-3">
+        <!-- <th scope="col" >Id</th>
+        <th scope="col" >Title</th>
+        <th scope="col" >Progress</th>
+        <th scope="col" >User name</th> -->
+      </tr>
+    </thead>
+    
+    <tbody >
+      <tr *ngFor="let item of todo?.subTodoIds; let i = index" (click)="clickDetails()"  >
+        <!-- <div *ngIf="everySecondItem"> -->
+            <th scope="row" style="width:10%; cursor:pointer"> {{todo?.id}} </th>
+            <td style="width:60%; cursor:pointer">{{todo?.title}}</td>
+            <td style="width:10%; cursor:pointer">{{todo?.progress}}</td>
+            <td style="width:20%;cursor:pointer" *ngFor="let item of todo?.user_id">{{ item.name }}</td>
+        <!-- </div> -->
+      </tr>
+      <ul *ngIf="todo?.subTodoIds">
+        <app-todo-item *ngFor="let item of todo?.subTodoIds" [todo]="item"  (detailedTodo)="detailedItem($event)"> {{todo?.title}} {{todo?.description}}</app-todo-item>
+        
+    </ul>
+    </tbody>
+  
+  </table> 
+
+
+  
+<!-- ez forog:
+<li> {{todo?.title}} {{todo?.description}} </li>
+---------- -->
+
+<!-- <ul *ngIf="todo?.subTodoIds">
+     <app-todo-item *ngFor="let item of todo?.subTodoIds" [todo]="item"></app-todo-item> 
+    
+</ul> -->
+
+<!-- <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" class="bg-secondary text-white">Id</th>
+        <th scope="col" class="bg-secondary text-white">Title</th>
+        <th scope="col" class="bg-secondary text-white">Progress</th>
+        <th scope="col" class="bg-secondary text-white">Description</th>
+        <th scope="col" class="bg-secondary text-white">Date</th>
+        <th scope="col" class="bg-secondary text-white">User name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table> 
+
+[todo]="item" 
+ -->
