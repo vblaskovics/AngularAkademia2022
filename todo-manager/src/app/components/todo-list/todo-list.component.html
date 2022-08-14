@@ -1,0 +1,22 @@
+<h2 class="text-center mb-3">Todo manager</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Progress</th>
+            <th>Date</th>
+            <th>User id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr app-todo-item *ngFor="let item of todos" [todoItem]="item" (click)="showTodoDetails(item)"></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

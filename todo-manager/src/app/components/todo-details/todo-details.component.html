@@ -1,0 +1,28 @@
+<h2>Details</h2>
+
+<ul *ngIf="details">
+  <li>
+    {{ details.title }}
+  </li>
+
+  <li>
+    {{ details.progress }}
+  </li>
+
+  <li>
+    {{ details.description }}
+  </li>
+
+  <li>
+    {{ details.date }}
+  </li>
+
+  <li>
+    {{ findUserById(details.userId).name }}
+  </li>
+
+  <li>
+    {{ findUserById(details.userId).email }}
+  </li>
+</ul>
+
