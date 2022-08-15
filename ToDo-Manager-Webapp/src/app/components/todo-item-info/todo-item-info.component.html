@@ -24,4 +24,11 @@
       </tr>
     </tbody>
   </table>
+
+  <ng-container *ngIf="clickedTodo?.subTodoIds?.length">
+    <h4>SubToDos:</h4>
+    <ul>
+      <li *ngFor="let subToDo of clickedSubtodos">{{ subToDo.title }}</li>
+    </ul>
+  </ng-container>
 </div>

@@ -10,9 +10,11 @@ import { User } from 'src/app/model/user';
 export class TodoListComponent implements OnInit {
   items: ToDo[] = new Array();
   users: User[] = new Array();
+  subTodos: ToDo[] = new Array();
 
   isRowClicked: boolean;
   clickedToDo?: ToDo;
+  clickedSubtodos?: ToDo[];
 
   constructor() {
     this.isRowClicked = false;
@@ -49,7 +51,7 @@ export class TodoListComponent implements OnInit {
       description: 'Running on Margaret Island',
       date: new Date('2022-05-07'),
       user_id: 52,
-      subTodoIds: [10, 14],
+      subTodoIds: [],
     });
     this.items.push({
       id: 4,
@@ -58,16 +60,16 @@ export class TodoListComponent implements OnInit {
       description: 'Organize the house, clean the kitchen',
       date: new Date('2022-08-28'),
       user_id: 50,
-      subTodoIds: [90, 21],
+      subTodoIds: [],
     });
     this.items.push({
       id: 2,
-      title: "Organize Zsófi's party",
+      title: "Organize Zsófi's bachelorette party",
       progress: 'in progress',
       description: 'Buy things for the party',
       date: new Date('2022-08-13'),
       user_id: 51,
-      subTodoIds: [76, 78],
+      subTodoIds: [76, 78, 79, 80],
     });
     this.items.push({
       id: 5,
@@ -76,7 +78,71 @@ export class TodoListComponent implements OnInit {
       description: 'Write an email to my family members',
       date: new Date('2022-07-21'),
       user_id: 51,
-      subTodoIds: [90, 21],
+      subTodoIds: [],
+    });
+
+    this.subTodos.push({
+      id: 112,
+      title: 'Watch videos from Maximilien',
+      progress: 'in progress',
+      description: 'Just do it!',
+      date: new Date('2022-08-11'),
+      user_id: 50,
+      subTodoIds: [],
+    });
+    this.subTodos.push({
+      id: 113,
+      title: 'Write notes',
+      progress: 'in progress',
+      description: 'Just do it!',
+      date: new Date('2022-08-11'),
+      user_id: 50,
+      subTodoIds: [],
+    });
+    this.subTodos.push({
+      id: 114,
+      title: 'Practice - work on project',
+      progress: 'in progress',
+      description: 'Just do it!',
+      date: new Date('2022-08-11'),
+      user_id: 50,
+      subTodoIds: [],
+    });
+    this.subTodos.push({
+      id: 76,
+      title: 'Order balloons',
+      progress: 'in progress',
+      description: 'Just do it!',
+      date: new Date('2022-08-11'),
+      user_id: 51,
+      subTodoIds: [],
+    });
+    this.subTodos.push({
+      id: 78,
+      title: 'Send invitations',
+      progress: 'in progress',
+      description: 'Just do it!',
+      date: new Date('2022-08-11'),
+      user_id: 51,
+      subTodoIds: [],
+    });
+    this.subTodos.push({
+      id: 79,
+      title: 'Print',
+      progress: 'in progress',
+      description: 'Just do it!',
+      date: new Date('2022-08-11'),
+      user_id: 51,
+      subTodoIds: [],
+    });
+    this.subTodos.push({
+      id: 80,
+      title: 'Bake a cake',
+      progress: 'in progress',
+      description: 'Just do it!',
+      date: new Date('2022-08-11'),
+      user_id: 51,
+      subTodoIds: [],
     });
   }
 
@@ -89,5 +155,13 @@ export class TodoListComponent implements OnInit {
   rowClicked(item: ToDo): void {
     this.clickedToDo = item;
     this.isRowClicked = true;
+    this.getClickedSubtodos(item);
+  }
+
+  getClickedSubtodos(todo: ToDo): ToDo[] {
+    this.clickedSubtodos = this.subTodos.filter((subTodo) =>
+      todo.subTodoIds.includes(subTodo.id)
+    );
+    return this.clickedSubtodos;
   }
 }

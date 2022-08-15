@@ -10,6 +10,7 @@ import { User } from 'src/app/model/user';
 export class TodoItemInfoComponent implements OnInit {
   @Input() clickedTodo?: ToDo;
   @Input() clickedUser?: User;
+  @Input() clickedSubtodos?: ToDo[];
 
   constructor() {}
 
@@ -20,6 +21,7 @@ export class TodoItemInfoComponent implements OnInit {
     let day = dateObj!.getUTCDate();
     let year = dateObj!.getUTCFullYear();
 
+    console.log(this.clickedTodo?.subTodoIds);
     return year + '/' + month + '/' + day;
   }
 }
