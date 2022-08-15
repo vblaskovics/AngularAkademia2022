@@ -12,7 +12,7 @@ export class TodoListComponent implements OnInit {
   LastInProgress: number = 0;
   items: Todo[];
   colorGrey: boolean = false;
-  @Output() toDoElementSelected: boolean;
+  toDoElementSelected: boolean;
   @Output() selectedTodo?: Todo;
 
   sortedItems?: Todo[];
@@ -141,9 +141,11 @@ export class TodoListComponent implements OnInit {
     const index = this.items.indexOf(event);
     if (this.items[index].progress === progress.Done) {
       this.items[index].progress = progress.Open;
-    } else if (this.items[index].progress === progress.Open) {
+    }
+     else if (this.items[index].progress === progress.Open) {
       this.items[index].progress = progress.In_Progress;
-    } else if (this.items[index].progress === progress.In_Progress) {
+    }
+     else if (this.items[index].progress === progress.In_Progress) {
       this.items[index].progress = progress.Done;
     }
     this.inProgress();
