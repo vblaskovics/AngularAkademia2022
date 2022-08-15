@@ -78,11 +78,34 @@ export class TodoListComponent implements OnInit {
     }
     
   } */
+    const valueOfProgress = (progress: string) => {
+      switch (progress) {
+        case 'open':
+          return 0;
+          break;
+        case 'in progress':
+          return 1;
+          break;
+        case 'done':
+          return 2;
+          break;
+        default:
+          return 0;
+          break;
+      }
+    };
     for (let i = 0; i < this.todos.length; i++) {
       for (let j = 0; j < this.todos.length - i - 1; j++) {
-        
-        if(!this.renderByProgressDown){
+        if (!this.renderByProgressDown) {
           if (
+            valueOfProgress(this.todos[j].progress) >
+            valueOfProgress(this.todos[j + 1].progress)
+          ) {
+            let temp = this.todos[j];
+            this.todos[j] = this.todos[j + 1];
+            this.todos[j + 1] = temp;
+          }
+          /* if (
             this.todos[j].progress != progress.inProgress &&
             this.todos[j + 1].progress == progress.inProgress
           ) {
@@ -97,9 +120,17 @@ export class TodoListComponent implements OnInit {
             let temp = this.todos[j];
             this.todos[j] = this.todos[j + 1];
             this.todos[j + 1] = temp;
-          }
-        }else{
+          } */
+        } else {
           if (
+            valueOfProgress(this.todos[j].progress) <
+            valueOfProgress(this.todos[j + 1].progress)
+          ) {
+            let temp = this.todos[j];
+            this.todos[j] = this.todos[j + 1];
+            this.todos[j + 1] = temp;
+          }
+          /* if (
             this.todos[j].progress != progress.inProgress &&
             this.todos[j + 1].progress == progress.inProgress
           ) {
@@ -114,11 +145,10 @@ export class TodoListComponent implements OnInit {
             let temp = this.todos[j];
             this.todos[j] = this.todos[j + 1];
             this.todos[j + 1] = temp;
-          }
+          } */
         }
       }
     }
-    this.renderByProgressDown = !this.renderByProgressDown
-
+    this.renderByProgressDown = !this.renderByProgressDown;
   }
 }

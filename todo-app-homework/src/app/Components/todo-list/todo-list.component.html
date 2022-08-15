@@ -6,17 +6,10 @@
       <th scope="col">title</th>
       <th scope="col" (click)="onRenderByProgress()">
         progress
-        <span  *ngIf="!renderByProgressDown; else elseBlock">
-          🔽
-        </span >
-        <ng-template #elseBlock
-        
-          >
-          <span >
-            🔼
-          </span >
-          </ng-template
-        >
+        <span *ngIf="!renderByProgressDown; else elseBlock"> 🔽 </span>
+        <ng-template #elseBlock>
+          <span> 🔼 </span>
+        </ng-template>
       </th>
       <th scope="col">user name</th>
     </tr>
