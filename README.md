@@ -48,7 +48,7 @@ Ha rákattintassz egy sorra, akkor a táblázat alatt jelenj meg egy details pan
 - Status: In progress
 - Description: Write a detailed homework to the amaizing angular class members!
 - Creation date: 2022.08.12
-- User: BLaskovics Viktor
+- User: Blaskovics Viktor
 - Email: viktor.blaskovics@gmail.com
 
 ### 5. Details nézetben al-feladatok megjelenítése
@@ -58,7 +58,7 @@ akkor az email alatt legyen egy "Sub-todos:" címke is, ami alatt fel vannak sor
 
 ### 6. Navigációs sáv és todo számláló
 
-Az alkalmazás kapjon egy nav bar-t, aminek a bal felső sarkában az alkalmazás neve szerepeljen, jobb sarkában pedig egy számláló, ami azt mutatja, hogy mennyi "In Progress" állapotó todo van a listában.
+Az alkalmazás kapjon egy nav bar-t, aminek a bal felső sarkában az alkalmazás neve szerepeljen, jobb sarkában pedig egy számláló, ami azt mutatja, hogy mennyi "In Progress" állapotú todo van a listában.
 
 ### 7. Todo állapotának változtatása
 
@@ -70,4 +70,4 @@ Pl: ```In Progress ⏩```
 
 ### 8. Táblázat rendezhetősége Progress szerint
 
-A todo táblázat rendezhető legyen növekvő vagy csökkenő sorrendben. (Pl. legyen egy kis gomb a Progress címke mellett a táblázat fejlécében, aminek két állapota lehet: ⬆️ vagy ⬇️)
+A todo táblázat rendezhető legyen növekvő vagy csökkenő sorrendben a Progress oszlop szerint. (Pl. legyen egy kis gomb a Progress címke mellett a táblázat fejlécében, aminek két állapota lehet: ⬆️ vagy ⬇️)
