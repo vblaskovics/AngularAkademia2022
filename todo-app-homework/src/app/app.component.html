@@ -1,13 +1,20 @@
-<main>
-  <h1>ToDo List Advanced</h1>
+<app-navbar
+[title]="title"
+[counter]="todoInProgress()"
 
-  <app-todo-list [todos]="todos" [users]="users"
+> </app-navbar>
+
+<main>
+  <app-todo-list 
+  [todos]="todos" [users]="users"
   (selectTodoEmitter)="handleSelectTodo($event)"
+  (changeProgressStateEmmiter)="changeStateOfTodo($event)"
   ></app-todo-list>
   <app-details
     *ngIf="selectedTodo"
     [todo]="selectedTodo"
     [users]="users"
-
+    [todos]="todos"
+    (changeProgressStateEmmiter)="changeStateOfTodo($event)"
   ></app-details>
 </main>

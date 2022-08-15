@@ -1,7 +1,24 @@
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
-      <th *ngFor="let input of inputs" scope="col">{{ input }}</th>
+      <!-- <th *ngFor="let input of inputs" scope="col">{{ input }}</th> -->
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col" (click)="onRenderByProgress()">
+        progress
+        <span  *ngIf="!renderByProgressDown; else elseBlock">
+          🔽
+        </span >
+        <ng-template #elseBlock
+        
+          >
+          <span >
+            🔼
+          </span >
+          </ng-template
+        >
+      </th>
+      <th scope="col">user name</th>
     </tr>
   </thead>
 
@@ -13,7 +30,7 @@
       [users]="users"
       [todo]="todo"
       (click)="handleSelectClick(todo)"
+      (changeProgressStateEmmiter)="changeProgressStateEmmiter.emit($event)"
     ></tr>
   </tbody>
 </table>
-

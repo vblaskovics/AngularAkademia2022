@@ -9,6 +9,8 @@ import { USER } from 'src/app/Interfaces/user.interface';
 export class TodoItemComponent implements OnInit {
   @Input() todo!:TODO
   @Input() users!:USER[]
+  @Output() changeProgressStateEmmiter : EventEmitter<TODO> = new EventEmitter<TODO>()
+
   constructor() { }
 
   ngOnInit(): void {

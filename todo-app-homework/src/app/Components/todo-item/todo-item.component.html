@@ -5,8 +5,12 @@
     <td>{{item.user_id}}</td>
 </tr> -->
 
-    <th  scope="row">{{ todo.id }}</th>
-    <td>{{ todo.title }}</td>
-    <td>{{ todo.progress }}</td>
-    <td>{{ findUserById(todo.user_id) }}</td>
-
+<th scope="row">{{ todo.id }}</th>
+<td>{{ todo.title }}</td>
+<td>
+  {{ todo.progress }}
+  <button
+  (click)="changeProgressStateEmmiter.emit(todo)"
+  type="button" style="margin: 0 25px;" class="btn btn-primary btn-sm">🖊</button>
+</td>
+<td>{{ findUserById(todo.user_id) }}</td>
