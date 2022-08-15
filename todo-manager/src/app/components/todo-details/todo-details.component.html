@@ -1,0 +1,12 @@
+<div>
+  <h3>Details</h3>
+
+  <ul>
+    <li>Title: {{ todo?.title }}</li>
+    <li>Status: {{ todo?.progress }}</li>
+    <li>Details: {{ todo?.description }}</li>
+    <li>Creation date: {{ todo?.date }}</li>
+    <li>User: {{ nameUser(todo?.user_id!) }}</li>
+    <li>Email: {{ userEmail(todo?.user_id!) }}</li>
+  </ul>
+</div>

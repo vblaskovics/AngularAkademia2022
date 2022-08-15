@@ -1,0 +1,8 @@
+<h2>Second Todo List</h2>
+<ul>
+  <app-todo-item2 *ngFor="let item of items" [todo]="item" (deleteMe)="deleteItem($event)">
+    <!-- <div *ngFor="let subTodo of items" [todo.subTodos]=""></div> -->
+  </app-todo-item2>
+</ul>
+
+<!-- <app-todo-item *ngFor="let item of subItems" [subItem]="item"></app-todo-item> -->

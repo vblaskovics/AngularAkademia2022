@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">title</th>
+          <th scope="col">progress</th>
+          <th scope="col">user name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of todos; let i = index" (click)="showDetails(todo)">
+          <td>{{ todo?.id }}</td>
+          <td>{{ todo?.title }}</td>
+          <td>{{ todo?.progress }}</td>
+          <td>{{ nameUser(todo.user_id) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="isSelected">
+  <app-todo-details [todo]="selectedTodo" [users]="users"></app-todo-details>
+</div>
