@@ -51,3 +51,23 @@ Ha rákattintassz egy sorra, akkor a táblázat alatt jelenj meg egy details pan
 - User: BLaskovics Viktor
 - Email: viktor.blaskovics@gmail.com
 
+### 5. Details nézetben al-feladatok megjelenítése
+
+Amikor a táblázatban kiválasztunk egy sort, és megjelenítjük a részleteit a Details panelen, és a kiválasztott todo-nak vannak alfeladatai,
+akkor az email alatt legyen egy "Sub-todos:" címke is, ami alatt fel vannak sorolva az alfeladatok title-jei!
+
+### 6. Navigációs sáv és todo számláló
+
+Az alkalmazás kapjon egy nav bar-t, aminek a bal felső sarkában az alkalmazás neve szerepeljen, jobb sarkában pedig egy számláló, ami azt mutatja, hogy mennyi "In Progress" állapotó todo van a listában.
+
+### 7. Todo állapotának változtatása
+
+Bárhol(!), ahol megjelenik a ToDo állapota (Progress), az állapot mellett jelenjen meg egy kis gomb is, amire kattintva a todo a következő állapotba rakható, az alábbi sorrend szerint:
+
+open => in progress => done => open
+
+Pl: ```In Progress ⏩```
+
+### 8. Táblázat rendezhetősége Progress szerint
+
+A todo táblázat rendezhető legyen növekvő vagy csökkenő sorrendben. (Pl. legyen egy kis gomb a Progress címke mellett a táblázat fejlécében, aminek két állapota lehet: ⬆️ vagy ⬇️)
