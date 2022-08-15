@@ -1,0 +1,27 @@
+<div class="w-50 table_container">
+  <h3>Details</h3>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>{{ clickedTodo?.title }}</td>
+      </tr>
+      <tr>
+        <td>
+          {{ clickedTodo?.progress }}
+        </td>
+      </tr>
+      <tr>
+        <td>{{ clickedTodo?.description }}</td>
+      </tr>
+      <tr>
+        <td>{{ getDateInCoolFormat(clickedTodo?.date) }}</td>
+      </tr>
+      <tr>
+        <td>{{ clickedUser?.name }}</td>
+      </tr>
+      <tr>
+        <td>{{ clickedUser?.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

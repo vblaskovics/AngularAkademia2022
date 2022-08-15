@@ -1,0 +1,26 @@
+<h1>Flora's TODO</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>TITLE</th>
+      <th>PROGRESS</th>
+      <th>USERNAME</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let item of items"
+      app-todo-item
+      [todo]="item"
+      [user]="getUser(item.user_id)"
+      (click)="rowClicked(item)"
+    ></tr>
+  </tbody>
+</table>
+
+<app-todo-item-info
+  *ngIf="isRowClicked"
+  [clickedTodo]="clickedToDo"
+  [clickedUser]="getUser(clickedToDo!.user_id)"
+></app-todo-item-info>
