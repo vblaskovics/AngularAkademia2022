@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Todo } from 'src/app/models/todo';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { Todo } from 'src/app/models/todo';
 
 @Component({
   selector: 'app-todo-details',
@@ -9,34 +9,12 @@ import { User } from 'src/app/models/user';
 })
 export class TodoDetailsComponent implements OnInit {
 
-  @Input() selectedToDo?: Todo
-  @Input() users?: User[]
-  
+  @Input() user?: User;
+  @Input() todo?: Todo;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  findUserName(userId: any){
-    let user = this.users?.find(user => {
-      if (userId === user.id){
-        console.log(userId, user.id)
-        return user.name
-      }
-      return 
-    })
-    return user?.name
-  }
-
-  findUserEmail(userId: any){
-    let user = this.users?.find(user => {
-      if (userId === user.id){
-        return true
-      }
-      return false
-    })
-    return user?.email
   }
 
 }

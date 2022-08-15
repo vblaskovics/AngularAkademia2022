@@ -1,8 +1,11 @@
+<h2>Details</h2>
+
 <ul class="list-group">
-    <li class="list-group-item"><span>Title:</span>  {{selectedToDo?.title}}</li>
-    <li class="list-group-item"><span>Status:</span> {{selectedToDo?.progress}}</li>
-    <li class="list-group-item"><span>Details:</span> {{selectedToDo?.description}}</li>
-    <li class="list-group-item"><span>Creation date:</span> {{selectedToDo?.date}}</li>
-    <li class="list-group-item"><span>Username:</span> {{findUserName(selectedToDo?.user_id)}}</li>
-    <li class="list-group-item"><span>Email:</span> {{findUserEmail(selectedToDo?.user_id)}}</li>
+    <li class="list-group-item"><span>Title: </span>{{todo?.title}}</li>
+    <li class="list-group-item"><span>Status: </span>{{todo?.progress}}</li>
+    <li class="list-group-item"><span>Details: </span>{{todo?.description}}</li>
+    <li class="list-group-item"><span>Creation date</span>{{todo?.date}}</li>
+    <li class="list-group-item"><span>User: </span>{{user?.name}}</li>
+    <li class="list-group-item"><span>Email: </span>{{user?.email}}</li>
 </ul>
+

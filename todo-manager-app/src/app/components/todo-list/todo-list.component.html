@@ -1,5 +1,34 @@
-<div class="row">
-    <div class="col-xs-12">
+<div class="list">
+    <!-- <div class="form-div">
+        <div class="details-div">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title">
+        </div>
+        <div class="details-div">
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="open">open</option>
+                <option value="in progress">in progress</option>
+                <option value="done">done</option>
+            </select>
+        </div>
+        <div class="details-div">
+            <label for="desc">Description:</label>
+            <textarea ng-model="myTextarea" name="desc" id="desc"></textarea>
+        </div>
+        <div class="details-div">
+            <label for="date">Date:</label>
+            <input type="text" name="date" id="date">
+        </div>
+        <div class="details-div"> 
+            <label for="user">User:</label>
+            <select name="user" id="user">
+                <option *ngFor="let user of users" value="{{user.name}}">{{user.name}}</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-primary">Add todo</button> -->
+    <div class="table-container">
         <table class="table">
             <thead class="thead-light">
                 <tr>
@@ -10,23 +39,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr
-                app-todo-item
-                *ngFor="let todo of todos; let i = index"
-                (selectMe)="selectTodo($event)"
-                [todo]="todo"
-                [users]="users"
-                [class.bgGrey]="i % 2 === 0" 
-                ></tr>
-            </tbody>
+                <tr app-todo-item *ngFor="let todo of todos, let i = index" [todo]="todo" [user]="getUser(todo)" (click)="selectTodo(todo)" [class.bgGrey]="i%2===0"></tr>
+            </tbody>            
         </table>
-        <div
-            *ngIf="isTodoSelected"
-            class="row">
-                <div class="col-xs-12">
-                        <h2>Details</h2>
-                        <app-todo-details [selectedToDo]="selectedTodo" [users]="users"></app-todo-details>
-                </div>
-        </div>
+        <!-- <div class="delete-buttons">
+            <button *ngFor="let todo of todos, let i = index">Delete</button>
+        </div> -->
+    </div>
+
+    <div>
+        <app-todo-details  *ngIf="isTodoSelected" [user]="getUser(selectedTodo)" [todo]="selectedTodo"></app-todo-details>       
     </div>
 </div>
+

@@ -1,13 +1,53 @@
-.bgGrey{
-    background-color: lightgrey;
+.list{
+    margin: auto;
+    text-align: center;
+}
+
+.btn-primary {
+    margin-bottom: 30px;
 }
 
 table {
     width: 1000px;
-    margin: auto;
 }
 
-h2 {
-    margin: 50px auto 20px auto;
-    text-align: center;
+.bgGrey{
+    background-color: lightgrey;
+}
+
+.details-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-div {
+    margin: 30px auto;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 300px;
+}
+
+.table-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;    
+}
+
+.delete-buttons{
+    margin-top: 46px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
 
@@ -9,29 +9,12 @@ import { User } from 'src/app/models/user';
 })
 export class TodoItemComponent implements OnInit {
 
-  @Input() todo?: Todo
-  @Input() users?: User[]
+  @Input() todo?: Todo;
+  @Input() user?: User;
 
-  @Output() selectMe = new EventEmitter<Todo>()
-
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  findUser(userId: any){
-    let user = this.users?.find(user => {
-      if (userId === user.id){
-        return user.name
-      }
-      return 
-    })
-    return user?.name
-  }
-
-  showDetails(): void{
-    this.selectMe.emit(this.todo);
-  }
 }
-
-

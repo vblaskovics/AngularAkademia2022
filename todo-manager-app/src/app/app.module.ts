@@ -12,6 +12,7 @@ import { TodoDetailsComponent } from './components/todo-details/todo-details.com
     TodoListComponent,
     TodoItemComponent,
     TodoDetailsComponent
+
   ],
   imports: [
     BrowserModule
