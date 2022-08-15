@@ -35,8 +35,7 @@ export class TodoListComponent implements OnInit {
   }
 
   removeAnyItem(item: string): void {
-    const index = this.items.indexOf(item);
-    this.items.splice(index, 1);
+    this.items = this.items.filter((i) => i !== item);
   }
 
   addItemTwo(): void {
@@ -50,11 +49,16 @@ export class TodoListComponent implements OnInit {
   }
 
 
-  /* primeNumber(): number {
-    let numbers = 0;
-    for(let i = 1; i <= this.items.length; i++) {
-
+  isPrime(num: number): boolean {
+    if (num === 0 || num === 1 ) return false;
+    if (num === 2 ) return true;
+    let maxCheck = Math.ceil(Math.sqrt(num));
+    for (let i = 2; i <= maxCheck; i++) {
+      if (num % i === 0) return false;
     }
-  } */
+    return true;
+  }
+
+
 
 }
