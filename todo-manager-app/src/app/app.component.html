@@ -1,3 +1,2 @@
-<h1>Best Todo App</h1>
-
-<app-todo-list></app-todo-list>
+<app-navigation [count]="count"></app-navigation>
+<app-todo-list (numberOfProgress)="getCounter($event)"></app-todo-list>

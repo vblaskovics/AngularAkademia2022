@@ -17,4 +17,13 @@ export class TodoItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeProgress(todo: any): void{
+    if(todo.progress === "open"){
+      todo.progress = "in progress"
+    } else if (todo.progress === "in progress"){
+      todo.progress = "done"
+    } else {
+      todo.progress = "open"
+    }
+  }
 }

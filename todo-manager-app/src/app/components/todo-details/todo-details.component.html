@@ -7,5 +7,11 @@
     <li class="list-group-item"><span>Creation date</span>{{todo?.date}}</li>
     <li class="list-group-item"><span>User: </span>{{user?.name}}</li>
     <li class="list-group-item"><span>Email: </span>{{user?.email}}</li>
+    <li class="list-group-item">        
+        <ul class="table table-bordered table-dark" name="subtodos" class="list-group">
+            <span for="subtodos" style="width: 96%" >Subtodos</span >
+            <li class="list-group-item" style="width: 96%" *ngFor="let subTodoId of todo?.subTodoIds" >{{getSubtodo(subTodoId)}}</li>
+        </ul>   
+    </li>
 </ul>
 

@@ -34,7 +34,13 @@
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">title</th>
-                    <th scope="col">progress</th>
+                    <th scope="col" (click)="sortByProgress()">
+                        progress
+                        <span *ngIf="progressState === 0 ||  progressState === 2; else amugy">⬇</span>
+                        <ng-template #amugy>
+                            <span>⬆</span>
+                        </ng-template>
+                    </th>
                     <th scope="col">user name</th>
                 </tr>
             </thead>
@@ -48,7 +54,7 @@
     </div>
 
     <div>
-        <app-todo-details  *ngIf="isTodoSelected" [user]="getUser(selectedTodo)" [todo]="selectedTodo"></app-todo-details>       
+        <app-todo-details  *ngIf="isTodoSelected" [user]="getUser(selectedTodo)" [todo]="selectedTodo" [todos]="todos"></app-todo-details>       
     </div>
 </div>
 
