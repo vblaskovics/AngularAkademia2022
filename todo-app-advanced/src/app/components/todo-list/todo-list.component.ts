@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { progress, Todo } from 'src/app/shared/todo';
 
 @Component({
@@ -7,12 +8,17 @@ import { progress, Todo } from 'src/app/shared/todo';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
+  OverallInProgress: number = 0;
+  LastInProgress: number = 0;
   items: Todo[];
   colorGrey: boolean = false;
   @Output() toDoElementSelected: boolean;
   @Output() selectedTodo?: Todo;
 
+  sortedItems?: Todo[];
 
+  SortDescendingOrder: string[] = [progress.Open, progress.In_Progress, progress.Done]
+  SortAscendingOrder: string[] = [progress.Done,progress.In_Progress, progress.Open];
   constructor() {
     this.items = [
       {
@@ -40,6 +46,15 @@ export class TodoListComponent implements OnInit {
             id: 2,
             name: 'Gáz Alma',
             email: 'gazalma@gmail.com',
+          },
+        ],
+        subTodos: [
+          {
+            id: 2,
+            title: 'Do more amazing stuff',
+            progress: progress.In_Progress,
+            description: 'Valami',
+            date: '2022-11-11',
           },
         ],
       },
@@ -87,8 +102,8 @@ export class TodoListComponent implements OnInit {
       },
     ];
     this.toDoElementSelected = false;
+    this.inProgress();
   }
-
 
   ngOnInit(): void {}
 
@@ -98,16 +113,46 @@ export class TodoListComponent implements OnInit {
     } else return (this.colorGrey = false);
   }
 
-  selectedTodoHandler(selectedItem: Todo){
+  selectedTodoHandler(selectedItem: Todo) {
     this.selectedTodo = selectedItem;
     this.toDoElementSelected = true;
   }
 
-  closeTheDetails(event: boolean){
+  closeTheDetails(event: boolean) {
     this.toDoElementSelected = !event;
   }
-  removeThisItem(todo: Todo){
-    let todoIndex = this.items.indexOf(todo)
+  removeThisItem(todo: Todo) {
+    let todoIndex = this.items.indexOf(todo);
     this.items.splice(todoIndex, 1);
+    this.inProgress();
+  }
+  inProgress() {
+    for (let index = 0; index < this.items.length; index++) {
+      const element = this.items[index];
+      if (element.progress == progress.In_Progress) {
+        this.LastInProgress++;
+      }
+    }
+    this.OverallInProgress = this.LastInProgress;
+    this.LastInProgress = 0;
+  }
+
+  updateProgressOfitem(event: Todo) {
+    const index = this.items.indexOf(event);
+    if (this.items[index].progress === progress.Done) {
+      this.items[index].progress = progress.Open;
+    } else if (this.items[index].progress === progress.Open) {
+      this.items[index].progress = progress.In_Progress;
+    } else if (this.items[index].progress === progress.In_Progress) {
+      this.items[index].progress = progress.Done;
+    }
+  }
+
+  sortAscending() {
+    const resultOfSort = this.items.sort((a,b) => this.SortAscendingOrder.indexOf(a.progress) - this.SortAscendingOrder.indexOf(b.progress))
+    console.log(resultOfSort)
+  }
+  sortDescending() {
+    const resultOfSort = this.items.sort((a,b) => this.SortDescendingOrder.indexOf(a.progress) - this.SortDescendingOrder.indexOf(b.progress))
   }
 }

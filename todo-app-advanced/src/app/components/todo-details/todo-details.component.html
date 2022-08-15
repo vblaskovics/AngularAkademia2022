@@ -7,6 +7,7 @@
       <tr class="col">Creation Date:  {{todoItem?.date}}</tr>
       <tr class="col" *ngFor="let item of todoItem?.user_id ">User:  {{item.name}}</tr>
       <tr class="col" *ngFor="let item of todoItem?.user_id ">Email:  {{item.email}}</tr>
+      <tr class="col" *ngFor="let item of todoItem?.subTodos ">Sub-todos::  {{item.title}}</tr>
     </tbody>
 </table>
 

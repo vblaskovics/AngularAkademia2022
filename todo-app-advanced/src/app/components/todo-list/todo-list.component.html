@@ -1,12 +1,14 @@
+<app-todo-navbar [numberofTodos]="OverallInProgress" ></app-todo-navbar>
 <table class="table">
   <thead>
     <tr>
       <th class="col">Id</th>
       <th class="col">Title</th>
-      <th class="col">Progress</th>
+      <th class="col">Progress <span (click)="sortAscending()">🔼</span> <span (click)="sortDescending()" type>🔽</span></th>
       <th class="col">Username</th>
       <th class="col">View details</th>
       <th class="col">Remove</th>
+      <th class="col">Update Status</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +20,7 @@
       *ngFor="let item of items; let i = index"
       [todo]="item"
       (deleteItemFromTable)="removeThisItem($event)"
+      (elementProgress)="updateProgressOfitem($event)"
     ></tr>
   </tbody>
 </table>
