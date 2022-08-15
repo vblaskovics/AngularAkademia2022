@@ -46,7 +46,7 @@ Ha rákattintassz egy sorra, akkor a táblázat alatt jelenj meg egy details pan
 
 - Title: Write a home work for the class
 - Status: In progress
-- Details: Write a detailed homework to the amaizing angular class members!
+- Description: Write a detailed homework to the amaizing angular class members!
 - Creation date: 2022.08.12
 - User: BLaskovics Viktor
 - Email: viktor.blaskovics@gmail.com
