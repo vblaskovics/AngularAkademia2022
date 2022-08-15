@@ -1,4 +1,7 @@
 <h2>Multi level ToDo list</h2>
 <ul>
-  <app-todo-item2 *ngFor="let item of items" [todo]="item"></app-todo-item2>
+  <app-todo-item2
+    *ngFor="let item of items"
+    [todo]="item"
+    (deleteThis)="deleteTodo($event)"></app-todo-item2>
 </ul>

@@ -26,4 +26,8 @@ export class TodoList2Component implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  deleteTodo(todo: Todo): void {
+    this.items = this.items.filter(i => i.id !== todo.id);
+  }
 }

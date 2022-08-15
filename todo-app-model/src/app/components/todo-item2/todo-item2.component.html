@@ -1,7 +1,12 @@
-<li>{{ todo?.title }} {{ todo?.createDate }}
+<li>{{ todo?.title }} {{ todo?.createDate }} <button (click)="deleteClick">X</button></li>
   <ul *ngIf="todo?.subTodos">
-    <app-todo-item2 *ngFor="let item of todo?.subTodos" [todo]="item"></app-todo-item2>
+    <app-todo-item2
+      *ngFor="let item of todo?.subTodos"
+      [todo]="item"
+      (deleteThis)="deleteSubTodo($event
+      )">
+    </app-todo-item2>
     <!-- <li *ngFor="let subTodo of todo?.subTodos">{{ subTodo.id }} {{ subTodo.title }} {{ subTodo.createDate }}</li> -->
   </ul>
-</li>
+
 

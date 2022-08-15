@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/models/todo';
 
 @Component({
@@ -9,10 +9,20 @@ import { Todo } from 'src/app/models/todo';
 export class TodoItem2Component implements OnInit {
 
   @Input() todo?: Todo;
+  @Output() deleteThis: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  deleteClick(): void {
+    this.deleteThis.emit(this.todo);
+  }
+
+  deleteSubTodo(todo: Todo): void {
+    if (!this.todo?.subTodos) return;
+    this.todo.subTodos = this.todo.subTodos?.filter(t => t.id !== todo.id);
   }
 
 }
