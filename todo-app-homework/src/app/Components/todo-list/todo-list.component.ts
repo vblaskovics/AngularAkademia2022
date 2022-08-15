@@ -48,7 +48,7 @@ export class TodoListComponent implements OnInit {
       }
     } */
     //CSALO ALGORITMUS
-    let openTodos = this.todos.filter(todo=> todo.progress == progress.open)
+    /* let openTodos = this.todos.filter(todo=> todo.progress == progress.open)
     let inProgressTodos = this.todos.filter(todo=> todo.progress == progress.inProgress)
     let doneTodos = this.todos.filter(todo=> todo.progress == progress.done)
     this.renderByProgressDown = !this.renderByProgressDown;
@@ -57,8 +57,68 @@ export class TodoListComponent implements OnInit {
       this.todos = openTodos.concat(inProgressTodos, doneTodos)
     }else{
       this.todos = doneTodos.concat(inProgressTodos, openTodos)
-    }
+    } */
+    /* For I = 0 to N - 2
+       For J = 0 to N - 2
+         If (A(J) > A(J + 1)
+           Temp = A(J)
+           A(J) = A(J + 1)
+           A(J + 1) = Temp
+         End-If
+       End-For
+     End-For*/
+    /* for (let i = 0; i < this.todos.length ; i++) {
+    let Smallsub = i
+    for (let j = i + 1; j < this.todos.length; j++) {
+      if(this.todos[i].progress == progress.inProgress && this.todos[j].progress == progress.open){
 
-   // console.table(openTodos)
+      }
+      console.log(this.todos[i].id,this.todos[j].id)
+      
+    }
+    
+  } */
+    for (let i = 0; i < this.todos.length; i++) {
+      for (let j = 0; j < this.todos.length - i - 1; j++) {
+        
+        if(!this.renderByProgressDown){
+          if (
+            this.todos[j].progress != progress.inProgress &&
+            this.todos[j + 1].progress == progress.inProgress
+          ) {
+            let temp = this.todos[j];
+            this.todos[j] = this.todos[j + 1];
+            this.todos[j + 1] = temp;
+          }
+          if (
+            this.todos[j].progress != progress.open &&
+            this.todos[j + 1].progress == progress.open
+          ) {
+            let temp = this.todos[j];
+            this.todos[j] = this.todos[j + 1];
+            this.todos[j + 1] = temp;
+          }
+        }else{
+          if (
+            this.todos[j].progress != progress.inProgress &&
+            this.todos[j + 1].progress == progress.inProgress
+          ) {
+            let temp = this.todos[j];
+            this.todos[j] = this.todos[j + 1];
+            this.todos[j + 1] = temp;
+          }
+          if (
+            this.todos[j].progress != progress.done &&
+            this.todos[j + 1].progress == progress.done
+          ) {
+            let temp = this.todos[j];
+            this.todos[j] = this.todos[j + 1];
+            this.todos[j + 1] = temp;
+          }
+        }
+      }
+    }
+    this.renderByProgressDown = !this.renderByProgressDown
+
   }
 }
