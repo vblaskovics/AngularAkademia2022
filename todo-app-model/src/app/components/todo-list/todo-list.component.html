@@ -1,6 +1,11 @@
 <h2>Simple ToDo List</h2>
 <ul>
-  <app-todo-item *ngFor="let item of items">
-    
-  </app-todo-item>
+  <app-todo-item
+    [todo]="item"
+    *ngFor="let item of items"
+    (deleteItemEvent)="deleteItem($event)"
+  ></app-todo-item>
 </ul>
+
+//todolist2 component: listát generál ami olyan elemeket tartalmaz amiben
+további listák vannak

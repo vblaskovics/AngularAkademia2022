@@ -1,0 +1,7 @@
+.todo-item-container > li {
+  display: inline-block;
+}
+
+.todo-item-container {
+  width: 100%;
+}

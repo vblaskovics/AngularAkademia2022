@@ -1,0 +1,9 @@
+<h2>ToDo List with Sublist</h2>
+<ul>
+  <app-todo-item
+    [todo]="item"
+    *ngFor="let item of items"
+    (deleteItemEvent)="deleteItem($event)"
+  >
+  </app-todo-item>
+</ul>

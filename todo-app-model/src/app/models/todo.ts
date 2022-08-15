@@ -2,4 +2,5 @@ export interface Todo {
   id: number,
   title: string,
   createDate: string,
+  subList?: string[]
 }

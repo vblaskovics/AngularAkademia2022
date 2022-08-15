@@ -1,1 +1,13 @@
-<li>todo item</li>
+<div class="todo-item-container">
+  <li>
+    {{ todo?.title }}
+    ({{ todo?.createDate }})
+    <ul *ngIf="todo?.subList">
+      <li *ngFor="let subItem of todo?.subList">{{ subItem }}
+        <button>❌</button>
+      </li>
+    </ul>
+    <button (click)="onDeleteItem()">❌</button>
+  </li>
+</div>
+
