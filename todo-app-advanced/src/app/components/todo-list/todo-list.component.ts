@@ -146,6 +146,7 @@ export class TodoListComponent implements OnInit {
     } else if (this.items[index].progress === progress.In_Progress) {
       this.items[index].progress = progress.Done;
     }
+    this.inProgress();
   }
 
   sortAscending() {
