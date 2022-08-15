@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <h3>Details</h3>
+  <ul>
+    <li>Title: {{ todoSelected?.title }}</li>
+    <li>Status: {{ todoSelected?.progress }}</li>
+    <li>Description: {{ todoSelected?.description }}</li>
+    <li>Creation Date: {{ todoSelected?.date }}</li>
+    <li>User: {{ findUser(todoSelected?.user_id!) }}</li>
+    <li>E-mail: {{ findEmail(todoSelected?.user_id!) }}</li>
+  </ul>
+</div>

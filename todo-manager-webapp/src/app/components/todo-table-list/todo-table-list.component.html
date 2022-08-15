@@ -1,0 +1,25 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Progress</th>
+      <th scope="col">User's Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      app-todo-table-item
+      *ngFor="let item of items"
+      [todo]="item"
+      [users]="users"
+      (clickOnTable)="clickShow($event)"
+    ></tr>
+  </tbody>
+</table>
+<div *ngIf="isTodoClicked">
+  <app-todo-details
+    [todoSelected]="clickedTodo"
+    [users]="users"
+  ></app-todo-details>
+</div>
