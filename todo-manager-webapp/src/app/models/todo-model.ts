@@ -11,5 +11,5 @@ export interface Todo {
   description?: string;
   date?: string;
   user_id?: number;
-  subTodoIds?: Todo[];
+  subTodos?: Todo[];
 }

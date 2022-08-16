@@ -14,19 +14,37 @@ export class TodoTableListComponent implements OnInit {
 
   @Output() clickedTodo?: Todo;
 
-  @Output() showDetails: EventEmitter<Todo> = new EventEmitter<Todo>();
-
   isTodoClicked: boolean = false;
+
+  // @Output() countInProgress = new EventEmitter<number>();
 
   constructor() {
     this.items = [
       {
         id: 1,
         title: 'Go hang out',
-        progress: Progress.done,
+        progress: Progress.in_progress,
         description: 'There is a good disco in the neighbourhood',
         date: '2022-09-08',
         user_id: 1,
+        subTodos: [
+          {
+            id: 6,
+            title: 'Dress up first',
+            progress: Progress.in_progress,
+            description: 'Get the green socks',
+            date: '2022-09-08',
+            user_id: 1,
+          },
+          {
+            id: 7,
+            title: "Don't forget to take out the thrash",
+            progress: Progress.in_progress,
+            description: 'Get the green socks',
+            date: '2022-09-08',
+            user_id: 1,
+          },
+        ],
       },
       {
         id: 2,
@@ -51,6 +69,16 @@ export class TodoTableListComponent implements OnInit {
         description: 'Also your teeth',
         date: '2022-08-15',
         user_id: 3,
+        subTodos: [
+          {
+            id: 8,
+            title: 'Do it tomorrow too',
+            progress: Progress.open,
+            description: 'and wash your teeth',
+            date: '2022-08-16',
+            user_id: 3,
+          },
+        ],
       },
       {
         id: 5,
@@ -85,5 +113,32 @@ export class TodoTableListComponent implements OnInit {
   clickShow(todo: Todo): void {
     this.clickedTodo = todo;
     this.isTodoClicked = true;
+  }
+
+  // calculateProgressCount(): number {
+  //   return (this.count = this.items.filter(
+  //     (x) => x === Progress.in_progress
+  //   ).length);
+  // }
+
+  // calculateProgressCount(): number {
+  //   let count = 0;
+  //   this.items.forEach((todo) => {
+  //     if (todo.progress === 'in progress') {
+  //       count++;
+  //     }
+  //   });
+  //   this.countInProgress.emit(count);
+  //   return count;
+  // }
+
+  calculateProgressCount(): number {
+    let count = 0;
+    this.items.forEach((todo) => {
+      if (todo.progress === 'in progress') {
+        count++;
+      }
+    });
+    return count;
   }
 }
