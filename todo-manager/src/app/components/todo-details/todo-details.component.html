@@ -2,11 +2,16 @@
   <h3>Details</h3>
 
   <ul>
-    <li>Title: {{ todo?.title }}</li>
-    <li>Status: {{ todo?.progress }}</li>
-    <li>Details: {{ todo?.description }}</li>
-    <li>Creation date: {{ todo?.date }}</li>
-    <li>User: {{ nameUser(todo?.user_id!) }}</li>
-    <li>Email: {{ userEmail(todo?.user_id!) }}</li>
+    <li>Title: {{ selectedTodo?.title }}</li>
+    <li>Status: {{ selectedTodo?.progress }} <a (click)="progressChange()">⏩</a></li>
+    <li>Details: {{ selectedTodo?.description }}</li>
+    <li>Creation date: {{ selectedTodo?.date }}</li>
+    <li>User: {{ nameUser(selectedTodo?.user_id!) }}</li>
+    <li>Email: {{ userEmail(selectedTodo?.user_id!) }}</li>
+    <li>SubTodos:
+      <app-todo-item *ngFor="let subtodo of listSubTodos()"
+      [subTodo]="subtodo">
+    </app-todo-item>
+    </li>
   </ul>
 </div>

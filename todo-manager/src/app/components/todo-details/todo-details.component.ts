@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Todo } from 'src/app/models/todo';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { progress, Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -8,11 +8,16 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./todo-details.component.css']
 })
 export class TodoDetailsComponent implements OnInit {
-  @Input() todo?: Todo;
+  @Input() selectedTodo?: Todo;
   @Input() users?: User[];
+  @Input() subTodos?: Todo[];
 
+  subTodoList?: Todo[] = [];
+  isSubTodo: boolean = false;
 
-  constructor() { }
+  @Output() subTodo?: Todo;
+
+  constructor() {}
 
   ngOnInit(): void {
   }
@@ -35,6 +40,29 @@ export class TodoDetailsComponent implements OnInit {
       return false;
     });
     return user?.email;
+  }
+
+  listSubTodos(): Todo[] {
+    let subtodoIds = this.selectedTodo?.subTodoIds;
+    // console.log('subtodoIds', subtodoIds);
+    // console.log('subtodos', this.subTodos);
+    this.subTodoList = this.subTodos?.filter(subtodo => subtodoIds?.includes(subtodo.id));
+    // console.log('subtodolist', this.subTodoList);
+    return this.subTodoList ? this.subTodoList : [];
+  }
+
+  progressChange(): void {
+    console.log('seltodo',this.selectedTodo);
+    let nextState;
+    if(this.selectedTodo?.progress == progress.open) {
+      nextState = progress.inProgress;
+    } else if ( this.selectedTodo?.progress == progress.inProgress) {
+     nextState = progress.done;
+    } else {
+      nextState = progress.open;
+    } if(this.selectedTodo) {
+    this.selectedTodo.progress = nextState;
+    }
   }
 
 }

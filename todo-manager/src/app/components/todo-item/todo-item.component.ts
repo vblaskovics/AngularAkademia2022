@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/models/todo';
-import { User } from 'src/app/models/user';
+
 
 @Component({
   selector: 'app-todo-item',
@@ -8,11 +8,12 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
+  @Input() subTodo?: Todo;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  //
+
 }
