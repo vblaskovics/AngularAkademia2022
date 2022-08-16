@@ -184,5 +184,7 @@ export class TodoListComponent implements OnInit {
       : todo.progress === 'in progress'
       ? (todo.progress = 'done')
       : (todo.progress = 'open');
+
+      this.onInprogressCount();
   }
 }
