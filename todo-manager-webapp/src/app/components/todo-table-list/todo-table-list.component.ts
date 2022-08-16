@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { Progress, Todo } from 'src/app/models/todo-model';
 import { User } from 'src/app/models/user-model';
 
@@ -15,6 +16,7 @@ export class TodoTableListComponent implements OnInit {
   @Output() clickedTodo?: Todo;
 
   isTodoClicked: boolean = false;
+  ascending: boolean = false;
 
   // @Output() countInProgress = new EventEmitter<number>();
 
@@ -156,6 +158,20 @@ export class TodoTableListComponent implements OnInit {
       default:
         console.log('No such progress exists!');
         break;
+    }
+  }
+
+  sortProgress() {
+    if (this.ascending === false) {
+      this.items.sort((a, b) =>
+        a.progress! > b.progress! ? 1 : b.progress! > a.progress! ? -1 : 0
+      );
+      this.ascending = true;
+    } else {
+      this.items.sort((a, b) =>
+        a.progress! > b.progress! ? -1 : b.progress! > a.progress! ? 1 : 0
+      );
+      this.ascending = false;
     }
   }
 }
