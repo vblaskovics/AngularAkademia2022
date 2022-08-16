@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
 
@@ -12,6 +12,7 @@ export class TodoItemComponent implements OnInit {
   @Input() todo?: Todo;
   @Input() user?: User;
 
+  @Output() itemState = new EventEmitter<Todo>()
   constructor() { }
 
   ngOnInit(): void {
@@ -25,5 +26,6 @@ export class TodoItemComponent implements OnInit {
     } else {
       todo.progress = "open"
     }
+    this.itemState.emit(todo)
   }
 }

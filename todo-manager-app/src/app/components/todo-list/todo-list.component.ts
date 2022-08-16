@@ -14,7 +14,7 @@ export class TodoListComponent implements OnInit {
   isTodoSelected: boolean;
   selectedTodo?: any;
   @Output() inProgressCounter?: number;
-  numberOfInProgress: number
+  numberOfInProgress?: number
   progressState :number
 
   @Output() numberOfProgress = new EventEmitter<number>()
@@ -28,7 +28,7 @@ export class TodoListComponent implements OnInit {
       {id: 5, title: "Cook something", progress: "done", description: "Ingredients: chicken, tomato, mushroom, etc..", date: "2022-07-19", user_id:3, subTodoIds: [6,8]},
       {id: 6, title: "Wash hands", progress: "open", description: "valami description", date: "2022-11-19", user_id:3, subTodoIds: []},
       {id: 7, title: "Change front bulbs", progress: "in progress", description: "valami description valami description", date: "2022-04-19", user_id:1, subTodoIds: []},
-      {id: 8, title: "Prepare the vegetables", progress: "in progress", description: "valami description valami description valami description", date: "2022-03-12", user_id:3, subTodoIds: []},
+      {id: 8, title: "Prepare the vegetables", progress: "done", description: "valami description valami description valami description", date: "2022-03-12", user_id:3, subTodoIds: []},
       {id: 9, title: "Write a template", progress: "done", description: "valami description", date: "2022-07-12", user_id:1, subTodoIds: []},
       {id: 10, title: "Clean the carpets", progress: "open", description: "valami description valami description", date: "2022-05-01", user_id:1, subTodoIds: []},
     ],
@@ -40,11 +40,12 @@ export class TodoListComponent implements OnInit {
     this.isTodoSelected = false,
     this.inProgressCounter = 0,
     this.progressState = 0;
-    this.numberOfInProgress = this.getNumberOfInprogressTodos()
+    // this.numberOfInProgress = this.getNumberOfInprogressTodos()
 
   }
 
   ngOnInit(): void {
+    this.getNumberOfInprogressTodos()
   }
 
   getUser(todo: Todo) {
@@ -79,5 +80,14 @@ export class TodoListComponent implements OnInit {
       this.progressState = 1;
       console.log(this.progressState)
     }
+  }
+
+  updateTodo(event: Todo) {
+    this.getNumberOfInprogressTodos()
+    // this.todos.find(todo => {
+    //   if(todo.id === event.id){
+        
+    //   }
+    // })
   }
 }
