@@ -28,7 +28,8 @@
         <!-- </div> -->
       </tr>
       <ul *ngIf="todo?.subTodoIds">
-        <app-todo-item *ngFor="let item of todo?.subTodoIds" [todo]="item"  (detailedTodo)="detailedItem($event)"> {{todo?.title}} {{todo?.description}}</app-todo-item>
+        <app-todo-item *ngFor="let item of todo?.subTodoIds" [todo]="item"  (detailedTodo)="detailedItem($event)"> </app-todo-item>
+        <!-- <li>{{ todo?.user_id}} {{ todo?.title}} {{ todo?.date}} {{todo?.description}}</li> -->
         
     </ul>
     </tbody>
