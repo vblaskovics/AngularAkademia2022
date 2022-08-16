@@ -1,0 +1,48 @@
+<h1 style="text-align: center;">ToDo Web App</h1>
+<hr>
+
+<table class="table table-striped">
+  <thead>
+    <th scope="col">id</th>
+    <th scope="col">title</th>
+    <th scope="col">progress</th>
+    <th scope="col">userId</th>
+  </thead>
+<tbody>
+  <tr app-todo-item *ngFor="let todo of todo, let i = index" [todo]="todo" (click)="selectTodo(todo)" [class.bgGrey]="i%2===0">
+    {{todo}}
+  </tr>
+</tbody>
+
+<div>
+  <app-details  *ngIf="isTodoSelected" [users]="getUser(selectedTodo)" [todo]="selectedTodo"></app-details>
+
+</div>
+
+</table>
+
+
+
+
+
+
+
+<!-- <div class="row">
+  <div class="col-xs-12">
+      <table class="table">
+          <thead class="thead-light">
+              <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">title</th>
+                  <th scope="col">progress</th>
+                  <th scope="col">userid</th>
+              </tr>
+          </thead>
+            <tbody>
+              <tr *ngFor="let todos of todos, let i = index"></tr>
+
+            </tbody>
+      </table>
+
+  </div>
+</div> -->
