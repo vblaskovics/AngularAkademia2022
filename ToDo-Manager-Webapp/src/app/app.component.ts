@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'ToDo-Manager-Webapp';
+  inProgressCounter: number;
+
+  setInprogressCounter(num: number): void {
+    this.inProgressCounter = num;
+    console.log('inProgressCounter: ', this.inProgressCounter);
+
+  }
 }

@@ -1,2 +1,2 @@
-<app-todo-list></app-todo-list>
-
+<app-navbar [inProgressCounter]="inProgressCounter"></app-navbar>
+<app-todo-list (inProgressCount)="setInprogressCounter($event)"></app-todo-list>

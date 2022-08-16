@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from 'src/app/model/to-do';
 import { User } from 'src/app/model/user';
 
@@ -8,6 +8,9 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
+
+  @Output() inProgressCount: EventEmitter<number> = new EventEmitter<number>();
+
   items: ToDo[] = new Array();
   users: User[] = new Array();
   subTodos: ToDo[] = new Array();
@@ -15,6 +18,7 @@ export class TodoListComponent implements OnInit {
   isRowClicked: boolean;
   clickedToDo?: ToDo;
   clickedSubtodos?: ToDo[];
+  inProgressCounter: number;
 
   constructor() {
     this.isRowClicked = false;
@@ -81,6 +85,7 @@ export class TodoListComponent implements OnInit {
       subTodoIds: [],
     });
 
+
     this.subTodos.push({
       id: 112,
       title: 'Watch videos from Maximilien',
@@ -146,7 +151,9 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onInprogressCount();
+  }
 
   getUser(id: number): User {
     return this.users.filter((user) => user.id === id)[0];
@@ -163,5 +170,11 @@ export class TodoListComponent implements OnInit {
       todo.subTodoIds.includes(subTodo.id)
     );
     return this.clickedSubtodos;
+  }
+
+  onInprogressCount(): void {
+    this.inProgressCounter = this.items.filter(item => item.progress === 'in progress').length;
+    console.log('onInprogressCount(): ', this.inProgressCounter)
+    this.inProgressCount.emit(this.inProgressCounter);
   }
 }
