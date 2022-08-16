@@ -135,10 +135,27 @@ export class TodoTableListComponent implements OnInit {
   calculateProgressCount(): number {
     let count = 0;
     this.items.forEach((todo) => {
-      if (todo.progress === 'in progress') {
+      if (todo.progress === Progress.in_progress) {
         count++;
       }
     });
     return count;
+  }
+
+  changeProgress(todo: Todo): void {
+    switch (todo.progress) {
+      case Progress.open:
+        todo.progress = Progress.in_progress;
+        break;
+      case Progress.in_progress:
+        todo.progress = Progress.done;
+        break;
+      case Progress.done:
+        todo.progress = Progress.open;
+        break;
+      default:
+        console.log('No such progress exists!');
+        break;
+    }
   }
 }

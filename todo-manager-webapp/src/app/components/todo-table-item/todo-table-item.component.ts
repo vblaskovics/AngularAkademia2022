@@ -12,6 +12,7 @@ export class TodoTableItemComponent implements OnInit {
   @Input() users?: User[];
 
   @Output() clickOnTable = new EventEmitter<Todo>();
+  @Output() changeProgressStatus = new EventEmitter<Todo>();
 
   constructor() {}
 
@@ -29,5 +30,9 @@ export class TodoTableItemComponent implements OnInit {
 
   showDetails(): void {
     this.clickOnTable.emit(this.todo);
+  }
+
+  changeProgress(): void {
+    this.changeProgressStatus.emit(this.todo);
   }
 }

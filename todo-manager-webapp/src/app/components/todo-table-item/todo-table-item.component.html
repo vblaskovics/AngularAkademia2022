@@ -1,4 +1,6 @@
-<td (click)="showDetails()">{{ todo?.id }}</td>
-<td (click)="showDetails()">{{ todo?.title }}</td>
-<td (click)="showDetails()">{{ todo?.progress }}</td>
-<td (click)="showDetails()">{{ findUser(todo?.user_id!) }}</td>
+<td class="col-xs-3" (click)="showDetails()">{{ todo?.id }}</td>
+<td class="col-xs-3" (click)="showDetails()">{{ todo?.title }}</td>
+<td class="col-xs-3 w-25" (click)="showDetails()">
+  {{ todo?.progress }}<a (click)="changeProgress()">⏩</a>
+</td>
+<td class="col-xs-3" (click)="showDetails()">{{ findUser(todo?.user_id!) }}</td>
