@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-manager-webapp';
+  title = 'Todo Manager App';
+
+  // todoInProgress(): number {
+  //   let todoCounter = 0;
+  //   for (const todo of this.todo) {
+  //     if (todo.progress == progress.inProgress) {
+  //       todoCounter++;
+  //     }
+  //   }
+  //   return todoCounter;
+
 }

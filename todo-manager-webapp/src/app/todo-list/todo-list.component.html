@@ -1,7 +1,7 @@
-<h1 style="text-align: center;">ToDo Web App</h1>
+
 <hr>
 
-<table class="table table-striped">
+<table class="table table-striped" style="margin: auto; max-width: 900px;" >
   <thead>
     <th scope="col">id</th>
     <th scope="col">title</th>
@@ -12,13 +12,21 @@
   <tr app-todo-item *ngFor="let todo of todo, let i = index" [todo]="todo" (click)="selectTodo(todo)" [class.bgGrey]="i%2===0">
     {{todo}}
   </tr>
+    <tr>
+
+    </tr>
 </tbody>
 
-<div>
-  <app-details  *ngIf="isTodoSelected" [users]="getUser(selectedTodo)" [todo]="selectedTodo"></app-details>
+</table>
+<table class="table table-striped" style="margin: auto; max-width: 900px;">
+  <tbody>
+    <tr>
+    <div>
+      <app-details  *ngIf="isTodoSelected" [users]="getUser(selectedTodo)" [todo]="selectedTodo"></app-details>
 
-</div>
-
+    </div>
+  </tr>
+  </tbody>
 </table>
 
 

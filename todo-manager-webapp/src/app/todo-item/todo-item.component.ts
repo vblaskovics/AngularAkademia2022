@@ -12,6 +12,7 @@ export class TodoItemComponent implements OnInit {
 
   @Input() todo?: Todo
   @Input() users?: Users[]
+ 
 
 
 

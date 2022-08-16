@@ -6,6 +6,7 @@ export interface Todo {
   description: string,
   date: string,
   userId: number,
-  subTodoIds?: number[]
+  subTodoIds?: Array<Number>;
+  
 
 }
