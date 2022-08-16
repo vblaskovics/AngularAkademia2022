@@ -1,4 +1,9 @@
-<h2 class="text-center mb-3">Todo manager</h2>
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Todo manager</span>
+    <span class="navbar-brand mb-0 h1">In progress: {{countInProgressTodos()}}</span>
+  </div>
+</nav>
 
 <div class="container">
   <div class="row">
@@ -8,7 +13,10 @@
           <tr>
             <th>Id</th>
             <th>Title</th>
-            <th>Progress</th>
+            <th (click)="sortProgress()">Progress
+              <span *ngIf="isAscending">⬆️</span>
+              <span *ngIf="!isAscending">⬇️</span>
+            </th>
             <th>Date</th>
             <th>User id</th>
           </tr>
@@ -20,3 +28,4 @@
     </div>
   </div>
 </div>
+

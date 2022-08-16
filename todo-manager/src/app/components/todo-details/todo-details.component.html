@@ -5,8 +5,8 @@
     {{ details.title }}
   </li>
 
-  <li>
-    {{ details.progress }}
+  <li (click)="nextProgress()">
+    {{ details.progress }} ⏩
   </li>
 
   <li>
@@ -26,3 +26,11 @@
   </li>
 </ul>
 
+<div *ngIf="details">
+  <h2 >Sub-todo:</h2>
+  <ul>
+    <li *ngFor="let subTodo of findSubtodos(details.subTodoIds)">
+      {{subTodo.title}}
+    </li>
+  </ul>
+</div>

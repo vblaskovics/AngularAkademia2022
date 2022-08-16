@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   details: any;
+  subtodoTitle: any;
 
   passToDetails(event: any) {
     this.details = event;
   }
+
 }

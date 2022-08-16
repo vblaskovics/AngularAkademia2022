@@ -9,7 +9,7 @@ export const todos: Todo[] = [
     description: 'I need to write some email',
     date: '2022-10-01',
     userId: 1,
-    subTodoIds: [],
+    subTodoIds: [1],
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ export const todos: Todo[] = [
     description: 'go to the gym',
     date: '2022-10-03',
     userId: 2,
-    subTodoIds: [],
+    subTodoIds: [1, 2],
   },
 
   {
@@ -28,7 +28,7 @@ export const todos: Todo[] = [
     description: 'I need to practice to be a good mid laner',
     date: '2022-10-06',
     userId: 3,
-    subTodoIds: [],
+    subTodoIds: [2, 3],
   },
 
   {
@@ -38,7 +38,7 @@ export const todos: Todo[] = [
     description: 'make some several type of flavour',
     date: '2022-10-04',
     userId: 1,
-    subTodoIds: [],
+    subTodoIds: [1, 2, 3],
   },
 
   {
@@ -48,6 +48,6 @@ export const todos: Todo[] = [
     description: 'I need to practice Angular',
     date: '2022-10-09',
     userId: 2,
-    subTodoIds: [],
+    subTodoIds: [3],
   }
 ];
