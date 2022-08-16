@@ -18,7 +18,11 @@ export class TodoListComponent implements OnInit {
   clickedToDo?: ToDo;
   clickedSubtodos?: ToDo[];
   inProgressCounter: number;
-  progressArray: Array<string> = ['open', 'in progress', 'done', 'open'];
+  progressArray: Array<string> = ['open', 'in progress', 'done'];
+  sortDirectionIncrement: boolean = true;
+  incrementEmoji: string = '🔼';
+  decrementEmoji: string = '🔽';
+  sortButtonEmoji: string = '🔼';
 
   constructor() {
     this.isRowClicked = false;
@@ -185,6 +189,25 @@ export class TodoListComponent implements OnInit {
       ? (todo.progress = 'done')
       : (todo.progress = 'open');
 
-      this.onInprogressCount();
+    this.onInprogressCount();
+  }
+
+  onSortButtonClicked(): void {
+    if (this.sortDirectionIncrement) {
+      this.items.sort(
+        (a, b) =>
+          this.progressArray.indexOf(a.progress) -
+          this.progressArray.indexOf(b.progress)
+      );
+    } else {
+      this.items.sort(
+        (a, b) =>
+          this.progressArray.indexOf(b.progress) -
+          this.progressArray.indexOf(a.progress)
+      );
+    }
+
+    this.sortDirectionIncrement = !this.sortDirectionIncrement;
+    this.sortDirectionIncrement ? this.sortButtonEmoji = this.incrementEmoji : this.sortButtonEmoji = this.decrementEmoji;
   }
 }
