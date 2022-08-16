@@ -208,6 +208,8 @@ export class TodoListComponent implements OnInit {
     }
 
     this.sortDirectionIncrement = !this.sortDirectionIncrement;
-    this.sortDirectionIncrement ? this.sortButtonEmoji = this.incrementEmoji : this.sortButtonEmoji = this.decrementEmoji;
+    this.sortDirectionIncrement
+      ? (this.sortButtonEmoji = this.incrementEmoji)
+      : (this.sortButtonEmoji = this.decrementEmoji);
   }
 }

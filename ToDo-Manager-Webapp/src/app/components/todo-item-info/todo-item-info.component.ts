@@ -21,7 +21,6 @@ export class TodoItemInfoComponent implements OnInit {
     let day = dateObj!.getUTCDate();
     let year = dateObj!.getUTCFullYear();
 
-    console.log(this.clickedTodo?.subTodoIds);
     return year + '/' + month + '/' + day;
   }
 }
