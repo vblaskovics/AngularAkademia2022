@@ -8,7 +8,6 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
-
   @Output() inProgressCount: EventEmitter<number> = new EventEmitter<number>();
 
   items: ToDo[] = new Array();
@@ -19,6 +18,7 @@ export class TodoListComponent implements OnInit {
   clickedToDo?: ToDo;
   clickedSubtodos?: ToDo[];
   inProgressCounter: number;
+  progressArray: Array<string> = ['open', 'in progress', 'done', 'open'];
 
   constructor() {
     this.isRowClicked = false;
@@ -84,7 +84,6 @@ export class TodoListComponent implements OnInit {
       user_id: 51,
       subTodoIds: [],
     });
-
 
     this.subTodos.push({
       id: 112,
@@ -173,8 +172,17 @@ export class TodoListComponent implements OnInit {
   }
 
   onInprogressCount(): void {
-    this.inProgressCounter = this.items.filter(item => item.progress === 'in progress').length;
-    console.log('onInprogressCount(): ', this.inProgressCounter)
+    this.inProgressCounter = this.items.filter(
+      (item) => item.progress === 'in progress'
+    ).length;
     this.inProgressCount.emit(this.inProgressCounter);
+  }
+
+  changeProgress(todo: ToDo): void {
+    todo.progress === 'open'
+      ? (todo.progress = 'in progress')
+      : todo.progress === 'in progress'
+      ? (todo.progress = 'done')
+      : (todo.progress = 'open');
   }
 }

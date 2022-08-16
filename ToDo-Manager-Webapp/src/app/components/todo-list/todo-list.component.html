@@ -5,6 +5,7 @@
       <th>ID</th>
       <th>TITLE</th>
       <th>PROGRESS</th>
+      <th>CHANGE PROGRESS</th>
       <th>USERNAME</th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       [todo]="item"
       [user]="getUser(item.user_id)"
       (click)="rowClicked(item)"
+      (progressChanged)="changeProgress($event)"
     ></tr>
   </tbody>
 </table>

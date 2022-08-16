@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from 'src/app/model/to-do';
 import { User } from 'src/app/model/user';
 
@@ -11,10 +11,15 @@ export class TodoItemComponent implements OnInit {
 
   @Input() todo?: ToDo;
   @Input() user?: User;
+  @Output() progressChanged: EventEmitter<ToDo> = new EventEmitter<ToDo>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onProgressChangerClicked(todo: ToDo): void {
+    this.progressChanged.emit(todo);
   }
 
 }
