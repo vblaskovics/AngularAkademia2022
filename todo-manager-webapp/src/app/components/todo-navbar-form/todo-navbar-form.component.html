@@ -1,0 +1,27 @@
+<!-- <form class="form-inline d-flex" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <label class="form-label navbar-text" for="titleInput">Title: </label>
+  <input
+    id="titleInput"
+    type="text"
+    class="form-control"
+    name="title"
+    placeholder="Please enter title"
+    ngModel
+  />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+
+<form class="form-inline d-flex" [formGroup]="myForm">
+  <label class="form-label navbar-text" for="titleInput">Title: </label>
+  <input
+    id="titleInput"
+    type="text"
+    class="form-control"
+    name="title"
+    placeholder="Please enter title"
+    formControlName="title"
+  />
+  <button type="submit" class="btn btn-primary" (click)="onClickMyFormValue()">
+    myForm value
+  </button>
+</form>

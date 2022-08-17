@@ -1,0 +1,60 @@
+<h2>Form with validation (reactive form)</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      [class.is-invalid]="
+        this.myForm.get('username')?.invalid &&
+        this.myForm.get('username')?.touched
+      "
+      id="usernameInput"
+      class="form-control"
+      type="text"
+      name="username"
+      placeholder="Please enter your username"
+      formControlName="username"
+      required
+    />
+    <small
+      class="text-danger"
+      *ngIf="
+        this.myForm.get('username')?.invalid &&
+        this.myForm.get('username')?.touched
+      "
+      >Username is required</small
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="emailInput">Username</label>
+    <input
+      [class.is-invalid]="
+        this.myForm.get('email')?.invalid && this.myForm.get('email')?.touched
+      "
+      id="emailInput"
+      class="form-control"
+      type="text"
+      name="email"
+      placeholder="Please enter your email"
+      formControlName="email"
+      required
+    />
+    <small
+      class="text-danger"
+      *ngIf="
+        this.myForm.get('username')?.invalid &&
+        this.myForm.get('username')?.touched
+      "
+      >Email is required</small
+    >
+  </div>
+  <button
+    [class.disabled]="this.myForm.invalid"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Submit
+  </button>
+</form>
+
+Form status: {{ myForm.status }}

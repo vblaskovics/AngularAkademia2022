@@ -6,6 +6,8 @@ import { TodoTableListComponent } from './components/todo-table-list/todo-table-
 import { TodoTableItemComponent } from './components/todo-table-item/todo-table-item.component';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
 import { TodoNavbarComponent } from './components/todo-navbar/todo-navbar.component';
+import { TodoNavbarFormComponent } from './components/todo-navbar-form/todo-navbar-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,9 @@ import { TodoNavbarComponent } from './components/todo-navbar/todo-navbar.compon
     TodoTableItemComponent,
     TodoDetailsComponent,
     TodoNavbarComponent,
+    TodoNavbarFormComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
