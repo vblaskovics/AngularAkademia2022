@@ -1,6 +1,6 @@
-<h2>Form with Template</h2>
+<h2>Form with Validation</h2>
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f.value) ">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <div class="mb-3">
     <label class="form-label" for="usernameInput">Username</label>
     <input
@@ -9,7 +9,8 @@
       name="username"
       id="usernameInput"
       placeholder="Username"
-      ngModel
+      formControlName="username"
+      [class.is-invalid]="myForm.get('username')?.invalid"
     >
   </div>
   <div class="mb-3">
@@ -20,14 +21,12 @@
       name="emailaddress"
       id="emailaddressInput"
       placeholder="Email address"
-      ngModel
+      formControlName="emailaddress"
+      [class.is-invalid]="myForm.get('emailaddress')?.invalid"
     >
   </div>
 
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
-<div class="input-values-container" *ngIf="addInputValues">
-  <p class="renderFormValues">Username: {{ username }}</p>
-  <p class="renderFormValues">Email Address: {{ email }}</p>
-</div>
 
+form status: {{ myForm.status }}
