@@ -14,4 +14,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onCreate(formValue: any): void {
+    console.log('form value', formValue)
+
+  }
 }

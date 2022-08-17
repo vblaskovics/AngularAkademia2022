@@ -2,6 +2,25 @@
 <nav class="navbar navbar-dark bg-primary" style="margin: auto; max-width: 900px;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{{title}}</a>
-    <span></span>
+
+    <form #f="ngForm" (ngSubmit)="onCreate(f.value)">
+    <div>
+        <label class="form-label" for="todoInput">
+          <input id="todoInput"
+          class="form-control"
+          type="text"
+          name="todo"
+          placeholder="Create Todo"
+          ngModel>
+        </label>
+    </div>
+    <button type="create" class="btn btn-primary"> Create Todo</button>
+  </form>
+    <h3>
+      In progress: {{ counter }}
+  </h3>
   </div>
+
 </nav>
+
+

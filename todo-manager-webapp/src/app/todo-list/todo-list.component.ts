@@ -1,7 +1,9 @@
 import { VariableBinding } from '@angular/compiler';
 import { Component, OnInit, Output } from '@angular/core';
+import { count } from 'rxjs';
 import { Todo } from '../model/todo';
 import { Users } from '../model/users';
+import { progress } from '../progress';
 
 
 @Component({
@@ -15,6 +17,7 @@ export class TodoListComponent implements OnInit {
 user: Users[] = new Array();
 isTodoSelected: boolean;
 selectedTodo?: any;
+
 
 
 constructor() {
@@ -37,22 +40,32 @@ constructor() {
   this.isTodoSelected = false;
 
 
-}
+
+  }
 
 ngOnInit(): void {
 
-}
+  }
 
 getUser(todo: Todo) {
   let user = this.user.find(user => user.id === todo.userId)
   return user
-}
+  }
 
 selectTodo(todo: Todo): Todo {
   this.isTodoSelected = true;
   return this.selectedTodo = todo
-}
+  }
 
 
+
+// countInProgress(): number {
+//   let todoCounter = 0;
+//   for (const todo of  {
+//     if (todo.progress == progress ) {
+//       todoCounter++;
+//     }
+//   }
+//   return todoCounter;
 
 }
