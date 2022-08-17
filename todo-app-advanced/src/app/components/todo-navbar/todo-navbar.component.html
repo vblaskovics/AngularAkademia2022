@@ -2,7 +2,7 @@
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
       <span class="navbar-brand mb-0 h1">Todo App</span>
-      <form action="submit" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <form [formGroup]="myForm" (ngSubmit)="handler()">
         <label class="form-label" for="titleInput">Todo Title: </label>
         <input
           class="form-control"
@@ -10,7 +10,7 @@
           name="title"
           id="titleInput"
           placeholder="Title"
-          ngModel
+          formControlName="title"
         />
         <button class="btn btn-primary">Submit</button>
       </form>

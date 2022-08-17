@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { progress, Todo } from 'src/app/shared/todo';
 
-
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -106,7 +105,7 @@ export class TodoListComponent implements OnInit {
     ];
     this.toDoElementSelected = false;
     this.inProgress();
-    this.nextId = this.items.length;
+    this.nextId = this.items.length+1;
   }
 
 
@@ -168,7 +167,7 @@ export class TodoListComponent implements OnInit {
   addedElementHandler(titleInput: string){
    let array: Todo =
       {
-       id: this.nextId+1,
+       id: this.nextId++,
        title: titleInput,
        progress: progress.Open,
        description: "Template",
@@ -181,5 +180,6 @@ export class TodoListComponent implements OnInit {
       }
 
      this.items.push(array);
+     console.log(this.nextId+1)
   }
 }

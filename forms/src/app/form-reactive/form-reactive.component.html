@@ -1,0 +1,39 @@
+<h2>Form with reactive</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="usernameInput"
+      placeholder="Username"
+      formControlName="username"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="emailInput">Email:</label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+      id="emailInput"
+      placeholder="Email"
+      formControlName="email"
+    />
+  </div>
+  <button class="btn btn-primary" type="submit" >Submit</button>
+</form>
+<button class="btn btn-primary" (click)="onClickMyFormValue()">myForm value</button>
+
+<h1>Email: </h1>
+<p>{{myForm.value.email}}</p>
+<p>{{myForm.value.username}}</p>
+
+
+<button class="btn btn-primary" (click)="erase()">Erase form</button>
+<button class="btn btn-primary" (click)="getEmail()">getEmail</button>
+<button class="btn btn-primary" (click)="resetForm()">resetform</button>
+<button class="btn btn-primary" (click)="setForm()">Set form</button>
+<button class="btn btn-primary" (click)="patchValue()">Path values</button>
