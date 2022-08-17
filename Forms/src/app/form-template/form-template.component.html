@@ -1,0 +1,40 @@
+<h4>Form with template</h4>
+
+<!-- #f template variable, ngForm groupot rendelünk hozzá. f - ngForm direktíva -->
+
+<form class="col-xs-6"
+                #f="ngForm"
+                (ngSubmit)="onSubmit(f.value)">
+    <div class="mb-3 text-center">
+        <label class="form-label col-xs-3" 
+                for="usernameInput"></label>
+        <input 
+            class="form-control col-xs-3" 
+            placeholder="username" 
+            type="text" 
+                id="usernameInput" 
+                name="username" 
+                ngModel>
+    </div>
+
+
+
+    <div class="mb-3 text-center">
+        <label class="form-label" 
+                for="emailInput"></label>
+        <input 
+            class="form-control" 
+            placeholder="email" 
+            type="text" 
+                id="emailInput" 
+                name="email" 
+                ngModel>
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-info">Submit</button>
+</form>
+
+
