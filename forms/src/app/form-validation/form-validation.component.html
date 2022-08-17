@@ -1,0 +1,42 @@
+<h2>Form with validation</h2>
+
+<form [formGroup]="myForm" class="was-validated" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      id="usernameInput"
+      type="text"
+      name="usernameInput"
+      placeholder="Username"
+      formControlName="username"
+    />
+    <div *ngIf="submitted && form['username'].errors">
+      <div class="required" *ngIf="form['username'].errors['required']">
+        Username is required!
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="emailInput">Email</label>
+    <input
+      id="emailInput"
+      type="text"
+      name="emailInput"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <div *ngIf="submitted && form['email'].errors">
+      <div class="required" *ngIf="form['email'].errors['required']">
+        Email is required!
+      </div>
+      <div *ngIf="form['email'].errors['email']">
+        Invalid email!
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!-- Form status: {{myForm.status}} -->

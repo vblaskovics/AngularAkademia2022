@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormTemplate2Component } from './form-template2.component';
+import { FormValidationComponent } from './form-validation.component';
 
-describe('FormTemplate2Component', () => {
-  let component: FormTemplate2Component;
-  let fixture: ComponentFixture<FormTemplate2Component>;
+describe('FormValidationComponent', () => {
+  let component: FormValidationComponent;
+  let fixture: ComponentFixture<FormValidationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormTemplate2Component ]
+      declarations: [ FormValidationComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormTemplate2Component);
+    fixture = TestBed.createComponent(FormValidationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
