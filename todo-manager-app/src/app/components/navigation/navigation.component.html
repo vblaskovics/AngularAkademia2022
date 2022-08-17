@@ -2,6 +2,21 @@
     <a class="navbar-brand" href="#">
         <h1>Best Todo App</h1>
     </a>
+    <form #f="ngForm" (ngSubmit)="onAddTodo(f.value)">
+        <div class="d-flex" style="gap: 10px">
+            <div class="d-flex align-items-center" style="gap: 10px">
+                <label for="newTodoInput" style="color: whitesmoke;">Todo:</label>
+                <input
+                    class="form-control" 
+                    type="text" 
+                    id="newTodoInput" 
+                    name="newTodo" 
+                    placeholder="Todo title"
+                    ngModel>
+            </div>
+            <button class="btn btn-warning" type="submit">Add Todo</button>
+        </div>
+    </form>
     <h3>
         In progress: {{ count }}
     </h3>

@@ -1,0 +1,18 @@
+Formok
+
+Minden mező egy form control, ezek rendeződnek csoportba, (form group).
+Egy form általában egy group, és controlokat tartalmaz.
+
+
+Form-control properties:
+
+    -The control input is valid : valid-invalid
+    -The control value has changed: dirty-pristine
+    -The control input has visited: touched-untouched
+
+
+
+
+
+
+
