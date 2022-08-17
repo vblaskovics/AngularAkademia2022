@@ -7,7 +7,7 @@
       <tr>
         <th class="col">Id </th>
         <th class="col">Title</th>
-        <th class="col near">Progress <div (click)="onSortReasing()">🔼</div> <div (click)="onSortDecreasing()">🔽</div></th>
+        <th class="col near" style="cursor:pointer">Progress <div (click)="onSortReasing()">🔼</div> <div (click)="onSortDecreasing()">🔽</div></th>
         <th class="col">Username</th>
         <!-- <th class="col">Sort</th> -->
       </tr>
@@ -29,6 +29,6 @@
   </div>
 
   <ng-template #infotext> 
-    <p class="text-secondary">For more info click on the cells ^</p>
+    <p class="text-secondary">For more info click on the Progress column ^</p>
   </ng-template>
   

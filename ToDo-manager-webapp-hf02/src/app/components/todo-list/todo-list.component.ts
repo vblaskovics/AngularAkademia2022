@@ -182,7 +182,9 @@ export class TodoListComponent implements OnInit {
     this.inProgressItem();
   }
 
-
+  // deleteItemfromList(todo:Todo): void {
+  //   this.items = this.items.filter(a => a.id !== todo.id)
+  // }
   
 
 
