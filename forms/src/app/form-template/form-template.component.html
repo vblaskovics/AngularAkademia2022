@@ -1,0 +1,27 @@
+<h2>form with template</h2>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      ngModel
+      placeholder="username"
+      id="usernameInput"
+      name="username"
+      class="form-control"
+      type="text"
+    />
+  </div>
+  <div>
+    <label class="form-label" for="emailInput">Email</label>
+    <input
+      ngModel
+      name="email"
+      placeholder="email"
+      id="emailInput"
+      class="form-control"
+      type="text"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

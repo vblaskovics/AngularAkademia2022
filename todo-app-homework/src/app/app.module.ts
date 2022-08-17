@@ -6,18 +6,17 @@ import { TodoListComponent } from './Components/todo-list/todo-list.component';
 import { TodoItemComponent } from './Components/todo-item/todo-item.component';
 import { DetailsComponent } from './Components/details/details.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoItemComponent,
     DetailsComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

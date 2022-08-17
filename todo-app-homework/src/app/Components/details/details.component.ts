@@ -4,36 +4,37 @@ import { TODO } from 'src/app/Interfaces/todo.interface';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  @Input() todo!:TODO
-  @Input() users!:USER[]
-  @Input() todos!:TODO[]
-  @Output() changeProgressStateEmmiter : EventEmitter<TODO> = new EventEmitter<TODO>()
-  constructor() { }
+  @Input() todo!: TODO;
+  @Input() users!: USER[];
+  @Input() todos!: TODO[];
 
-  ngOnInit(): void {
-  }
-  selectedUserName(userId:number){
-    let i = 0
-    while(i < this.users.length && this.users[i].id !== userId){
-      i++
+  @Output() changeProgressStateEmmiter: EventEmitter<TODO> =
+    new EventEmitter<TODO>();
+  constructor() {}
+
+  ngOnInit(): void {}
+  selectedUserName(userId: number) {
+    let i = 0;
+    while (i < this.users.length && this.users[i].id !== userId) {
+      i++;
     }
-    return i < this.users.length && this.users[i].name
+    return i < this.users.length && this.users[i].name;
   }
-  selectedUserEmail(userId:number){
-    let i = 0
-    while(i < this.users.length && this.users[i].id !== userId){
-      i++
+  selectedUserEmail(userId: number) {
+    let i = 0;
+    while (i < this.users.length && this.users[i].id !== userId) {
+      i++;
     }
-    return i < this.users.length && this.users[i].email
+    return i < this.users.length && this.users[i].email;
   }
-  findTodoTitleById(id:number){
-    let i = 0
+  findTodoTitleById(id: number) {
+    let i = 0;
     while (i < this.todos.length && this.todos[i].id !== id) {
-      i++
+      i++;
     }
-    return i < this.todos.length && this.todos[i].title
+    return i < this.todos.length && this.todos[i].title;
   }
 }

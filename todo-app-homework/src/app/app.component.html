@@ -1,14 +1,17 @@
 <app-navbar
-[title]="title"
-[counter]="todoInProgress()"
-
-> </app-navbar>
+  (emitChange)="changeData()"
+  (todoPushEmit)="pushTodo($event)"
+  [title]="title"
+  [counter]="todoInProgress()"
+>
+</app-navbar>
 
 <main>
-  <app-todo-list 
-  [todos]="todos" [users]="users"
-  (selectTodoEmitter)="handleSelectTodo($event)"
-  (changeProgressStateEmmiter)="changeStateOfTodo($event)"
+  <app-todo-list
+    [todos]="todos"
+    [users]="users"
+    (selectTodoEmitter)="handleSelectTodo($event)"
+    (changeProgressStateEmmiter)="changeStateOfTodo($event)"
   ></app-todo-list>
   <app-details
     *ngIf="selectedTodo"

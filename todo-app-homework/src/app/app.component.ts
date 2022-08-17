@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TODO } from './Interfaces/todo.interface';
 import { USER } from './Interfaces/user.interface';
-import { mockTodos, mockUsers } from './MockData';
+import { mockTodos, mockUsers, mockTodos2 } from './MockData';
 import { progress } from './progress';
 @Component({
   selector: 'app-root',
@@ -44,5 +44,18 @@ export class AppComponent {
       default:
         break;
     }
+  }
+  pushTodo(title: string) {
+    let pushable: TODO = {
+      id: this.todos.length + 1,
+      title: title,
+      progress: progress.open,
+      user_id: 1,
+      date: '2022-08-17',
+    };
+    this.todos.push(pushable);
+  }
+  changeData() {
+    this.todos = mockTodos2;
   }
 }

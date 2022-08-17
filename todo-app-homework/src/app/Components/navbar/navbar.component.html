@@ -1,11 +1,25 @@
-
-  <div class="nav-container  bg-dark">
-    <nav class="navbar navbar-dark bg-dark" style="margin: auto; max-width: 900px;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">{{title}}</a>
-        <span class="navbar-brand">{{counter}}</span>
-
-      </div>
-
-    </nav>
-  </div>
+<div class="nav-container bg-dark">
+  <nav
+    class="navbar navbar-dark bg-dark"
+    style="margin: auto; max-width: 1200px"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">{{ title }}</a>
+      <span class="navbar-brand">{{ counter }}</span>
+      <form class="form-container" #f="ngForm" (ngSubmit)="handleForm(f.value)">
+        <label style="color: white" for="todoTitleInput">Title</label>
+        <input
+          class="form-control"
+          ngModel
+          name="title"
+          id="todoTitleInput"
+          type="text"
+        />
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+      </form>
+      <button class="btn btn-primary btn-sm" (click)="emitChange.emit()">
+        ChangeData
+      </button>
+    </div>
+  </nav>
+</div>
