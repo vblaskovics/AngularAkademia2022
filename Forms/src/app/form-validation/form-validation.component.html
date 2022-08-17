@@ -1,0 +1,24 @@
+<h4>Form with Validation</h4>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="col-xs-6">
+  <div class="mb-3 text-center">
+    <label class="form-label col-xs-3" for="usernameInput"></label>
+    <input
+      class="form-control col-xs-3"
+      placeholder="username"
+      type="text"
+      id="usernameInput"
+      name="username"
+      formControlName="username"
+      [class.error]="myForm.status === 'INVALID'"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-info">Submit</button>
+</form>
+<p>{{ myForm.value.email }}</p>
+
+
+<p *ngIf="myForm.status === 'VALID'; else error">Form status: {{ myForm.status }}</p>
+<ng-template #error>Fill the username input!</ng-template>
+
