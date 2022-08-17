@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { progress, Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
 
@@ -17,10 +18,15 @@ export class TodoTableComponent implements OnInit {
   @Output() progressCounter: number;
   todo!: Todo;
   isAscending = false;
-  nextId: number = 0;
+  // nextId: number = 0;
+  myForm: FormGroup;
 
 
-  constructor() {
+  constructor(fb: FormBuilder) {
+    this.myForm = fb.group({
+      todo: [''],
+    });
+
     (this.todos = [
       {
         id: 1,
@@ -112,7 +118,7 @@ export class TodoTableComponent implements OnInit {
 
       this.progressCounter = 0;
 
-      this.nextId = this.todos.length + 1;
+      // this.nextId = this.todos.length + 1;
   }
 
   ngOnInit(): void {}
@@ -170,7 +176,21 @@ export class TodoTableComponent implements OnInit {
 
   onSubmit(formValue: any): void {
     console.log('form value:', formValue);
-    // this.todos.push(this.todo);
+  }
+
+  handleButton() {
+    console.log('form value:', this.myForm.value);
+    this.myForm.reset();
+  }
+
+
+}
+
+
+
+
+
+ // this.todos.push(this.todo);
     // this.todo.id = this.nextId += 1;
     // this.todo.title = formValue;
     // this.todo.progress = progress.open;
@@ -178,6 +198,3 @@ export class TodoTableComponent implements OnInit {
     // this.todo.date = '';
     // this.todo.user_id = 0;
     // this.todo.subTodoIds = [];
-  }
-}
-

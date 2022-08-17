@@ -1,0 +1,40 @@
+<h2>Reactive form with validation</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      id="usernameInput"
+      class="form-control"
+      type="text"
+      name="username"
+      placeholder="Username"
+      formControlName="username"
+      [class.is-invalid] = "!username?.valid"
+    />
+    <div *ngIf="!username?.valid" id="usernameInput" class="invalid-feedback">
+      Please choose a username.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="emailInput">Email</label>
+    <input
+      id="emailInput"
+      class="form-control"
+      type="text"
+      name="email"
+      placeholder="Email"
+      formControlName="email"
+      [class.is-invalid] = "!email?.valid"
+    />
+    <div *ngIf="!email?.valid" id="emailInput" class="invalid-feedback">
+      Please add an email address.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+
+</form>
+
+Form status: {{ myForm.status }}

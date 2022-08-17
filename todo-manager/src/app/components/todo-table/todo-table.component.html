@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-info">
-  <div class="container-fluid">
+  <div class="container-md">
     <a class="navbar-brand" href="#">Todo Table</a>
   </div>
 
-  <div class="nav-item">
+  <!-- <div class="nav-item">
     <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
       <div class="p-1">
         <label for="todoInput" class="form-label">Todo:</label>
@@ -11,10 +11,20 @@
       </div>
       <button type="submit" class="btn btn-info">➕</button>
     </form>
+  </div> -->
+
+  <div>
+    <form class="d-flex" [formGroup]="myForm" (ngSubmit)="handleButton()">
+      <div class="p-1">
+        <label for="todoInput" class="form-label">Todo:</label>
+        <input id="todoInput" type="text" class="form-control" name="todo" formControlName="todo">
+      </div>
+      <button type="submit" class="btn btn-info">➕</button>
+    </form>
   </div>
 
 
-  <div>
+  <div class="mx-auto">
     In progress: {{ inProgressNumber }}
   </div>
 </nav>

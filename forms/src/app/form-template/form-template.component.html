@@ -1,6 +1,6 @@
 <h2>Form with template</h2>
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
   <div class="mb-3">
     <label class="form-label" for="usernameInput">Username</label>
     <input
