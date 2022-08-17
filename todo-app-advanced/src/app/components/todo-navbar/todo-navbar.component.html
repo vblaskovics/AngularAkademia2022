@@ -2,9 +2,21 @@
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
       <span class="navbar-brand mb-0 h1">Todo App</span>
+      <form action="submit" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <label class="form-label" for="titleInput">Todo Title: </label>
+        <input
+          class="form-control"
+          type="text"
+          name="title"
+          id="titleInput"
+          placeholder="Title"
+          ngModel
+        />
+        <button class="btn btn-primary">Submit</button>
+      </form>
     </li>
   </ul>
   <div class="my-2 my-lg-0">
-    <span class="navbar-text"> Current todos: {{numberofTodos}} </span>
+    <span class="navbar-text"> Current todos: {{ numberofTodos }} </span>
   </div>
 </nav>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { progress, Todo } from 'src/app/shared/todo';
 
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -14,11 +15,13 @@ export class TodoListComponent implements OnInit {
   colorGrey: boolean = false;
   toDoElementSelected: boolean;
   @Output() selectedTodo?: Todo;
-
+  nextId!: number;
   sortedItems?: Todo[];
 
   SortDescendingOrder: string[] = [progress.Open, progress.In_Progress, progress.Done]
   SortAscendingOrder: string[] = [progress.Done,progress.In_Progress, progress.Open];
+
+
   constructor() {
     this.items = [
       {
@@ -103,9 +106,14 @@ export class TodoListComponent implements OnInit {
     ];
     this.toDoElementSelected = false;
     this.inProgress();
+    this.nextId = this.items.length;
   }
 
+
+
+
   ngOnInit(): void {}
+
 
   isSecond(item: Todo['id']) {
     if (item % 2 === 0) {
@@ -150,12 +158,28 @@ export class TodoListComponent implements OnInit {
     }
     this.inProgress();
   }
-
   sortAscending() {
     const resultOfSort = this.items.sort((a,b) => this.SortAscendingOrder.indexOf(a.progress) - this.SortAscendingOrder.indexOf(b.progress))
-    console.log(resultOfSort)
   }
   sortDescending() {
     const resultOfSort = this.items.sort((a,b) => this.SortDescendingOrder.indexOf(a.progress) - this.SortDescendingOrder.indexOf(b.progress))
+  }
+
+  addedElementHandler(titleInput: string){
+   let array: Todo =
+      {
+       id: this.nextId+1,
+       title: titleInput,
+       progress: progress.Open,
+       description: "Template",
+       date: "Template",
+       user_id: [{
+        id: 1,
+        name: "Null",
+        email: "Null"
+       }]
+      }
+
+     this.items.push(array);
   }
 }

@@ -9,6 +9,8 @@ import { Todo } from 'src/app/shared/todo';
 export class TodoDetailsComponent implements OnInit {
   @Input() todoItem?: Todo;
   @Output() closeItem: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() elementProgress: EventEmitter<Todo> = new EventEmitter<Todo>();
+
   closed: boolean = true;
   constructor() { }
 
@@ -19,4 +21,7 @@ export class TodoDetailsComponent implements OnInit {
     console.log(this.closeItem)
   }
 
+  onChangeStatus(){
+    this.elementProgress.emit(this.todoItem)
+  }
 }
