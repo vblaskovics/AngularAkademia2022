@@ -17,6 +17,7 @@ export class TodoTableComponent implements OnInit {
   @Output() progressCounter: number;
   todo!: Todo;
   isAscending = false;
+  nextId: number = 0;
 
 
   constructor() {
@@ -110,6 +111,8 @@ export class TodoTableComponent implements OnInit {
       (this.isSelected = false);
 
       this.progressCounter = 0;
+
+      this.nextId = this.todos.length + 1;
   }
 
   ngOnInit(): void {}
@@ -163,6 +166,18 @@ export class TodoTableComponent implements OnInit {
       );
     }
     this.isAscending = !this.isAscending;
+  }
+
+  onSubmit(formValue: any): void {
+    console.log('form value:', formValue);
+    // this.todos.push(this.todo);
+    // this.todo.id = this.nextId += 1;
+    // this.todo.title = formValue;
+    // this.todo.progress = progress.open;
+    // this.todo.description = '';
+    // this.todo.date = '';
+    // this.todo.user_id = 0;
+    // this.todo.subTodoIds = [];
   }
 }
 

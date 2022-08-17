@@ -2,7 +2,19 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Todo Table</a>
   </div>
-  <div class=>
+
+  <div class="nav-item">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <div class="p-1">
+        <label for="todoInput" class="form-label">Todo:</label>
+        <input id="todoInput" type="text" class="form-control" name="todo" placeholder="todo" ngModel>
+      </div>
+      <button type="submit" class="btn btn-info">➕</button>
+    </form>
+  </div>
+
+
+  <div>
     In progress: {{ inProgressNumber }}
   </div>
 </nav>
