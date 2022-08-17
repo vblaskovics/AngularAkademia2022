@@ -11,4 +11,8 @@ export class NavbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  addTodo(title: string): void {
+    console.log(title);
+  }
 }

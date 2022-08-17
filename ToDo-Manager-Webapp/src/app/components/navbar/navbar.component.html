@@ -1,4 +1,20 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Flora's Todo</a>
+
+  <form #navbarForm="ngForm" (ngSubmit)="addTodo(navbarForm.value)" class="navbarForm">
+    <div class="newTodoInputContainer">
+      <label for="newTodoInput">New Todo:</label>
+      <input
+        type="text"
+        id="newTodoInput"
+        class="form-control"
+        name="todoTitle"
+        placeholder="Title of new Todo"
+        ngModel
+      />
+    </div>
+    <button class="btn">➕</button>
+  </form>
+
   <button class="btn btn-warning">In progress: {{ inProgressCounter }}</button>
 </nav>

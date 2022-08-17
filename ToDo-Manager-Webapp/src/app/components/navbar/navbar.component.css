@@ -3,3 +3,7 @@ nav {
   padding-right: 2.5%;
   margin-bottom: 2.5%;
 }
+
+.navbarForm {
+  display: flex;
+}
