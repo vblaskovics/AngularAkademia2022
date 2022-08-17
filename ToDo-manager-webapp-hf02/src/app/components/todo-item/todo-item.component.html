@@ -1,8 +1,9 @@
 
 
-<td scope="row" style="cursor: pointer;" (click)="onCellClick()">{{ todo?.id }}</td>
-<td style="cursor: pointer;" (click)="onCellClick()">{{ todo?.title }}</td>
+<td scope="row" >{{ todo?.id }}</td>
+<td  >{{ todo?.title }}</td>
 <td style="cursor: pointer;" (click)="onCellClick()">{{ todo?.progress }} <a (click)="onSelectStatus()">⏩</a> </td>
-<td style="cursor: pointer;" (click)="onCellClick()" *ngFor="let item of todo?.user_id ">{{ item.name }}</td>
+<td   *ngFor="let item of todo?.user_id ">{{ item.name }}</td>
+<!-- <td style="cursor: pointer;" (click)="onChangeStatus()">🔽</td> -->
 
 

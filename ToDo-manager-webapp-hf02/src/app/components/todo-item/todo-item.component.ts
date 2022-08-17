@@ -28,6 +28,10 @@ export class TodoItemComponent implements OnInit {
     this.todoInProgress.emit(this.todo)
   }
 
+  onChangeStatus(){
+    this.todoInProgress.emit(this.todo)
+  }
+
  
 }
 
