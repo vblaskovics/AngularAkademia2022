@@ -9,8 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormValidationComponent implements OnInit {
 
   myForm: FormGroup;
-  isValid: boolean = false;
   isInvalid: boolean = false;
+  buttonValid: boolean = true;
+
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
@@ -23,7 +24,9 @@ export class FormValidationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.myForm)
+    console.log(this.myForm);
   }
+
+
 
 }
