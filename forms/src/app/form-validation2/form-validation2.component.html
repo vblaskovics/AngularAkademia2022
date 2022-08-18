@@ -1,0 +1,30 @@
+<h2>Form with validation</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="userIdInput">userId*</label>
+    <input
+      id="userIdInput"
+      class="form-control"
+      [class.is-invalid]="userId.touched && userId.invalid"
+      type="text"
+      name="userId"
+      placeholder="userId"
+      formControlName="userId"
+    />
+    <p class="invalid-feedback" *ngIf="userId.touched && userId.hasError('required')">
+      Required field
+    </p>
+    <p class="invalid-feedback" *ngIf="userId.touched && userId.hasError('min')">
+      Id must greater than or equal to 0!
+    </p>
+    <p class="invalid-feedback" *ngIf="userId.touched && userId.hasError('max')">
+      Id must less than or equal to 9999!
+    </p>
+    <p class="invalid-feedback" *ngIf="userId.touched && userId.hasError('pattern')">
+      Id must match with the pattern!
+    </p>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>
