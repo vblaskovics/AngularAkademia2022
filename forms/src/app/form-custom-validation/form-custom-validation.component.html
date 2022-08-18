@@ -14,7 +14,13 @@
       placeholder="Username"
       formControlName="username"
     />
+
+    <ng-container *ngFor="let error of getErrorMessages(username)">
+      <p class="invalid-feedback" *ngIf="username?.touched"> {{ error }} </p>
+    </ng-container>
+
   </div>
+
   <div class="mb-3">
     <label class="form-label" for="passwordInput">password*</label>
     <input

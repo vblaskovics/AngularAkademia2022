@@ -8,6 +8,12 @@ function evenValidator(control: FormControl): { [s:string]: boolean } {
   return {};
 }
 
+const generateErrorMsg: any = {
+  required: (p:any) => 'This field is required!',
+  min: (p:any)=> `Must be greeater than ${p.min}!`,
+  invalidParity: (p:any) => 'Invalid parity!',
+}
+
 @Component({
   selector: 'app-form-custom-validation',
   templateUrl: './form-custom-validation.component.html',
@@ -18,7 +24,7 @@ export class FormCustomValidationComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      username: ['', evenValidator],
+      username: ['', [Validators.required, evenValidator, Validators.min(10)]],
       password: ['', [Validators.required, Validators.minLength(4)]],
       passwordre: ['', []]
     });
@@ -28,6 +34,9 @@ export class FormCustomValidationComponent implements OnInit {
     });
   }
 
+  get username():FormControl {
+    return this.myForm.get('username') as FormControl;
+  }
 
   ngOnInit(): void {}
 
@@ -46,4 +55,16 @@ export class FormCustomValidationComponent implements OnInit {
     }
   }
 
+  getErrorMessages(fc:FormControl): string[] {
+    let messages:string[] = [];
+
+    for (let errorName in fc.errors) {
+      let errorParam = fc.errors[errorName];
+      console.log(errorParam);
+      let errorMsg = generateErrorMsg[errorName](errorParam);
+      messages.push(errorMsg);
+    }
+
+    return messages;
+  }
 }
