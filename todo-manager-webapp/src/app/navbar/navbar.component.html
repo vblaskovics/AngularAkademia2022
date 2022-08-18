@@ -10,10 +10,18 @@
           type="text"
           name="title"
           placeholder="Create Todo"
-          formControlName="title">
+          formControlName="title"
+          [class.error]="myForm.get('title')?.invalid && myForm.get('title')?.touched"
+          >
         </label>
-    <button type="submit" class="btn btn-primary"> Create Todo</button>
-  </form>
+        <button type="submit" class="btn btn-primary"> Create Todo</button>
+        <p *ngIf="getTodo().touched && getTodo().hasError('min')">
+          Must be atleast zero!
+        </p>
+        <p *ngIf="getTodo().touched && getTodo().hasError('max')">
+          No more than 999999!
+
+    </form>
     <h3>
       In progress: {{ counter }}
   </h3>

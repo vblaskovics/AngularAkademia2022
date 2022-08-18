@@ -10,11 +10,13 @@ export class FormValidationComponent implements OnInit {
 
   myForm: FormGroup
   username: any;
+  emailaddress: any;
 
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      username: ['' ,Validators.required]
+      username: ['' ,Validators.required],
+      emailaddress: ['' ,Validators.required]
     });
 
 
@@ -35,5 +37,6 @@ export class FormValidationComponent implements OnInit {
   onSubmit(): void {
     console.log(this.myForm)
     console.log(this.username)
+    console.log(this.emailaddress)
     }
   }

@@ -1,0 +1,70 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb3">
+      <label class="form-label" for="usernameInput">Username</label>
+      <input
+      id="usernameInput"
+      class="form-control"
+      type="text"
+      name="username"
+      placeholder="Username"
+      formControlName="username"
+      [class.error]="myForm.get('username')?.invalid && myForm.get('username')?.touched"
+      />
+<p
+*ngIf="
+    myForm.get('username')?.touched &&
+    myForm.get('username')?.hasError('required')"
+>Must be filled
+</p>
+  </div>
+
+  <div class="mb3">
+    <label class="form-label" for="passwordInput">Password</label>
+    <input
+    id="passwordInput"
+    class="form-control"
+    type="text"
+    name="password"
+    placeholder="Password"
+    formControlName="password"
+    [class.error]="myForm.get('password')?.invalid && myForm.get('password')?.touched"
+    />
+    <p
+    *ngIf="
+    myForm.get('password')?.touched &&
+    myForm.get('password')?.hasError('required')
+    ">
+      required
+    </p>
+    <p
+    *ngIf="
+    myForm.get('password')?.touched &&
+    myForm.get('password')?.hasError('minlength')
+    ">
+      Min Legth 4
+    </p>
+</div>
+
+
+<div class="mb3">
+  <label class="form-label" for="passwordreInput">Passwordre</label>
+  <input
+  id="passwordreInput"
+  class="form-control"
+  type="text"
+  name="passwordre"
+  placeholder="Passwordre"
+  formControlName="passwordre"
+  [class.error]="myForm.get('passwordre')?.invalid && myForm.get('passwordre')?.touched"
+  />
+  <p
+  *ngIf="
+      myForm.get('passwordre')?.hasError('invalidPassword')
+  "
+  >
+   Password must be the same!
+  </p>
+</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

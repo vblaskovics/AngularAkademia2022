@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +14,21 @@ export class NavbarComponent implements OnInit {
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       title: [''],
+      createTodo: ['' ,]
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   onCreate(): void {
     console.log('title', this.myForm.value);
     this.myForm.reset();
+  }
+
+  getTodo(): FormControl {
+      return this.myForm.get('title') as FormControl
+
   }
 }

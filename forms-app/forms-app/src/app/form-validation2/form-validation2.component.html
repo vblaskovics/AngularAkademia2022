@@ -1,0 +1,32 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb3">
+      <label class="form-label" for="userIdInput">required</label>
+      <input
+      ngModel
+      name="userId"
+      required
+      id="userIdInput"
+      class="form-control"
+      type="text"
+      placeholder="userId"
+      formControlName="userId"
+      [class.error]="getUserId().invalid && getUserId().touched"
+      />
+     <!-- <div class="alert alert danger" *ngIf="!getUserId().valid">userId is required.</div> -->
+    <p *ngIf="getUserId().touched && getUserId().hasError('required')">
+      Required
+    </p>
+    <p *ngIf="getUserId().touched && getUserId().hasError('min')">
+      Must be atleast zero!
+    </p>
+    <p *ngIf="getUserId().touched && getUserId().hasError('max')">
+      No more than 999999!
+    </p>
+    <p *ngIf="getUserId().touched && getUserId().hasError('pattern')">
+      id must matched with the pattern!
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+

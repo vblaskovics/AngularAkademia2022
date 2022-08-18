@@ -15,6 +15,21 @@
 
     </div>
 
+    <div class="mb3">
+      <label class="form-label" for="emailInput">Email</label>
+        <input
+        id="emailInput"
+        class="form-control"
+        type="text"
+        name="emailaddress"
+        placeholder="Email"
+        formControlName="emailaddress"
+        [class.error]="myForm.get('emailaddress')?.invalid && myForm.get('emailaddress')?.touched"
+
+        />
+    </div>
+
+
 
     <button type="submit" class="btn btn-primary">Submit</button>
 
