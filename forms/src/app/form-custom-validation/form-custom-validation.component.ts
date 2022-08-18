@@ -41,7 +41,9 @@ export class FormCustomValidationComponent implements OnInit {
 
     if (password.value !== passwordre.value) {
       passwordre.setErrors({'invalidPassword': true});
-    } 
+    } else {
+      passwordre.setErrors(null);
+    }
   }
 
 }
