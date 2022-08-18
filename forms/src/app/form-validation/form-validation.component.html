@@ -10,8 +10,8 @@
       id="usernameInput"
       placeholder="Username"
       formControlName="username"
-      [class.is-invalid]="myForms.get('username')?.invalid && myForms.touched"
-      [class.is-valid]="myForms.get('username')?.valid"
+      [class.is-valid]="isValid"
+      [class.is-invalid]="myForms.get('username')?.invalid && myForms.get('username')?.touched === true"
     />
     <div id="usernameInput" class="invalid-feedback">
       Required field
@@ -26,12 +26,14 @@
       id="emailInput"
       placeholder="Email"
       formControlName="email"
-      [class.is-invalid]="myForms.get('email')?.invalid && myForms.touched"
-      [class.is-valid]="myForms.get('email')?.valid"
+      [class.is-valid]="isValid"
+      [class.is-invalid]="myForms.get('email')?.invalid && myForms.get('email')?.touched === true"
     />
     <div id="emailInput" class="invalid-feedback">Required field</div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
+  <div class="text-danger" *ngIf="formIsInvalid">Form is invalid</div>
+  <button (click)="onSubmit()" class="btn btn-primary" type="submit" >Submit</button>
 </form>
+
 
 Form status: {{ myForms.status }}

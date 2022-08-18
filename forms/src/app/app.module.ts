@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { FormTemplateComponent } from './form-template/form-template.component';
 import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 import { FormValidationComponent } from './form-validation/form-validation.component';
+import { FormValidation2Component } from './form-validation2/form-validation2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormTemplateComponent,
     FormReactiveComponent,
-    FormValidationComponent
+    FormValidationComponent,
+    FormValidation2Component
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+
+<form [formGroup]="myForms" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="userIdInput">User Id:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="userId"
+      id="userIdInput"
+      placeholder="userId"
+      formControlName="userId"
+      [class.is-invalid]="userId.touched && userId.invalid"
+    />
+    <div class="invalid-feedback" *ngIf="userId.hasError('required')">
+      Required field
+    </div>
+    <div class="invalid-feedback" *ngIf="userId.hasError('max')">The value must be less than 9999!</div>
+    <div class="invalid-feedback" *ngIf="userId.hasError('min')">The value must be greater than 0 or equal!</div>
+  </div>
+  <button class="btn btn-primary" type="submit" >Submit</button>
+</form>
+
+
+Form status: {{ myForms.status }}

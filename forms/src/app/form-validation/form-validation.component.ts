@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-form-validation',
@@ -8,10 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormValidationComponent implements OnInit {
   myForms: FormGroup;
-  emailInvalid: boolean = false;
-  emailValid: boolean = false;
-  usernameInvalid: boolean = false;
-  usernameValid: boolean = false;
+  isValid: boolean = false;
+  disabled: boolean = true;
+  formIsInvalid: boolean = false;
   constructor(fb: FormBuilder) {
     this.myForms = fb.group({
       username: ['', Validators.required],
@@ -24,33 +24,14 @@ export class FormValidationComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(this.myForms.get('username')?.valid)
-    console.log(this.myForms.get('email')?.valid)
-    if(this.myForms.get('username')?.valid && this.myForms.get('email')?.valid){
-      this.emailInvalid = false;
-      this.usernameInvalid = false;
-      this.emailValid = true;
-      this.usernameValid = true;
+    if(this.myForms.status === 'VALID'){
+      this.isValid =  true;
+      this.formIsInvalid = false;
     }
-
-    else if(this.myForms.get('username')?.valid && this.myForms.get('email')?.valid === false){
-      this.usernameValid = true
-      this.usernameInvalid = false;
+    else if(this.myForms.status === 'INVALID'){
+      this.formIsInvalid = true;
+      this.isValid = false;
     }
-    else{
-      this.usernameInvalid = true
-      this.usernameValid = false;
-    }
-
-    if(this.myForms.get('username')?.valid === false && this.myForms.get('email')?.valid ){
-      this.emailValid = true
-      this.emailInvalid = false;
-    }
-    else{
-      this.emailInvalid = true;
-      this.emailValid =false;
-    }
-
 
   }
 

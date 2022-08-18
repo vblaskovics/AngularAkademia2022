@@ -12,6 +12,7 @@
           placeholder="Title"
           formControlName="title"
         />
+        <div id="titleInput" class="text-danger" *ngIf="IsValidForm">Required field</div>
         <button class="btn btn-primary">Submit</button>
       </form>
     </li>
