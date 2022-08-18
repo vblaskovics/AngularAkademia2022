@@ -4,8 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-form-validation',
   templateUrl: './form-validation.component.html',
-  styleUrls: ['./form-validation.component.css']
+  styleUrls: ['./form-validation.component.css'],
 })
+
 export class FormValidationComponent implements OnInit {
 
   myForm: FormGroup;
@@ -24,7 +25,7 @@ export class FormValidationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.myForm);
+    console.log(this.myForm.controls);
   }
 
 

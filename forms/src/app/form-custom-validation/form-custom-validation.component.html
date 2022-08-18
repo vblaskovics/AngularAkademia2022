@@ -1,0 +1,65 @@
+<h2>Custom Validation</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="usernameInput"
+      placeholder="Username"
+      formControlName="username"
+      [class.is-invalid]="
+        myForm.get('username')?.invalid && myForm.get('username')?.touched
+      "
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordInput">Password</label>
+    <input
+      class="form-control"
+      type="password"
+      name="password"
+      id="passwordInput"
+      placeholder="Password"
+      formControlName="password"
+      [class.is-invalid]="
+        myForm.get('password')?.invalid && myForm.get('password')?.touched
+      "
+    />
+    <p
+      class="invalid-feedback"
+      *ngIf="myForm.get('password')?.hasError('required')">
+      Required field
+    </p>
+    <p
+      class="invalid-feedback"
+      *ngIf="myForm.get('password')?.hasError('minlength')">
+      Min lenth must be 4 characters
+    </p>
+
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordreInput">Passwordre</label>
+    <input
+      class="form-control"
+      type="password"
+      name="passwordre"
+      id="passwordreInput"
+      placeholder="Passwordre"
+      formControlName="passwordre"
+      [class.is-invalid]="
+        myForm.get('passwordre')?.touched && myForm.get('passwordre')?.hasError('invalidPassword')
+      "
+    />
+    <p
+      class="invalid-feedback"
+      *ngIf="myForm.get('passwordre')?.touched && myForm.get('passwordre')?.hasError('invalidPassword')">
+        Passwords must be the same!
+    </p>
+  </div>
+  <button class="btn btn-primary" type="submit">
+    Submit
+  </button>
+</form>

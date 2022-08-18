@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
+function evenValidator(control: FormControl): { [s: string]: boolean } {
+  if (control.value % 2 !== 0) {
+    return { invalidParity: true }
+  }
+  return {};
+};
+
+@Component({
+  selector: 'app-form-custom-validation',
+  templateUrl: './form-custom-validation.component.html',
+  styleUrls: ['./form-custom-validation.component.css']
+})
+export class FormCustomValidationComponent implements OnInit {
+
+  myForm: FormGroup
+
+  constructor(fb: FormBuilder) {
+    this.myForm = fb.group({
+      username: ['', evenValidator],
+      password: ['', [Validators.required, Validators.minLength(4)]],
+      passwordre: ['',]
+    });
+
+    this.myForm.valueChanges.subscribe(() => {
+      this.validatePasswords();
+    });
+  }
+
+  ngOnInit(): void {
+  }
+
+  onSubmit(): void {
+    console.log(this.myForm.controls);
+  }
+
+  validatePasswords() {
+    let password = this.myForm.get('password') as FormControl;
+    let passwordre = this.myForm.get('passwordre') as FormControl;
+
+    if (password.value !== passwordre.value) {
+      passwordre.setErrors({'invalidPassword': true});
+    } else {
+      passwordre.setErrors(null);
+    }
+  }
+}

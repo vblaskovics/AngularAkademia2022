@@ -10,28 +10,31 @@
       id="usernameInput"
       placeholder="Username"
       formControlName="username"
-
-      [class.is-invalid]="myForm.get('username')?.invalid"
-    >
+      [class.is-invalid]="
+        myForm.get('username')?.invalid && myForm.get('username')?.touched
+      "
+    />
   </div>
   <div class="mb-3">
     <label class="form-label" for="emailaddressInput">Email address</label>
-    <input
-      class="form-control"
-      type="text"
-      name="emailaddress"
-      id="emailaddressInput"
-      placeholder="Email address"
-      formControlName="emailaddress"
-      [class.is-invalid]="myForm.get('emailaddress')?.invalid"
-    >
+    <input class="form-control" type="text" name="emailaddress"
+    id="emailaddressInput" placeholder="Email address"
+    formControlName="emailaddress"
+    [class.is-invalid]="myForm.get('emailaddress')?.invalid &&
+    myForm.get('emailaddress')?.touched">
   </div>
 
-  <button
-    class="btn btn-primary"
-    type="submit"
-    [disabled]="!myForm.valid"
-    >Submit</button>
+  <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">
+    Submit
+  </button>
 </form>
 
 form status: {{ myForm.status }}
+
+<h3>Username:</h3>
+<p>{{ myForm.get('username')?.value }}</p>
+
+<h3>Email:</h3>
+<p>{{ myForm.get('emailaddress')?.value }}</p>
+
+
