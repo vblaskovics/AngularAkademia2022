@@ -12,7 +12,7 @@ export class FormValidation2Component implements OnInit {
     myForms: FormGroup;
   constructor(fb: FormBuilder){
     this.myForms = fb.group({
-      userId: ['',[Validators.required, Validators.min(0), Validators.max(9999)]]
+      userId: ['',[Validators.required, Validators.min(0), Validators.max(9999),Validators.pattern(/^[A-Z].*!$/)]]
     });
   }
 
@@ -24,7 +24,13 @@ export class FormValidation2Component implements OnInit {
   }
 
   onSubmit(){
-    debugger
-    console.log('userId', this.userId)
+    if(this.myForms.valid){
+      console.log(this.myForms.value)
+    }else {
+      this.myForms.markAllAsTouched();
+    }
+    console.log(this.userId.errors);
+
   }
 }
+//string regexp: nagybetűvel kezdődik és felkijáátóó

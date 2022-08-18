@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormControlOptions, FormGroup, Validators } from '@angular/forms';
 import { Todo } from 'src/app/shared/todo';
 import { __values } from 'tslib';
 
@@ -10,26 +10,32 @@ import { __values } from 'tslib';
 })
 export class TodoNavbarComponent implements OnInit {
   myForm: FormGroup;
-
+  @Output() movingTosignIn: EventEmitter<boolean> = new EventEmitter<boolean>();
   IsValidForm: boolean = false;
 
+  navigateToLogin: boolean = true;
+
   @Input() numberofTodos?: number;
-  @Output() title: EventEmitter<string> = new EventEmitter<string>();
+  @Output() titleS: EventEmitter<string> = new EventEmitter<string>();
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      title: ['', Validators.required],
+      title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     });
   }
-
+  get title(): FormControl {
+    return this.myForm.get('title') as FormControl;
+  }
   ngOnInit(): void {}
 
   onSubmit() {
-    this.title.emit(this.myForm.value.title);
+    this.titleS.emit(this.myForm.value.title);
   }
   onReset() {
     this.myForm.reset();
   }
   handler() {
+    console.log(this.title.errors);
+
     if (this.myForm.status === 'INVALID') {
       console.log(this.myForm.status);
       this.IsValidForm = true;
@@ -39,5 +45,8 @@ export class TodoNavbarComponent implements OnInit {
       this.onSubmit();
       this.onReset();
     }
+  }
+  movetoSignIn(){
+    this.movingTosignIn.emit(this.navigateToLogin);
   }
 }

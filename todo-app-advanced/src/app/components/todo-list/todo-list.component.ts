@@ -10,10 +10,15 @@ import { progress, Todo } from 'src/app/shared/todo';
 export class TodoListComponent implements OnInit {
   OverallInProgress: number = 0;
   LastInProgress: number = 0;
+
   items: Todo[];
+
   colorGrey: boolean = false;
   toDoElementSelected: boolean;
+  signingIn?: boolean;
+
   @Output() selectedTodo?: Todo;
+
   nextId!: number;
   sortedItems?: Todo[];
 
@@ -181,5 +186,9 @@ export class TodoListComponent implements OnInit {
 
      this.items.push(array);
      console.log(this.nextId+1)
+  }
+
+  loggingInHandler(event: boolean){
+    this.signingIn = event;
   }
 }
