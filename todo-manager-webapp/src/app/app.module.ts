@@ -8,6 +8,7 @@ import { TodoDetailsComponent } from './components/todo-details/todo-details.com
 import { TodoNavbarComponent } from './components/todo-navbar/todo-navbar.component';
 import { TodoNavbarFormComponent } from './components/todo-navbar-form/todo-navbar-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodoSigninPageComponent } from './components/todo-signin-page/todo-signin-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TodoDetailsComponent,
     TodoNavbarComponent,
     TodoNavbarFormComponent,
+    TodoSigninPageComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],

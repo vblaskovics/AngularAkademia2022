@@ -1,1 +1,10 @@
-<app-todo-table-list></app-todo-table-list>
+<div>
+  <app-todo-signin-page
+    *ngIf="signInPressed; else tableView"
+  ></app-todo-signin-page>
+  <ng-template #tableView>
+    <app-todo-table-list
+      (signInClicked)="checkSignIn($event)"
+    ></app-todo-table-list>
+  </ng-template>
+</div>

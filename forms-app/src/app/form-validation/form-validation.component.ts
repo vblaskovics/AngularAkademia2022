@@ -19,6 +19,33 @@ export class FormValidationComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    console.log(this.myForm.get('username')?.value);
+    if (
+      this.myForm.get('username')?.invalid &&
+      this.myForm.get('email')?.invalid
+    ) {
+    }
+  }
+
+  fromGroupCheck(): void {}
+
+  formControllerUsernameCheck(): boolean {
+    let status: boolean = false;
+    if (
+      this.myForm.get('username')?.invalid &&
+      this.myForm.get('username')?.touched
+    ) {
+      status = true;
+    }
+    return status;
+  }
+  formControllerEmailCheck(): boolean {
+    let status: boolean = false;
+    if (
+      this.myForm.get('email')?.invalid &&
+      this.myForm.get('email')?.touched
+    ) {
+      status = true;
+    }
+    return status;
   }
 }

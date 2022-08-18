@@ -1,0 +1,71 @@
+<h2>Form with custom validation (reactive form)</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      [class.is-invalid]="
+        myForm.get('username')?.touched && myForm.get('username')?.invalid
+      "
+      id="usernameInput"
+      class="form-control"
+      type="text"
+      name="username"
+      placeholder="Please enter your username"
+      formControlName="username"
+      required
+    />
+    <ng-container *ngFor="let error of getErrorMessages(username)">
+      <small class="invalid-feedback" *ngIf="username?.touched">{{
+        error
+      }}</small>
+    </ng-container>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordInput">Password</label>
+    <input
+      [class.is-invalid]="
+        myForm.get('password')?.touched && myForm.get('password')?.invalid
+      "
+      id="passwordInput"
+      class="form-control"
+      type="password"
+      name="password"
+      placeholder="Please enter your password"
+      formControlName="password"
+      required
+    />
+    <small
+      class="text-danger"
+      *ngIf="
+        myForm.get('password')?.touched &&
+        myForm.get('password')?.hasError('minlength')
+      "
+      >Password is required with 4+ length</small
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordreInput">Password again</label>
+    <input
+      [class.is-invalid]="
+        myForm.get('passwordre')?.touched && myForm.get('passwordre')?.invalid
+      "
+      id="passwordreInput"
+      class="form-control"
+      type="password"
+      name="passwordre"
+      placeholder="Please enter your password again"
+      formControlName="passwordre"
+      required
+    />
+    <small
+      class="text-danger"
+      *ngIf="
+        myForm.get('passwordre')?.touched &&
+        myForm.get('passwordre')?.hasError('invalidPassword')
+      "
+      >Same password is required</small
+    >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

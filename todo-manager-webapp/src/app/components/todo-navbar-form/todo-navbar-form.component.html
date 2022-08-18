@@ -11,17 +11,29 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form> -->
 
-<form class="form-inline d-flex" [formGroup]="myForm">
+<form class="form-inline d-flex" [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <label class="form-label navbar-text" for="titleInput">Title: </label>
   <input
+    [class.is-invalid]="titleName.touched && titleName.invalid"
     id="titleInput"
     type="text"
     class="form-control"
     name="title"
     placeholder="Please enter title"
     formControlName="title"
+    required
   />
-  <button type="submit" class="btn btn-primary" (click)="onClickMyFormValue()">
-    myForm value
-  </button>
+  <p
+    class="invalid-feedback"
+    *ngIf="titleName.touched && titleName.hasError('required')"
+  >
+    Title is required
+  </p>
+  <p class="invalid-feedback" *ngIf="titleName.hasError('maxlength')">
+    Title is too long
+  </p>
+  <p class="invalid-feedback" *ngIf="titleName.hasError('minlength')">
+    Title is too short
+  </p>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

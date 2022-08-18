@@ -4,10 +4,7 @@
   <div class="mb-3">
     <label class="form-label" for="usernameInput">Username</label>
     <input
-      [class.is-invalid]="
-        this.myForm.get('username')?.invalid &&
-        this.myForm.get('username')?.touched
-      "
+      [class.is-invalid]="formControllerUsernameCheck()"
       id="usernameInput"
       class="form-control"
       type="text"
@@ -16,21 +13,14 @@
       formControlName="username"
       required
     />
-    <small
-      class="text-danger"
-      *ngIf="
-        this.myForm.get('username')?.invalid &&
-        this.myForm.get('username')?.touched
-      "
+    <small class="text-danger" *ngIf="formControllerUsernameCheck()"
       >Username is required</small
     >
   </div>
   <div class="mb-3">
     <label class="form-label" for="emailInput">Username</label>
     <input
-      [class.is-invalid]="
-        this.myForm.get('email')?.invalid && this.myForm.get('email')?.touched
-      "
+      [class.is-invalid]="formControllerEmailCheck()"
       id="emailInput"
       class="form-control"
       type="text"
@@ -39,22 +29,11 @@
       formControlName="email"
       required
     />
-    <small
-      class="text-danger"
-      *ngIf="
-        this.myForm.get('username')?.invalid &&
-        this.myForm.get('username')?.touched
-      "
+    <small class="text-danger" *ngIf="formControllerEmailCheck()"
       >Email is required</small
     >
   </div>
-  <button
-    [class.disabled]="this.myForm.invalid"
-    type="submit"
-    class="btn btn-primary"
-  >
-    Submit
-  </button>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 Form status: {{ myForm.status }}

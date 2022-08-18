@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-manager-webapp';
+  signInPressed: boolean = false;
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  checkSignIn(status: boolean) {
+    this.signInPressed = status;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-todo-navbar',
@@ -7,8 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TodoNavbarComponent implements OnInit {
   @Input() progressCounter: number = 0;
+  @Output() signInPressed = new EventEmitter<boolean>();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSignIn() {
+    this.signInPressed.emit(true);
+  }
 }

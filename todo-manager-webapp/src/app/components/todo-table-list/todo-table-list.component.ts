@@ -15,6 +15,8 @@ export class TodoTableListComponent implements OnInit {
 
   @Output() clickedTodo?: Todo;
 
+  @Output() signInClicked = new EventEmitter<boolean>();
+
   isTodoClicked: boolean = false;
   ascending: boolean = false;
 
@@ -173,5 +175,9 @@ export class TodoTableListComponent implements OnInit {
       );
       this.ascending = false;
     }
+  }
+
+  onSignInPressed(status: boolean) {
+    this.signInClicked.emit(status);
   }
 }

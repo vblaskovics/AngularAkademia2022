@@ -1,0 +1,33 @@
+<h2>Form with validation #2 (reactive form)</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="userIdInput">UserID</label>
+    <input
+      [class.is-invalid]="userId.touched && userId.invalid"
+      id="userIdInput"
+      class="form-control"
+      type="text"
+      name="userId"
+      placeholder="Please enter your userID"
+      formControlName="userId"
+      required
+    />
+    <p
+      class="invalid-feedback"
+      *ngIf="userId.touched && userId.hasError('required')"
+    >
+      UserID is required
+    </p>
+    <p class="invalid-feedback" *ngIf="userId.hasError('max')">
+      UserID is too high
+    </p>
+    <p class="invalid-feedback" *ngIf="userId.hasError('min')">
+      UserID is too low
+    </p>
+    <p class="invalid-feedback" *ngIf="userId.hasError('pattern')">
+      Pattern is not good
+    </p>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
