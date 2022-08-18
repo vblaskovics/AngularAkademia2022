@@ -12,7 +12,7 @@
     />
     <div *ngIf="submitted && form['username'].errors">
       <div class="required" *ngIf="form['username'].errors['required']">
-        Username is required!
+        Username is required!*
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
     />
     <div *ngIf="submitted && form['email'].errors">
       <div class="required" *ngIf="form['email'].errors['required']">
-        Email is required!
+        Email is required!*
       </div>
       <div *ngIf="form['email'].errors['email']">
         Invalid email!
