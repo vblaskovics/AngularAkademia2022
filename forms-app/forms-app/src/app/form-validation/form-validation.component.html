@@ -1,0 +1,24 @@
+<h2>Form with Validation</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="mb3">
+        <label class="form-label" for="usernameInput">Username</label>
+        <input
+        id="usernameInput"
+        class="form-control"
+        type="text"
+        name="username"
+        placeholder="Username"
+        formControlName="username"
+        [class.error]="myForm.get('username')?.invalid && myForm.get('username')?.touched"
+        />
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<hr>
+Form status: {{myForm.status}}

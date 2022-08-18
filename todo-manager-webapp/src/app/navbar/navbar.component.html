@@ -3,18 +3,16 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{{title}}</a>
 
-    <form #f="ngForm" (ngSubmit)="onCreate(f.value)">
-    <div>
-        <label class="form-label" for="todoInput">
-          <input id="todoInput"
+    <form [formGroup]="myForm" (ngSubmit)="onCreate()">
+        <label class="form-label" for="titleInput">
+          <input id="titleInput"
           class="form-control"
           type="text"
-          name="todo"
+          name="title"
           placeholder="Create Todo"
-          ngModel>
+          formControlName="title">
         </label>
-    </div>
-    <button type="create" class="btn btn-primary"> Create Todo</button>
+    <button type="submit" class="btn btn-primary"> Create Todo</button>
   </form>
     <h3>
       In progress: {{ counter }}
