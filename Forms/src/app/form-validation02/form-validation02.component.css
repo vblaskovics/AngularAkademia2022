@@ -1,5 +1,4 @@
-
-.error {
+/* .error {
     border: 2px solid red
    
 }
@@ -7,4 +6,8 @@
 span {
     color:red;
   
+} */
+
+p {
+    color:red
 }

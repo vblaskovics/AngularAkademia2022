@@ -1,0 +1,66 @@
+<h4>Form with Custom Validation</h4>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="col-xs-6">
+  <div class="mb-3 text-center">
+    <label class="form-label col-xs-3" for="username"></label>
+    <input
+      class="form-control col-xs-3"
+      placeholder="username*"
+      type="text"
+      id="username"
+      name="username"
+      formControlName="username"
+      [class.is-invalid]="username.touched && username.invalid"
+    />
+
+    <p *ngIf="username.hasError('invalidParity')" class="invalid-feedback" id="username"> Required field!</p>
+
+
+  </div>
+    
+  <br>
+
+  <div class="mb-3 text-center">
+    <label class="form-label col-xs-3" for="password"></label>
+    <input
+      class="form-control col-xs-3"
+      placeholder="password*"
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      [class.is-invalid]="myForm.get('password')?.touched && myForm.get('password')?.hasError('minlength')"
+    />
+
+    <p *ngIf="myForm.get('password')?.touched && myForm.get('password')?.hasError('minlength')" class="invalid-feedback" id="password"> Passwords must be minimum 4 characters long!</p>
+  </div>
+    
+  <br>
+
+  <div class="mb-3 text-center">
+    <label class="form-label col-xs-3" for="passwordRe"></label>
+    <input
+      class="form-control col-xs-3"
+      placeholder="password again*"
+      type="password"
+      id="passwordRe"
+      name="passwordRe"
+      formControlName="passwordRe"
+      [class.is-invalid]="myForm.get('passwordRe')?.touched && myForm.get('passwordRe')?.invalid"
+    />
+
+    <p *ngIf="myForm.get('passwordRe')?.touched && myForm.get('passwordRe')?.hasError('invalidPassword')" class="invalid-feedback" id="passwordRe"> Passwords must be the same!</p>
+
+  </div>
+  <br>
+
+  <button type="submit" class="btn btn-info" >Submit</button>
+  <!-- [disabled]="userID.value.length < 4 " 
+[class.is-invalid]="userID.touched && userID.errors?.['required'] || userID.errors?.['min'] || userID.errors?.['max']"-->
+  
+</form>
+
+
+
+
+

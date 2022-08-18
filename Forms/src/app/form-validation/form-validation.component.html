@@ -5,20 +5,37 @@
     <label class="form-label col-xs-3" for="usernameInput"></label>
     <input
       class="form-control col-xs-3"
-      placeholder="username"
+      placeholder="username*"
       type="text"
       id="usernameInput"
       name="username"
       formControlName="username"
-      [class.error]="myForm.status === 'INVALID'"
+      [class.error]="myForm.get('username')?.invalid && myForm.get('username')?.touched"
     />
   </div>
 
-  <button type="submit" class="btn btn-info">Submit</button>
+  <div class="mb-3 text-center">
+    <label class="form-label col-xs-3 " for="emailInput"></label>
+    <input
+      class="form-control col-xs-3"
+      placeholder="email*"
+      type="text"
+      id="emailInput"
+      name="email"
+      formControlName="email"
+      [class.error]="myForm.get('email')?.invalid && myForm.get('email')?.touched"
+    />
+  </div>
+
+  <p *ngIf="myForm.status === 'VALID'; else errorp">Form status: {{ myForm.status }} ✔ </p>
+    <ng-template #errorp> <span> Required* </span> </ng-template>
+    <br>
+
+  <button type="submit" class="btn btn-info" [disabled]="!myForm.get('email')?.value || !myForm.get('username')?.value" >Submit</button>
+  <!--   
+  (click)="onReset()"-->
 </form>
-<p>{{ myForm.value.email }}</p>
 
 
-<p *ngIf="myForm.status === 'VALID'; else error">Form status: {{ myForm.status }}</p>
-<ng-template #error>Fill the username input!</ng-template>
+
 
