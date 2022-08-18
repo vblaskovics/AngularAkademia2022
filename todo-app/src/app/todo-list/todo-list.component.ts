@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵisListLikeIterable } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,6 +12,7 @@ export class TodoListComponent implements OnInit {
   constructor() {
     this.items = ["Todo1", "Todo2", "Todo3", "Todo4", "Todo5"];
     this.itemsCount = this.items.length;
+
   }
 
   getItemsCount():number {
@@ -25,6 +26,7 @@ export class TodoListComponent implements OnInit {
     this.items.push("Todo" + (this.itemsCount + 1));
     this.itemsCount += 1;
   }
+
 
 
   removeTopItem(): void {
@@ -42,4 +44,20 @@ export class TodoListComponent implements OnInit {
       this.itemsCount = 0;
     }
   }
+
+  addMoreItem(): void {
+    let maxId = 0;
+    this.items.forEach(i => {
+      let todoId = parseInt(i.split("Todo")[1]);
+      maxId = todoId > maxId ? todoId : maxId;
+    })
+    this.items.push("Todo" + (maxId + 1));
+    this.itemsCount += 1
+  }
+
+  onlyEven(): void {
+
+  }
+
+
 }

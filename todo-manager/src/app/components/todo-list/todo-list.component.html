@@ -1,7 +1,17 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
     <span class="navbar-brand mb-0 h1">Todo manager</span>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <input
+    id="titleInput"
+    name="titleInput"
+    type="text"
+    placeholder="Title"
+    formControlName="title">
+    <button btn btn-primary type="submit">Submit</button>
+  </form>
     <span class="navbar-brand mb-0 h1">In progress: {{countInProgressTodos()}}</span>
+
   </div>
 </nav>
 

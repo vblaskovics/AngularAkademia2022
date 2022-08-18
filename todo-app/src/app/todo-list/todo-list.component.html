@@ -2,10 +2,30 @@
 
 <button (click)="addItem()">Add item</button>
 <button (click)="removeTopItem()">Remove item</button>
+<button (click)="addMoreItem()">Remove item 2</button>
 <ul>
     <li *ngFor="let item of items; let i = index;">
       {{item}}
       <button (click)="removeItemById(i)">X</button>
     </li>
 </ul>
+
+
+<h1>Even Todo:</h1>
+<ul>
+  <li *ngFor="let item of items; let i = index">
+    <div *ngIf="i % 2 != 0">{{item}}</div>
+
+  </li>
+</ul>
+
+<h1>Todo 3</h1>
+<ul>
+  <li *ngFor="let item of items; let i = index">
+    <div *ngIf="i % 2 != 0"></div>
+      <div [ngClass]="itemsCount > 8 ? 'red' : 'black'" class="red">{{item}}</div>
+      <div [ngStyle]="{'background.color':'grey'}" class="grey">{{item}}</div>
+  </li>
+</ul>
+
 
