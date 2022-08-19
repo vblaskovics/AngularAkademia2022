@@ -6,6 +6,7 @@ import { FormTemplateComponent } from './form-template/form-template.component';
 import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 import { FormValidationComponent } from './form-validation/form-validation.component';
 import { FormValidation2Component } from './form-validation2/form-validation2.component';
+import { FormCustomValidationComponent } from './form-custom-validation/form-custom-validation.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FormValidation2Component } from './form-validation2/form-validation2.co
     FormTemplateComponent,
     FormReactiveComponent,
     FormValidationComponent,
-    FormValidation2Component
+    FormValidation2Component,
+    FormCustomValidationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+<form [formGroup]="myForms" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="usernameInput"
+      placeholder="username"
+      formControlName="username"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="PasswordInput">Password::</label>
+    <input
+      class="form-control"
+      type="password"
+      name="password"
+      id="PasswordInput"
+      placeholder="password"
+      formControlName="password"
+    />
+    <div class="text-danger" *ngIf="myForms.get('')"></div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="PasswordReInput">Password RE:</label>
+    <input
+      class="form-control"
+      type="password"
+      name="passwordRe"
+      id="PasswordReInput"
+      placeholder="passwordRe"
+      formControlName="passwordRe"
+    />
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
