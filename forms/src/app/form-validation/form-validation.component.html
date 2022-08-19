@@ -1,0 +1,61 @@
+<h1>Reactive - validation</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username*</label>
+    <input
+      formControlName="username"
+      placeholder="username"
+      id="usernameInput"
+      name="username"
+      class="form-control"
+      type="text"
+      aria-describedby="formcontroll-username"
+      [class.is-invalid]="validation('username')"
+    />
+    <!--     <div id="formcontroll-username" class="invalid-feedback">
+      required field username
+    </div> -->
+    <div
+      [ngStyle]="{
+        display: validation('username') ? 'block' : 'none',
+        color: 'red'
+      }"
+    >
+      required field username
+    </div>
+    <label class="form-label" for="emailInput">email*</label>
+    <input
+      formControlName="email"
+      placeholder="email"
+      id="emailInput"
+      name="email"
+      class="form-control"
+      type="text"
+      aria-describedby="formcontroll-email"
+      [class.is-invalid]="validation('email')"
+    />
+    <div
+      [ngStyle]="{
+        display: validation('email') ? 'block' : 'none',
+        color: 'red'
+      }"
+    >
+      required field email
+    </div>
+
+    <!--     <div id="formcontroll-email" class="invalid-feedback">
+      required field email
+    </div> -->
+    <!-- [class.is-invalid]="myForm.touched && myForm.status == 'INVALID'" -->
+  </div>
+  <!-- [disabled]="!myForm.valid" -->
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <div
+    [ngStyle]="{
+      display: myForm.touched && !myForm.valid ? 'block' : 'none',
+      color: 'red'
+    }"
+  >
+    not good form
+  </div>
+</form>

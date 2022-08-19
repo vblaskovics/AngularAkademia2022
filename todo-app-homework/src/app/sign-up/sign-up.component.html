@@ -1,0 +1,152 @@
+<div class="sign-up-container">
+  <div class="container">
+    <h3>Sign Up</h3>
+    <form (ngSubmit)="submitingForm()" [formGroup]="signUpForm">
+      <div class="container-fluid d-flex justify-content-around">
+        <div class="w-50 p-1">
+          <div class="form-container">
+            <label class="form-label" for="firstNameInput">First Name</label>
+            <input
+              placeholder="András..."
+              type="text"
+              class="form-control"
+              id="firstNameInput"
+              formControlName="firstName"
+              [class.is-invalid]="firstName.touched && !firstName.valid"
+            />
+          </div>
+          <div
+            *ngIf="firstName.touched && !firstName.valid"
+            class="error-container"
+          >
+            <p class="error-p" *ngIf="firstName.hasError('minlength')">
+              Nem megfelelő hosszúságú
+            </p>
+            <p class="error-p" *ngIf="firstName.hasError('pattern')">
+              Nem megfelelő mintázatú, első NAGY betű, többi kicsi
+            </p>
+          </div>
+        </div>
+        <div class="w-50 p-1">
+          <div class="form-container">
+            <label class="form-label" for="lastNameInput">Last Name</label>
+            <input
+              placeholder="Kovács..."
+              type="text"
+              class="form-control"
+              id="lasttNameInput"
+              formControlName="lastName"
+              [class.is-invalid]="lastName.touched && !lastName.valid"
+            />
+          </div>
+          <div
+            *ngIf="lastName.touched && !lastName.valid"
+            class="error-container"
+          >
+            <p class="error-p" *ngIf="lastName.hasError('minlength')">
+              Nem megfelelő hosszúságú
+            </p>
+            <p class="error-p" *ngIf="lastName.hasError('pattern')">
+              Nem megfelelő mintázatú, első NAGY betű, többi kicsi
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-auto p-3">
+        <div class="form-container">
+          <label class="form-label" for="userNameInput">Username*</label>
+          <input
+            placeholder="Slayerxx77.."
+            type="text"
+            class="form-control"
+            id="userNameInput"
+            formControlName="username"
+            [class.is-invalid]="username.touched && !username.valid"
+          />
+        </div>
+        <div *ngIf="username.touched && !username.valid">
+          <p class="error-p" *ngIf="username.hasError('required')">
+            A mező kitöltése kötelező
+          </p>
+          <p class="error-p" *ngIf="username.hasError('minlength')">
+            A mezőnek legalább
+            {{ username.getError("minlength").requiredLength }} karakter
+            hosszúságúnak kell lennie
+          </p>
+          <p class="error-p" *ngIf="username.hasError('pattern')">
+            Csak kisbetű, vagy szám lehet
+          </p>
+        </div>
+      </div>
+      <div class="m-auto p-3">
+        <div class="form-container">
+          <label class="form-label" for="zipiInput">Zip*</label>
+          <input
+            placeholder="5555"
+            type="text"
+            class="form-control"
+            id="zipiInput"
+            formControlName="zip"
+            [class.is-invalid]="zip.touched && !zip.valid"
+          />
+        </div>
+        <div *ngIf="zip.touched && !zip.valid">
+          <p class="error-p" *ngIf="zip.hasError('min')">
+            Nem elég hosszú a kód
+          </p>
+          <p class="error-p" *ngIf="zip.hasError('max')">Túl hosszú a kód</p>
+          <p class="error-p" *ngIf="zip.hasError('pattern')">Csak szám lehet</p>
+        </div>
+      </div>
+      <div class="m-auto p-3">
+        <div class="form-container">
+          <label class="form-label" for="passwordInput">Password*</label>
+          <input
+            type="password"
+            class="form-control"
+            id="passwordInput"
+            formControlName="password"
+            [class.is-invalid]="password.touched && !password.valid"
+          />
+        </div>
+        <div *ngIf="password.touched && !password.valid">
+          <p class="error-p" *ngIf="password.hasError('required')">
+            A mező kitöltése kötelező
+          </p>
+          <p class="error-p" *ngIf="password.hasError('minlength')">
+            A mezőnek legalább
+            {{ password.getError("minlength").requiredLength }} karakter
+            hosszúságúnak kell lennie
+          </p>
+          <p class="error-p" *ngIf="password.hasError('pattern')">
+            A mezőnek tartalmaznia kell legalább egy speciális karaktert -- # @
+            . * --
+          </p>
+        </div>
+      </div>
+      <div class="m-auto p-3">
+        <div class="form-container">
+          <label class="form-label" for="passwordreInput"
+            >Password Again*</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="passwordreInput"
+            formControlName="passwordre"
+            [class.is-invalid]="passwordre.touched && !passwordre.valid"
+          />
+        </div>
+        <div *ngIf="passwordre.touched && !passwordre.valid">
+          <p class="error-p" *ngIf="passwordre.hasError('invalidPassword')">
+            A két jelszó nem egyezik meg...
+          </p>
+        </div>
+      </div>
+      <div class="w-100 d-flex justify-content-end p-3">
+        <button class="btn btn-success" type="submit">Sign up</button>
+      </div>
+    </form>
+  </div>
+</div>

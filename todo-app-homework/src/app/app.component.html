@@ -3,10 +3,11 @@
   (todoPushEmit)="pushTodo($event)"
   [title]="title"
   [counter]="todoInProgress()"
+  (switchWindow)="signInSwitch = !signInSwitch"
 >
 </app-navbar>
 
-<main>
+<main *ngIf="!signInSwitch; else elseBlock">
   <app-todo-list
     [todos]="todos"
     [users]="users"
@@ -21,3 +22,6 @@
     (changeProgressStateEmmiter)="changeStateOfTodo($event)"
   ></app-details>
 </main>
+<ng-template #elseBlock>
+  <app-sign-up></app-sign-up>
+</ng-template>

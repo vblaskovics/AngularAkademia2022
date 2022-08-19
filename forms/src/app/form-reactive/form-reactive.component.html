@@ -1,0 +1,43 @@
+<h2>form with reactive</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      formControlName="username"
+      placeholder="username"
+      id="usernameInput"
+      name="username"
+      class="form-control"
+      type="text"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="emailInput" class="form-label">Email</label>
+    <input
+      type="text"
+      placeholder="email"
+      formControlName="email"
+      id="emailInput"
+      class="form-control"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<button class="btn btn-success m-2" (click)="onClickMyFormValue()">
+  myform value
+</button>
+
+<button class="btn btn-danger m-2" (click)="onEreaseForm()">Erease form</button>
+<button class="btn btn-secondary m-2" (click)="onReset2()">onReset2</button>
+<button class="btn btn-warning m-2" (click)="onGetEmail()">Get Email</button>
+<button class="btn m-2" (click)="setForm()">set form</button>
+<button class="btn btn-dark m-2" (click)="patchValue()">
+  petch value form
+</button>
+
+<div>
+  <h2>Email</h2>
+  {{ myForm.value.email }}
+</div>

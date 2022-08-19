@@ -1,0 +1,55 @@
+<h1>Custom Validation</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+  <div class="mb-3">
+    <label class="form-label" for="userNameInput">Username*</label>
+    <input
+      formControlName="username"
+      placeholder="username"
+      id="userNameInput"
+      class="form-control"
+      type="text"
+      [class.is-invalid]="username?.touched && !username?.valid"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordInput">Username*</label>
+    <input
+      formControlName="password"
+      placeholder="password"
+      id="passwordInput"
+      class="form-control"
+      type="text"
+      [class.is-invalid]="password?.touched && !password?.valid"
+    />
+    <p
+      class="invalid-feedback"
+      *ngIf="password?.touched && password?.hasError('required')"
+    >
+      required field
+    </p>
+    <p
+      class="invalid-feedback"
+      *ngIf="password?.touched && password?.hasError('minlength')"
+    >
+      nem jo hosszu
+    </p>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordreInput">passwordre*</label>
+    <input
+      formControlName="passwordre"
+      placeholder="passwordre"
+      id="passwordreInput"
+      class="form-control"
+      type="text"
+      [class.is-invalid]="passwordre?.touched && !passwordre?.valid"
+    />
+    <p
+      class="invalid-feedback"
+      *ngIf="passwordre?.touched && passwordre?.hasError('invalidPassword')"
+    >
+      nem ugyanaz
+    </p>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

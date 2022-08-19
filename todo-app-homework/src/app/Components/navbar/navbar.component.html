@@ -5,16 +5,44 @@
   >
     <div class="container-fluid">
       <a class="navbar-brand" href="/">{{ title }}</a>
+      <button class="btn btn-success btn-sm" (click)="switchWindow.emit()">
+        Sign in
+      </button>
       <span class="navbar-brand">{{ counter }}</span>
-      <form class="form-container" #f="ngForm" (ngSubmit)="handleForm(f.value)">
-        <label style="color: white" for="todoTitleInput">Title</label>
+      <form
+        class="form-container"
+        [formGroup]="todoAddForm"
+        (ngSubmit)="handleForm()"
+      >
+        <label style="color: white" for="todoTitleInput">Title*</label>
         <input
           class="form-control"
-          ngModel
-          name="title"
+          formControlName="title"
           id="todoTitleInput"
           type="text"
+          placeholder="csinalni kene valamit..."
+          [class.is-invalid]="
+            todoAddForm.get('title')?.touched &&
+            !todoAddForm.get('title')?.valid
+          "
         />
+        <div *ngIf="todoAddForm.get('title')?.touched">
+          <p
+            class="invalid-report"
+            *ngIf="todoAddForm.get('title')?.hasError('required')"
+          >
+            Valamit be kell írni
+          </p>
+          <p class="invalid-report" *ngIf="titleCont?.hasError('minlength')">
+            Legalább {{ titleCont?.getError("minlength").requiredLength }}
+            karakter hosszú
+          </p>
+          <p class="invalid-report" *ngIf="titleCont?.hasError('maxlength')">
+            Maximum
+            {{ titleCont?.getError("maxlength").requiredLength }} karakter
+            hosszú
+          </p>
+        </div>
         <button class="btn btn-primary btn-sm" type="submit">Submit</button>
       </form>
       <button class="btn btn-primary btn-sm" (click)="emitChange.emit()">

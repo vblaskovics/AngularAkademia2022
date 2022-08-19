@@ -3,6 +3,7 @@ import { TODO } from './Interfaces/todo.interface';
 import { USER } from './Interfaces/user.interface';
 import { mockTodos, mockUsers, mockTodos2 } from './MockData';
 import { progress } from './progress';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +14,7 @@ export class AppComponent {
   todos: TODO[];
   users: USER[];
   selectedTodo?: TODO;
-
+  signInSwitch = true;
   constructor() {
     this.todos = mockTodos;
     this.users = mockUsers;

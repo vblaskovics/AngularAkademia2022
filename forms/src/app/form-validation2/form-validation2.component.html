@@ -1,0 +1,30 @@
+<h1>Reactive - validation</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+  <div class="mb-3">
+    <label class="form-label" for="userIdInput">UserId*</label>
+    <input
+      formControlName="userId"
+      placeholder="userId"
+      id="userIdInput"
+      class="form-control"
+      type="text"
+      [class.is-invalid]="myForm.touched && !myForm.valid"
+    />
+    <p class="invalid-feedback" *ngIf="userId?.hasError('required')">
+      Required falied
+    </p>
+    <p class="invalid-feedback" *ngIf="userId?.hasError('min')">
+      min error,
+      {{ userId?.getError("min").min }}, lenne a minimum
+    </p>
+    <p class="invalid-feedback" *ngIf="userId?.hasError('max')">
+      max error, {{ userId?.getError("max").max }}, lenne a maximum
+    </p>
+    <p class="invalid-feedback" *ngIf="userId?.hasError('pattern')">
+      id must match with a pattern
+      {{ userId?.getError("pattern").requiredPattern }}
+    </p>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
