@@ -8,7 +8,7 @@
       <button class="btn btn-success btn-sm" (click)="switchWindow.emit()">
         Sign in
       </button>
-      <span class="navbar-brand">{{ counter }}</span>
+
       <form
         class="form-container"
         [formGroup]="todoAddForm"
@@ -45,9 +45,8 @@
         </div>
         <button class="btn btn-primary btn-sm" type="submit">Submit</button>
       </form>
-      <button class="btn btn-primary btn-sm" (click)="emitChange.emit()">
-        ChangeData
-      </button>
+
+      <span class="navbar-brand">{{ counter }}</span>
     </div>
   </nav>
 </div>

@@ -8,6 +8,12 @@
 </app-navbar>
 
 <main *ngIf="!signInSwitch; else elseBlock">
+  <div class="w-100 d-flex m-3">
+    <button class="btn btn-primary mg-auto" (click)="changeData()">
+      ChangeData
+    </button>
+  </div>
+
   <app-todo-list
     [todos]="todos"
     [users]="users"

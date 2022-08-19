@@ -11,6 +11,7 @@ import { progress } from './progress';
 })
 export class AppComponent {
   title = 'ToDo List Advanced';
+  todo1IsSelected = true;
   todos: TODO[];
   users: USER[];
   selectedTodo?: TODO;
@@ -47,8 +48,12 @@ export class AppComponent {
     }
   }
   pushTodo(title: string) {
+    let max = 0;
+    this.todos.forEach((todo) => {
+      todo.id > max && (max = todo.id);
+    });
     let pushable: TODO = {
-      id: this.todos.length + 1,
+      id: max + 1,
       title: title,
       progress: progress.open,
       user_id: 1,
@@ -57,6 +62,11 @@ export class AppComponent {
     this.todos.push(pushable);
   }
   changeData() {
-    this.todos = mockTodos2;
+    if (this.todo1IsSelected) {
+      this.todos = mockTodos2;
+    } else {
+      this.todos = mockTodos;
+    }
+    this.todo1IsSelected = !this.todo1IsSelected;
   }
 }
