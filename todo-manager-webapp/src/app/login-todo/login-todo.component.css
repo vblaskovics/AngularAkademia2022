@@ -1,3 +1,15 @@
-.error {
-   border: red;
+
+form {
+  margin: auto;
+  width: 900px;
+}
+
+h2 {
+  margin: auto;
+  color: blueviolet;
+  text-align: center;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
 }

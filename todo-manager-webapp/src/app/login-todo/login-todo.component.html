@@ -1,30 +1,93 @@
-<h2>Login</h2>
+<h2>Sign Up</h2>
 
 <form>
-  <div class="form-group">
-  <label for="firstname">Firstname</label>
-  <input required ngModel id="firstname" #firstName="ngModel" name="firstname" type="text" class="form-control">
-    <div>First Name is required</div>
-</div>
-  <div class="form-group">
-    <label for="lastname">Lastname</label>
-    <input required ngModel id="lastname" #lastname="ngModel" name="lastname" type="text" class="form-control">
-    <div>Last name is required</div>
-  </div>
     <div class="form-group">
-      <label for="username">Username</label>
-      <input required ngModel id="username" #username="ngModel" name="username" type="text" class="form-control">
-      <div>Username is required</div>
-    </div>
-      <div class="form-group">
-        <label for="zip">ZIP</label>
-        <input  ngModel id="zip" #zip="ngModel" name="zip" type="text" class="form-control">
+       <label for="firstname">Firstname</label>
+       <input
+       minlength="4"
+       maxlength="20"
+       ngModel id="firstname"
+       #firstName="ngModel"
+       name="firstname"
+       type="text"
+       class="form-control">
         </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input required ngModel id="password" #password="ngModel" name="password" type="text" class="form-control">
-        <div>Password is required</div>
-      </div>
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input
+        minlength="4"
+        maxlength="20"
+        ngModel id="lastname"
+        #lastname="ngModel"
+        name="lastname"
+        type="text"
+        class="form-control">
+        </div>
+    <div class="form-group">
+        <label for="username">Username*</label>
+        <input
+        required
+        minlength="4"
+        maxlength="20"
+        ngModel id="username"
+        #userName="ngModel"
+        name="username"
+        type="text"
+        class="form-control">
+        <div
+        class="alert alert-danger"
+        *ngIf="userName.touched && !userName.valid">
+        <div
+        *ngIf="userName.errors?.['required']">
+        Username is required!
+        </div>
+        <div
+          *ngIf="userName.errors?.['minlength']">
+          Username should be minimum 4 characters!
+        </div>
+        <div
+          *ngIf="userName.errors?.['maxlength']">
+          Username should be maximum 20 characters!
+        </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="zip">ZIP</label>
+        <input
+        maxlength="4"
+        pattern="/0-9/"
+        ngModel id="zip"
+        #zip="ngModel"
+        name="zip"
+        type="text"
+        class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="password">Password*</label>
+        <input
+        required
+        ngModel id="password"
+        #passWord="ngModel"
+        name="password"
+        type="text"
+        class="form-control">
+        <div class="alert alert-danger"
+        *ngIf="passWord.touched && !passWord.valid">
+        Password is required
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="passwordre">Passwordre*</label>
+        <input
+        required
+        ngModel
+        d="passwordre"
+        #password="ngModel"
+        name="passwordre"
+        type="text"
+        class="form-control">
+        <div>Passwords must be the same</div>
+    </div>
 
       <button class="btn btn-primary"> Sign Up</button>
 </form>
