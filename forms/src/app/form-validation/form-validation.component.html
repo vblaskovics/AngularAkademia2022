@@ -1,0 +1,44 @@
+<h2>Form with validation (reactive)</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label" for="usernameInput">Username</label>
+        <input
+              
+            id="usernameInput" 
+            class="form-control"
+            [class.is-invalid] = "myForm.get('username')?.invalid && myForm.get('username')?.touched"
+            [class.is-valid] = "isUserNameValid"
+            type="text" 
+            name="username" 
+            placeholder="Username"
+            formControlName="username">
+    </div>
+    <p *ngIf="myForm.get('username')?.invalid && myForm.get('username')?.touched" style="color: red;">
+        Required field    
+    </p>
+    <div class="mb-3">
+        <label class="form-label" for="emailInput">Email</label>
+        <input
+              
+            id="emailInput" 
+            class="form-control"
+            [class.is-invalid] = "myForm.get('email')?.invalid && myForm.get('username')?.touched"
+            [class.is-valid] = "isEmailValid"
+            type="email" 
+            name="email" 
+            placeholder="example@example.com"
+            formControlName="email">
+    </div>
+    <p *ngIf="myForm.get('email')?.invalid && myForm.get('username')?.touched" style="color: red;">
+        Required field    
+    </p>
+    
+    <button 
+        type="submit"
+        class="btn btn-primary m-2">
+        Submit
+    </button>
+</form>
+
+Form status: {{myForm.status}}

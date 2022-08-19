@@ -8,13 +8,24 @@ import { Component, Input } from '@angular/core';
 export class AppComponent {
   title = 'my-todo-app';
 
-  count?: number
+  count?: number;
+  todoListType?: boolean;
+  signInPage?: boolean;
+
   constructor(){
   }
 
   getCounter(num: number) {
     this.count = num
     console.log(this.count)
+  }
+
+  getTodoListType(listType: boolean){
+    this.todoListType = listType
+  }
+
+  isSignInPage(value: boolean){
+    this.signInPage = value;
   }
   
 }

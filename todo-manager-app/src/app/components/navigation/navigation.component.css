@@ -7,3 +7,7 @@ h3 {
     color: whitesmoke;
     margin-right: 50px;
 }
+
+p {
+    margin-bottom: 0;
+}

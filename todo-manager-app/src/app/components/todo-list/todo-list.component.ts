@@ -20,6 +20,7 @@ export class TodoListComponent implements OnInit {
   todosList1: boolean;
 
   @Output() numberOfProgress = new EventEmitter<number>()
+  @Output() todoListType = new EventEmitter<boolean>()
 
   constructor() { 
     this.todos = todosBasic,
@@ -83,5 +84,6 @@ export class TodoListComponent implements OnInit {
       this.todosList1 = false;
     }
     this.getNumberOfInprogressTodos()
+    this.todoListType.emit(this.todosList1)
   }
 }

@@ -1,0 +1,54 @@
+<h2>Custom Validation</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label" for="usernameInput">Username*:</label>
+        <input              
+            id="usernameInput" 
+            class="form-control"
+            [class.is-invalid]="username.invalid && username.touched"
+            type="text" 
+            name="username" 
+            placeholder="username"
+            formControlName="username">
+    </div>
+    <p *ngIf="username.invalid && username.touched && username.hasError('required')" style="color: red">
+        Required field    
+    </p>
+
+    <div class="mb-3">
+        <label class="form-label" for="passwordInput">Password*:</label>
+        <input              
+            id="passwordInput" 
+            class="form-control"
+            [class.is-invalid]="password.invalid && password.touched"
+            type="password" 
+            name="password" 
+            placeholder="password"
+            formControlName="password">
+    </div>
+    <p *ngIf="password.touched && password.hasError('required')" style="color: red">
+        Required field    
+    </p>
+
+    <div class="mb-3">
+        <label class="form-label" for="rePasswordInput">Re-Password*:</label>
+        <input              
+            id="rePasswordInput" 
+            class="form-control"
+            [class.is-invalid]="passwordRe.invalid && passwordRe.touched"
+            type="password" 
+            name="passwordRe" 
+            placeholder="passwordRe"
+            formControlName="passwordre">
+    </div>
+    <p *ngIf="passwordRe.hasError('invalidPassword')" style="color: red">
+        Passwords must match  
+    </p>
+    
+    <button 
+        type="submit"
+        class="btn btn-primary m-2">
+        Submit
+    </button>
+</form>

@@ -1,0 +1,34 @@
+<h2>Form Validation 2</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label" for="userIdInput">User id:</label>
+        <input              
+            id="userIdInput" 
+            class="form-control"
+            [class.is-invalid] = "userId.invalid && userId.touched"
+            type="text" 
+            name="userId" 
+            placeholder="User ID"
+            formControlName="userId">
+    </div>
+    <p *ngIf="userId.invalid && userId.touched && userId.hasError('required')" style="color: red">
+        Required field    
+    </p>
+    <p *ngIf="userId.invalid && userId.hasError('max')" style="color: red">
+        Id must less than or equal to 9999!   
+    </p>
+    <p *ngIf="userId.invalid && userId.hasError('min')" style="color: red">
+        Id must be greater than or equal to 0!   
+    </p>
+    <p *ngIf="userId.invalid && userId.hasError('pattern')" style="color: red">
+        Id must match with the pattern!   
+    </p>
+    
+    
+    <button 
+        type="submit"
+        class="btn btn-primary m-2">
+        Submit
+    </button>
+</form>
