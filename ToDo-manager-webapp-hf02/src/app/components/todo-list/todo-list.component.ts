@@ -7,12 +7,10 @@ import { Todo, progress } from 'src/app/models/todo';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  [x: string]: any;
-
+  
   items: Todo[];
   todoSelected?: Todo;
 
-  
   //sort és a headerben való megjelenítés:
   sortItems?: Todo[];
   sortRaisingTodos: string[] = [progress.Open, progress.InProgress, progress.Done];

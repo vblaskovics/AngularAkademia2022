@@ -1,10 +1,40 @@
 
 
-
 <nav class="navbar navbar-light bg-info">
     <a class="navbar-brand text-white mx-3" href="#">
       ToDo Manager
     </a>
+
+    <button (click)="onSignIn()"  class="btn btn-outline-primary px-5">Sign In</button>
+
+    <form class="form-inline"
+                [formGroup]="myForm"  
+                (ngSubmit)="onSubmit()">
+        <label class="form-label" 
+                for="todoID"></label>
+        <input 
+            class="form-control" 
+            placeholder="Write todos.." 
+            type="text" 
+                id="todoID" 
+                name="todoID" 
+                [class.is-invalid]="todoID.touched && todoID.invalid"
+                formControlName="todoID">
+
+        <p *ngIf="todoID.hasError('required')" class="invalid-feedback mx-2 mt-2" id="todoID"> Required field!</p>
+    
+        <p *ngIf="todoID.hasError('maxlength')" class="invalid-feedback mx-2 mt-2" id="todoID"> Maximum length of ToDo: 40 </p>
+                
+        <p *ngIf="todoID.hasError('minlength')" class="invalid-feedback mx-2 mt-2" id="todoID"> Minimmum length of ToDo: 3 </p> 
+
+
+        <button type="submit" class="btn btn-primary col-xs-3 mx-2">New </button>
+
+    </form>
+
+   
+
     <div class="text-white mx-3">Todo in progress: {{ todoCounter }} </div>
   </nav>
+
   

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Todo } from 'src/app/models/todo';
+import { Todo, progress } from 'src/app/models/todo';
 
 
 @Component({
@@ -26,6 +26,19 @@ export class TodoDetailsComponent implements OnInit {
     console.log('Működik a kattintás - child comp!')
     this.todoInProgressDetails.emit(this.todoItem);
   }
+
   
+  // detailsProgressChange(todo: Todo){
+  //   const todoIndex = this.todoItem.indexOf(todo);
+  //   if (this.todoItem[todoIndex].progress === progress.Open) {
+  //     this.todoItem[todoIndex].progress = progress.InProgress;
+  //   }
+  //    else if(this.todoItem[todoIndex].progress === progress.InProgress) {
+  //     this.todoItem[todoIndex].progress = progress.Done;
+  //   }
+  //    else if (this.todoItem[todoIndex].progress === progress.Done) {
+  //     this.todoItem[todoIndex].progress = progress.Open;
+  //   }
+  // }
 
 }
