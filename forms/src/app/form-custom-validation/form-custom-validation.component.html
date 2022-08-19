@@ -1,0 +1,85 @@
+<h2>Custom validation</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="userName">userName</label>
+    <input
+      id="userName"
+      class="form-control"
+      type="text"
+      name="userName"
+      placeholder="userName"
+      formControlName="userName"
+      [class.is-invalid]="userName.touched && userName.invalid"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordInput">Password</label>
+    <input
+      id="passwordInput"
+      class="form-control"
+      type="password"
+      name="password"
+      placeholder="password"
+      formControlName="password"
+      [class.is-invalid]="
+        myForm.get('password')?.touched && myForm.get('password')?.invalid
+      "
+    />
+
+    <p
+      class="invalid-feedback"
+      *ngIf="
+        myForm.get('password')?.touched &&
+        myForm.get('password')?.hasError('required')
+      "
+    >
+      Required field
+    </p>
+    <p
+      class="invalid-feedback"
+      *ngIf="
+        myForm.get('password')?.touched &&
+        myForm.get('password')?.hasError('minlength')
+      "
+    >
+      Min length 4
+    </p>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="passwordreInput">Password</label>
+    <input
+      id="passwordreInput"
+      class="form-control"
+      type="password"
+      name="passwordre"
+      placeholder="password"
+      formControlName="passwordre"
+      [class.is-invalid]="
+        myForm.get('passwordre')?.touched && myForm.get('passwordre')?.invalid
+      "
+    />
+
+    <p
+      *ngIf="myForm.get('passwordre')?.hasError('invalidPassword')"
+      class="invalid-feedback"
+    >
+      Passwords must be the same!
+    </p>
+  </div>
+
+  <!-- <div *ngIf="userId.errors?.['required']" id="userId" class="invalid-feedback">
+      Required field.
+    </div>
+    <div *ngIf="userId.errors?.['min']" id="userId" class="invalid-feedback">
+      The number must be greater than 0.
+    </div>
+    <div *ngIf="userId.errors?.['max']" id="userId" class="invalid-feedback">
+      The number must be smaller than 9999.
+    </div>
+    <div *ngIf="userId.errors?.['pattern']" id="userId" class="invalid-feedback">
+      Id must begin
+    </div> -->
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

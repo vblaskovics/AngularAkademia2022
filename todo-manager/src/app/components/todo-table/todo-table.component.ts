@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { progress, Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
 
@@ -24,7 +24,8 @@ export class TodoTableComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      todo: [''],
+      todoInput: ['',
+    [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     });
 
     (this.todos = [
@@ -179,9 +180,15 @@ export class TodoTableComponent implements OnInit {
   }
 
   handleButton() {
-    console.log('form value:', this.myForm.value);
+    console.log('form value:', this.myForm.status);
     this.myForm.reset();
   }
+
+  get todoInput(): FormControl {
+    return this.myForm.get('todoInput') as FormControl;
+  }
+
+  onSignIn() {}
 
 
 }

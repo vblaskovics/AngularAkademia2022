@@ -17,16 +17,31 @@
     <form class="d-flex" [formGroup]="myForm" (ngSubmit)="handleButton()">
       <div class="p-1">
         <label for="todoInput" class="form-label">Todo:</label>
-        <input id="todoInput" type="text" class="form-control" name="todo" formControlName="todo">
+        <input
+          id="todoInput"
+          type="text"
+          class="form-control"
+          name="todoInput"
+          formControlName="todoInput"
+          [class.is-invalid]="myForm.get('todoInput')?.touched && myForm.get('todoInput')?.hasError"
+        />
+        <div *ngIf="todoInput.errors?.['required']" id="todoInput" class="invalid-feedback">
+          Required field.
+        </div>
+        <div *ngIf="todoInput.touched && todoInput.getError('minLength')" id="todoInput" class="invalid-feedback">
+          The length must be at least 4 characters.
+        </div>
+        <div *ngIf="todoInput.errors?.['maxLength']" id="todoInput" class="invalid-feedback">
+          The length must be shorter than 15 characters.
+        </div>
       </div>
       <button type="submit" class="btn btn-info">➕</button>
     </form>
   </div>
 
+  <button class="btn btn-warning m-2" (click)="onSignIn()">Sign In</button>
 
-  <div class="mx-auto">
-    In progress: {{ inProgressNumber }}
-  </div>
+  <div class="mx-auto">In progress: {{ inProgressNumber }}</div>
 </nav>
 
 <div class="row">
@@ -36,7 +51,8 @@
         <tr>
           <th scope="col">id</th>
           <th scope="col">title</th>
-          <th scope="col" (click)="progressSort()">progress
+          <th scope="col" (click)="progressSort()">
+            progress
             <span *ngIf="isAscending">⬆️</span>
             <span *ngIf="!isAscending">⬇️</span>
           </th>
@@ -44,7 +60,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let todo of todos; let i = index" (click)="showDetails(todo)">
+        <tr
+          *ngFor="let todo of todos; let i = index"
+          (click)="showDetails(todo)"
+        >
           <td>{{ todo?.id }}</td>
           <td>{{ todo?.title }}</td>
           <td>{{ todo?.progress }} <a (click)="progressChange(todo)">⏩</a></td>
@@ -56,5 +75,9 @@
 </div>
 
 <div *ngIf="isSelected">
-  <app-todo-details [selectedTodo]="selectedTodo" [users]="users" [subTodos]="subTodos"></app-todo-details>
+  <app-todo-details
+    [selectedTodo]="selectedTodo"
+    [users]="users"
+    [subTodos]="subTodos"
+  ></app-todo-details>
 </div>

@@ -28,10 +28,13 @@ export class FormValidationComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if(!this.myForm.valid) {
+      alert('The form is invalid.')
+    }
     console.log(this.username?.status);
     console.log(this.email?.status);
     console.log(this.myForm.status);
-    console.log(this.myForm);
+    console.log(this.myForm.value);
   }
 
 

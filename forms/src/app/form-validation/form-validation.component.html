@@ -10,7 +10,7 @@
       name="username"
       placeholder="Username"
       formControlName="username"
-      [class.is-invalid] = "!username?.valid"
+      [class.is-invalid] = "username?.touched && !username?.valid"
     />
     <div *ngIf="!username?.valid" id="usernameInput" class="invalid-feedback">
       Please choose a username.
@@ -26,15 +26,20 @@
       name="email"
       placeholder="Email"
       formControlName="email"
-      [class.is-invalid] = "!email?.valid"
+      [class.is-invalid] = "email?.touched && !email?.valid"
     />
     <div *ngIf="!email?.valid" id="emailInput" class="invalid-feedback">
       Please add an email address.
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <div [hidden]="myForm.valid" id="btn" class="invalid-feedback">
+    The form is invalid.
+  </div>
 
 </form>
 
 Form status: {{ myForm.status }}
+
+<!-- [disabled]="!myForm.valid" -->

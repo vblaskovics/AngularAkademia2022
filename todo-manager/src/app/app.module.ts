@@ -6,13 +6,15 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoTableComponent } from './components/todo-table/todo-table.component';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoItemComponent,
     TodoTableComponent,
-    TodoDetailsComponent
+    TodoDetailsComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
