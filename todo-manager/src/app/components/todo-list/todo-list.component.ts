@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { todos } from 'src/app/mock/todo-mock';
 import { Progress } from 'src/app/users-model/progress-enum';
 import { Todo } from 'src/app/users-model/todo';
@@ -13,28 +13,16 @@ export class TodoListComponent implements OnInit {
   @Output() item: EventEmitter<Todo> = new EventEmitter();
   todos = todos;
   isAscending = false;
-  myForm: FormGroup;
 
-  constructor(fb: FormBuilder) {
-    this.myForm = fb.group({
-      title: ['', Validators.required]
-    })
+
+  constructor() {
+
   }
 
   ngOnInit(): void {}
 
   showTodoDetails(todo: Todo) {
     this.item.emit(todo);
-  }
-
-  countInProgressTodos(): number {
-    let count = 0;
-    this.todos.forEach((current: Todo) => {
-      if (current.progress == Progress.IN_PROGRESS) {
-        count++;
-      }
-    });
-    return count;
   }
 
   sortProgress() {
@@ -50,16 +38,4 @@ export class TodoListComponent implements OnInit {
     this.isAscending = !this.isAscending;
   }
 
-  onSubmit():void {
-  let newTodo = {
-    title: this.myForm.value['title'],
-    id: todos.length+1,
-    progress: Progress.OPEN,
-    description: 'sleep',
-    date: '2022-10-18',
-    userId: 2,
-    subTodoIds: [1, 2],
-  }
-    this.todos.push(newTodo);
-  }
 }
