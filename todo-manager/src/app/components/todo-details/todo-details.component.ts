@@ -13,7 +13,6 @@ export class TodoDetailsComponent implements OnInit {
   @Input() subTodos?: Todo[];
 
   subTodoList?: Todo[] = [];
-  isSubTodo: boolean = false;
 
   @Output() subTodo?: Todo;
 

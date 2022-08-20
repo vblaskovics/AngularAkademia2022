@@ -1,6 +1,48 @@
+<nav class="navbar nav-fill navbar-expand-lg bg-info">
+  <div class="container-md">
+    <a class="navbar-brand nav-item" href="#">Todo Table</a>
+
+    <div>
+      <form class="nav-item row row-cols-lg-auto g-3 align-items-center" [formGroup]="myForm" (ngSubmit)="handleButton()">
+        <div class="col-auto">
+          <label for="todoInput" class="form-label">Todo:</label>
+          <input
+            id="todoInput"
+            type="text"
+            class="form-control"
+            name="todoInput"
+            formControlName="todoInput"
+            [class.is-invalid]="todoInput.touched && todoInput.invalid"
+          />
+          <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('required')">
+            Required field.
+          </p>
+          <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('minLength')">
+            At least {{ todoInput.getError("minlength").requiredLength }} characters.
+          </p>
+          <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('maxLength')">
+            Max {{ todoInput.getError("maxLength").requiredLength }} characters.
+          </p>
+        </div>
+        <button type="submit" class="btn btn-info">➕</button>
+      </form>
+    </div>
+
+    <div class="nav-item col-2">
+      <button *ngIf="!showSignIn" id="signInBtn" class="btn btn-warning m-2" (click)="toggleSignIn()">Sign In</button>
+      <button *ngIf="showSignIn" id="toListBtn" class="btn btn-warning m-2" (click)="toggleSignIn()">To List</button>
+    </div>
+
+    <div class="nav-item mx-2">In progress: {{ inProgressNumber }}</div>
+  </div>
+
+
+
+</nav>
+
 <div class="row">
   <div class="col-12">
-    <!-- <app-todo-table></app-todo-table> -->
-    <app-sign-in></app-sign-in>
+    <app-todo-table *ngIf="!showSignIn" [todos]="todos" [users]="users" [subTodos]="subTodos"></app-todo-table>
+    <app-sign-in *ngIf="showSignIn" ></app-sign-in>
   </div>
 </div>
