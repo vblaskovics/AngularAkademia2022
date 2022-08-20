@@ -1,33 +1,36 @@
 <nav class="navbar bg-light">
   <div class="container-fluid text-center">
     <span class="navbar-brand mb-0 h1">Todo manager</span>
+    <button class="btn btn-primary mb-1" type="sign in" (click)="showForm()">
+      Sign in
+    </button>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-      <button class="btn btn-primary mb-1" type="sign in" (click)="onSignIn()">Sign in</button>
-    <input
-    id="titleInput"
-    name="titleInput"
-    type="text"
-    class="form-control is-invalid mb-1"
-    placeholder="Title"
-    formControlName="title">
-    <button class="btn btn-primary" type="submit">Submit</button>
-    <div *ngIf="submitted && form['title'].errors">
-      <div class="text-danger" *ngIf="form['title'].errors['required']">
-        Title is required!*
+      <input
+        id="titleInput"
+        name="titleInput"
+        type="text"
+        class="form-control is-invalid mb-1"
+        placeholder="Title"
+        formControlName="title"
+      />
+      <button class="btn btn-primary" type="submit">Submit</button>
+      <div *ngIf="submitted && form['title'].errors">
+        <div class="text-danger" *ngIf="form['title'].errors['required']">
+          Title is required!*
+        </div>
       </div>
-    </div>
 
-    <small class="text-danger" *ngIf="todoTitle.hasError('minlength')">
-      Title must be at least 4 character!
-    </small>
+      <small class="text-danger" *ngIf="todoTitle.hasError('minlength')">
+        Title must be at least 4 character!
+      </small>
 
-    <small class="text-danger" *ngIf="todoTitle.hasError('maxlength')">
-      Title must be maximum 15 character!
-    </small>
+      <small class="text-danger" *ngIf="todoTitle.hasError('maxlength')">
+        Title must be maximum 15 character!
+      </small>
+    </form>
 
-  </form>
-
-    <span class="navbar-brand mb-0 h1">In progress: {{countInProgressTodos()}}</span>
-
+    <span class="navbar-brand mb-0 h1"
+      >In progress: {{ countInProgressTodos() }}</span
+    >
   </div>
 </nav>

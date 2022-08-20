@@ -1,5 +1,15 @@
-<app-navbar></app-navbar>
-<app-todo-list (item)="passToDetails($event)"></app-todo-list>
+<app-navbar (showSignInForm)="receiveShowForm($event)"></app-navbar>
+
+<ng-container *ngIf="showSignInForm">
+
+  <app-sign-in-form></app-sign-in-form>
+
+</ng-container>
+
+<ng-container *ngIf="!showSignInForm">
+
+  <app-todo-list (item)="passToDetails($event)"></app-todo-list>
+
+</ng-container>
 
 <app-todo-details [details]="details"></app-todo-details>
-

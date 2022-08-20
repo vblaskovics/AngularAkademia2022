@@ -8,9 +8,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   details: any;
   subtodoTitle: any;
+  showSignInForm: boolean = false;
+  
 
   passToDetails(event: any) {
     this.details = event;
+  }
+
+  receiveShowForm(showSignInForm: boolean) {
+    this.showSignInForm = showSignInForm;
   }
 
 }

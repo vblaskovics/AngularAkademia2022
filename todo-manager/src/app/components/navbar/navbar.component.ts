@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { todos } from 'src/app/mock/todo-mock';
 import { Progress } from 'src/app/users-model/progress-enum';
@@ -13,11 +13,18 @@ export class NavbarComponent implements OnInit {
   myForm: FormGroup;
   submitted: boolean = false;
   todos = todos;
+  @Output() showSignInForm: EventEmitter<boolean> = new EventEmitter();
+  isDisplayed: boolean = false;
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     })
+  }
+
+  showForm(): void {
+    this.isDisplayed = !this.isDisplayed;
+    this.showSignInForm.emit(this.isDisplayed);
   }
 
   ngOnInit(): void {
@@ -66,5 +73,7 @@ export class NavbarComponent implements OnInit {
     onSignIn(): void {
       this.todos.splice
     }
+
+
 
 }
