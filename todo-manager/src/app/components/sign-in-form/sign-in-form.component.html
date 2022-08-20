@@ -1,1 +1,46 @@
-<p>sign-in-form works!</p>
+<h3 class="sign-in mt-3">Sign in</h3>
+<form [formGroup]="myForm">
+  <div class="form-container">
+
+    <div class="form-group">
+      <label class="mt-2">First name</label>
+      <input type="text"
+      formControlName="firstname"
+      placeholder="First Name"
+      class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label class="mt-2">Last name</label>
+      <input type="text"
+      formControlName="lastname"
+      placeholder="Last Name"
+      class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label class="mt-2">Username</label>
+      <input type="text"
+      formControlName="username"
+      placeholder="Username"
+      class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label class="mt-2">Zip</label>
+      <input type="text"
+      formControlName="zip"
+      placeholder="1234"
+      class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label class="mt-2">Password</label>
+      <input type="password"
+      formControlName="password"
+      placeholder="Password"
+      class="form-control">
+    </div>
+  </div>
+
+</form>
