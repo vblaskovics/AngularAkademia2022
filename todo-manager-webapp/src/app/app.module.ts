@@ -7,7 +7,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { DetailsComponent } from './details/details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginTodoComponent } from './login-todo/login-todo.component';
+import { LoginTodoComponent } from './login-todo-template driven/login-todo.component';
+import { LoginTodoReactiveComponent } from './login-todo-reactive/login-todo-reactive.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginTodoComponent } from './login-todo/login-todo.component';
     TodoListComponent,
     DetailsComponent,
     NavbarComponent,
-    LoginTodoComponent
+    LoginTodoComponent,
+    LoginTodoReactiveComponent
   ],
   imports: [
     BrowserModule,

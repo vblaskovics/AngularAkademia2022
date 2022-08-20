@@ -1,0 +1,55 @@
+<h2>Sign Up Todo</h2>
+
+<form [formGroup]="form">
+  <div class="form-group">
+      <label for="firstname">Firstname</label>
+      <input id="firstname"
+             formControlName="firstname"
+             type="text"
+             class="form-control">
+  </div>
+    <div class="form-group">
+      <label for="lastname">Lastname</label>
+      <input id="lastname"
+             formControlName="lastname"
+             type="text"
+             class="form-control">
+  </div>
+  <div class="form-group">
+      <label for="username">Username*</label>
+      <input id="username"
+             formControlName="username"
+             type="text"
+             class="form-control">
+             <div *ngIf="username?.touched && username?.invalid" class="alert alert-danger">
+             <div *ngIf="username?.errors?.['required']">Username is required!</div>
+             <div *ngIf="username?.errors?.['minlength']">Username should be minimum 3 characters!</div>
+             <div *ngIf="username?.errors?.['maxlength']">Username can be maximum 20 characters!</div>
+             </div>
+  </div>
+  <div class="form-group">
+      <label for="zip">ZIP</label>
+      <input id="zip"
+             formControlName="zip"
+             type="text"
+             class="form-control">
+  </div>
+  <div class="form-group">
+      <label for="password">Password*</label>
+      <input id="password"
+             formControlName="password"
+             type="text"
+             class="form-control">
+             <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">Password is required!</div>
+  </div>
+  <div class="form-group">
+      <label for="passwordre">Passwordre*</label>
+      <input id="passwordre"
+             formControlName="passwordre"
+             type="text"
+             class="form-control">
+             <div class="alert alert-danger">Passwords not matches</div>
+</div>
+
+<button class="btn btn-primary" type="submit">Sign Up</button>
+</form>
