@@ -16,7 +16,7 @@ export class RegistrationFormComponent implements OnInit {
       LastName: ['',Validators.pattern(/^[A-Z][a-z]+/)],
       Username: ['',[Validators.required, Validators.pattern(/[a-zá-ű0-9]+/), Validators.minLength(4)]],
       ZipCode: ['', [Validators.min(1000), Validators.max(9999)]],
-      Password: ['',[Validators.required, Validators.minLength(8), Validators.pattern(/[#&@!.*;]/)]]
+      Password: ['',[Validators.required, Validators.minLength(8), Validators.pattern(/[a-zA-Z]+[@#]+/)]]
     })
    }
    get FirstName(): FormControl{
@@ -35,6 +35,6 @@ export class RegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(){
-
+    console.log(this.Password.errors)
   }
 }
