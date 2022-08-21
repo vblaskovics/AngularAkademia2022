@@ -8,6 +8,8 @@ import { Todo, progress } from 'src/app/models/todo';
 })
 export class TodoListComponent implements OnInit {
   
+  loadedSelected: string = 'sign-in'
+  
   items: Todo[];
   todoSelected?: Todo;
 
@@ -183,12 +185,14 @@ export class TodoListComponent implements OnInit {
   // deleteItemfromList(todo:Todo): void {
   //   this.items = this.items.filter(a => a.id !== todo.id)
   // }
+
+
+  onNavigate(feature: string){
+    this.loadedSelected = feature;
+  }
   
 
 
-
-
-  
   
 
 }

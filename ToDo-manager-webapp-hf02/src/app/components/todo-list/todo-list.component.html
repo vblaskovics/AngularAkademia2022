@@ -1,7 +1,12 @@
 
-<app-header [todoCounter]="TodosInProgress"></app-header>
+<app-header [todoCounter]="TodosInProgress" (signInSelected)="onNavigate($event)"></app-header>
 
 
+
+<app-sign-in *ngIf="loadedSelected === 'sign-in' "></app-sign-in>
+
+
+<div *ngIf="loadedSelected === 'todo-list'"> 
 <table class="table table-striped table-bordered">
     <thead>
       <tr>
@@ -31,9 +36,10 @@
   <ng-template #infotext> 
     <p class="text-secondary">For more info click on the Progress column ^</p>
   </ng-template>
+    
+</div>
+
   
-  <hr>
 
-
-  <div app-sign-in ></div>
+  
   

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Todo } from 'src/app/models/todo';
 
@@ -8,6 +8,8 @@ import { Todo } from 'src/app/models/todo';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  @Output() signInSelected = new EventEmitter<string>();
+
   @Input() todoCounter?: number;
   @Input() todo?: Todo;
   myForm: FormGroup;
@@ -40,7 +42,7 @@ export class HeaderComponent implements OnInit {
     this.myForm.reset();
   }
 
-  onSignIn(){
-    console.log(this.myForm.value)
+  onSignIn(feature: string){
+    this.signInSelected.emit(feature);
   }
 }

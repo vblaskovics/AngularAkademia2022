@@ -5,10 +5,10 @@
   <div class="row">
     <div class="col-xs-6">
 
-      <h4>Registration form</h4>
+      <h4 class="mt-5 pt-5">Registration form</h4>
 
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="col-xs-6">
-        <div class="mb-3 text-center">
+        <div class="text-center">
           <label class="form-label col-xs-3" for="firstname"></label>
           <input
             class="form-control col-xs-3"
@@ -23,9 +23,9 @@
           <p *ngIf="firstname.hasError('required')" class="invalid-feedback" id="firstname"> Required field!</p>
       
         </div> 
-        <br>
+       
       
-        <div class="mb-3 text-center">
+        <div class="text-center">
           <label class="form-label col-xs-3" for="lastname"></label>
           <input
             class="form-control col-xs-3"
@@ -40,9 +40,9 @@
           <p *ngIf="lastname.hasError('required')" class="invalid-feedback" id="lastname"> Required field!</p>
       
         </div> 
-        <br>
+    
       
-        <div class="mb-3 text-center">
+        <div class="text-center">
           <label class="form-label col-xs-3" for="username"></label>
           <input
             class="form-control col-xs-3"
@@ -58,9 +58,9 @@
           <p *ngIf="username.hasError('pattern') && username.touched" class="invalid-feedback" > Username must contain at least 1 number!</p>
       
         </div> 
-        <br>
       
-        <div class="mb-3 text-center">
+      
+        <div class="text-center">
           <label class="form-label col-xs-3" for="zip"></label>
           <input
             class="form-control col-xs-3"
@@ -77,9 +77,9 @@
           <p *ngIf="zip.hasError('min')" class="invalid-feedback" id="zip"> Minimum numbers: 1000 </p>
       
         </div> 
-        <br>
+   
       
-        <div class="mb-3 text-center">
+        <div class="text-center">
           <label class="form-label col-xs-3" for="password"></label>
           <input
             class="form-control col-xs-3"
@@ -95,7 +95,8 @@
           <p *ngIf="password.hasError('minlength')" class="invalid-feedback" id="password"> It must be minimum 8 characters!</p>
       
         </div> 
-        <br>
+      
+          <br>
       
         <button type="submit" class="btn btn-info" >Submit</button>
         

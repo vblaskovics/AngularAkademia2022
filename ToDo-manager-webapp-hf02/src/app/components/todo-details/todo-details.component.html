@@ -1,9 +1,10 @@
 
-    <div class="fw-bold" >Details:</div>
-    <hr>
+    <div class="fw-bold hr" >Details:</div>
+    
     <ul>
         <li >Title:  {{todoItem?.title}}</li>
-        <li >Status {{todoItem?.progress}}<a>⏩</a>  </li>
+        <li >Status {{todoItem?.progress}}<a></a>  </li> 
+        <!-- anchorok közé tenni egy in porgress gombot, kattintható legyen! -->
         <li >Details:  {{todoItem?.description}}</li>
         <li >Creation Date:  {{todoItem?.date}}</li>
         <li *ngFor="let item of todoItem?.user_id ">User:  {{item.name}}</li>

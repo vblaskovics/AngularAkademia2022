@@ -1,11 +1,11 @@
 
 
 <nav class="navbar navbar-light bg-info">
-    <a class="navbar-brand text-white mx-3" href="#">
+    <a class="navbar-brand text-white mx-3" style="cursor: pointer;" (click)="onSignIn('todo-list')">
       ToDo Manager
     </a>
 
-    <button (click)="onSignIn()"  class="btn btn-outline-primary px-5">Sign In</button>
+    <button (click)="onSignIn('sign-in')"  class="btn btn-outline-primary px-5">Sign In</button>
 
     <form class="form-inline"
                 [formGroup]="myForm"  
