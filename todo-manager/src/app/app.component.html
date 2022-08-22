@@ -17,11 +17,11 @@
           <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('required')">
             Required field.
           </p>
-          <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('minLength')">
-            At least {{ todoInput.getError("minlength").requiredLength }} characters.
+          <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('minlength')">
+            At least 4 characters.
           </p>
-          <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('maxLength')">
-            Max {{ todoInput.getError("maxLength").requiredLength }} characters.
+          <p class="invalid-feedback" *ngIf="todoInput.touched && todoInput.hasError('maxlength')">
+            Max 15 characters.
           </p>
         </div>
         <button type="submit" class="btn btn-info">➕</button>

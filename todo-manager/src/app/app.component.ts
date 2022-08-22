@@ -1,5 +1,16 @@
-import { AfterViewChecked, AfterViewInit, Component, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { TodoTableComponent } from './components/todo-table/todo-table.component';
 import { progress, Todo } from './models/todo';
 import { User } from './models/user';
@@ -7,9 +18,9 @@ import { User } from './models/user';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements  AfterViewChecked, AfterViewInit{
+export class AppComponent implements AfterViewChecked, AfterViewInit {
   title = 'todo-manager';
 
   @Output() todos: Todo[] = new Array();
@@ -26,11 +37,17 @@ export class AppComponent implements  AfterViewChecked, AfterViewInit{
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      todoInput: ['',
-    [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
+      todoInput: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(15),
+        ],
+      ],
     });
 
-    (this.todos = [
+    this.todos = [
       {
         id: 1,
         title: 'write a message',
@@ -76,7 +93,7 @@ export class AppComponent implements  AfterViewChecked, AfterViewInit{
         user_id: 91,
         subTodoIds: [11, 12, 13],
       },
-    ]);
+    ];
 
     this.users.push({ id: 91, name: 'Adam Smith', email: 'a@s.com' });
     this.users.push({ id: 92, name: 'Mary Jones', email: 'm@j.com' });
@@ -89,7 +106,7 @@ export class AppComponent implements  AfterViewChecked, AfterViewInit{
         progress: progress.open,
         description: 'later',
         date: '2022-08-20',
-        user_id: 91
+        user_id: 91,
       },
       {
         id: 12,
@@ -97,7 +114,7 @@ export class AppComponent implements  AfterViewChecked, AfterViewInit{
         progress: progress.open,
         description: 'later',
         date: '2022-08-25',
-        user_id: 91
+        user_id: 91,
       },
       {
         id: 13,
@@ -105,7 +122,7 @@ export class AppComponent implements  AfterViewChecked, AfterViewInit{
         progress: progress.open,
         description: 'later',
         date: '2022-08-30',
-        user_id: 91
+        user_id: 91,
       },
       {
         id: 14,
@@ -113,16 +130,15 @@ export class AppComponent implements  AfterViewChecked, AfterViewInit{
         progress: progress.open,
         description: 'later',
         date: '2022-08-30',
-        user_id: 91
+        user_id: 91,
       },
     ];
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleSignIn() {
-    if(!this.showSignIn) {
+    if (!this.showSignIn) {
       this.showSignIn = true;
     } else {
       this.showSignIn = false;
