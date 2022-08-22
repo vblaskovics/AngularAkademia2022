@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-todo-signin-page',
@@ -11,35 +16,84 @@ export class TodoSigninPageComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          Validators.pattern(/^[A-Za-z]/),
+        ],
+      ],
       firstName: [
         '',
         [
-          Validators.minLength(5),
-          Validators.maxLength(10),
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(20),
           Validators.pattern(/^[A-Z].*[a-z]/),
         ],
       ],
       lastName: [
         '',
         [
-          Validators.minLength(5),
-          Validators.maxLength(10),
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(20),
           Validators.pattern(/^[A-Z].*[a-z]/),
         ],
       ],
-      userName: [
+      zipNumber: ['', [Validators.min(1000), Validators.max(9999)]], //1000--9999
+      password: [
+        //min 8, legyen benne #@.*
         '',
         [
           Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(10),
-          Validators.pattern(/^[A-Za-Z].*[a-z]/),
+          Validators.pattern(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/
+          ),
+          Validators.minLength(8),
+          Validators.maxLength(12),
         ],
       ],
-      zipNumber: [''], //1000--9999
-      password: [''], //min 8, legyen benne #@.*
+      confirmPassword: [''],
+    });
+
+    this.myForm.valueChanges.subscribe(() => {
+      this.validatePasswords();
     });
   }
 
   ngOnInit(): void {}
+
+  get username(): FormControl {
+    return this.myForm.get('username') as FormControl;
+  }
+  get firstName(): FormControl {
+    return this.myForm.get('firstName') as FormControl;
+  }
+  get lastName(): FormControl {
+    return this.myForm.get('lastName') as FormControl;
+  }
+  get zipNumber(): FormControl {
+    return this.myForm.get('zipNumber') as FormControl;
+  }
+  get password(): FormControl {
+    return this.myForm.get('password') as FormControl;
+  }
+  get confirmPassword(): FormControl {
+    return this.myForm.get('confirmPassword') as FormControl;
+  }
+
+  onSubmit(): void {
+    console.log('username', this.myForm.get('username'));
+  }
+
+  validatePasswords() {
+    if (this.password.value !== this.confirmPassword.value) {
+      this.confirmPassword.setErrors({ invalidPassword: true });
+    } else {
+      this.confirmPassword.setErrors(null);
+    }
+  }
 }

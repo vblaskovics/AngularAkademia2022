@@ -1,1 +1,217 @@
-<p>todo-signin-page works!</p>
+<div class="container-fluid">
+  <h1 class="text-center">Sign in</h1>
+  <hr />
+  <div class="row justify-content-center">
+    <div class="form-group col-md-4 col-md-offset-5 align-center">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3 form-group">
+          <label class="form-label" for="username">Username</label>
+          <input
+            [class.is-invalid]="username.touched && username.invalid"
+            class="form-control"
+            id="username"
+            type="text"
+            name="username"
+            formControlName="username"
+            placeholder="Enter your username"
+            required
+          />
+          <p
+            class="invalid-feedback"
+            *ngIf="username.touched && username.hasError('required')"
+          >
+            Username is required
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="username.touched && username.hasError('maxlength')"
+          >
+            Username can be max 20 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="username.touched && username.hasError('minlength')"
+          >
+            Username must be minimum 4 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="username.touched && username.hasError('pattern')"
+          >
+            Username must start with A-Z or a-z
+          </p>
+        </div>
+        <div class="mb-3 form-group">
+          <label class="form-label" for="firstName">First name</label>
+          <input
+            [class.is-invalid]="firstName.touched && firstName.invalid"
+            class="form-control"
+            id="firstName"
+            type="text"
+            name="firstName"
+            formControlName="firstName"
+            placeholder="Enter your first name"
+            required
+          />
+          <p
+            class="invalid-feedback"
+            *ngIf="firstName.touched && firstName.hasError('required')"
+          >
+            First name is required
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="firstName.touched && firstName.hasError('maxlength')"
+          >
+            First name can be max 20 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="firstName.touched && firstName.hasError('minlength')"
+          >
+            First name must be minimum 4 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="firstName.touched && firstName.hasError('pattern')"
+          >
+            First name must start with capital letter
+          </p>
+        </div>
+        <div class="mb-3 form-group">
+          <label class="form-label" for="lastName">Last name</label>
+          <input
+            [class.is-invalid]="lastName.touched && lastName.invalid"
+            class="form-control"
+            id="lastName"
+            type="text"
+            name="lastName"
+            formControlName="lastName"
+            placeholder="Enter your last name"
+            required
+          />
+          <p
+            class="invalid-feedback"
+            *ngIf="lastName.touched && lastName.hasError('required')"
+          >
+            Last name is required
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="lastName.touched && lastName.hasError('maxlength')"
+          >
+            Last name can be max 20 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="lastName.touched && lastName.hasError('minlength')"
+          >
+            Last name must be minimum 4 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="lastName.touched && lastName.hasError('pattern')"
+          >
+            Last name must start with capital letter
+          </p>
+        </div>
+        <div class="mb-3 form-group">
+          <label class="form-label" for="zipNumber">Zip number</label>
+          <input
+            [class.is-invalid]="zipNumber.touched && zipNumber.invalid"
+            class="form-control"
+            id="zipNumber"
+            type="number"
+            name="zipNumber"
+            formControlName="zipNumber"
+            placeholder="Enter your zip number"
+            required
+          />
+          <p
+            class="invalid-feedback"
+            *ngIf="zipNumber.touched && zipNumber.hasError('required')"
+          >
+            Zip number is required
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="zipNumber.touched && zipNumber.hasError('min')"
+          >
+            Zip number must be minimum 1000
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="zipNumber.touched && zipNumber.hasError('max')"
+          >
+            Zip number can be maximum 9999
+          </p>
+        </div>
+        <div class="mb-3 form-group">
+          <label class="form-label" for="password">Password</label>
+          <input
+            [class.is-invalid]="password.touched && password.invalid"
+            class="form-control"
+            id="password"
+            type="password"
+            name="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            required
+          />
+          <p
+            class="invalid-feedback"
+            *ngIf="password.touched && password.hasError('required')"
+          >
+            Password is required
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="password.touched && password.hasError('maxlength')"
+          >
+            Password can be max 12 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="password.touched && password.hasError('minlength')"
+          >
+            Password must be minimum 8 characters long
+          </p>
+          <p
+            class="invalid-feedback"
+            *ngIf="password.touched && password.hasError('pattern')"
+          >
+            Password must contain at least one uppercase letter, one lowercase
+            letter, one number and one special character
+          </p>
+        </div>
+        <div class="mb-3 form-group">
+          <label class="form-label" for="confirmPassword"
+            >Confirm password</label
+          >
+          <input
+            [class.is-invalid]="
+              confirmPassword.touched && confirmPassword.invalid
+            "
+            class="form-control"
+            id="confirmPassword"
+            type="password"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            placeholder="Enter your password again"
+            required
+          />
+          <p
+            class="invalid-feedback"
+            *ngIf="
+              confirmPassword.touched &&
+              confirmPassword.hasError('invalidPassword')
+            "
+          >
+            Passwords do not match
+          </p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
