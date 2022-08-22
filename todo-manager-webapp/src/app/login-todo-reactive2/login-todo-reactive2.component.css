@@ -1,0 +1,48 @@
+h2 {
+  box-shadow: white;
+  text-align: center;
+  margin: auto;
+  color: rgb(255, 255, 255);
+}
+
+form {
+  width: 500px;
+  text-shadow: 2px black;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+.sign-up-container{
+  width: 100%;
+  min-height: calc(100vh - 57px);
+  background-image: url(https://images2.alphacoders.com/941/thumb-1920-941898.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 75px;
+}
+
+button {
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.container {
+  padding: 16px;
+}
+
+label {
+	cursor: pointer;
+	color: rgb(255, 255, 255);
+  font-weight: bold;
+	text-shadow: 3px black;
+	margin: 3px;
+}

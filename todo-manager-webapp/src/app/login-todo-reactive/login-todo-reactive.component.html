@@ -1,26 +1,29 @@
 <h2>Sign Up Todo</h2>
 
-<form [formGroup]="form">
+<form [formGroup]="forms" #f="ngForm" (ngSubmit)="submit(f)">
   <div class="form-group">
       <label for="firstname">Firstname</label>
       <input id="firstname"
              formControlName="firstname"
              type="text"
-             class="form-control">
+             class="form-control"
+             placeholder="firstname">
   </div>
     <div class="form-group">
       <label for="lastname">Lastname</label>
       <input id="lastname"
              formControlName="lastname"
              type="text"
-             class="form-control">
+             class="form-control"
+             placeholder="lastname">
   </div>
   <div class="form-group">
       <label for="username">Username*</label>
       <input id="username"
              formControlName="username"
              type="text"
-             class="form-control">
+             class="form-control"
+             placeholder="username">
              <div *ngIf="username?.touched && username?.invalid" class="alert alert-danger">
              <div *ngIf="username?.errors?.['required']">Username is required!</div>
              <div *ngIf="username?.errors?.['minlength']">Username should be minimum 3 characters!</div>
@@ -32,24 +35,33 @@
       <input id="zip"
              formControlName="zip"
              type="text"
-             class="form-control">
+             class="form-control"
+             placeholder="ZIP">
   </div>
+  <form [formGroup]="form">
   <div class="form-group">
       <label for="password">Password*</label>
       <input id="password"
              formControlName="password"
              type="text"
-             class="form-control">
-             <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">Password is required!</div>
+             class="form-control"
+             placeholder="password">
+             <div *ngIf="password?.touched" class="alert alert-danger">Password is required!
+              <div *ngIf="password?.errors?.['cannotContainSpace']">Password cannot contain space!</div>
+              </div>
   </div>
   <div class="form-group">
       <label for="passwordre">Passwordre*</label>
       <input id="passwordre"
              formControlName="passwordre"
              type="text"
-             class="form-control">
-             <div class="alert alert-danger">Passwords not matches</div>
-</div>
+             class="form-control"
+             placeholder="passwordre">
+              <div *ngIf="passwordre?.valid && form?.invalid && form.errors?.['passwordsShouldMatch']" class="alert alert-danger">
+                Passwords do not match!
+              </div>
+             </div>
+  </form>
 
-<button class="btn btn-primary" type="submit">Sign Up</button>
+<button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign Up</button>
 </form>

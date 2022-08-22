@@ -12,3 +12,12 @@ form {
 .form-control.ng-touched.ng-invalid {
   border: 2px solid red;
 }
+
+.forms {
+  margin: auto;
+  width: 900px;
+}
+
+.form-group.ng-touched.ng-invalid {
+  border: 2px solid red;
+}

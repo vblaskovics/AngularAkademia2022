@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, FormBuilder} from '@angular/forms';
+import { PasswordValidators } from './password.validators';
 
 @Component({
   selector: 'app-login-todo-reactive',
   templateUrl: './login-todo-reactive.component.html',
   styleUrls: ['./login-todo-reactive.component.css']
 })
-export class LoginTodoReactiveComponent implements OnInit {
-  form = new FormGroup({
+export class LoginTodoReactiveComponent {
+  forms = new FormGroup({
     firstname: new FormControl(),
     lastname: new FormControl(),
     username: new FormControl('', [
@@ -16,20 +17,30 @@ export class LoginTodoReactiveComponent implements OnInit {
       Validators.maxLength(20)
     ]),
     zip: new FormControl(),
-    password: new FormControl('', Validators.required),
-    passwordre: new FormControl('', Validators.required)
   });
 
   get username() {
-    return this.form.get('username');
+    return this.forms.get('username');
   }
 
   get password() {
     return this.form.get('password');
   }
-  constructor() { }
-
-  ngOnInit(): void {
+  get passwordre() {
+    return this.form.get('passwordre');
   }
 
+  submit(f: any) {
+    console.log(f);
+  }
+
+  form: FormGroup;
+
+  constructor(fb: FormBuilder) {
+    this.form =fb.group({
+      // password: ['', Validators.required, PasswordValidators.cannotContainSpace],
+      passwordre: ['', Validators.required, PasswordValidators.passwordsShouldMatch],
+    })
+
+  }
 }
