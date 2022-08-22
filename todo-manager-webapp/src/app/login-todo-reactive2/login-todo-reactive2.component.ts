@@ -39,8 +39,8 @@ export class LoginTodoReactive2Component implements OnInit {
     return this.form.get('username') as FormArray
   };
 
-  get zip(): FormControl {
-    return this.form.get('zip') as FormControl
+  get zip(): FormArray {
+    return this.form.get('zip') as FormArray
   };
 
   get password(): FormArray {

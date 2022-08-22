@@ -1,9 +1,7 @@
 import { VariableBinding } from '@angular/compiler';
-import { Component, OnInit, Output } from '@angular/core';
-import { count } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../model/todo';
 import { Users } from '../model/users';
-import { progress } from '../progress';
 
 
 @Component({
@@ -12,12 +10,12 @@ import { progress } from '../progress';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
+  @Output() inProgressCount: EventEmitter<number> = new EventEmitter<number>();
 
 @Output() todo: Todo[] = new Array();
 user: Users[] = new Array();
 isTodoSelected: boolean;
 selectedTodo?: any;
-
 
 
 constructor() {
@@ -35,11 +33,7 @@ constructor() {
     {id: 3, name: "Varga László", email: "varga.laszlo@gmail.com" },
   ]
 
-
-
   this.isTodoSelected = false;
-
-
 
   }
 
@@ -56,16 +50,5 @@ selectTodo(todo: Todo): Todo {
   this.isTodoSelected = true;
   return this.selectedTodo = todo
   }
-
-
-
-// countInProgress(): number {
-//   let todoCounter = 0;
-//   for (const todo of  {
-//     if (todo.progress == progress ) {
-//       todoCounter++;
-//     }
-//   }
-//   return todoCounter;
 
 }

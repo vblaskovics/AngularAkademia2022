@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validator } from '@angular/forms';
 
 @Component({
@@ -8,13 +8,14 @@ import { FormBuilder, FormGroup, FormControl, Validator } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
   @Input() title!: string;
-  @Input() counter!: number;
+  @Input() inProgressCounter?: number;
+
   myForm: FormGroup;
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       title: [''],
-      createTodo: ['' ,]
+      createTodo: ['']
     });
   }
 
@@ -27,8 +28,17 @@ export class NavbarComponent implements OnInit {
     this.myForm.reset();
   }
 
-  getTodo(): FormControl {
-      return this.myForm.get('title') as FormControl
 
+  onSignUp() {
+    this.onSignUp
+  }
+
+  addTodo(title: string): void {
+    console.log(title);
   }
 }
+
+// getTodo(): FormControl {
+//     return this.myForm.get('title') as FormControl
+
+// }

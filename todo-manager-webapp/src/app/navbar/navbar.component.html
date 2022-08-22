@@ -1,31 +1,28 @@
-
-<nav class="navbar navbar-dark bg-primary" style="margin: auto; max-width: 900px;">
+<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{{title}}</a>
 
     <form [formGroup]="myForm" (ngSubmit)="onCreate()">
-        <label class="form-label" for="titleInput">
-          <input id="titleInput"
-          class="form-control"
-          type="text"
-          name="title"
-          placeholder="Create Todo"
-          formControlName="title"
-          [class.error]="myForm.get('title')?.invalid && myForm.get('title')?.touched"
-          >
-        </label>
-        <button type="submit" class="btn btn-primary"> Create Todo</button>
-        <p *ngIf="getTodo().touched && getTodo().hasError('min')">
-          Must be atleast zero!
-        </p>
-        <p *ngIf="getTodo().touched && getTodo().hasError('max')">
-          No more than 999999!
-
+        <button class="btn btn-primary">Sign Up</button>
     </form>
-    <h3>
-      In progress: {{ counter }}
-  </h3>
+    <span style="padding: 30px;">{{ inProgressCounter }}In Progress:1</span>
+
+    <form #navbarForm="ngForm" (ngSubmit)="addTodo(navbarForm.value)" class="navbarForm">
+      <div class="newTodoInputContainer">
+        <label for="newTodoInput">New Todo:</label>
+        <input
+          type="text"
+          id="newTodoInput"
+          class="form-control"
+          name="todoTitle"
+          placeholder="Name of Todo"
+          ngModel
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Create Todo</button>
+    </form>
   </div>
+
 
 </nav>
 

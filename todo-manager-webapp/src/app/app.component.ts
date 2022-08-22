@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { count } from 'rxjs';
+import { Component, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,11 @@ import { count } from 'rxjs';
 })
 export class AppComponent {
   title = 'Todo Manager App';
+  inProgressCounter!: number;
 
-  counter?: number
+  setInprogressCounter(num: number): void {
+    this.inProgressCounter = num;
+  }
+
 
 }
