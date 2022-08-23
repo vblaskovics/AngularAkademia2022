@@ -72,9 +72,9 @@ A todo táblázat rendezhető legyen növekvő vagy csökkenő sorrendben a Prog
 
 - Ha a Sign Up-ra kattintunk, akkor megjelenik egy regisztrációs űrlap, és eltűnik minden más.
 - A form tartalma (szükséges validációkkal együtt):
--- First name ( nagybetűvel kezdődik )
--- Last name ( nagybetűvel kezdődik )
--- Username (kötelező, csak kisbetűt és számjegyet tartalmazhat, legalább 4 karaktert tartalmaz)
--- Zip ( 1000 és 9999 közé eső szám )
--- Password ( minimum 8 karaktert tartalmaz, tartalmazza valamelyiket: # @ . *
--- Password again ( egyeznie kell a Password-el )
+  - First name ( nagybetűvel kezdődik )
+  - Last name ( nagybetűvel kezdődik )
+  - Username (kötelező, csak kisbetűt és számjegyet tartalmazhat, legalább 4 karaktert tartalmaz)
+  - Zip ( 1000 és 9999 közé eső szám )
+  - Password ( minimum 8 karaktert tartalmaz, tartalmazza valamelyiket: # @ . *
+  - Password again ( egyeznie kell a Password-el )
