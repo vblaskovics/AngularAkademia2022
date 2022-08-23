@@ -1,0 +1,155 @@
+<div class="w-100">
+  <div class="w-75 m-auto p-4 bg-light">
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+      <h2>Order</h2>
+      <div class="inputfield-container">
+        <label for="nameField" class="form-label">Name*</label>
+        <input
+          placeholder="Your name.."
+          id="nameField"
+          formControlName="name"
+          type="text"
+          class="form-control"
+          [class.is-invalid]="name.touched && name.invalid"
+        />
+        <div *ngIf="name.touched && name.invalid" class="error-cont">
+          <p *ngIf="name.hasError('required')">This field is required</p>
+        </div>
+      </div>
+      <div class="inputfield-container">
+        <label for="addressField" class="form-label">Address*</label>
+        <input
+          placeholder="Your adress.."
+          id="addressField"
+          formControlName="address"
+          type="text"
+          class="form-control"
+          [class.is-invalid]="address.touched && address.invalid"
+        />
+        <div *ngIf="address.touched && address.invalid" class="error-cont">
+          <p *ngIf="address.hasError('required')">This field is required</p>
+        </div>
+      </div>
+      <div class="inputfield-container">
+        <label for="birthDateField" class="form-label">Address*</label>
+        <input
+          id="birthDateField"
+          formControlName="birthDate"
+          type="date"
+          class="form-control"
+          [class.is-invalid]="birthDate.touched && birthDate.invalid"
+        />
+        <div *ngIf="birthDate.touched && birthDate.invalid" class="error-cont">
+          <p *ngIf="birthDate.hasError('required')">This field is required</p>
+          <p *ngIf="birthDate.hasError('isNotOver18')">Nem mult el 18 eves</p>
+        </div>
+      </div>
+      <div class="inputfield-container">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="termsField"
+          formControlName="terms"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          <a href="/termsAndConditions" for="termsField" class="form-label"
+            >Terms and Contiticons*</a
+          >
+        </label>
+
+        <div *ngIf="terms.touched && terms.invalid" class="error-cont">
+          <p *ngIf="terms.hasError('required')">
+            You need to Accept the terms and conditions
+          </p>
+        </div>
+      </div>
+      <div class="inputfield-container">
+        <h3>Package types</h3>
+        <div class="types-container">
+          <div class="checkbox-container">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="typeS"
+              (change)="onHandlePackageType('S')"
+              [value]="selectedTypes.includes('S')"
+            />
+            <label class="form-check-label" for="typeS"> S </label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="typeM"
+              (change)="onHandlePackageType('M')"
+              [value]="selectedTypes.includes('M')"
+            />
+            <label class="form-check-label" for="typeM"> M </label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="typeL"
+              (change)="onHandlePackageType('L')"
+              [value]="selectedTypes.includes('L')"
+            />
+            <label class="form-check-label" for="typeL"> L </label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="typeXL"
+              (change)="onHandlePackageType('XL')"
+              [value]="selectedTypes.includes('XL')"
+            />
+            <label class="form-check-label" for="typeS"> XL </label>
+          </div>
+        </div>
+        <div
+          *ngIf="selectedTypes.length > 0"
+          class="inputfield-container w-100"
+        >
+          <select class="form-select w-50 m-auto" formControlName="package">
+            <option value=""></option>
+            <option *ngIf="selectedTypes.includes('S')" value="10">10</option>
+            <option *ngIf="selectedTypes.includes('S')" value="20">20</option>
+            <option *ngIf="selectedTypes.includes('M')" value="50">50</option>
+            <option *ngIf="selectedTypes.includes('M')" value="100">100</option>
+            <option *ngIf="selectedTypes.includes('L')" value="500">500</option>
+            <option *ngIf="selectedTypes.includes('L')" value="800">800</option>
+            <option *ngIf="selectedTypes.includes('XL')" value="2000">
+              2000
+            </option>
+          </select>
+        </div>
+        <div *ngIf="package.touched && package.invalid" class="error-cont">
+          <p *ngIf="terms.hasError('required')">You must choose a package</p>
+        </div>
+      </div>
+      <div class="inputfield-container w-75 m-auto">
+        <label for="billingAddressField" class="form-label"
+          >Billing Address</label
+        >
+        <input
+          placeholder="Your Billing adress.."
+          id="billingAddressField"
+          formControlName="billingAddress"
+          type="text"
+          class="form-control"
+          [class.is-invalid]="billingAddress.touched && billingAddress.invalid"
+        />
+        <div
+          *ngIf="billingAddress.touched && billingAddress.invalid"
+          class="error-cont"
+        >
+          <p *ngIf="billingAddress.hasError('billingAddressIsRequired')">
+            This field is required
+          </p>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

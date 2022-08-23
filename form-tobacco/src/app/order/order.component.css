@@ -1,0 +1,29 @@
+.checkbox-container{
+    display: inline-block;
+}
+.error-cont{
+    color: rgb(248, 62, 62);
+    font-weight: 600;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.types-container{
+    width: 50%;
+    margin: 15px auto ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.inputfield-container{
+    margin: 10px auto;
+    width: 75%;
+    padding: 10px;
+
+
+}
+.checkbox-container label {
+    
+    padding: 0 7px;
+}
