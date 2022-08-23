@@ -10,8 +10,77 @@
     />
   </div>
 
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
-  <p *ngIf="myForm.hasError('ageRestrictionError')" style="color:red">
-    You must be at least 18 years old to finish the order!  
+  <div class="pt-3 pb-3">
+    <input
+      formControlName="s"
+      type="checkbox"
+      name="checkbox_s"
+      id="checkbox_s"
+    />
+    <label class="m-2" for="checkbox_s">S</label>
+    <input
+      formControlName="m"
+      type="checkbox"
+      name="checkbox_m"
+      id="checkbox_m"
+    />
+    <label class="m-2" for="checkbox_m">M</label>
+    <input
+      formControlName="l"
+      type="checkbox"
+      name="checkbox_l"
+      id="checkbox_l"
+    />
+    <label class="m-2" for="checkbox_l">L</label>
+    <input
+      formControlName="xl"
+      type="checkbox"
+      name="checkbox_xl"
+      id="checkbox_xl"
+    />
+    <label class="m-2" for="checkbox_xl">XL</label>
+  </div>
+
+  <div>
+    <label class="form-label" for="package">Package</label>
+    <select
+      class="form-control"
+      name="package"
+      id="package"
+      formControlName="package"
+    >
+      <option *ngFor="let option of packageSelects" [value]="option.count">
+        {{ option.count }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label class="form-label" for="billingAddress">Billing address</label>
+    <input
+      class="form-control"
+      id="billingAddress"
+      type="text"
+      name="billingAddress"
+      formControlName="billingAddress"
+      [class.is-invalid]="
+        myForm.get('billingAddress')?.touched &&
+        myForm.hasError('requiredBillingAddress')
+      "
+    />
+    <p
+      *ngIf="
+        myForm.get('billingAddress')?.touched &&
+        myForm.hasError('requiredBillingAddress')
+      "
+      class="invalid-feedback"
+    >
+      Billing address is required!
+    </p>
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-4">Submit</button>
+  <p *ngIf="myForm.hasError('ageRestrictionError')" style="color: red">
+    You must be at least 18 years old to finish the order!
   </p>
 </form>
