@@ -1,10 +1,6 @@
-Angular akadémia kurzus 2022
+# Angular akadémia kurzus 2022
 
-Blaskovics Viktor
-
-# Házi feladat - 2. hét
-
-## ToDo Manager Webapp
+## ToDo Manager Webapp feladatok
 
 Hozz létre egy olyan alkalmazást, amiben táblázatos formában lehet ToDo-kat megjeleníteni!
 
@@ -71,3 +67,14 @@ Pl: ```In Progress ⏩```
 ### 8. Táblázat rendezhetősége Progress szerint
 
 A todo táblázat rendezhető legyen növekvő vagy csökkenő sorrendben a Progress oszlop szerint. (Pl. legyen egy kis gomb a Progress címke mellett a táblázat fejlécében, aminek két állapota lehet: ⬆️ vagy ⬇️)
+
+### 9. A navbar-ban legyen egy Sign Up gomb
+
+- Ha a Sign Up-ra kattintunk, akkor megjelenik egy regisztrációs űrlap, és eltűnik minden más.
+- A form tartalma (szükséges validációkkal együtt):
+  - First name ( nagybetűvel kezdődik )
+  - Last name ( nagybetűvel kezdődik )
+  - Username (kötelező, csak kisbetűt és számjegyet tartalmazhat, legalább 4 karaktert tartalmaz)
+  - Zip ( 1000 és 9999 közé eső szám )
+  - Password ( minimum 8 karaktert tartalmaz, tartalmazza valamelyiket: # @ . *
+  - Password again ( egyeznie kell a Password-el )
