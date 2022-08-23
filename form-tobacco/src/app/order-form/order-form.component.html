@@ -1,0 +1,77 @@
+<h2>Order</h2>
+
+<form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()" >
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      name="name"
+      type="text"
+      id="name"
+      class="form-control"
+      placeholder="Name"
+      formControlName="name"
+    />
+    <div *ngIf="name?.touched" class="alert alert-danger">Name is Required</div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input
+      type="text"
+      id="address"
+      class="form-control"
+      placeholder="Address"
+      formControlName="address"
+    />
+    <div *ngIf="address?.touched" class="alert alert-danger">
+      Address is Required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="birthdate">Birth Date</label>
+    <input
+      type="date"
+      id="birthdate"
+      class="form-control"
+      placeholder="Birth Date"
+      formControlName="birthdate"
+    />
+    <div *ngIf="form.hasError('ageRestrictionError')" style="color:red">
+      You must be atleast 18 year old to order
+    </div>
+  </div>
+  <hr />
+  <div class="form-group">
+    <div class="checkbox">
+      Package Type:
+      <br />
+      <label>
+        <input id=1 value="size" type="checkbox"/>S
+        <input id=2 value="size" type="checkbox"/>M
+        <input id=3 value="size" type="checkbox"/>L
+        <input id=4 value="size" type="checkbox"/>XL
+      </label>
+    </div>
+  </div>
+<div class="form-group">
+    <label for="packageDropdown"
+      >Select Package size  !
+      <br />
+      <select name="package" id="packageDropdown">
+        <option value=""></option>
+        <option *ngFor="let data of packageData" [ngValue]="data">
+        {{ data.size }}
+        </option>
+      </select>
+    </label>
+  <div class="checkbox">
+    Terms of Use
+    <br />
+    <input  type="checkbox" />Accept terms of use.
+    <div *ngIf="submitted && f.hasError('acceptTerms')" class="invalid-feedback">Accept Ts & Cs is required</div>
+  </div>
+</div>
+  <!-- <p>
+    {{ f.value | json}}
+  </p> -->
+  <button class="btn btn-primary" >Submit</button>
+</form>

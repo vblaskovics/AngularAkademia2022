@@ -52,6 +52,7 @@ export class LoginTodoReactive2Component implements OnInit {
   };
 
   submit(f: any) {
+    debugger
     console.log(f);
   }
 

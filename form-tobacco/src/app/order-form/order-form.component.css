@@ -1,0 +1,22 @@
+form {
+    margin: auto;
+    width: 900px;
+  }
+
+button {
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+h2 {
+  color: blueviolet;
+  text-align: center;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
