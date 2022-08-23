@@ -1,0 +1,17 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label class="form-label" for="birthdate">Date of birth</label>
+    <input
+      class="form-control"
+      id="birthdate"
+      type="date"
+      name="birthdate"
+      formControlName="birthdate"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  <p *ngIf="myForm.hasError('ageRestrictionError')" style="color:red">
+    You must be at least 18 years old to finish the order!  
+  </p>
+</form>
