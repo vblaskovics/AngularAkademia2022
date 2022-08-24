@@ -1,0 +1,20 @@
+
+
+<table>
+  <h2>Files</h2>
+  <tbody>
+    <tr>
+      <th>File name</th>
+      <th>Modify Date</th>
+      <th>File size</th>
+      <th>Exe</th>
+    </tr>
+    <tr>
+      <tr *ngFor="let d of itemArray">
+        <td> {{d.fileName }} </td>
+        <td> {{ currentDate| date}} </td>
+        <td> {{d.size}} </td>
+        <td> {{d.item}} </td>
+      </tr>
+  </tbody>
+</table>
