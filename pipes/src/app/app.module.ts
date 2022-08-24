@@ -10,6 +10,7 @@ import { CounterPipe } from './pipes/counter.pipe';
 import { FilesComponent } from './files/files.component';
 import { ExtensionPipe } from './pipes/extension.pipe';
 import { FileSizePipe } from './pipes/file-size.pipe';
+import { ElapsedSecondsPipe } from './pipes/elapsed-seconds.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FileSizePipe } from './pipes/file-size.pipe';
     CounterPipe,
     FilesComponent,
     ExtensionPipe,
-    FileSizePipe
+    FileSizePipe,
+    ElapsedSecondsPipe
   ],
   imports: [
     BrowserModule

@@ -8,6 +8,7 @@
         <th scope="col">Modify date</th>
         <th scope="col">File size</th>
         <th scope="col">Extension</th>
+        <th scope="col">Elapsed seconds</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
         <td>{{ file.modifyDate | date:'yyyy-MM-dd' }}</td>
         <td>{{ file.size | fileSize:unit }}</td>
         <td>{{ file.name | extension }}</td>
+        <td>{{ file.modifyDate | elapsedSeconds }}</td>
       </tr>
     </tbody>
   </table>
