@@ -1,0 +1,88 @@
+<h2 class="m-4">New Class</h2>
+<form [formGroup]="form">
+  <div class="container">
+    <div class="row">
+      <div class="col m-3">
+        <label class="form-label" for="className">Class name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="className"
+          formControlName="className"
+          [class.is-invalid]="className.touched && className.invalid"
+        />
+        <p *ngIf="className.touched && className.invalid" class="invalid-feedback" id="className"> Required * </p>
+      </div>
+
+      <div class="col m-3">
+        <label class="form-label" for="maxNumberOfStudents"
+          >Number of Students</label
+        >
+        <input
+          class="form-control"
+          type="text"
+          formControlName="maxNumberOfStudents"
+          id="maxNumberOfStudents"
+          [class.is-invalid]="maxNumberOfStudents.touched && maxNumberOfStudents.invalid"
+          />
+
+        <p *ngIf="maxNumberOfStudents.hasError('max')" class="invalid-feedback" id="maxNumberOfStudents"> Maximum number of students: 30.</p>
+        <p *ngIf="maxNumberOfStudents.hasError('required')" class="invalid-feedback" id="maxNumberOfStudents">  Required *</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <div
+      class="row"
+      *ngFor="let studentFormGroup of students.controls; let i = index"
+      [formGroup]="getStudents(studentFormGroup)"
+    >
+      <h4 class="m-2">Students</h4>
+
+      <div class="col m-3">
+        <label class="form-label" for="name">Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="name"
+          formControlName="name"
+        />
+      </div>
+
+      <div class="col m-3">
+        <label class="form-label" for="gender">Gender</label>
+        <select class="form-control">
+          <option>- Select -</option>
+          <option name="genderFemale" id="genderFemale">Female</option>
+          <option name="genderMale" id="genderMale">Male</option>
+        </select>
+      </div>
+
+      <div class="col m-3">
+        <label class="form-label" for="email">Email</label>
+        <input
+          class="form-control"
+          type="text"
+          id="email"
+          formControlName="email"
+        />
+      </div>
+
+      <div class="col">
+        <button class="btn btn-danger m-5 px-3" (click)="deleteStudent(i)">
+          Delete Student
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary m-4 px-3" (click)="addStudent()">
+    Add Student
+  </button>
+
+</form>
+
+<button class="btn btn-info m-4 px-3" (click)="onSubmit()" type="submit">
+  Submit
+</button>
