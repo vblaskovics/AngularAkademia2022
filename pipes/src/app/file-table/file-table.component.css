@@ -1,0 +1,8 @@
+button {
+  width: 20%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}

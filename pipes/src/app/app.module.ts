@@ -7,6 +7,10 @@ import { HelloPipe } from './pipes/hello.pipe';
 import { PipeCustomComponent } from './pipe-custom/pipe-custom.component';
 import { OrderPipe } from './pipes/order.pipe';
 import { CounterPipe } from './pipes/counter.pipe';
+import { FileTableComponent } from './file-table/file-table.component';
+import { FilenameConverterPipe } from './pipes/filename-converter.pipe';
+import { DateConverterPipe } from './pipes/date-converter.pipe';
+import { FilesizeConverterPipe } from './pipes/filesize-converter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { CounterPipe } from './pipes/counter.pipe';
     HelloPipe,
     PipeCustomComponent,
     OrderPipe,
-    CounterPipe
+    CounterPipe,
+    FileTableComponent,
+    FilenameConverterPipe,
+    DateConverterPipe,
+    FilesizeConverterPipe
   ],
   imports: [
     BrowserModule

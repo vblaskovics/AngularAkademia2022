@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row button-container mb-4">
+    <button class="btn btn-primary" (click)="onGBclicked()">GB</button>
+    <button class="btn btn-primary" (click)="onMBclicked()">MB</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">File name</th>
+        <th scope="col">Modify Date</th>
+        <th scope="col">File Size</th>
+        <th scope="col">Ext.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files">
+        <td>{{ file.name | filenameConverter:'name' }}</td>
+        <td>{{ file.modifyDate | dateConverter }}</td>
+        <td>{{ file.size | filesizeConverter:unit }}</td>
+        <td>{{ file.name | filenameConverter:'ext' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
