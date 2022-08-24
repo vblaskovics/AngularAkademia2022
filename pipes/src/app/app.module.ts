@@ -7,6 +7,9 @@ import { HelloPipe } from './pipes/hello.pipe';
 import { PipeCustomComponent } from './pipe-custom/pipe-custom.component';
 import { OrderPipe } from './pipes/order.pipe';
 import { CounterPipe } from './pipes/counter.pipe';
+import { FilesComponent } from './files/files.component';
+import { ExtensionPipe } from './pipes/extension.pipe';
+import { FileSizePipe } from './pipes/file-size.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { CounterPipe } from './pipes/counter.pipe';
     HelloPipe,
     PipeCustomComponent,
     OrderPipe,
-    CounterPipe
+    CounterPipe,
+    FilesComponent,
+    ExtensionPipe,
+    FileSizePipe
   ],
   imports: [
     BrowserModule

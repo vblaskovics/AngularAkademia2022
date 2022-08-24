@@ -1,0 +1,27 @@
+<div class="container m-4">
+  <button class="btn btn-primary m-3" (click)="isGb = true">Gb</button>
+  <button class="btn btn-primary m-3" (click)="isGb = false">Mb</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">File</th>
+        <th scope="col">Modify date</th>
+        <th scope="col">File size</th>
+        <th scope="col">Extension</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files">
+        <td>{{ file.name | extension:false }}</td>
+        <td>{{ file.modifyDate | date:'yyyy-MM-dd' }}</td>
+        <ng-container *ngIf="isGb">
+          <td>{{ file.size | fileSize:'Gb' }}</td>
+        </ng-container>
+        <ng-container *ngIf="!isGb">
+          <td>{{ file.size | fileSize }}</td>
+        </ng-container>
+        <td>{{ file.name | extension }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
