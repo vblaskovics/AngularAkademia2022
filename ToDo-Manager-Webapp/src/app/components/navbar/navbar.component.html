@@ -1,7 +1,8 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">Flora's Todo</a>
+  <a class="navbar-brand" href="#" (click)="onSignInClicked(false)">Flora's Todo</a>
 
-  <form #navbarForm="ngForm" (ngSubmit)="addTodo(navbarForm.value)" class="navbarForm">
+  <form [formGroup]="todoTitleForm" class="navbarForm">
+    <button class="btn btn-primary m-4" (click)="onSignInClicked(true)">Sign in</button>
     <div class="newTodoInputContainer">
       <label for="newTodoInput">New Todo:</label>
       <input
@@ -10,10 +11,20 @@
         class="form-control"
         name="todoTitle"
         placeholder="Title of new Todo"
-        ngModel
+        formControlName="title"
+        [class.is-invalid]="todoTitle.invalid && todoTitle.touched"
       />
+      <small class="text-danger" *ngIf="todoTitle.hasError('required') && todoTitle.touched">
+        Title name is required
+      </small>
+      <small class="text-danger" *ngIf="todoTitle.hasError('minlength') && todoTitle.dirty">
+        Title name must longer than or equal to 4 chars
+      </small>
+      <small class="text-danger" *ngIf="todoTitle.hasError('maxlength') && todoTitle.dirty">
+        Title name must shorter than or equal to 15 chars
+      </small>
     </div>
-    <button class="btn">➕</button>
+    <button class="btn" (click)="handleNewTodoForm()">➕</button>
   </form>
 
   <button class="btn btn-warning">In progress: {{ inProgressCounter }}</button>

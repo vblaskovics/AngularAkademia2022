@@ -1,0 +1,171 @@
+<form
+  [formGroup]="orderForm"
+  (ngSubmit)="onSubmit()"
+  class="col-xl-6 m-auto mt-5"
+>
+  <h2 class="">Order</h2>
+  <div class="mb-3">
+    <label class="form-label" for="name">Name*</label>
+    <input
+      [class.is-invalid]="name.invalid && name.touched"
+      id="name"
+      class="form-control"
+      type="text"
+      name="name"
+      placeholder="Name"
+      formControlName="name"
+    />
+    <small class="text-danger" *ngIf="name.hasError('pattern') && name.touched"
+      >Just letters and ' ', '.', '-' characters are allowed</small
+    >
+    <small class="text-danger" *ngIf="name.hasError('required') && name.touched"
+      >Required field</small
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="name">Address*</label>
+    <input
+      [class.is-invalid]="address.invalid && address.touched"
+      id="address"
+      class="form-control"
+      type="text"
+      name="address"
+      placeholder="Address"
+      formControlName="address"
+    />
+    <small
+      class="text-danger"
+      *ngIf="address.hasError('minlength') && address.touched"
+      >Minimum length: 10 characters</small
+    >
+    <small
+      class="text-danger"
+      *ngIf="address.hasError('required') && address.touched"
+      >Required field</small
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="birthDate">Birth Date*</label>
+    <input
+      [class.is-invalid]="birthDate.invalid && birthDate.touched"
+      id="birthDate"
+      class="form-control"
+      type="date"
+      name="birthDate"
+      placeholder="Birthdate"
+      formControlName="birthDate"
+    />
+    <small class="text-danger" *ngIf="birthDate.hasError('invalidAge')"
+      >You must be older than 18</small
+    >
+    <small
+      class="text-danger"
+      *ngIf="birthDate.hasError('required') && birthDate.touched"
+      >Required field</small
+    >
+  </div>
+
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="agreeTerms"
+      formControlName="agreeTerms"
+    />
+    <label class="form-check-label" for="agreeTerms">
+      Agree To Terms and Conditions
+    </label>
+    <p class="text-danger" *ngIf="agreeTerms.invalid && agreeTerms.touched">
+      Required field
+    </p>
+  </div>
+
+  <div class="mt-5">
+    <h5>Package Types</h5>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="sizeS"
+        formControlName="sizeS"
+      />
+      <label class="form-check-label" for="sizeS">S</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="sizeM"
+        formControlName="sizeM"
+      />
+      <label class="form-check-label" for="sizeM">M</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="sizeL"
+        formControlName="sizeL"
+      />
+      <label class="form-check-label" for="sizeL">L</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="sizeXL"
+        formControlName="sizeXL"
+      />
+      <label class="form-check-label" for="sizeXL">XL</label>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li *ngIf="sizeS.value"><a class="dropdown-item" href="#">10</a></li>
+      <li *ngIf="sizeS.value"><a class="dropdown-item" href="#">20</a></li>
+      <li *ngIf="sizeM.value"><a class="dropdown-item" href="#">50</a></li>
+      <li *ngIf="sizeM.value"><a class="dropdown-item" href="#">100</a></li>
+      <li *ngIf="sizeL.value"><a class="dropdown-item" href="#">500</a></li>
+      <li *ngIf="sizeL.value"><a class="dropdown-item" href="#">800</a></li>
+      <li *ngIf="sizeXL.value"><a class="dropdown-item" href="#">2000</a></li>
+    </ul>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="name">Billing Address*</label>
+    <input
+      [class.is-invalid]="address.invalid && address.touched"
+      id="address"
+      class="form-control"
+      type="text"
+      name="address"
+      placeholder="Address"
+      formControlName="address"
+    />
+    <small
+      class="text-danger"
+      *ngIf="address.hasError('minlength') && address.touched"
+      >Minimum length: 10 characters</small
+    >
+    <small
+      class="text-danger"
+      *ngIf="address.hasError('required') && address.touched"
+      >Required field</small
+    >
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

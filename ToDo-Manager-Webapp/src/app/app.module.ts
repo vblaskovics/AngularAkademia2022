@@ -6,7 +6,8 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoItemInfoComponent } from './components/todo-item-info/todo-item-info.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignInFormComponent } from './components/sign-in-form/sign-in-form.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,11 @@ import { FormsModule } from '@angular/forms';
     TodoItemComponent,
     TodoListComponent,
     TodoItemInfoComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignInFormComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

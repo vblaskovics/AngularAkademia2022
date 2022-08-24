@@ -1,0 +1,68 @@
+<h2>New Class</h2>
+
+<form [formGroup]="classForm">
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col">
+        <label class="form-label" for="name">Name</label>
+        <input
+          class="form-control"
+          id="name"
+          formControlName="name"
+          type="text"
+        />
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col">
+        <label class="form-label" for="number">Number of Students</label>
+        <input
+          class="form-control"
+          id="number"
+          formControlName="number"
+          type="number"
+        />
+      </div>
+    </div>
+    <div
+      class="row"
+      *ngFor="let studentFormGroup of students.controls; let i=index"
+      [formGroup]="getStudent(studentFormGroup)"
+    >
+      <div class="col">
+        <label class="form-label" for="studentName">Student Name</label>
+        <input
+          class="form-control"
+          id="studentName"
+          formControlName="studentName"
+          type="text"
+        />
+      </div>
+      <div class="col">
+        <label class="form-label" for="gender">Gender</label>
+        <input
+          class="form-control"
+          id="gender"
+          formControlName="gender"
+          type="text"
+        />
+      </div>
+      <div class="col">
+        <label class="form-label" for="email">Email</label>
+        <input
+          class="form-control"
+          id="email"
+          formControlName="email"
+          type="text"
+        />
+      </div>
+      <div class="col">
+        <button class="btn btn-light mt-4" (click)="deleteStudent(i)">❌</button>
+      </div>
+    </div>
+  </div>
+  <p *ngIf="classForm.hasError('studentsNumberOverMaximum')">Maximum student number is: 30</p>
+  <button class="btn btn-success d-block mb-4" (click)="addStudent()">Add Student</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+</form>
+

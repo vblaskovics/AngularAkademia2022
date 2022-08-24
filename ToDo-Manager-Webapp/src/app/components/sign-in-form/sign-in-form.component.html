@@ -1,0 +1,92 @@
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="col-xl-8 m-auto">
+  <div class="mb-3">
+    <label class="form-label" for="firstName">Firstname</label>
+    <input
+      [class.is-invalid]="firstName.invalid && firstName.touched"
+      id="firstName"
+      class="form-control"
+      type="text"
+      name="firstName"
+      placeholder="Firstname"
+      formControlName="firstName"
+    />
+    <small
+      class="text-danger"
+      *ngIf="firstName.hasError('pattern') && firstName.touched"
+      >1 uppercase letter any 1 or more lowercase letter</small
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="lastName">Lastname</label>
+    <input
+      [class.is-invalid]="lastName.invalid && lastName.touched"
+      id="lastName"
+      class="form-control"
+      type="text"
+      name="lastName"
+      placeholder="Lastname"
+      formControlName="lastName"
+    />
+    <small
+      class="text-danger"
+      *ngIf="lastName.hasError('pattern') && lastName.touched"
+      >1 uppercase letter any 1 or more lowercase letter</small
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="userName">Username</label>
+    <input
+      [class.is-invalid]="userName.invalid && userName.touched"
+      id="userName"
+      class="form-control"
+      type="text"
+      name="userName"
+      placeholder="Username"
+      formControlName="username"
+    />
+    <small
+      class="text-danger"
+      *ngIf="userName.hasError('pattern') && userName.touched"
+      >Just lowercase letters and numbers, minimum length: 2</small
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="zipName">Zip</label>
+    <input
+      [class.is-invalid]="zipName.invalid && zipName.touched"
+      id="zipName"
+      class="form-control"
+      type="number"
+      name="zipName"
+      placeholder="Zip code"
+      formControlName="zip"
+    />
+    <small
+      class="text-danger"
+      *ngIf="zipName.hasError('pattern') && zipName.touched"
+      >Zip between 1000-9999</small
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="password">Password</label>
+    <input
+      [class.is-invalid]="password.invalid && password.touched"
+      id="password"
+      class="form-control"
+      type="password"
+      name="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <small
+      class="text-danger"
+      *ngIf="password.hasError('pattern') && password.touched"
+      >Password must contain 8 characters and at least one number, one letter
+      and one unique character such as !#$%&?</small
+    >
+  </div>
+</form>
