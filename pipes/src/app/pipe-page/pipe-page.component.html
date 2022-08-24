@@ -1,0 +1,16 @@
+<p>{{user}}</p>
+
+<h2>{{user | uppercase}}</h2>
+<h2>{{user | lowercase}}</h2>
+<h2>{{currentDate | date: 'longTime'}}</h2>
+<h2>{{currentDate | date: 'yyyy/M/d'}}</h2>
+<h2>{{ 300 | currency: 'EUR':'code'}}</h2>
+<h2>{{ 0.25 | percent}}</h2>
+<h2>{{ "szia" | hello | uppercase}}</h2>
+<h2>{{ "Nézz le rááám ó istenem" | order: "áóáóá" }}</h2>
+
+
+<div>
+  <button (click)="showcounter = !showcounter">Toggle counter</button>
+  <h2 *ngIf="showcounter">{{'Hello' | counter}}</h2>
+</div>
