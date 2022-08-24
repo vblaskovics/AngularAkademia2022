@@ -64,6 +64,38 @@
         </div>
       </div>
       <div class="inputfield-container">
+        <h3>package types 2</h3>
+        <div class="types-container">
+          <div *ngFor="let type of types" class="checkbox-container">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [id]="'type' + type"
+              (change)="onHandlePackageType2(type)"
+            />
+            <label class="form-check-label" [for]="'type' + type">
+              {{ type.name }}
+            </label>
+          </div>
+        </div>
+        <div
+          *ngIf="selectedTypes2.length > 0"
+          class="inputfield-container w-100"
+        >
+          <select class="form-select w-50 m-auto" formControlName="package">
+            <option value=""></option>
+            <ng-container *ngFor="let type of selectedTypes2">
+              <option *ngFor="let value of type.values" [value]="value">
+                {{ value }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+        <div *ngIf="package.touched && package.invalid" class="error-cont">
+          <p *ngIf="terms.hasError('required')">You must choose a package</p>
+        </div>
+      </div>
+      <!-- <div class="inputfield-container">
         <h3>Package types</h3>
         <div class="types-container">
           <div class="checkbox-container">
@@ -127,7 +159,7 @@
         <div *ngIf="package.touched && package.invalid" class="error-cont">
           <p *ngIf="terms.hasError('required')">You must choose a package</p>
         </div>
-      </div>
+      </div> -->
       <div class="inputfield-container w-75 m-auto">
         <label for="billingAddressField" class="form-label"
           >Billing Address</label

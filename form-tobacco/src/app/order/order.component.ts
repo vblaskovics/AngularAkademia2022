@@ -50,6 +50,25 @@ function billingAddressIsRequired(control: FormControl): {
 export class OrderComponent implements OnInit {
   orderForm: FormGroup;
   selectedTypes: string[] = [];
+  selectedTypes2: any[] = [];
+  types = [
+    {
+      name: 'S',
+      values: [10, 20, 30, 40],
+    },
+    {
+      name: 'M',
+      values: [50, 100],
+    },
+    {
+      name: 'L',
+      values: [500, 800],
+    },
+    {
+      name: 'XL',
+      values: [2000],
+    },
+  ];
   constructor(private fb: FormBuilder) {
     this.orderForm = fb.group({
       name: ['', [Validators.required]],
@@ -99,5 +118,13 @@ export class OrderComponent implements OnInit {
     } else {
       this.selectedTypes.push(type);
     }
+  }
+  onHandlePackageType2(type: any) {
+    if (this.selectedTypes2.includes(type)) {
+      this.selectedTypes2.splice(this.selectedTypes2.indexOf(type), 1);
+    } else {
+      this.selectedTypes2.push(type);
+    }
+    console.log(this.selectedTypes2);
   }
 }
