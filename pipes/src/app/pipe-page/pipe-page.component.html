@@ -1,0 +1,15 @@
+<h2>{{ user }}</h2>
+<h2>{{ user | uppercase }}</h2>
+<h2>{{ user | lowercase }}</h2>
+<h2>{{ currentDate | date: "hh:mm" }}</h2>
+<h2>{{ 300 | currency: "EUR" }}</h2>
+<h2>{{ 30.32321321321321 | number: "3.0-4" }}</h2>
+<h2>{{ 0.3288 | percent }}</h2>
+<h2>{{ "feri" | hello | uppercase }}</h2>
+<h2>{{ "feri a menő-a feri a király" | order: "-" }}</h2>
+
+<div *ngIf="showCounter">
+  <h2>{{ "hello" | counter }}</h2>
+  <h2>{{ "hello" | counter }}</h2>
+</div>
+<button (click)="showCounter = !showCounter">dsdas</button>
