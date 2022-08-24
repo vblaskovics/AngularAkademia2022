@@ -1,0 +1,12 @@
+<h2>{{ username | hello }}</h2>
+<h2>{{ username | hello | uppercase }}</h2>
+<h2>
+  {{ "Ez egy rövid mondat!" | order }}
+</h2>
+<h2>
+  {{ "Ez egy rövid mondat!" | order: "-" }}
+</h2>
+<div *ngIf="showCounter">
+  <h2>{{ "hello" | counter }}</h2>
+</div>
+<button (click)="showCounter = !showCounter">Toggle counter</button>
