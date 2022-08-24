@@ -1,6 +1,6 @@
 <div class="container m-4">
-  <button class="btn btn-primary m-3" (click)="isGb = true">Gb</button>
-  <button class="btn btn-primary m-3" (click)="isGb = false">Mb</button>
+  <button class="btn btn-primary m-3 px-4" (click)="unit='Gb'">Gb</button>
+  <button class="btn btn-primary m-3 px-4" (click)="unit='Mb'">Mb</button>
   <table class="table">
     <thead>
       <tr>
@@ -14,12 +14,7 @@
       <tr *ngFor="let file of files">
         <td>{{ file.name | extension:false }}</td>
         <td>{{ file.modifyDate | date:'yyyy-MM-dd' }}</td>
-        <ng-container *ngIf="isGb">
-          <td>{{ file.size | fileSize:'Gb' }}</td>
-        </ng-container>
-        <ng-container *ngIf="!isGb">
-          <td>{{ file.size | fileSize }}</td>
-        </ng-container>
+        <td>{{ file.size | fileSize:unit }}</td>
         <td>{{ file.name | extension }}</td>
       </tr>
     </tbody>

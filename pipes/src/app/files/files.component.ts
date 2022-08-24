@@ -24,7 +24,7 @@ export class FilesComponent implements OnInit {
     }
   ];
 
-  isGb = false;
+  unit='Gb';
 
   constructor() {}
 
