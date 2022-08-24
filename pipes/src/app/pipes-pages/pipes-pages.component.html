@@ -1,0 +1,20 @@
+<p> {{ user }} </p>
+
+<p> {{ user | uppercase }} </p>
+<p> {{ user | lowercase }} </p>
+<hr>
+<h5> {{ currentDate}} </h5>
+<h5> {{ currentDate | date }} </h5>
+<h5> {{ currentDate | date:'short' }} </h5>
+<h5> {{ currentDate | date:'hh:mm' }} </h5>
+<hr>
+<p > {{ 300 | currency }}</p>
+<p > {{ 300 | currency: 'EUR' }}</p>
+<p > {{ 300 | currency: 'EUR':'code' }}</p>
+<hr>
+<p> {{ 300.57654323456 }} </p>
+<p> {{ 300.57654323456 | number }} </p>
+<p> {{ 300.57654323456 | number:'3.0-4' }} </p>
+<p> {{ 300.57654323456 | number:'4.0-8' }} </p>
+<hr>
+<p> {{ 0.25 | percent }} </p>

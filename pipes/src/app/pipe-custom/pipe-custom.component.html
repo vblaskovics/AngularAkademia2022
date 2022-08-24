@@ -1,0 +1,17 @@
+<p>{{ username | helloPipe }} </p>
+<p>{{ username | helloPipe | uppercase }} </p>
+
+<hr>
+
+<p>{{ 'Ez egy mondat' | orderPipe }} </p>
+<p>{{ 'Ez egy mondat' | orderPipe: '-' }} </p>
+
+<hr>
+<div *ngIf="showCounter">
+    <p>{{ 'Ez egy mondat' | counterPipe }} </p>
+</div>
+
+<button (click)="showCounter =!showCounter"> Toggle Counter</button>
+
+
+
