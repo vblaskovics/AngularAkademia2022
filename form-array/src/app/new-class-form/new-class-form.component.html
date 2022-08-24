@@ -1,0 +1,205 @@
+<h2>New Class Form</h2>
+
+<form
+  class="border border-info border-1 rounded p-3"
+  [formGroup]="newClassForm"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col p-5">
+        <div class="row">
+          <label for="classNameInput" class="form-label">Class Name</label>
+          <input
+            id="classNameInput"
+            type="text"
+            class="form-control"
+            formControlName="className"
+            [class.is-invalid]="className.touched && !className.valid"
+          />
+        </div>
+
+        <div
+          [class.is-invalid]="className.touched && !className.valid"
+          class="error-container"
+        >
+          <p *ngIf="className.touched && className.hasError('required')">
+            Ezt a mezőt kötelező kitölteni
+          </p>
+        </div>
+      </div>
+      <div class="col p-5">
+        <div class="row">
+          <label for="classMaxInput" class="form-label"
+            >Max Number of Students</label
+          >
+          <input
+            id="classMaxInput"
+            type="number"
+            class="form-control"
+            formControlName="maxNumberOfStudents"
+            [class.is-invalid]="
+              maxNumberOfStudents.touched && !maxNumberOfStudents.valid
+            "
+          />
+        </div>
+
+        <div
+          [class.is-invalid]="
+            maxNumberOfStudents.touched && !maxNumberOfStudents.valid
+          "
+          class="error-container"
+        >
+          <p
+            *ngIf="
+              maxNumberOfStudents.touched &&
+              maxNumberOfStudents.hasError('required')
+            "
+          >
+            Ezt a mezőt kötelező kitölteni
+          </p>
+          <p
+            *ngIf="
+              maxNumberOfStudents.touched && maxNumberOfStudents.hasError('min')
+            "
+          >
+            Nem lehet ez az érték kevesebb mint 0
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="row m-3"
+      *ngFor="let studentGroup of students.controls; let i = index"
+      [formGroup]="castToFormGroup(studentGroup)"
+    >
+      <h3>Student {{ i + 1 }}</h3>
+
+      <div class="row container-fluid">
+        <div class="col">
+          <label for="studentNameControl" class="form-label"
+            >Student Name</label
+          >
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="studentNameControl"
+            [class.is-invalid]="
+              studentGroup.get('name')?.touched &&
+              !studentGroup.get('name')?.valid
+            "
+          />
+          <div
+            *ngIf="
+              studentGroup.get('name')?.touched &&
+              !studentGroup.get('name')?.valid
+            "
+            class="error-container"
+          >
+            <p
+              *ngIf="
+                studentGroup.get('name')?.touched &&
+                studentGroup.get('name')?.hasError('required')
+              "
+            >
+              Ezt a mezőt kötelező kitölteni
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <label for="studentEmailInput" class="form-label"
+            >Student Email</label
+          >
+          <input
+            formControlName="email"
+            type="text"
+            class="form-control"
+            id="studentEmailInput"
+            [class.is-invalid]="
+              studentGroup.get('email')?.touched &&
+              !studentGroup.get('email')?.valid
+            "
+          />
+          <div
+            *ngIf="
+              studentGroup.get('email')?.touched &&
+              !studentGroup.get('email')?.valid
+            "
+            class="error-container"
+          >
+            <p
+              *ngIf="
+                studentGroup.get('email')?.touched &&
+                studentGroup.get('email')?.hasError('required')
+              "
+            >
+              Ezt a mezőt kötelező kitölteni
+            </p>
+            <p
+              *ngIf="
+                studentGroup.get('email')?.touched &&
+                studentGroup.get('email')?.hasError('pattern')
+              "
+            >
+              Nem megfelelő fomátumu az email
+            </p>
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="studentGenderInput" class="form-label"
+            >Student Gender</label
+          >
+          <input
+            formControlName="gender"
+            type="text"
+            class="form-control"
+            id="studentGenderInput"
+            [class.is-invalid]="
+              studentGroup.get('gender')?.touched &&
+              !studentGroup.get('gender')?.valid
+            "
+          />
+          <div
+            *ngIf="
+              studentGroup.get('gender')?.touched &&
+              !studentGroup.get('gender')?.valid
+            "
+            class="error-container"
+          >
+            <p
+              *ngIf="
+                studentGroup.get('gender')?.touched &&
+                studentGroup.get('gender')?.hasError('required')
+              "
+            >
+              Ezt a mezőt kötelező kitölteni
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <button
+            (click)="onRemoveStudentAt(i)"
+            class="btn btn-sm btn-danger mt-4"
+          >
+            Destroy
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="newClassForm.hasError('toMuchStudent')" class="error-container">
+      A tanulók száma több, mint a megengedett
+    </div>
+    <button
+      (click)="onAddStudent()"
+      class="m-3 btn btn-sm"
+      [ngClass]="
+        !newClassForm.hasError('toMuchStudent') ? 'btn-success' : 'btn-warning'
+      "
+    >
+      Add Student
+    </button>
+  </div>
+  <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
+</form>
