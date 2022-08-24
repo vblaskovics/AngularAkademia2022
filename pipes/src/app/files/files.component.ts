@@ -18,13 +18,13 @@ export class FilesComponent implements OnInit {
       size: 3735859501,
     },
     {
-      name: 'letter.docx',
+      name: 'letter.v2.docx',
       modifyDate: new Date('2022-05-01').getTime(),
       size: 3152285,
     }
   ];
 
-  unit='Gb';
+  unit='MB';
 
   constructor() {}
 

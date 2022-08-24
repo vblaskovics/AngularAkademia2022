@@ -5,11 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FileSizePipe implements PipeTransform {
 
-  transform(value: number, type:string='Mb'): string {
-    if (type === 'Mb') {
-      return `${Math.floor(value / 1024 / 1024)} Mb`;
-    } else if (type === 'Gb') {
-      return `${Math.floor((value / 1024 / 1024 / 1024) * 100) / 100} Gb`;
+  transform(value: number, type:string='MB'): string {
+    if (type === 'MB') {
+      return `${Math.floor(value / 1024 / 1024)} MB`;
+    } else if (type === 'GB') {
+      return `${Math.floor((value / 1024 / 1024 / 1024) * 100) / 100} GB`;
     }
     return `${value}`;
   }

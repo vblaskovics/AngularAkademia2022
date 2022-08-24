@@ -4,7 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'extension',
 })
 export class ExtensionPipe implements PipeTransform {
-  transform(filename: string, extension: boolean=true): string {
-    return filename.split('.')[extension ? 1 : 0];
+  transform(filename: string, extension: boolean = true): string {
+    return extension
+      ? filename.substring(filename.lastIndexOf('.') + 1)
+      : filename.substring(0, filename.lastIndexOf('.'));
   }
 }
