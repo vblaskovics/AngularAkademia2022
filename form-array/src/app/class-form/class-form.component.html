@@ -1,0 +1,67 @@
+<h2>New Class</h2>
+
+<form [formGroup]="classForm" >
+  <div class="container my-4">
+    <div class="row">
+      <div class="col">
+        <label class="form-label" for="classNameInput">Class Name</label>
+        <input type="text" class="form-control" id="classNameInput" formControlName="className"
+        [class.is-invalid]="classForm.get('className')?.touched && classForm.get('className')?.hasError('required')">
+        <p *ngIf="classForm.get('className')?.hasError('required')" class="invalid-feedback">
+          Required field!
+        </p>
+      </div>
+      <div class="col">
+        <label class="form-label" for="maxStudentsInput">Max number of students</label>
+        <input type="text" class="form-control" id="maxStudentsInput" formControlName="maxStudents"
+        [class.is-invalid]="classForm.get('maxStudents')?.touched && classForm.get('maxStudents')?.hasError('required')">
+        <p *ngIf="classForm.get('maxStudents')?.hasError('required')" class="invalid-feedback">
+          Required field!
+        </p>
+      </div>
+    <div class="row mt-2">
+      <div class="row" *ngFor="let studentFormGroup of students.controls; let i = index"
+         [formGroup]="getStudent(studentFormGroup)">
+        <div class="col">
+          <label class="form-label" for="studentNameInput">Name of Student</label>
+          <input type="text" class="form-control" id="studentNameInput" formControlName="studentName"
+          [class.is-invalid]="studentFormGroup.get('studentName')?.touched && studentFormGroup.get('studentName')?.hasError('required')">
+          <p *ngIf="studentFormGroup.get('studentName')?.hasError('required')" class="invalid-feedback">
+            Required field!
+          </p>
+        </div>
+        <div class="col">
+          <label class="form-label" for="genderInput">Gender of Student</label>
+          <input type="text" class="form-control" id="genderInput" formControlName="gender"
+          [class.is-invalid]="studentFormGroup.get('gender')?.touched && studentFormGroup.get('gender')?.hasError('required')">
+          <p *ngIf="studentFormGroup.get('gender')?.hasError('required')" class="invalid-feedback">
+            Required field!
+          </p>
+        </div>
+        <div class="col">
+          <label class="form-label" for="emailInput">Email of Student</label>
+          <input type="text" class="form-control" id="emailInput" formControlName="email"
+          [class.is-invalid]="studentFormGroup.get('email')?.touched && studentFormGroup.get('email')?.hasError('required')">
+          <p *ngIf="studentFormGroup.get('email')?.hasError('required')" class="invalid-feedback">
+            Required field!
+          </p>
+        </div>
+        <div class="col">
+          <button class="btn btn-danger mt-4" (click)="deleteStudent(i)">Delete</button>
+        </div>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-primary mt-4" (click)="addStudent()">Add Student</button>
+      </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <button class="btn btn-primary mb-4" type="submit" (click)="onSubmit()" >Submit</button>
+        <p *ngIf="classForm.hasError('validateStudentsNumber')" style="color: red">
+          Number of students cannot be more than max number of students!
+        </p>
+      </div>
+    </div>
+  </div>
+</form>

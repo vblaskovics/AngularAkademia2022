@@ -1,0 +1,162 @@
+<div class="row m-3 justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title text-center">Order tobacco</h2>
+
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label class="form-label" for="name">Name*</label>
+            <input
+              id="name"
+              class="form-control"
+              type="text"
+              name="name"
+              placeholder="Name"
+              formControlName="name"
+              [class.is-invalid]="name?.touched && name?.invalid"
+            />
+            <p
+              class="invalid-feedback"
+              *ngIf="name?.touched && name?.hasError('required')"
+            >
+              Required field
+            </p>
+            <p
+              class="invalid-feedback"
+              *ngIf="name?.touched && name?.hasError('pattern')"
+            >
+              Required pattern: contains only letters, starts with capital, min
+              2 letters.
+            </p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="address">Address*</label>
+            <input
+              id="address"
+              class="form-control"
+              type="text"
+              name="address"
+              placeholder="Address"
+              formControlName="address"
+              [class.is-invalid]="address?.touched && address?.invalid"
+            />
+            <p
+              class="invalid-feedback"
+              *ngIf="address?.touched && address?.hasError('required')"
+            >
+              Required field
+            </p>
+            <p
+              class="invalid-feedback"
+              *ngIf="address?.touched && address?.hasError('pattern')"
+            >
+              Required pattern: contains only letters and digits.
+            </p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="birthDate">Date of birth*</label>
+            <input
+              id="birthDate"
+              class="form-control"
+              type="date"
+              name="birthDate"
+              placeholder="Date of birth"
+              formControlName="birthDate"
+              [class.is-invalid]="address?.touched && address?.invalid"
+            />
+            <p
+              class="invalid-feedback"
+              *ngIf="address?.touched && address?.hasError('required')"
+            >
+              Required field
+            </p>
+          </div>
+          <div class="mb-3 form-group" id="checkboxes">
+            <label for="checkboxes">Package Types</label><br />
+
+            <div
+              class="form-check form-check-inline"
+              *ngFor="let type of typesOfPackages"
+              name="packageTypes"
+              formControlName="packageTypes"
+              (change)="changeType($event)"
+            >
+              <input id="type" class="form-check-input" type="checkbox" />{{
+                type
+              }}
+            </div>
+          </div>
+          <div class="mb-3">
+            <select
+              class="form-select form-select-lg"
+              name="package"
+              formControlName="package"
+              (change)="changeSize($event)"
+            >
+              <option value="">Choose Package*</option>
+              <option *ngFor="let k of objectValues(packageSizes)">{{packageSizes.v}}
+                <!-- {{packageSizes[k].value}} -->
+                <!-- <span *ngIf="packageTypes?.value"></span> -->
+                <!-- <option *ngFor="let size of k"> {{ size }} </option> -->
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="billingAddress"
+              >Billing Address*</label
+            >
+            <input
+              id="billingAddress"
+              class="form-control"
+              type="text"
+              name="billingAddress"
+              placeholder="Billing Address"
+              formControlName="billingAddress"
+              [class.is-invalid]="
+                billingAddress?.touched && billingAddress?.invalid
+              "
+            />
+            <p
+              class="invalid-feedback"
+              *ngIf="
+                billingAddress?.touched && billingAddress?.hasError('required')
+              "
+            >
+              Required field
+            </p>
+            <p
+              class="invalid-feedback"
+              *ngIf="
+                billingAddress?.touched && billingAddress?.hasError('pattern')
+              "
+            >
+              Required pattern: contains only letters and digits.
+            </p>
+          </div>
+          <div class="mb-3 form-check">
+            <label class="form-check-label" for="terms"
+              >I accept Terms and Conditions*</label
+            >
+            <input
+              id="terms"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              name="terms"
+              formControlName="terms"
+              required
+            />
+            <p class="invalid-feedback">You must accept before submitting.</p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-2">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
