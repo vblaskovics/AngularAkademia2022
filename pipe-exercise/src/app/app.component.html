@@ -1,20 +1,23 @@
 
 
-<table>
+<button class="btn btn-primary">Megabyte</button>
+<button class="btn btn-primary">Gigabyte</button>
+
+<table class="table">
   <h2>Files</h2>
   <tbody>
     <tr>
       <th>File name</th>
       <th>Modify Date</th>
       <th>File size</th>
-      <th>Exe</th>
+      <th>Extension</th>
     </tr>
     <tr>
       <tr *ngFor="let d of itemArray">
         <td> {{d.fileName }} </td>
-        <td> {{ currentDate| date}} </td>
-        <td> {{d.size}} </td>
-        <td> {{d.item}} </td>
+        <td> {{ d.modifyDate | date}} </td>
+        <td> {{d.size | fileSize  }} </td>
+        <td>  </td>
       </tr>
   </tbody>
 </table>
