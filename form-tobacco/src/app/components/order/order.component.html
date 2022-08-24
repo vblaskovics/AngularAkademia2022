@@ -1,0 +1,98 @@
+<h2>Order:</h2>
+
+<form class="card text-white bg-dark" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label" for="nameInput">Name*</label>
+        <input 
+            type="text"
+            class="form-control"
+            [class.is-invalid]="name.invalid && name.touched && name.hasError('required')"
+            id="nameInput"
+            name="name"
+            placeholder="Name"
+            formControlName="name">
+    </div>
+    <p *ngIf="address.invalid && address.touched && address.hasError('required')">Required field!</p>
+
+    <div class="mb-3">
+        <label class="form-label" for="addressInput">Address*</label>
+        <input 
+            type="text"
+            class="form-control"
+            [class.is-invalid]="address.invalid && address.touched && address.hasError('required')"
+            id="addressInput"
+            name="address"
+            placeholder="Address"
+            formControlName="address">
+    </div>
+    <p *ngIf="address.invalid && address.touched && address.hasError('required')">Required field!</p>
+
+    <!-- <div *ngIf="!isHeavyPackage">
+        <div class="mb-3">
+            <label class="form-label" for="billingAddressInput">Billing Address</label>
+            <input 
+                type="text"
+                class="form-control"
+
+                id="billingAddressInput"
+                name="billingAddress"
+                placeholder="Billing Address"
+                formControlName="billingAddress">
+        </div>
+
+    </div> -->
+
+    <div class="mb-3">
+        <label class="form-label" for="billingAddressInput">Billing Address <span *ngIf="myForm.hasError('billingAddressError')">(Required above 200kg)</span></label>
+        <input 
+            type="text"
+            class="form-control"
+            [class.is-invalid]="billingAddress.touched && myForm.hasError('billingAddressError')"
+            id="billingAddressInput"
+            name="billingAddress"
+            placeholder="Billing Address"
+            formControlName="billingAddress">
+    </div>
+    <p *ngIf="billingAddress.touched && myForm.hasError('billingAddressError')">Required field!</p>
+
+
+    <div class="mb-3">
+        <label class="form-label" for="birthDateInput">Date of Birth </label>
+        <input              
+        id="birthDateInput" 
+        class="form-control"
+        [class.is-invalid]="myForm.hasError('ageRestrictionError')"
+        type="date" 
+        name="birthDate" 
+        placeholder="(DD/MM/YY or DD/MM/YYYY)"
+        formControlName="birthDate">
+    </div>
+    <p *ngIf="myForm.hasError('ageRestrictionError')" style="color: red">
+        You must be atleast 18 years old!
+    </p>
+
+
+
+    <div class="checkboxes-div" >
+        <div *ngFor="let size of sizes; let i=index">
+            <input type="checkbox" [value]="size.value" (change)="onCheckboxChange($event)" 
+            />
+            {{ size.name}}
+        </div>
+    </div>
+
+    <select name="" id="" formControlName="weight" (change)="setWeight($event)">
+        <option selected>Select Size</option>
+        <option *ngFor="let weight of weights; let i=index" [value]="weight">{{ weight }}</option>
+    </select>
+
+    <div>
+        <input type="checkbox" formControlName="terms"
+        />
+        Terms and Conditions*
+    </div>
+
+    <button [disabled]="myForm.invalid" class="btn btn-warning m-2" type="submit">Submit</button>
+
+
+</form>

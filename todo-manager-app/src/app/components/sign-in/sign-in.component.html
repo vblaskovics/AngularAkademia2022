@@ -63,15 +63,10 @@
         placeholder="(DD/MM/YY or DD/MM/YYYY)"
         formControlName="birthDate">
     </div>
-    <!-- <p *ngIf="birthDate.invalid && birthDate.touched && birthDate.hasError('required')" style="color: red">
-        Required field!  
-    </p> -->
     <p *ngIf="birthDate.invalid && birthDate.hasError('pattern')" style="color: red">
         Invalid Date!
     </p>
-    <!-- <p *ngIf="birthDate.invalid && birthDate.hasError('minlength')" style="color: red">
-        Username must be atleast 4 characters!   
-    </p> -->
+
     
     <div class="mb-3">
         <label class="form-label" for="zipInput">ZIP code</label>

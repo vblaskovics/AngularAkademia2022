@@ -19,7 +19,6 @@ export class SignInComponent implements OnInit {
       zip: ['', [Validators.pattern(/^[0-9]{4}$/), Validators.min(1000), Validators.max(9999)]],
       birthDate: ['', [Validators.pattern(/(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).([19]{2})?([1-9]{2})$/)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^.*(?=.*[#@.*])/)]],
-
     })
    }
 

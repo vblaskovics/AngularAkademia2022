@@ -1,0 +1,39 @@
+<h2>New Class</h2>
+
+<form [formGroup]="classForm">
+    <div class="container mb-4">
+        <div class="col">
+            <label class="form-label" for="classInput">Name of class</label>
+            <input class="form-control" type="text" name="" id="classInput" formControlName="className">
+        </div>
+        <div class="col">
+            <label class="form-label" for="numberOfStudentsInput">Number of students</label>
+            <input class="form-control" type="text" name="" id="numberOfStudentsInput" formControlName="numberOfStudents" [class.is-invalid]="classForm.hasError('NumberOfStudentsError')">
+        </div>
+        <p *ngIf="classForm.hasError('NumberOfStudentsError')">
+            Limit of student reached!
+        </p>
+        
+        <div class="row" *ngFor="let studentFormGroup of students.controls; let i = index" [formGroup]="getStudent(studentFormGroup)">
+            <div class="col">
+                <label class="form-label" for="nameInput">Name</label>
+                <input class="form-control" type="text" name="" id="nameInput" formControlName="name">
+            </div>
+            <div class="col">
+                <label class="form-label" for="genderInput">Gender</label>
+                <input class="form-control" type="text" name="" id="genderInput" formControlName="gender">
+            </div>
+            <div class="col">
+                <label class="form-label" for="emailInput">Email</label>
+                <input class="form-control" type="text" name="" id="emailInput" formControlName="email">
+            </div>
+            <div class="col mt-4">
+                <button class="btn btn-danger" (click)="deleteStudent(i)">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary mb-4" type="submit" (click)="onSubmit()">Submit</button>
+</form>
+
+<button class="btn btn-primary" (click)="addStudent()">Add</button>
