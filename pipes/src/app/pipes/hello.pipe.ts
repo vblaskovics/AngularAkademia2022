@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class HelloPipe implements PipeTransform {
 
-  transform(name: string): string {
-    return `Hello ${name}!`
+  transform(dataSize: number): string {
+    let data = dataSize / 125000
+    return `${data} Mb`
   }
 
 }

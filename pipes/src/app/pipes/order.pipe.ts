@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class OrderPipe implements PipeTransform {
 
-  transform(input: string, separator: string=" "): unknown {
-    return input.split(" ").reverse().join(separator);
+  transform(input: string): unknown {
+    let extension = input.split(".")
+    return extension[extension.length-1]
   }
 
 }

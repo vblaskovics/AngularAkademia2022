@@ -1,16 +1,23 @@
-<p>{{user}}</p>
-
-<h2>{{user | uppercase}}</h2>
-<h2>{{user | lowercase}}</h2>
-<h2>{{currentDate | date: 'longTime'}}</h2>
-<h2>{{currentDate | date: 'yyyy/M/d'}}</h2>
-<h2>{{ 300 | currency: 'EUR':'code'}}</h2>
-<h2>{{ 0.25 | percent}}</h2>
-<h2>{{ "szia" | hello | uppercase}}</h2>
-<h2>{{ "Nézz le rááám ó istenem" | order: "áóáóá" }}</h2>
-
-
-<div>
-  <button (click)="showcounter = !showcounter">Toggle counter</button>
-  <h2 *ngIf="showcounter">{{'Hello' | counter}}</h2>
-</div>
+<button class="btn-primary btn" (click)="convertToGB()">Gb</button>
+<button class="btn-primary btn"(click)="convertToMb()">Mb</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">File name</th>
+      <th scope="col">Modify date</th>
+      <th scope="col">File size</th>
+      <th scope="col">Extension</th>
+      <th scope="col">Time Elapsed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of bigArray">
+      <td>{{item.name | removeExtension}}</td>
+      <td>{{item.modifyDate | date: 'yyyy-MM-dd' }}</td>
+      <td *ngIf="makeItMb">{{item.size | hello}}</td>
+      <td *ngIf="makeItGb">{{item.size | hello2}}</td>
+      <td>{{item.name | order}}</td>
+      <td>{{valami(item.modifyDate)}}</td>
+    </tr>
+  </tbody>
+</table>
