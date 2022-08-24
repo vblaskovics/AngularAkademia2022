@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormControlOptions, FormGroup, Validators } from '@angular/forms';
-import { Todo } from 'src/app/shared/todo';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { __values } from 'tslib';
 
 @Component({
