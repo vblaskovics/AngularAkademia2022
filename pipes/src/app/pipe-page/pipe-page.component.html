@@ -1,0 +1,21 @@
+<h2> {{ user }} </h2>
+<h2> {{ user | uppercase }} </h2>
+<h2> {{ 'bemeneti érték' | uppercase }} </h2>
+<h2> {{ user | lowercase }} </h2>
+
+<h2>{{ currentDate | date }}</h2>
+<h2>{{ currentDate | date:'short' }}</h2>
+<h2>{{ currentDate | date:'hh:mm' }}</h2>
+
+<h2>{{ 300 | currency }}</h2>
+<h2>{{ 300 | currency:'EUR' }}</h2>
+<h2>{{ 300 | currency:'EUR':'code' }}</h2>
+
+<h2>{{ 30.65764577 }}</h2>
+<h2>{{ 30.65764577 | number }}</h2>
+<h2>{{ 30.65764577 | number:'8.0-4' }}</h2>
+<h2>{{ 5.123 | number:'8.0-4' }}</h2>
+<h2>{{ 23425.5 | number:'8.0-4' }}</h2>
+<h2>{{ 2.1 | number:'8.0-4' }}</h2>
+
+<h2>{{ 0.25 | percent }}</h2>
