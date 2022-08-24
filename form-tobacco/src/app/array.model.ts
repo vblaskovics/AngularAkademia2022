@@ -1,4 +1,4 @@
 export interface ArrayInterface {
   Namevalue: string,
-  Value: number[]
+  Value: number
 }

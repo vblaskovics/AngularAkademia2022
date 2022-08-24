@@ -8,16 +8,18 @@ import {
 } from '@angular/forms';
 import { ArrayInterface } from '../array.model';
 
-
 function customValidator(formControl: AbstractControl) {
   if (!formControl.parent) {
     return null;
   }
 
-  if (formControl.parent.get('btnXLarge')?.value === true || formControl.parent.get('btnLarge')?.value === true) {
+  if (
+    formControl.parent.get('btnXLarge')?.value === true ||
+    formControl.parent.get('btnLarge')?.value === true
+  ) {
     return Validators.required(formControl);
   }
-  return null
+  return null;
 }
 
 @Component({
@@ -28,30 +30,12 @@ function customValidator(formControl: AbstractControl) {
 export class OrderMenuComponent implements OnInit {
   myForm: FormGroup;
 
-  myArray: ArrayInterface[] = [
-    {
-      Namevalue: "S",
-      Value: [10,20]
-    },
-    {
-      Namevalue: "M",
-      Value: [50,100]
-    },
-    {
-      Namevalue: "L",
-      Value: [500, 800]
-    },
-    {
-      Namevalue: "XL",
-      Value: [2000]
-    },
-  ];
+
   filteredList?: ArrayInterface[];
 
   required: boolean = false;
 
   constructor(fb: FormBuilder) {
-
     this.myForm = fb.group({
       name: ['', [Validators.required]],
       adress: ['', Validators.required],
@@ -67,18 +51,19 @@ export class OrderMenuComponent implements OnInit {
       termsAndCond: [false, Validators.requiredTrue],
       billingadress: ['', customValidator],
       btnSmall: [false],
+      btnMedium: [false],
+      btnLarge: [false],
+      btnXLarge: [false],
       dropdownMenu: [],
     });
 
-    this.myForm.get('btnLarge')?.valueChanges
-      .subscribe(value => {
-        this.myForm.get('billingadress')?.updateValueAndValidity;
-      });
+    this.myForm.get('btnLarge')?.valueChanges.subscribe((value) => {
+      this.myForm.get('billingadress')?.updateValueAndValidity;
+    });
 
-      this.myForm.get('btnXLarge')?.valueChanges
-        .subscribe(value => {
-          this.myForm.get('billingadress')?.updateValueAndValidity;
-        });
+    this.myForm.get('btnXLarge')?.valueChanges.subscribe((value) => {
+      this.myForm.get('billingadress')?.updateValueAndValidity;
+    });
   }
 
   get name(): FormControl {
@@ -90,7 +75,7 @@ export class OrderMenuComponent implements OnInit {
   }
 
   get birthdate(): FormControl {
-    return this.myForm.get('adress') as FormControl;
+    return this.myForm.get('birthdate') as FormControl;
   }
 
   get termsAndCond(): FormControl {
@@ -113,21 +98,33 @@ export class OrderMenuComponent implements OnInit {
     return this.myForm.get('btnXLarge') as FormControl;
   }
 
-  ngOnInit(): void {
+  isPackageTypeOn(name: string): boolean {
+    return this.myForm.get(name)?.value;
 
   }
 
-  onChange(s: ArrayInterface,i? : number) {
-    if(this.btnSmall.value === true){
-      this.filteredList = this.myArray.filter(word => word.Namevalue === s.Namevalue)
-    }
-
-    console.log(s)
-
+  get selectedPackages(): any[]{
+    return [
+      {nameValue: 'S', value: 10},
+      {nameValue: 'S', value: 20},
+      {nameValue: 'M', value: 50},
+      {nameValue: 'M', value: 100},
+      {nameValue: 'L', value: 500},
+      {nameValue: 'L', value: 800},
+      {nameValue: 'XL', value: 2000},
+    ].filter((i) =>
+      (this.isPackageTypeOn('btnSmall') && i.nameValue === 'S') ||
+      (this.isPackageTypeOn('btnMedium') && i.nameValue === 'M') ||
+      (this.isPackageTypeOn('btnLarge') && i.nameValue === 'L') ||
+      (this.isPackageTypeOn('btnXLarge') && i.nameValue === 'XL')
+    );
   }
-
+  ngOnInit(): void {}
+  invalidForm: boolean = false;
   onSubmit(item?: any) {
-    console.log(this.myForm.get('billingadress'));
-    console.log(item)
+    console.log(this.termsAndCond.errors);
+    if(this.termsAndCond.errors){
+      this.invalidForm = true;
+    }
   }
 }

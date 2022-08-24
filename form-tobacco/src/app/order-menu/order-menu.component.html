@@ -51,9 +51,24 @@
     <div *ngIf="false">Looks good!</div>
   </div>
 
-  <div class="form-check form-check-inline" *ngFor="let data of myArray; let i = index">
-    <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1" (change)="onChange(data, i)" formControlName="btnSmall">
-    <label  class="form-check-label" for="inlineRadio1">{{data.Namevalue}}</label>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnSmall" id="btnSmallInput" value="option1" formControlName="btnSmall">
+    <label  class="form-check-label" for="btnSmallInput">S</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnMedium" id="btnMediumInput" value="option1" formControlName="btnMedium">
+    <label  class="form-check-label" for="btnMediumInput">M</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnLarge" id="btnLargeInput" value="option1" formControlName="btnLarge">
+    <label  class="form-check-label" for="btnLargeInput">L</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnXLarge" id="btnXLargeInput" value="option1" formControlName="btnXLarge">
+    <label  class="form-check-label" for="btnXLargeInput">XL</label>
   </div>
 
   <div ngbDropdown class="dropdown">
@@ -64,11 +79,10 @@
     id="dropdownMenuButton1"
     aria-expanded="false"
     >
-    Package
   </button>
   <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
-    <div *ngFor="let data of filteredList;">
-    <li *ngFor="let item of data.Value"><a ngbDropdownItem (click)="onSubmit()">{{item}}</a></li>
+    <div *ngFor="let data of selectedPackages;">
+    <li><a ngbDropdownItem (click)="onSubmit()">{{data.value}}</a></li>
   </div>
   </ul>
   </div>
@@ -80,6 +94,9 @@
         <label class="form-check-label" for="termAndCondInput">
           *Terms and Conditions
         </label>
+        <div class="text-danger" *ngIf="termsAndCond.errors && myForm.touched ">
+          In order to proceed please accept our terms and conditions!
+        </div>
       </div>
     </div>
   </div>
