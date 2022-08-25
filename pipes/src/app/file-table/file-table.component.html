@@ -1,25 +1,7 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="form-check form-check-inline">
-      <input
-        (click)="fileToGbClicked()"
-        class="form-check-input"
-        type="checkbox"
-        value="fileToGb"
-        id="fileToGb"
-      />
-      <label class="form-check-label" for="fileToGb">GB</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        (click)="fileToMbClicked()"
-        class="form-check-input"
-        type="checkbox"
-        value="fileToMb"
-        id="fileToMb"
-      />
-      <label class="form-check-label" for="fileToMb">MB</label>
-    </div>
+    <button class="btn btn-primary m-3 px-4" (click)="unit = 'GB'">GB</button>
+    <button class="btn btn-primary m-3 px-4" (click)="unit = 'MB'">MB</button>
   </div>
   <div class="row">
     <table class="table table-bordered mt-3">
@@ -35,12 +17,7 @@
         <tr *ngFor="let file of files">
           <td>{{ this.file.name! | file }}</td>
           <td>{{ this.file.modifyDate | date: "yyyy-mm-dd" }}</td>
-          <ng-container *ngIf="fileToMbClicked">
-            <td>{{ this.file.size! | filemb | number: "1.0-3" }}</td>
-          </ng-container>
-          <ng-container *ngIf="fileToGbClicked">
-            <td>{{ this.file.size! | filegb | number: "1.0-3" }}</td>
-          </ng-container>
+          <td>{{ this.file.size! | fileSize: unit }}</td>
           <td>{{ this.file.name! | fileDot }}</td>
         </tr>
       </tbody>
