@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col">
+      <button class="btn btn-warning mx-2" (click)="unit = 'Gb'">Gb</button>
+      <button class="btn btn-primary" (click)="unit = 'Mb'">Mb</button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">file name</th>
+            <th scope="col">modifyDate</th>
+            <th scope="col">file size</th>
+            <th scope="col">extension</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let file of files; let i = index">
+            <td scope="col">{{ file.name | split }}</td>
+            <td scope="col">{{ file.modifyDate | date:'yyyy-MM-dd' }}</td>
+            <td scope="col">{{ file.size | size: unit }}</td>
+            <td scope="col">{{ file.name | split: 'ext' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
