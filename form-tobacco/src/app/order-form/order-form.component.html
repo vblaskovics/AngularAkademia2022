@@ -1,0 +1,167 @@
+<h3 class="sign-in mt-3">Tobacco order</h3>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <div class="form-group">
+      <label for="name" class="mt-2">Name*</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Name"
+        class="form-control"
+      />
+      <small class="text-danger" *ngIf="submitted && name.hasError('required')">
+        Name is required!
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="address" class="mt-2">Address*</label>
+      <input
+        id="address"
+        type="text"
+        formControlName="address"
+        placeholder="Address"
+        class="form-control"
+      />
+      <small
+        class="text-danger"
+        *ngIf="submitted && address.hasError('required')"
+      >
+        Address is required!
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="birthdate" class="mt-2">Birth date*</label>
+      <input
+        id="birthdate"
+        type="date"
+        formControlName="birthdate"
+        class="form-control"
+      />
+      <small
+        class="text-danger"
+        *ngIf="
+          birthDate.touched &&
+          birthDate.pristine &&
+          birthDate.hasError('required')
+        "
+      >
+        Birthdate is required!
+      </small>
+
+      <small class="text-danger" *ngIf="birthDate.hasError('invalidAge')">
+        You must be 18 years older!
+      </small>
+    </div>
+
+    <h4>Package types:</h4>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="s"
+        (change)="tickBox($event, 's')"
+      />
+      <label class="form-check-label"> S </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="m"
+        (change)="tickBox($event, 'm')"
+      />
+      <label class="form-check-label"> M </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="l"
+        (change)="tickBox($event, 'l')"
+      />
+      <label class="form-check-label"> L </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="xl"
+        (change)="tickBox($event, 'xl')"
+      />
+      <label class="form-check-label"> XL </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+        formControlName="termsandconditions"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        I agree with terms and conditions
+      </label>
+    </div>
+    <small
+      class="text-danger"
+      *ngIf="
+        submitted &&
+        termsAndConditions.touched &&
+        termsAndConditions.hasError('required')
+      "
+    >
+      You must agree the terms and conditions to turn the next step!
+    </small>
+
+    <select>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu">
+        <li *ngIf="sizeS"><a class="dropdown-item" href="#">10</a></li>
+        <li *ngIf="sizeS"><a class="dropdown-item" href="#">20</a></li>
+        <li *ngIf="sizeM"><a class="dropdown-item" href="#">50</a></li>
+        <li *ngIf="sizeM"><a class="dropdown-item" href="#">100</a></li>
+        <li *ngIf="sizeL"><a class="dropdown-item" href="#">500</a></li>
+        <li *ngIf="sizeL"><a class="dropdown-item" href="#">800</a></li>
+        <li *ngIf="sizeXL"><a class="dropdown-item" href="#">2000</a></li>
+      </ul>
+    </div>
+
+    <div class="form-group"  *ngIf="sizeL || sizeXL">
+      <label class="mt-2">Billing Address</label>
+      <input
+        type="text"
+        formControlName="billingAddress"
+        placeholder="Billing Address"
+        class="form-control"
+      />
+      <small class="text-danger"> </small>
+    </div>
+  </div>
+
+  <div class="text-center mt-2">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
