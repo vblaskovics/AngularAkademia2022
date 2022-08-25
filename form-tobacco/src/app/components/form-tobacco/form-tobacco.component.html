@@ -69,12 +69,12 @@
               >
                 *Birth date required
               </p>
-              <p
+              <!-- <p
                 class="invalid-feedback"
                 *ngIf="birthDate.touched && birthDate.hasError('tooYoung')"
               >
                 *Must be at least 18 years old
-              </p>
+              </p> -->
             </div>
             <div class="mb-3 form-check">
               <label class="form-check-label" for="terms"
@@ -97,6 +97,12 @@
               </p>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <p
+              *ngIf="myForm.hasError('ageRestrictionError')"
+              style="color: red"
+            >
+              *You must be at least 18 years old to finish the order!
+            </p>
           </div>
           <div class="col">
             <div class="row">
@@ -112,7 +118,7 @@
                     id="packageTypeS"
                     name="packageType"
                     type="checkbox"
-                    formControlName="packageType"
+                    formControlName="s"
                   />
                   <label class="form-check-label" for="packageTypeS"> S</label>
                 </div>
@@ -122,7 +128,7 @@
                     id="packageTypeM"
                     name="packageType"
                     type="checkbox"
-                    formControlName="packageType"
+                    formControlName="m"
                   />
                   <label class="form-check-label" for="packageTypeM"> M</label>
                 </div>
@@ -132,7 +138,7 @@
                     id="packageTypeL"
                     name="packageType"
                     type="checkbox"
-                    formControlName="packageType"
+                    formControlName="l"
                   />
                   <label class="form-check-label" for="packageTypeL"> L</label>
                 </div>
@@ -142,7 +148,7 @@
                     id="packageTypeXL"
                     name="packageType"
                     type="checkbox"
-                    formControlName="packageType"
+                    formControlName="xl"
                   />
                   <label class="form-check-label" for="packageTypeXL">
                     XL</label
@@ -154,23 +160,44 @@
               <label class="form-label" for="package">Package*</label>
             </div>
             <div class="row">
-              <div class="dropdown">
-                <button
-                  class="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+              <select
+                class="form-control"
+                name="package"
+                id="package"
+                formControlName="package"
+              >
+                <option
+                  *ngFor="let option of packageSelects"
+                  [value]="option.count"
                 >
-                  Dropdown button
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div>
+                  {{ option.count }}
+                </option>
+              </select>
+            </div>
+            <div class="row">
+              <label class="form-label" for="billingAddress"
+                >Billing address</label
+              >
+              <input
+                class="form-control"
+                id="billingAddress"
+                type="text"
+                name="billingAddress"
+                formControlName="billingAddress"
+                [class.is-invalid]="
+                  myForm.get('billingAddress')?.touched &&
+                  myForm.hasError('requiredBillingAddress')
+                "
+              />
+              <p
+                *ngIf="
+                  myForm.get('billingAddress')?.touched &&
+                  myForm.hasError('requiredBillingAddress')
+                "
+                class="invalid-feedback"
+              >
+                Billing address is required!
+              </p>
             </div>
           </div>
         </div>
