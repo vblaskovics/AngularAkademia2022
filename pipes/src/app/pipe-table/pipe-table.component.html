@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+    <thead>
+      <tr class="bg-warning">
+        <th scope="col">File name</th>
+        <th scope="col">Last date</th>
+        <th scope="col">File size</th>
+        <th scope="col">Extension</th>
+        <th scope="col">Last modification (sec.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files; let i = index">
+        <th scope="row">{{file.name}}</th>
+        <td> {{file.date | date:'yyyy-MM-dd' }}</td>
+        <td> {{ file.size | size:format }}</td>
+        <td>{{file.extension }}</td>
+        <td>{{file.time | date:'s' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary m-2" (click)="format ='MB'">MB</button>
+  <button class="btn btn-primary m-2" (click)="format = 'GB'">GB</button>

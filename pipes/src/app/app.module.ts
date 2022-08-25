@@ -7,6 +7,8 @@ import { PipesPagesComponent } from './pipes-pages/pipes-pages.component';
 import { HelloPipePipe } from './pipes/hello-pipe.pipe';
 import { OrderPipePipe } from './pipes/order-pipe.pipe';
 import { CounterPipePipe } from './pipes/counter-pipe.pipe';
+import { PipeTableComponent } from './pipe-table/pipe-table.component';
+import { SizePipe } from './pipes/size.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CounterPipePipe } from './pipes/counter-pipe.pipe';
     PipeCustomComponent,
     HelloPipePipe,
     OrderPipePipe,
-    CounterPipePipe
+    CounterPipePipe,
+    PipeTableComponent,
+    SizePipe
   ],
   imports: [
     BrowserModule
