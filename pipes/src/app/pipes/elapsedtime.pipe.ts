@@ -1,4 +1,4 @@
-import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import {  Pipe, PipeTransform, OnDestroy} from '@angular/core';
 
 @Pipe({
   name: 'elapsedtime'
@@ -9,10 +9,10 @@ export class ElapsedtimePipe implements PipeTransform, OnDestroy {
   date: number  = 0;
   elapsedSec: number = 0;
 
-  constructor(){
+  constructor() {
     this.interval = setInterval(()=>{
-      this.elapsedSec = Math.floor((new Date().getTime() - this.date) / 1000)
-    }, 1000);
+      this.elapsedSec = Math.floor((new Date().getTime() - this.date) / 1000);
+    },1000);
   }
 
   transform(date: number): number {
@@ -21,7 +21,7 @@ export class ElapsedtimePipe implements PipeTransform, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   }
 
 }
