@@ -21,7 +21,7 @@ function ageValidator(fgroup: AbstractControl): {
 } {
     let birthdate = new Date(fgroup.get('dob')?.value);
     let age = ageCalculator(birthdate);
-    console.log(age);
+    // console.log(age);
     if (age < 18) {
       return { errorByAgeValidatior: true };
     }
@@ -87,9 +87,9 @@ export class FormOrderComponent implements OnInit {
   onSubmit(): void {
     this.myForm.markAllAsTouched();
     if (this.myForm.status === 'VALID') {
-      console.log(this.myForm.value);
+      alert('Sikeres vásárlás!' || this.myForm.value);
     } else {
-      console.log('Sikertelen vásárlás');
+      alert('Sikertelen vásárlás');
     }
   }
 
