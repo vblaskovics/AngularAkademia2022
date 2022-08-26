@@ -21,3 +21,12 @@ li {
     
     opacity: 50%;
 }
+
+.age-error{
+    background-color:rgb(236, 42, 42);
+    color: white;
+    padding: 5px;
+    padding-left:0.7em;
+    border-radius: 10px;
+    text-align: left;
+}

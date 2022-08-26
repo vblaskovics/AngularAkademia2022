@@ -108,7 +108,7 @@
 
                 
                 <button type="submit" class="btn btn-primary my-5" >Submit</button>
-                <p *ngIf="myForm.hasError('errorByAgeValidatior')" style="color:rgb(187, 48, 48)">
+                <p *ngIf="myForm.hasError('errorByAgeValidatior')" class="age-error">
                     You must be at least 18 years old to finish the order 🔞!  
                   </p>
                   <p *ngIf="termsAndCons.hasError('required') &&myForm.invalid" class="invalid-feedback" id="termsAndCons">In order to proceed please accept the terms & conditions!</p>
