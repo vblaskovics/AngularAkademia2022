@@ -18,24 +18,21 @@ export class PipeTableComponent implements OnInit {
   constructor() { 
     this.files = [{
       name:'run',
-      date:new Date(),
+      date:new Date('2022-08-23').getTime(),
       size: 100,
       extension:'.exe',
-      time: new Date()
     },
     {
       name:'source',
-      date:new Date(),
+      date:new Date('2022-08-23').getTime(),
       size: 30,
       extension:'.ics',
-      time: new Date()
     },
     {
       name:'index',
-      date:new Date(),
+      date:new Date('2022-08-23').getTime(),
       size: 5,
       extension:'.html',
-      time: new Date()
     }]
   }
 

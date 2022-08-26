@@ -12,9 +12,9 @@
       <tr *ngFor="let file of files; let i = index">
         <th scope="row">{{file.name}}</th>
         <td> {{file.date | date:'yyyy-MM-dd' }}</td>
-        <td> {{ file.size | size:format }}</td>
+        <td> {{ file.size | size:format }} </td>
         <td>{{file.extension }}</td>
-        <td>{{file.time | date:'s' }}</td>
+        <td>{{ file.date | elapsedtime }}</td>
       </tr>
     </tbody>
   </table>
