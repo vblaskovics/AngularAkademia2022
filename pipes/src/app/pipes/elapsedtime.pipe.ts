@@ -1,7 +1,8 @@
 import {  Pipe, PipeTransform, OnDestroy} from '@angular/core';
 
 @Pipe({
-  name: 'elapsedtime'
+  name: 'elapsedtime',
+  pure:false
 })
 export class ElapsedtimePipe implements PipeTransform, OnDestroy {
 
