@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="my-4">Form Tobacco</h2>
+
+            <form class="form-group" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+                <div class="col-xs-6">
+                    <label for="name" class="form-label"></label>
+                    <input type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        placeholder="Name*"
+                        [class.is-invalid]="name.touched && name.invalid"
+                        formControlName="name"
+                    >
+                    <p *ngIf="name.hasError('required')" class="invalid-feedback" id="name">This field is required!</p>
+                </div>
+
+                <div class="col-xs-6">
+                    <label for="address" class="form-label"></label>
+                    <input type="text"
+                        class="form-control"
+                        id="address"
+                        name="address"
+                        placeholder="Billing address*"
+                        [class.is-invalid]="myForm.get('address')?.touched && myForm.hasError('errorByBillingAddress')"
+                        formControlName="address">
+
+                    <p *ngIf="myForm.get('address')?.touched && myForm.hasError('errorByBillingAddress')" class="invalid-feedback" id="address" >Billing address is required!</p>
+                </div>
+
+                <div class="col-xs-6 my-3">
+                    <label for="dob" class="form-label my-3" >Date of birth:</label>
+                    <input type="date"
+                        class="form-control"
+                        id="dob"
+                        name="dob"
+                        [class.is-invalid]="dob.touched && dob.invalid"
+                        formControlName="dob">
+                        <!-- (change)="validateDOB(dob)" -->
+
+                    <p *ngIf="dob.hasError('required')" class="invalid-feedback" id="dob">This field is required!</p>
+                    
+                </div>
+                <br>
+
+                <div class="col-xs-6">
+                    <label class="form-label" for="package">Package sizes:</label>
+                    <div class="pt-3 pb-3">
+                        <input
+                          formControlName="s"
+                          type="checkbox"
+                          name="checkbox_s"
+                          id="checkbox_s"
+                        />
+                        <label class="m-2" for="checkbox_s">S</label>
+                        <input
+                          formControlName="m"
+                          type="checkbox"
+                          name="checkbox_m"
+                          id="checkbox_m"
+                        />
+                        <label class="m-2" for="checkbox_m">M</label>
+                        <input
+                          formControlName="l"
+                          type="checkbox"
+                          name="checkbox_l"
+                          id="checkbox_l"
+                        />
+                        <label class="m-2" for="checkbox_l">L</label>
+                        <input
+                          formControlName="xl"
+                          type="checkbox"
+                          name="checkbox_xl"
+                          id="checkbox_xl"
+                        />
+                        <label class="m-2" for="checkbox_xl">XL</label>
+                      </div>
+                    
+                      <div>
+                        <label class="form-label" for="package">Package</label>
+                        <select
+                          class="form-control"
+                          name="package"
+                          id="package"
+                          formControlName="package"
+                        >
+                          <option *ngFor="let option of packageOptions" [value]="option.count">
+                            {{ option.count }}
+                          </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xs-6 mt-2">
+                    <label for="termsAndCons" class="form-label my-2">Terms & Conditions</label>
+                    <input type="checkbox" 
+                           name="checkbox"
+                           class="mx-2 my-1"
+                           id="termsAndCons"
+                           [class.is-invalid]="termsAndCons.touched && termsAndCons.errors"
+                           formControlName="termsAndCons">
+    
+                    
+                    </div>
+
+                
+                <button type="submit" class="btn btn-primary my-5" >Submit</button>
+                <p *ngIf="myForm.hasError('errorByAgeValidatior')" style="color:red">
+                    You must be at least 18 years old to finish the order 🔞!  
+                  </p>
+                  <p *ngIf="termsAndCons.hasError('required') &&myForm.invalid" class="invalid-feedback" id="termsAndCons">In order to proceed please accept the terms & conditions!</p>
+            </form>
+
+            
+        </div>
+    </div>
+</div>
