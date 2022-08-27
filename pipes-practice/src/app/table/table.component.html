@@ -12,9 +12,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let data of table">
-            <td>{{ data.name }}</td>
-            <td>{{data.modifyDate}}</td>
+            <td>{{ data.name | extension: false }}</td>
+            <td>{{data.modifyDate | date: 'yyyy-MM-dd' }}</td>
             <td>{{isMb ? data.size + ' MB' : (data.size | mbToGb | number: "1.2-2") + ' GB' }}</td>
+            <td>{{ data.name | extension: true}}</td>
           </tr>
         </tbody>
       </table>
