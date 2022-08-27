@@ -23,10 +23,10 @@
           type="text"
           formControlName="maxNumberOfStudents"
           id="maxNumberOfStudents"
-          [class.is-invalid]="maxNumberOfStudents.touched && maxNumberOfStudents.invalid"
+          [class.is-invalid]="maxNumberOfStudents.touched && maxNumberOfStudents.hasError('errorByMaxNum')"
           />
 
-        <p *ngIf="maxNumberOfStudents.hasError('max')" class="invalid-feedback" id="maxNumberOfStudents"> Maximum number of students: 30.</p>
+        <p *ngIf="maxNumberOfStudents.hasError('errorByMaxNum')" class="invalid-feedback" id="maxNumberOfStudents"> Maximum number of students: 30.</p>
         <p *ngIf="maxNumberOfStudents.hasError('required')" class="invalid-feedback" id="maxNumberOfStudents">  Required *</p>
       </div>
     </div>
@@ -77,9 +77,13 @@
     </div>
   </div>
 
-  <button class="btn btn-primary m-4 px-3" (click)="addStudent()">
+  <button class="btn btn-primary m-4 px-3" (click)="addStudent()" >
+
+  <!-- [disabled]="getStudents.length >= 30"
+    *ngIf="!maxNumberOfStudents.hasError('errorByMaxNum'); else errorMessage"> -->
     Add Student
   </button>
+  <!-- <ng-template #errorMessage class="text-danger"> Maximum number of students: 30.</ng-template> -->
 
 </form>
 

@@ -1,6 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+function maxNumValidator(group: AbstractControl): {[s:string]: boolean} {
+  const maxNumberofstudents = group.get('maxNumberOfStudents')?.value;
+  const students = group.get('students')?.value;
+  const studentNumber = students.length === 30
+
+  if ( maxNumberofstudents > studentNumber) {
+    return {errorByMaxNum: true}
+  }
+  return {}
+  // if(maxNumberofstudents > 3)
+  // return {errorByMaxNum: true}
+  // return {}
+}
+
 @Component({
   selector: 'app-class-form',
   templateUrl: './class-form.component.html',
@@ -11,11 +25,14 @@ export class ClassFormComponent implements OnInit {
   form: FormGroup
 
   constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      students: this.fb.array([]),
+    this.form = fb.group({
       className: ['', Validators.required],
-      maxNumberOfStudents: ['', [Validators.required, Validators.max(30)]]
-    });
+      maxNumberOfStudents: ['', 
+      Validators.required,
+      // Validators.max(30)
+    ],
+      students: fb.array([]),
+    }, {validators: [maxNumValidator]});
    }
 
   get students(): FormArray {
@@ -49,6 +66,8 @@ export class ClassFormComponent implements OnInit {
   deleteStudent(studentIndex: number){
     this.students.removeAt(studentIndex);
   }
+
+
 
   onSubmit(){
     console.log('Submitted form: ',this.form.value)
