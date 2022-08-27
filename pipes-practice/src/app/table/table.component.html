@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>File name</th>
+            <th>Date modified</th>
+            <th>File size</th>
+            <th>Extension</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of table">
+            <td>{{ data.name }}</td>
+            <td>{{data.modifyDate}}</td>
+            <td>{{isMb ? data.size + ' MB' : (data.size | mbToGb | number: "1.2-2") + ' GB' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary m-3" (click)="displayInMb(true)">MB</button>
+      <button class="btn btn-primary m-3" (click)="displayInMb(false)">GB</button>
+    </div>
+  </div>
+</div>
