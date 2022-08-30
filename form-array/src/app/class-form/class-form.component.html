@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col m-3">
-        <label class="form-label" for="className">Class name</label>
+        <label class="form-label" for="className">Class name: </label>
         <input
           class="form-control"
           type="text"
@@ -15,20 +15,10 @@
       </div>
 
       <div class="col m-3">
-        <label class="form-label" for="maxNumberOfStudents"
-          >Number of Students</label
-        >
-        <input
-          class="form-control"
-          type="text"
-          formControlName="maxNumberOfStudents"
-          id="maxNumberOfStudents"
-          [class.is-invalid]="maxNumberOfStudents.touched && maxNumberOfStudents.hasError('errorByMaxNum')"
-          />
-
-        <p *ngIf="maxNumberOfStudents.hasError('errorByMaxNum')" class="invalid-feedback" id="maxNumberOfStudents"> Maximum number of students: 30.</p>
-        <p *ngIf="maxNumberOfStudents.hasError('required')" class="invalid-feedback" id="maxNumberOfStudents">  Required *</p>
+        <label class="form-label" for="numberOfStudents">Number of students: </label>
+        <div class="input-field"> {{numberOfStudents}}</div>
       </div>
+
     </div>
 
     <hr />
@@ -38,7 +28,7 @@
       *ngFor="let studentFormGroup of students.controls; let i = index"
       [formGroup]="getStudents(studentFormGroup)"
     >
-      <h4 class="m-2">Students</h4>
+    
 
       <div class="col m-3">
         <label class="form-label" for="name">Name</label>
@@ -52,10 +42,10 @@
 
       <div class="col m-3">
         <label class="form-label" for="gender">Gender</label>
-        <select class="form-control">
-          <option>- Select -</option>
-          <option name="genderFemale" id="genderFemale">Female</option>
-          <option name="genderMale" id="genderMale">Male</option>
+        <select class="form-control" formControlName="gender">
+          <!-- <option>- Select -</option> -->
+          <option [value]="'Fe'" name="genderFemale" id="genderFemale" >Female</option>
+          <option [value]="'Ma'" name="genderMale" id="genderMale">Male</option>
         </select>
       </div>
 
@@ -74,19 +64,18 @@
           Delete Student
         </button>
       </div>
+
+
+
     </div>
   </div>
 
-  <button class="btn btn-primary m-4 px-3" (click)="addStudent()" >
-
-  <!-- [disabled]="getStudents.length >= 30"
-    *ngIf="!maxNumberOfStudents.hasError('errorByMaxNum'); else errorMessage"> -->
-    Add Student
+  <button class="btn btn-primary m-4 px-3" (click)="newStudent()" [disabled]="numberOfStudents >= 3" >
+    New Student
   </button>
-  <!-- <ng-template #errorMessage class="text-danger"> Maximum number of students: 30.</ng-template> -->
-
+  <p *ngIf="numberOfStudents == 3" style="color:red"> Maximum number of students: 30.</p>
 </form>
 
-<button class="btn btn-info m-4 px-3" (click)="onSubmit()" type="submit">
+<button class="btn btn-info m-4 px-3" (click)="onSubmit()" type="submit" [disabled]="!form.valid">
   Submit
 </button>
