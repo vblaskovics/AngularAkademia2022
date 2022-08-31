@@ -15,17 +15,17 @@ export class FileTableComponent implements OnInit {
       {
         name: 'image.jpg',
         modifyDate: 675633735743,
-        size: 8700,
+        size: 87003334234,
       },
       {
         name: 'run.exe',
         modifyDate: 8768759333,
-        size: 236753,
+        size: 23675324324,
       },
       {
         name: 'homework.docs',
         modifyDate: 3324326452233,
-        size: 23524,
+        size: 2352423434222,
       },
     ];
   }

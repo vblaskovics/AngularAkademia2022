@@ -4,11 +4,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filesizeConverter',
 })
 export class FilesizeConverterPipe implements PipeTransform {
-  transform(size: number, unit: 'GB' | 'MB' = 'GB'): string {
+  transform(size: number, unit: 'GB' | 'MB' = 'GB'): number {
     if (unit === 'GB') {
-      return `${size / 1024 / 1024 / 1024} GB`;
+      return size / 1024 / 1024 / 1024;
     } else {
-      return `${size / 1024 / 1024} MB`;
+      return size / 1024 / 1024;
     }
   }
 }

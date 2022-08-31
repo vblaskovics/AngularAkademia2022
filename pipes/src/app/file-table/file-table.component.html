@@ -10,13 +10,14 @@
         <th scope="col">Modify Date</th>
         <th scope="col">File Size</th>
         <th scope="col">Ext.</th>
+        <th scope="col">Seconds since last modifying</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let file of files">
         <td>{{ file.name | filenameConverter:'name' }}</td>
         <td>{{ file.modifyDate | dateConverter }}</td>
-        <td>{{ file.size | filesizeConverter:unit }}</td>
+        <td>{{ file.size | filesizeConverter:unit | number :'1.0-4' }} {{unit}}</td>
         <td>{{ file.name | filenameConverter:'ext' }}</td>
       </tr>
     </tbody>
