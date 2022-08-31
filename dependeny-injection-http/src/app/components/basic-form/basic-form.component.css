@@ -1,0 +1,19 @@
+
+div {
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 4px 4px 6px 0rgba(107, 92, 92, 0.5);
+    padding: 1rem;
+}
+
+form {
+    /* width: 80%; */
+    margin: 2% auto
+}
+
+/* label, input {
+    display: block;
+    width: 80%;
+    margin: 2% auto;
+    text-align: center;
+} */

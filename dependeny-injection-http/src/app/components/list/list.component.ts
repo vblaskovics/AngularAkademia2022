@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
+
+  public getFilteredUser(): void {
+    this.httpService.fetchData()
+    .then(userList => {
+      console.log(userList)
+    });
+  }
 
   ngOnInit(): void {
+    this.getFilteredUser()
   }
 
 }

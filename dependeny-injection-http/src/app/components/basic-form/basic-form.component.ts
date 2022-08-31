@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserDto } from 'src/app/models/user.dto';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-basic-form',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicFormComponent implements OnInit {
 
-  constructor() { }
+  public form: FormGroup = new FormGroup<any>({
+    first_name: new FormControl('', [Validators.required]),
+    last_name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+  }) 
+  //formbuilder == formgroup typussosá tevés  - ugyanaz
+
+  constructor( private httpService: HttpService ) { 
+   
+   }
 
   ngOnInit(): void {
   }
 
+  public saveUser(): void {
+    const user: UserDto = this.form.value as UserDto //típus kasztolás;
+
+    this.httpService.postUser(user);
+
+    
+  }
+
+
+
+
+  
 }

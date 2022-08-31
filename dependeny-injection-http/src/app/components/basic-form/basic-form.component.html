@@ -1,1 +1,32 @@
-<p>basic-form works!</p>
+
+<div>
+    <form class="form-group" [formGroup]="form" (ngSubmit)="saveUser()">
+
+        <div class="my-2">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" id="first_name" class="form-control" formControlName="first_name">
+        </div>
+
+        <div class="my-2">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" id="last_name" class="form-control" formControlName="last_name">
+        </div>
+
+        <div class=" my-2">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" id="email" class="form-control" formControlName="email">
+        </div>
+
+        <div class="my-2">
+            <label for="gender" class="form-label">Gender</label>
+            <input type="text" id="gender" class="form-control" formControlName="gender">
+        </div>
+
+        <div class="my-2">
+            <button type="submit" class="btn btn-info"> Send</button>
+
+        </div>
+        
+    </form>
+
+</div>
