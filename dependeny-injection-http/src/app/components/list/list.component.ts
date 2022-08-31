@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TitleStrategy } from '@angular/router';
+import { UserModel } from 'src/app/models/user.model';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -8,13 +10,23 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class ListComponent implements OnInit {
 
+  public userList: UserModel[] = [];
+
   constructor(private httpService: HttpService) { }
 
   public getFilteredUser(): void {
-    this.httpService.fetchData()
-    .then(userList => {
-      console.log(userList)
-    });
+  //   this.httpService.fetchData()
+  //   .then(userList => {
+  //     console.log(userList)
+  //   })
+  //   .catch(err => console.log(err));
+
+  this.httpService.getUsers().subscribe({
+    next: (userList) => {console.log(userList)
+            this.userList = userList},
+    error: (err) => {console.log(err)},
+    complete: () => {},
+  })
   }
 
   ngOnInit(): void {

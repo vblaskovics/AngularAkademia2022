@@ -1,7 +1,10 @@
+import { UserModel } from './../models/user.model';
+import { UserDto } from './../models/user.dto';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UserDto } from '../models/user.dto';
-import { UserModel } from '../models/user.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ export class HttpService {
   private readonly BASE_URL = environment.apiUrl;
   users: UserDto[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 
   public async fetchData():Promise<UserModel[]> {
@@ -33,6 +36,27 @@ export class HttpService {
         })
       })
   }
+
+
+  public getUsers(): Observable<UserModel[]>{
+    return this.http.get<UserDto[]>(this.BASE_URL + '/users').pipe(
+      map(UserDtoList => {
+        const filteredList = UserDtoList.filter(u => u.gender === 'Female');
+        return filteredList.map(u => {
+          const UserModel: UserModel = {
+          id: u.id!,
+          firstName: u.first_name,
+          lastName: u.last_name,
+          email: u.email,
+          gender: u.gender,
+        } 
+        return UserModel;}
+        )
+      })
+    )
+  }
+
+
 
   // public async fetchNewData(a: any, x: any, index: number): Promise<UserModel[]>{
   //   let p = new Promise((resolve, reject) => resolve('x'))
