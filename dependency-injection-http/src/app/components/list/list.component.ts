@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserModel} from "../../models/user.model";
+import {HttpService} from "../../services/http.service";
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  public userList: UserModel[] = [];
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  public getUsers(): void {
+    // this.httpService.fetchData()
+    //   .then(userList => this.userList = userList)
+    //   .catch(err => console.log(err))
+
+    this.httpService.getUsers().subscribe({
+      next: (userList) => {
+        this.userList = userList;
+      },
+      error: (err) => {console.log(err)},
+      complete: () => {}
+    })
   }
 
 }
