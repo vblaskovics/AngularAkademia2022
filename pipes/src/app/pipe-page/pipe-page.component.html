@@ -1,0 +1,81 @@
+<div class="container mb-4">
+  <div class="row">
+    <div class="col">
+      <p>File name</p>
+    </div>
+    <div class="col">
+      <p>Modify Date</p>
+    </div>
+    <div class="col">
+      <p>File size</p>
+    </div>
+    <div class="col">
+      <p>Extension</p>
+    </div>
+  </div>
+  <div *ngFor="let file of files" class="row">
+    <div class="col">
+      <p> {{ file.name | fileExplorer2 }} </p>
+    </div>
+    <div class="col">
+      <p> {{ file.modifyDate | date: 'yy-mm-dd' }} </p>
+    </div>
+    <div class="col">
+      <p> {{ file.size | fileExplorer3 }} MB</p>
+    </div>
+    <div class="col">
+      <p>{{ file.name | fileExplorer }}</p>
+    </div>
+  </div>
+  <button>ASD</button>
+</div>
+
+
+
+
+
+<h2>{{ user | hello }}</h2>
+<h2>{{ user | hello | uppercase}}</h2>
+
+<hr>
+
+<h2> {{ 'nagy csacsi vagy' | order }} </h2>
+<h2> {{ 'nagy csacsi vagy' | order: '-' }} </h2>
+
+<hr>
+
+<div>
+  <h2> {{ 'hello' | counter }} </h2>
+</div>
+<button>Toggle Counter</button>
+
+<hr>
+
+<h2> {{ user }} </h2>
+
+<h2> {{ user | uppercase }} </h2>
+<h2> {{ 'HAHAHA' | lowercase }} </h2>
+
+<hr>
+
+<h2> {{ currentDate }} </h2>
+<h2> {{ currentDate | date }} </h2>
+<h2> {{ currentDate | date: 'short' }} </h2>
+<h2> {{ currentDate | date: 'hh:mm' }} </h2>
+
+<hr>
+
+<h2> {{ 300 | currency }} </h2>
+<h2> {{ 300 | currency: 'EUR' }} </h2>
+<h2> {{ 300 | currency: 'EUR': 'code' }} </h2>
+
+<hr>
+
+<h2> {{ 30.3243453454 }} </h2>
+<h2> {{ 30.3243453454 | number }} </h2>
+<h2> {{ 30.3243453454 | number: '3.0-5' }} </h2>
+
+<hr>
+
+<h2> {{ 0.25 | percent }} </h2>
+<h2> {{ 2/3 | percent }} </h2>

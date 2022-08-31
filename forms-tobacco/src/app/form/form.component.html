@@ -1,0 +1,173 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="nameInput">Name*</label>
+    <input
+      class="form-control"
+      type="text"
+      name="name"
+      id="nameInput"
+      placeholder="Name"
+      formControlName="name"
+      [class.is-invalid]="myForm.get('name')?.invalid && myForm.get('name')?.touched"/>
+
+      <p *ngIf="myForm.get('name')?.touched && myForm.get('name')?.hasError('required')">
+          Required field
+      </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="addressInput">Address*</label>
+    <input
+      class="form-control"
+      type="text"
+      name="address"
+      id="addressInput"
+      placeholder="Address"
+      formControlName="address"
+      [class.is-invalid]="myForm.get('address')?.invalid && myForm.get('address')?.touched"/>
+
+      <p *ngIf="myForm.get('address')?.touched && myForm.get('address')?.hasError('required')">
+        Required field
+      </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="birthDateInput">Birth Date*</label>
+    <input
+      class="form-control"
+      type="date"
+      name="birthDate"
+      id="birthDateInput"
+      value=""
+      placeholder="Birth Date"
+      formControlName="birthDate"
+      [class.is-invalid]="myForm.get('birthDate')?.invalid && myForm.get('birthDate')?.touched"/>
+
+      <p *ngIf="myForm.get('birthDate')?.touched && myForm.get('birthDate')?.hasError('required')">
+        Required field
+      </p>
+  </div>
+
+  <div class="form-check">
+    <input
+      mdbCheckbox
+      formControlName="checkBox18"
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="flexCheckDefault"
+    />
+    <label class="form-check-label" for="checkBox">
+      Elmúltam 18 éves*
+    </label>
+    <p *ngIf="myForm.get('checkBox18')?.touched && myForm.get('checkBox18')?.hasError('required')">
+      Required
+    </p>
+  </div>
+
+  <div class="form-check">
+    <input
+      mdbCheckbox
+      formControlName="checkBoxTC"
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="checkBox"
+
+    />
+    <label class="form-check-label" for="flexCheckDefault">
+      Terms and Conditions*
+    </label>
+    <p *ngIf="myForm.get('checkBoxTC')?.touched && myForm.get('checkBoxTC')?.hasError('required')">
+      Required
+    </p>
+  </div>
+
+  <h4>package types:</h4>
+  <div class="form-check">
+    <input
+      mdbCheckbox
+      formControlName="chooseS"
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="S"/>
+    <label class="form-check-label" for="flexCheckDefault">
+      S
+    </label>
+  </div>
+  <div class="form-check">
+    <input
+      mdbCheckbox
+      formControlName="chooseM"
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="M"/>
+    <label class="form-check-label" for="flexCheckDefault">
+       M
+    </label>
+  </div>
+  <div class="form-check">
+    <input
+      mdbCheckbox
+      formControlName="chooseL"
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="L"/>
+    <label class="form-check-label" for="flexCheckDefault">
+       L
+    </label>
+  </div>
+  <div class="form-check">
+    <input
+      mdbCheckbox
+      formControlName="chooseXL"
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="XL"/>
+    <label class="form-check-label" for="flexCheckDefault">
+       XL
+    </label>
+  </div>
+
+  <div ngbDropdown class="dropdown">
+    <button ngbDropdownToggle class="btn btn-secondary" type="button" id="dropdownMenuButton1" aria-expanded="false">
+  Package
+  </button>
+    <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+      <li *ngIf="myForm.get('chooseS')?.value === true"><a ngbDropdownItem value="10" href="#">10</a></li>
+      <li *ngIf="myForm.get('chooseS')?.value === true"><a ngbDropdownItem value="20" href="#">20</a></li>
+      <li *ngIf="myForm.get('chooseM')?.value === true"><a ngbDropdownItem value="50" href="#">50</a></li>
+      <li *ngIf="myForm.get('chooseM')?.value === true"><a ngbDropdownItem value="100" href="#">100</a></li>
+      <li *ngIf="myForm.get('chooseL')?.value === true"><a ngbDropdownItem value="500" href="#">500</a></li>
+      <li *ngIf="myForm.get('chooseL')?.value === true"><a ngbDropdownItem value="800" href="#">800</a></li>
+      <li *ngIf="myForm.get('chooseXL')?.value === true"><a ngbDropdownItem value="2000" href="#">2000</a></li>
+    </ul>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="billingAddressInput">Billing Address</label>
+    <input
+      class="form-control"
+      type="text"
+      name="billingAddress"
+      id="billingAddressInput"
+      placeholder="billingAddress"
+      formControlName="billingAddress"
+      [class.is-invalid]="myForm.get('billingAddress')?.invalid && myForm.get('billingAddress')?.touched"/>
+
+      <p *ngIf="myForm.get('chooseL')?.value === true ||  myForm.get('chooseXL')?.value === true">
+        Required field
+      </p>
+  </div>
+
+
+
+  <button class="btn btn-primary mb-2" type="submit">
+    Submit
+  </button>
+</form>
+
