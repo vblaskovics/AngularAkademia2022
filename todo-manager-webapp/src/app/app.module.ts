@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
@@ -20,17 +21,17 @@ import { LoginTodoReactive2Component } from './login-todo-reactive2/login-todo-r
     NavbarComponent,
     LoginTodoComponent,
     LoginTodoReactiveComponent,
-    LoginTodoReactive2Component
+    LoginTodoReactive2Component,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+        { path: 'login-todo-reactive2-component', component: LoginTodoReactive2Component },
+  ]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-
-  
- }
+export class AppModule {}

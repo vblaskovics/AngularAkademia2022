@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { PasswordValidators } from './password.validators';
 
 @Component({
@@ -11,13 +11,14 @@ export class LoginTodoReactive2Component implements OnInit {
 
   form: FormGroup;
 
-  constructor(fb:FormBuilder) {
+
+  constructor(fb: FormBuilder,) {
     this.form = fb.group({
-      firstname: ['' , [
+      firstName: ['' , [
         Validators.minLength(2),]],
       lastname: ['', [
         Validators.minLength(2), ]],
-      username: ['', [
+      userName: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.pattern(/^[A-ZÁÉÓŐÚŰa-záéóőúű0-9]+$/)]],
@@ -35,24 +36,23 @@ export class LoginTodoReactive2Component implements OnInit {
     });
   }
 
-  get username(): FormArray {
-    return this.form.get('username') as FormArray
+  get username(): FormControl {
+    return this.form.get('username') as FormControl
   };
 
-  get zip(): FormArray {
-    return this.form.get('zip') as FormArray
+  get zip(): FormControl {
+    return this.form.get('zip') as FormControl
   };
 
-  get password(): FormArray {
-    return this.form.get('password') as FormArray
+  get password(): FormControl {
+    return this.form.get('password') as FormControl
   };
 
-  get passwordre(): FormArray {
-    return this.form.get('passwordre') as FormArray
+  get passwordre(): FormControl {
+    return this.form.get('passwordre') as FormControl
   };
 
   submit(f: any) {
-    debugger
     console.log(f);
   }
 

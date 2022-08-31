@@ -13,5 +13,7 @@ export class AppComponent {
     this.inProgressCounter = num;
   }
 
+  
+
 
 }

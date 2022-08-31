@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validator } from '@angular/forms';
 
 @Component({
@@ -9,34 +9,37 @@ import { FormBuilder, FormGroup, FormControl, Validator } from '@angular/forms';
 export class NavbarComponent implements OnInit {
   @Input() title!: string;
   @Input() inProgressCounter?: number;
+  @Output() isSignInPage: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   myForm: FormGroup;
+  signInPage: boolean = false;
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       title: [''],
-      createTodo: ['']
+      createTodo: [''],
+
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onCreate(): void {
     console.log('title', this.myForm.value);
     this.myForm.reset();
   }
 
-
-  onSignUp() {
-    this.onSignUp
+  goToSignUp(): void{
+    this.isSignInPage.emit(this.signInPage);
   }
+
 
   addTodo(title: string): void {
     console.log(title);
   }
 }
+
+
 
 // getTodo(): FormControl {
 //     return this.myForm.get('title') as FormControl
