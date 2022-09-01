@@ -1,3 +1,4 @@
+import { HttpServiceInterface } from './interfaces/http-service.interface';
 import { UserModel } from './../models/user.model';
 import { UserDto } from './../models/user.dto';
 import { HttpClient } from '@angular/common/http';
@@ -9,11 +10,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class HttpService implements HttpServiceInterface {
 
   public usersUpdated:Subject<boolean> = new Subject<boolean>()
 
-  private readonly BASE_URL = environment.apiUrl;
+ readonly BASE_URL = environment.apiUrl;
   users: UserDto[] = [];
 
   constructor(private http: HttpClient) { }

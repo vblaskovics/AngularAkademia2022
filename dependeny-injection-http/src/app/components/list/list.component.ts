@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Form } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -10,6 +10,8 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit, OnDestroy{
+
+  public userList$?: Observable<UserModel[]>;
 
   // @Input() userSaved: boolean = false;
   // @Output() resetUserSaved: EventEmitter<void> = new EventEmitter<void>(); sibling komm. miatt
@@ -21,19 +23,19 @@ export class ListComponent implements OnInit, OnDestroy{
   constructor(private httpService: HttpService) { }
 
   public getFilteredUser(): void {
-    this.httpService.fetchData()
-    .then(userList => {
-      console.log(userList)
-    })
-    .catch(err => console.log(err));
+  //   this.httpService.fetchData()
+  //   .then(userList => {
+  //     console.log(userList)
+  //   })
+  //   .catch(err => console.log(err));
 
-  this.httpService.getUsers().subscribe({
-    next: (userList) => {console.log(userList)
-            this.userList = userList},
-    error: (err) => {console.log(err)},
-    complete: () => {},
-  })
-
+  // this.httpService.getUsers().subscribe({
+  //   next: (userList) => {console.log(userList)
+  //           this.userList = userList},
+  //   error: (err) => {console.log(err)},
+  //   complete: () => {},
+  // })
+    this.userList$ = this.httpService.getUsers();   //a fenti sorok helyett
   
   }
 

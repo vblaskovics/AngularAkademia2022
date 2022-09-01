@@ -1,3 +1,5 @@
+import { UserForm } from './user.form';
+import { UserFormModel } from './model/user-form.model';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserDto } from 'src/app/models/user.dto';
@@ -13,13 +15,15 @@ export class BasicFormComponent implements OnInit {
 
   // @Output() public onUpdateUser: EventEmitter<void> = new EventEmitter<void>() //sibling komm. miatt
 
-  public form: FormGroup = new FormGroup<any>({
-    first_name: new FormControl('', [Validators.required]),
-    last_name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    gender: new FormControl('', [Validators.required]),
-  }) 
+  // public form: FormGroup = new FormGroup<any>({
+  //   first_name: new FormControl('', [Validators.required]),
+  //   last_name: new FormControl('', [Validators.required]),
+  //   email: new FormControl('', [Validators.required]),
+  //   gender: new FormControl('', [Validators.required]),
+  // }) 
   // formbuilder == formgroup typussosá tevés  - ugyanaz
+
+  public form: FormGroup<UserFormModel> = new UserForm();
 
   constructor( private httpService: HttpService ) { 
    
