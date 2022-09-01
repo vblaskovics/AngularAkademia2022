@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import {UserModel} from "../../models/user.model";
 import {HttpService} from "../../services/http.service";
 
@@ -10,7 +10,9 @@ import {HttpService} from "../../services/http.service";
 })
 export class ListComponent implements OnInit, OnDestroy, OnChanges {
 
-  public userList: UserModel[] = [];
+  // public userList: UserModel[] = [];
+  public userList$?: Observable<UserModel[]>;
+
   //private subscription: Subscription | undefined;
   private subscription?: Subscription;
 
@@ -53,13 +55,15 @@ export class ListComponent implements OnInit, OnDestroy, OnChanges {
     //   .then(userList => this.userList = userList)
     //   .catch(err => console.log(err))
 
-    this.httpService.getUsers().subscribe({
-      next: (userList) => {
-        this.userList = userList;
-      },
-      error: (err) => {console.log(err)},
-      complete: () => {}
-    })
+    // this.httpService.getUsers().subscribe({
+    //   next: (userList) => {
+    //     this.userList = userList;
+    //   },
+    //   error: (err) => {console.log(err)},
+    //   complete: () => {}
+    // })
+
+    this.userList$ = this.httpService.getUsers();
   }
 
   public deleteUser(id: number): void {

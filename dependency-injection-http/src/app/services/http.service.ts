@@ -4,13 +4,14 @@ import {environment} from "../../environments/environment";
 import {UserModel} from "../models/user.model";
 import {map, Observable, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import { HttpServiceInterface } from './interfaces/http-service.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class HttpService implements HttpServiceInterface {
 
-  private readonly BASE_URL = environment.apiUrl;
+  readonly BASE_URL = environment.apiUrl;
   public usersUpdated: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
