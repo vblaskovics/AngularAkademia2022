@@ -2,7 +2,7 @@ import { UserModel } from './../models/user.model';
 import { UserDto } from './../models/user.dto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class HttpService {
+
+  public usersUpdated:Subject<boolean> = new Subject<boolean>()
 
   private readonly BASE_URL = environment.apiUrl;
   users: UserDto[] = [];
@@ -68,13 +70,14 @@ export class HttpService {
   //   Promise.all(promises).then(console.log, console.error)
   // }
 
-
-
-  public postUser(user: UserDto): void {
-    console.log(user);
+  public postUser(user: UserDto): Observable<UserDto>{
+    return this.http.post<UserDto>(this.BASE_URL + '/users', user );
   }
 
 
+  public deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(this.BASE_URL + '/users/' + id ); // /users/ - kell a / jel, mert id-t használunk
+  }
 
 
 }

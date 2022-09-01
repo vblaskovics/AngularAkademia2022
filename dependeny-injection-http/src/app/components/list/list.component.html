@@ -1,4 +1,4 @@
-<div>
+<div class="mt-5">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -7,6 +7,7 @@
                 <th> Last Name </th>
                 <th> Gender </th>
                 <th> Options </th>
+                <th> Delete </th>
             </tr>
         </thead>
 
@@ -17,6 +18,7 @@
                 <td> {{ user.lastName }} </td>
                 <td> {{ user.email }} </td>
                 <td> {{ user.gender }} </td>
+                <td> <button class="btn btn-danger" (click)="deleteUser(user.id)" >Delete</button></td>
             </tr>
         </tbody>
     </table>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { TitleStrategy } from '@angular/router';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Form } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -8,18 +9,23 @@ import { HttpService } from 'src/app/services/http.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy{
+
+  // @Input() userSaved: boolean = false;
+  // @Output() resetUserSaved: EventEmitter<void> = new EventEmitter<void>(); sibling komm. miatt
 
   public userList: UserModel[] = [];
+  // private subscription: Subscription | undefined
+  private subscription?: Subscription; //ha kérdőjeles akkor az alapértéke undefined
 
   constructor(private httpService: HttpService) { }
 
   public getFilteredUser(): void {
-  //   this.httpService.fetchData()
-  //   .then(userList => {
-  //     console.log(userList)
-  //   })
-  //   .catch(err => console.log(err));
+    this.httpService.fetchData()
+    .then(userList => {
+      console.log(userList)
+    })
+    .catch(err => console.log(err));
 
   this.httpService.getUsers().subscribe({
     next: (userList) => {console.log(userList)
@@ -27,10 +33,46 @@ export class ListComponent implements OnInit {
     error: (err) => {console.log(err)},
     complete: () => {},
   })
+
+  
   }
 
   ngOnInit(): void {
     this.getFilteredUser()
+
+    //subject fogadó fél hogy frissüljön a lista:
+    this.subscription = this.httpService.usersUpdated.subscribe((updated: boolean) => {
+      if(updated) {
+      this.getFilteredUser()}
+    });
+  }
+
+  public deleteUser(id: number): void{
+    this.httpService.deleteUser(id).subscribe({
+      next: () => {},
+      error: (err) => {console.log(err)},
+      complete: () => {
+        this.getFilteredUser();
+      },
+    })
+    
+  }
+
+  // ngOnChanges(changes: SimpleChanges): void { // sibling komm. miatt
+  //   if(changes.hasOwnProperty('userSaved')){
+  //     this.getFilteredUser();
+  //     this.resetUserSaved.emit();
+
+  //   }
+
+  // }
+
+
+  ngOnDestroy(): void {
+    // if(this.subscription) {
+    // this.subscription?.unsubscribe();}  ez ugyanaz, mint a lenti kód
+
+    this.subscription?.unsubscribe();
   }
 
 }
