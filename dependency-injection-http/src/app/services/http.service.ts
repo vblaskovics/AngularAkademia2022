@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {UserDto} from "../models/user.dto";
 import {environment} from "../../environments/environment";
 import {UserModel} from "../models/user.model";
-import {map, Observable} from "rxjs";
+import {map, Observable, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -11,6 +11,7 @@ import {HttpClient} from "@angular/common/http";
 export class HttpService {
 
   private readonly BASE_URL = environment.apiUrl;
+  public usersUpdated: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
 
@@ -55,10 +56,12 @@ export class HttpService {
     )
   }
 
-  public postUser(user: UserDto): void {
-    console.log(user);
+  public postUser(user: UserDto): Observable<UserDto> {
+    return this.http.post<UserDto>(this.BASE_URL + '/users', user);
   }
 
-
+  public deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(this.BASE_URL + '/users/' + id);
+  }
 
 }

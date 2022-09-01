@@ -19,7 +19,7 @@
         <td>{{user.email}}</td>
         <td>{{user.gender}}</td>
         <td>
-          <button>Delete</button>
+          <button (click)="deleteUser(user.id)">Delete</button>
         </td>
       </tr>
     </tbody>
