@@ -12,14 +12,14 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let user of userList">
+      <tr *ngFor="let user of userList$ | async">
         <td>{{ user.id }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.gender }}</td>
         <td>
-          <button>Delete</button>
+          <button (click)="deleteUser(user.id)">Delete</button>
         </td>
       </tr>
     </tbody>

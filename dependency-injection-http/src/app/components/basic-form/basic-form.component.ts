@@ -25,7 +25,16 @@ export class BasicFormComponent implements OnInit {
   public saveUser(): void {
     const user: UserDto = this.form.value as UserDto;
 
-    this.httpService.postUser(user);
+    this.httpService.postUser(user).subscribe({
+      next: (user: UserDto) => {
+        console.log(`user saved with id: ${user.id}`)
+      },
+      error: (err) => {console.log(err)},
+      complete: () => {
+        this.httpService.usersUpdated.next(true);
+        this.form.reset();
+      },
+    })
   }
 
 }
