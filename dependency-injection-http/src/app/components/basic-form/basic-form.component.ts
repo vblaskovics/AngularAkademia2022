@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserDto } from 'src/app/models/user.dto';
 import { HttpService } from 'src/app/services/http.service';
@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./basic-form.component.css']
 })
 export class BasicFormComponent implements OnInit {
+  // @Output() userSavedEmitter: EventEmitter<void> = new EventEmitter<void>();
 
   public form: FormGroup = new FormGroup<any>({
     first_name: new FormControl('', [Validators.required]),
@@ -25,7 +26,19 @@ export class BasicFormComponent implements OnInit {
   public saveUser(): void {
     const user: UserDto = this.form.value as UserDto;
 
-    this.httpService.postUser(user);
+    this.httpService.postUser(user).subscribe({
+      next: (user: UserDto) => {
+        console.log(`user saved with id: ${user.id}`);
+      },
+      error: (err) => {console.log(err);
+      },
+      complete: () => {
+        this.httpService.usersUpdated.next(true); // így küldünk adatot a subjectnek
+        // this.userSavedEmitter.emit();
+        this.form.reset();
+      },
+    });
   }
+
 
 }

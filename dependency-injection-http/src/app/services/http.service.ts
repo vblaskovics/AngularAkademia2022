@@ -1,6 +1,7 @@
+import { HttpServiceInterface } from './interfaces/http-service.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserDto } from '../models/user.dto';
 import { UserModel } from '../models/user.model';
@@ -8,9 +9,11 @@ import { UserModel } from '../models/user.model';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class HttpService implements HttpServiceInterface {
 
-  private readonly BASE_URL = environment.apiUrl;
+  //private
+  readonly BASE_URL = environment.apiUrl;
+  public usersUpdated: Subject<boolean> = new Subject<boolean>(); // frissítéshez
 
   constructor(private http: HttpClient) { }
 
@@ -57,8 +60,12 @@ export class HttpService {
     )
   }
 
-  public postUser(user: UserDto): void {
-    console.log(user);
+  public postUser(user: UserDto): Observable<UserDto> {
+    // console.log(user);
+    return this.http.post<UserDto>(this.BASE_URL + '/users', user);
+  }
 
+  public deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(this.BASE_URL + '/users/' + id);
   }
 }

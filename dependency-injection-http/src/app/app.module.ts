@@ -1,3 +1,5 @@
+import { HttpMockService } from './services/mock-services/http-mock.service';
+import { HttpService } from 'src/app/services/http.service';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +20,9 @@ import { ListComponent } from './components/list/list.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HttpService, useClass: HttpMockService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
