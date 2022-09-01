@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-// function validateStudentsNumber(group: AbstractControl): {[s: string]: boolean;} {
+// function validateStudentsNumber(group: AbstractControl, ): {[s: string]: boolean;} {
 //   if(
-//     group.get('maxStudents')?.value <
-//     group.get(['students'] as const)?.length
+//     group.get('maxStudents')?.value <=
+//     this.studentCounter
 //   ) {
 //     return {requiredStudentsNumber: true};
 //   }
@@ -19,6 +19,7 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 export class ClassFormComponent implements OnInit {
 
   classForm: FormGroup;
+  studentCounter: number = 0;
 
   constructor(private fb: FormBuilder) {
     this.classForm = this.fb.group({
@@ -47,11 +48,17 @@ export class ClassFormComponent implements OnInit {
       gender: ['', Validators.required],
       email: ['', Validators.required]
     });
-  this.students.push(studentFormGroup)
+  this.students.push(studentFormGroup),
+  this.studentCounter ++,
+  console.log("studentcounter", this.studentCounter);
+return this.studentCounter;
   }
 
   deleteStudent(studentIndex: number) {
-    this.students.removeAt(studentIndex);
+    this.students.removeAt(studentIndex),
+    this.studentCounter --,
+    console.log("studentcounter", this.studentCounter);
+    ;
   }
 
   onSubmit() {
