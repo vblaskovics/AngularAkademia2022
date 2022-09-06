@@ -1,8 +1,15 @@
-.container-fluid {
-  margin: auto;
-}
-
 h2 {
   text-align: center;
   color: blueviolet;
+  background-color: aquamarine;
+}
+
+form {
+  text-align: center;
+  width: auto;
+}
+
+.button2 {
+  background-color: #f44336;
+  width: 15%;
 }

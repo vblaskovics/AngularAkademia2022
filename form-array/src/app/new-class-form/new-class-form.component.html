@@ -1,7 +1,7 @@
 <h2>Class</h2>
 
 <form [formGroup]="form">
-  <div class="container">
+  <div class="form-row">
     <div class="col">
       Class Name
       <div class="row"></div>
@@ -9,50 +9,53 @@
         <input id="newClassInput" type="text" placeholder="New Class" />
       </label>
     </div>
-  </div>
-  <div class="container">
-    Number of Students
-    <div class="row">
-      <label class="form-label" for="studentInput">
-        <input id="studentInput" type="number" placeholder="Number of Students" ngModel max="30" />
-        <div *ngIf="" class="danger danger-alert">In a Class cannot contain more than 30 students</div>
-      </label>
+      <div class="col">
+        Number of Students:
+        <div class="row"></div>
+        <label class="form-label" for="numberOfStudents"> </label>
+        <input
+          id="studentInput"
+          type="number"
+          placeholder="Number of Students"
+          ngModel
+          max="30"
+        />
+        <div class="danger danger-alert">{{ numberOfStudents }}</div>
+      </div>
     </div>
-  </div>
-  <div class="container-fluid">
+  <div>
     <div
-      class="row"
+      class="col-"
       *ngFor="let student of student.controls; let i = index"
       [formGroup]="getStudent(student)"
-    >
-      <label class="form-label" for="nameInput"
-        >Name
+    >Name
+      <label class="form-label" for="nameInput">
         <input id="nameInput" type="text" placeholder="Name" />
       </label>
-      <div class="col">
-        <div class="row">
+      <div class="col-">
+        <div>Gender
           <label class="form-label" for="genderInput"
-            >Gender
+            >
             <input id="genderInput" type="text" placeholder="Gender" />
           </label>
         </div>
       </div>
-      <div class="col">
-        <div class="row">
+      <div class="col-">
+        <div>Email
           <label class="form-label" for="emailInput"
-            >Email
+            >
             <input id="emailInput" type="email" placeholder="Email" />
           </label>
         </div>
       </div>
-      <div class="col">
-        <button class="btn btn-primary mt-4" (click)="deleteStudent(i)">
+      <div>
+        <button class="button2 btn" (click)="deleteStudent(i)">
           Delete
         </button>
       </div>
     </div>
   </div>
-  <button class="btn btn-primary mb-4" (click)="addStudent(); onAddStudent()">
+  <button class="button1 btn btn-primary mb-4" (click)="addStudent(); onAddStudent()">
     Add Student
   </button>
 </form>

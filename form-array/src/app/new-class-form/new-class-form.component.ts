@@ -12,6 +12,7 @@ export class NewClassFormComponent implements OnInit {
   @Input() max!: number;
   form: FormGroup;
 
+
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       student: this.fb.array([]),
@@ -26,6 +27,10 @@ export class NewClassFormComponent implements OnInit {
     return student as FormGroup;
   }
 
+  get numberOfStudents(): number {
+    return this.form.get('student')?.value?.length
+  }
+
   addStudent() {
     const studentFormGroup: FormGroup = this.fb.group({
       student: ['',],
@@ -34,6 +39,8 @@ export class NewClassFormComponent implements OnInit {
       email: ['', Validators.required]
     });
     this.student.push(studentFormGroup);
+
+    console.log(studentFormGroup.get('gender')?.hasError)
   }
 
   deleteStudent(studentIndex: number) {
