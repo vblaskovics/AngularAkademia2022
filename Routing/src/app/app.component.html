@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xd-12">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand text-white bg-warning p-2 mx-3 " href="#">Routing</a>
+        <button class="navbar-toggler mx-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link mx-2 hover" [routerLink]="['/home']" routerLinkActive="active">Home 
+                <!-- <span class="sr-only">(current)</span> -->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2 hover" [routerLink]="['/about']" routerLinkActive="active">About</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link mx-2 hover" [routerLink]="['/login']" routerLinkActive="active" >Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+      <div class="container p-4 my-5">
+      
+        <router-outlet></router-outlet>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

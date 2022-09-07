@@ -1,0 +1,15 @@
+nav {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0
+}
+
+.hover:hover {
+    background-color: aqua;
+    transition: 0.5s;
+}
+
+.active {
+    background-color: aqua;
+  }

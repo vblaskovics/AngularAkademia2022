@@ -1,0 +1,35 @@
+<div class="my-3">
+  <h4 class="text-secondary">Log in</h4>
+  
+  <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="my-3">
+      <label for="username" class="form-label"></label>
+      <input
+        type="text"
+        id="username"
+        class="form-control"
+        formControlName="username"
+        placeholder="Username*"
+        [class.is-invalid]="username.touched && username.invalid"
+        />
+        <p *ngIf="username.touched && username.hasError('required')" id="username" class="invalid-feedback">This filed is required!</p>
+    </div>
+
+    <div class="my-3">
+      <label for="password" class="form-label"></label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="Password*"
+        [class.is-invalid]="password.touched && password.invalid"
+      />
+      <p *ngIf="password.touched && password.hasError('required')" id="password" class="invalid-feedback">This filed is required!</p>
+    </div>
+
+    <div class="my-3">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Log in</button>
+    </div>
+  </form>
+</div>
