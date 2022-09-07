@@ -1,30 +1,26 @@
 <h2>Login</h2>
 
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<form *ngIf="!loginService.getUser()" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label class="form-label" for="usernameInput">Username</label>
-      <input
-        id="usernameInput"
-        class="form-control"
-        type="text"
-        name="username"
-        placeholder="Username"
-        formControlName="username"
-      />
+        <label class="form-label" for="usernameInput">Username</label>
+        <input id="usernameInput" class="form-control" type="text" name="username" placeholder="Username"
+            formControlName="username" />
     </div>
     <div class="mb-3">
-      <label class="form-label" for="emailInput">Password</label>
-      <input
-        id="passwordInput"
-        class="form-control"
-        type="password"
-        name="password"
-        placeholder="Password"
-        formControlName="password"
-      />
+        <label class="form-label" for="emailInput">Password</label>
+        <input id="passwordInput" class="form-control" type="password" name="password" placeholder="Password"
+            formControlName="password" />
     </div>
-  
-    <button type="submit" class="btn btn-primary mb-2" [disabled]="myForm.invalid">Submit</button>
-  </form>
 
-  <div *ngIf="message" class="alert alert-danger">{{message}}</div>
+    <button type="submit" class="btn btn-primary mb-2" [disabled]="myForm.invalid">Submit</button>
+</form>
+<div *ngIf="message" class="alert alert-danger">{{message}}</div>
+
+
+<div *ngIf="loginService.getUser()">
+    <div class="container">
+        <p> Logged in as <strong>{{ loginService.getUser() }}</strong></p>
+        <button class="btn btn-secondary" (click)="loginService.logout()">Log out</button>
+    </div>
+
+</div>

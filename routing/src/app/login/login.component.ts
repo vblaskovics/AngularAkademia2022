@@ -14,7 +14,7 @@ type LoginForm = {
 })
 export class LoginComponent implements OnInit {
 
-  myForm: FormGroup;
+  myForm: FormGroup<LoginForm>;
   message = '';
 
   constructor(public loginService:LoginService) {
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.login(this.myForm.value.username, this.myForm.value.password)
+    this.login(this.myForm.controls.username.value, this.myForm.controls.password.value)
   }
 
   login(username: string, password:string) {
