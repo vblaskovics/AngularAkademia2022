@@ -1,0 +1,38 @@
+<h2>Form Array</h2>
+<form [formGroup]="form">
+  <div class="container">
+    <div
+      class="row"
+      *ngFor="let lessonFormGroup of lessons.controls; let i = index"
+      [formGroup]="getLessons(lessonFormGroup)"
+    >
+      <div class="col">
+        <label class="form-label" for="titleInput">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="title"
+          id="titleInput"
+        />
+      </div>
+      <div class="col">
+        <label class="form-label" for="levelInput">Level</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="level"
+          id="levelInput"
+        />
+      </div>
+      <div class="col">
+        <button class="btn btn-danger" (click)="deleteLesson(i)">Delete</button>
+      </div>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+        Submit
+      </button>
+      <button class="btn btn-primary" (click)="addLesson()">Add</button>
+    </div>
+  </div>
+</form>

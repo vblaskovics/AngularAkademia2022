@@ -1,0 +1,73 @@
+<h2>Class thingy</h2>
+<form [formGroup]="forms">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <label class="form-label" for="">Class Name: </label>
+      </div>
+      <div class="col">
+        <label class="form-label" for="numberOfStudentsInput"></label>
+        <input type="text" class="form-control" id="numberOfStudentsInput" formControlName="numberOfStudents" (change)="onChangeMaxNumber()"/>
+      </div>
+      <h2>Studens:</h2>
+    </div>
+
+    <div
+      class="row"
+      *ngFor="let item of newStudents.controls; let i = index"
+      [formGroup]="getStudents(item)"
+    >
+      <div class="col">
+        <label class="form-label" for="nameInput">Name:</label>
+        <input
+          class="form-control"
+          id="nameInput"
+          formControlName="name"
+          type="text"
+        />
+      </div>
+
+      <div class="col">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          id="flexRadioDefault1"
+          formControlName="gender"
+          value="male"
+        />
+        <label class="form-check-label" for="flexRadioDefault1"> Male </label>
+      </div>
+      <div class="col">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          id="flexRadioDefault2"
+          formControlName="gender"
+          value="female"
+          checked
+        />
+        <label class="form-check-label" for="flexRadioDefault2"> Female </label>
+      </div>
+
+      <div class="col">
+        <label class="form-label" for="emailInput">Email:</label>
+        <input
+          class="form-control"
+          id="emailInput"
+          formControlName="email"
+          type="email"
+        />
+      </div>
+      <div class="col">
+        <button class="btn btn-danger" (click)="deleteClass(i)">Delete</button>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="onAddClass()">Add</button>
+    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <div class="text-danger" *ngIf="newStudents.errors">
+      Number of current students cannot exceed the maximum number of students.
+    </div>
+  </div>
+</form>

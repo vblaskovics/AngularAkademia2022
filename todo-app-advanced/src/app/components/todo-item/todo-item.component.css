@@ -1,0 +1,7 @@
+.short {
+  width: 10%;
+  text-align: center;
+}
+.makeMePointable:hover {
+  cursor: pointer;
+}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2>Form with reactive forms</h2>
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
@@ -8,21 +9,43 @@
       class="form-control"
       type="text"
       name="username"
+=======
+<h2>Form with reactive</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="usernameInput"
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4
       placeholder="Username"
       formControlName="username"
     />
   </div>
   <div class="mb-3">
+<<<<<<< HEAD
     <label class="form-label" for="emailInput">Email</label>
     <input
       id="emailInput"
       class="form-control"
       type="text"
       name="email"
+=======
+    <label class="form-label" for="emailInput">Email:</label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+      id="emailInput"
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4
       placeholder="Email"
       formControlName="email"
     />
   </div>
+<<<<<<< HEAD
 
   <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
@@ -37,3 +60,19 @@
 <button class="btn btn-primary m-2" (click)="resetForm()">resetForm</button>
 <button class="btn btn-primary m-2" (click)="setForm()">setForm</button>
 <button class="btn btn-primary m-2" (click)="patchValue()">patchValue</button>
+=======
+  <button class="btn btn-primary" type="submit" >Submit</button>
+</form>
+<button class="btn btn-primary" (click)="onClickMyFormValue()">myForm value</button>
+
+<h1>Email: </h1>
+<p>{{myForm.value.email}}</p>
+<p>{{myForm.value.username}}</p>
+
+
+<button class="btn btn-primary" (click)="erase()">Erase form</button>
+<button class="btn btn-primary" (click)="getEmail()">getEmail</button>
+<button class="btn btn-primary" (click)="resetForm()">resetform</button>
+<button class="btn btn-primary" (click)="setForm()">Set form</button>
+<button class="btn btn-primary" (click)="patchValue()">Path values</button>
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4

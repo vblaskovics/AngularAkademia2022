@@ -1,0 +1,17 @@
+.col {
+  border: 1px solid black;
+}
+table {
+  width: 30%;
+  text-align: center;
+  position: absolute;
+  margin-left: 35%;
+  background-color: rgba(191, 191, 191, 0.768);
+}
+.go-right {
+  text-align: right;
+  background-color: white;
+}
+.go-right:hover {
+  cursor: pointer;
+}

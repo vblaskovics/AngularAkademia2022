@@ -1,4 +1,5 @@
 <p>Items count: {{ itemsCount }}</p>
+<<<<<<< HEAD
 
 <button (click)="addItem()">Add item</button>
 <button (click)="addItem2()">Add item 2</button>
@@ -26,3 +27,52 @@
       {{ item }}
   </li>
 </ul>
+=======
+<button class="btn btn-primary" (click)="onAddToDo()">Add</button>
+<button class="btn btn-primary" (click)="onAddToDo2()">Add 2</button>
+<button class="btn btn-danger" (click)="onRemoveToDo()">Remove</button>
+<div class="row" *ngIf="false">
+  <div class="col-md-4">
+    <ul>
+      <a href="#" *ngFor="let item of items">
+        <li>
+          <label for="listItem">{{ item }}</label>
+          <a class="delete-button" href="#" (click)="onRemoveItem(item)">X</a>
+          <input type="text" id="listItem" />
+        </li>
+      </a>
+    </ul>
+  </div>
+</div>
+
+
+<p>Páros ToDo List</p>
+<div class="row" *ngIf="false">
+  <div class="col-md-4">
+    <ul>
+      <a href="#" *ngFor="let item of items; let i = index">
+        <li *ngIf="(i + 1) % 2 === 0">
+          <label for="listItem">{{ item }}</label>
+          <a class="delete-button" href="#">X</a>
+          <input type="text" id="listItem" />
+        </li>
+      </a>
+    </ul>
+  </div>
+</div>
+
+<p>Class binding</p>
+<div class="row">
+  <div class="col-md-4">
+    <ul [class.allRed]="HigherThanEight">
+      <a href="#" *ngFor="let item of items let i = index">
+        <li [class.red]="isSecond(item)" [class.prime]="isPrimeNumber(i+1)">
+          <label for="listItem">{{ item }}</label>
+          <a class="delete-button" href="#" (click)="onRemoveItem(item)">X</a>
+          <input type="text" id="listItem" />
+        </li>
+      </a>
+    </ul>
+  </div>
+</div>
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4

@@ -1,5 +1,6 @@
 <h2>Form with template</h2>
 
+<<<<<<< HEAD
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <div class="mb-3">
     <label class="form-label" for="usernameInput">Username</label>
@@ -8,21 +9,44 @@
       class="form-control"
       type="text"
       name="username"
+=======
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="usernameInput"
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4
       placeholder="Username"
       ngModel
     />
   </div>
   <div class="mb-3">
+<<<<<<< HEAD
     <label class="form-label" for="emailInput">Email</label>
     <input
       id="emailInput"
       class="form-control"
       type="text"
       name="email"
+=======
+    <label class="form-label" for="emailInput">Email:</label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+      id="emailInput"
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4
       placeholder="Email"
       ngModel
     />
   </div>
 
+<<<<<<< HEAD
   <button type="submit" class="btn btn-primary">Submit</button>
+=======
+  <button class="btn btn-primary" type="submit">Submit</button>
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4
 </form>

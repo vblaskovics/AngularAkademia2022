@@ -1,0 +1,111 @@
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <h2>Order:</h2>
+  <div class="col-md-4 mb-3">
+    <label for="">*Name:</label>
+    <input
+      type="text"
+      class="form-control"
+      name=""
+      id=""
+      formControlName="name"
+      placeholder="Name"
+    />
+    <div *ngIf="false">Looks good!</div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="adressInput">*Adress:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="adress"
+      id="adressInput"
+      placeholder="Adress"
+      formControlName="adress"
+    />
+    <div *ngIf="false">Looks good!</div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="birthDateInput">*Birth date:</label>
+    <input
+      type="text"
+      class="form-control"
+      name="birthdate"
+      id="birthDateInput"
+      formControlName="birthdate"
+      placeholder="Eg.: 0000/00/00"
+    />
+    <div *ngIf="false">Looks good!</div>
+  </div>
+
+  <div class="col-md-4 mb-3" >
+    <label for="billingadressInput">Billing Adress:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="billingadress"
+      id="billingadressInput"
+      placeholder="Adress"
+      formControlName="billingadress"
+    />
+    <div *ngIf="false">Looks good!</div>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnSmall" id="btnSmallInput" value="option1" formControlName="btnSmall">
+    <label  class="form-check-label" for="btnSmallInput">S</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnMedium" id="btnMediumInput" value="option1" formControlName="btnMedium">
+    <label  class="form-check-label" for="btnMediumInput">M</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnLarge" id="btnLargeInput" value="option1" formControlName="btnLarge">
+    <label  class="form-check-label" for="btnLargeInput">L</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="btnXLarge" id="btnXLargeInput" value="option1" formControlName="btnXLarge">
+    <label  class="form-check-label" for="btnXLargeInput">XL</label>
+  </div>
+
+  <div ngbDropdown class="dropdown">
+    <button
+    ngbDropdownToggle
+    class="btn btn-secondary"
+    type="button"
+    id="dropdownMenuButton1"
+    aria-expanded="false"
+    >
+  </button>
+  <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+    <div *ngFor="let data of selectedPackages;">
+    <li><a ngbDropdownItem (click)="onSubmit()">{{data.value}}</a></li>
+  </div>
+  </ul>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="termAndCondInput" name="termsAndCond" formControlName="termsAndCond"/>
+        <label class="form-check-label" for="termAndCondInput">
+          *Terms and Conditions
+        </label>
+        <div class="text-danger" *ngIf="termsAndCond.errors && myForm.touched ">
+          In order to proceed please accept our terms and conditions!
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+
+</form>

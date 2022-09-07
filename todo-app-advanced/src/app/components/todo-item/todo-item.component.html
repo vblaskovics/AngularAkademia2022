@@ -1,0 +1,8 @@
+<td scope="row">{{ todo?.id }}</td>
+<td >{{ todo?.title }}</td>
+<td >{{ todo?.progress }}</td>
+<td  *ngFor="let item of todo?.user_id ">{{ item.name }}</td>
+<td class="makeMePointable short" (click)="tableDataClicked()" >🔍</td>
+<td class="makeMePointable short" (click)="removeItem()">❌</td>
+<td class="makeMePointable short" (click)="changeTodoStatus()">▶</td>
+

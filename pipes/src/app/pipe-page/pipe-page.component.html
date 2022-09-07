@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2> {{ user }} </h2>
 <h2> {{ user | uppercase }} </h2>
 <h2> {{ 'ez a bemenet' | uppercase }} </h2>
@@ -18,3 +19,28 @@
 <h2> {{ 3 | number:'1.2-4' }} </h2>
 <h2> {{ 0.25 | percent }}</h2>
 
+=======
+<button class="btn-primary btn" (click)="convertToGB()">Gb</button>
+<button class="btn-primary btn"(click)="convertToMb()">Mb</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">File name</th>
+      <th scope="col">Modify date</th>
+      <th scope="col">File size</th>
+      <th scope="col">Extension</th>
+      <th scope="col">Time Elapsed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of bigArray">
+      <td>{{item.name | removeExtension}}</td>
+      <td>{{item.modifyDate | date: 'yyyy-MM-dd' }}</td>
+      <td *ngIf="makeItMb">{{item.size | hello}}</td>
+      <td *ngIf="makeItGb">{{item.size | hello2}}</td>
+      <td>{{item.name | order}}</td>
+      <td>{{valami(item.modifyDate)}}</td>
+    </tr>
+  </tbody>
+</table>
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4

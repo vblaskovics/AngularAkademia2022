@@ -1,5 +1,6 @@
 <h2>Form with validation</h2>
 
+<<<<<<< HEAD
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <div class="mb-3">
     <label class="form-label" for="usernameInput">Username*</label>
@@ -50,3 +51,42 @@
     Submit
   </button>
 </form>
+=======
+<form [formGroup]="myForms" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="usernameInput"
+      placeholder="Username"
+      formControlName="username"
+      [class.is-valid]="isValid"
+      [class.is-invalid]="myForms.get('username')?.invalid && myForms.get('username')?.touched === true"
+    />
+    <div id="usernameInput" class="invalid-feedback">
+      Required field
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="emailInput">Email:</label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+      id="emailInput"
+      placeholder="Email"
+      formControlName="email"
+      [class.is-valid]="isValid"
+      [class.is-invalid]="myForms.get('email')?.invalid && myForms.get('email')?.touched === true"
+    />
+    <div id="emailInput" class="invalid-feedback">Required field</div>
+  </div>
+  <div class="text-danger" *ngIf="formIsInvalid">Form is invalid</div>
+  <button (click)="onSubmit()" class="btn btn-primary" type="submit" >Submit</button>
+</form>
+
+
+Form status: {{ myForms.status }}
+>>>>>>> 7d99ba94b13527368e1a2a93686137e8203437a4

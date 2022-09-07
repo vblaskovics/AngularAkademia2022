@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-function evenValidator(control: FormControl): { [s:string]: boolean } {
+
+function eventValidator(control: FormControl): { [s: string]: boolean }   {
   if (control.value % 2 !== 0) {
     return { invalidParity: true }
-  } 
-  return {};
-}
+  }
 
-const generateErrorMsg: any = {
-  required: (p:any) => 'This field is required!',
-  min: (p:any)=> `Must be greeater than ${p.min}!`,
-  invalidParity: (p:any) => 'Invalid parity!',
+  return {
+
+  };
 }
 
 @Component({
@@ -20,51 +18,34 @@ const generateErrorMsg: any = {
   styleUrls: ['./form-custom-validation.component.css']
 })
 export class FormCustomValidationComponent implements OnInit {
-  myForm: FormGroup;
-
+  myForms: FormGroup;
   constructor(fb: FormBuilder) {
-    this.myForm = fb.group({
-      username: ['', [Validators.required, evenValidator, Validators.min(10)]],
+    this.myForms = fb.group({
+      username: ['', eventValidator],
       password: ['', [Validators.required, Validators.minLength(4)]],
-      passwordre: ['', []]
+      passwordRe: [''],
     });
-
-    this.myForm.valueChanges.subscribe(() => {
+    this.myForms.valueChanges.subscribe(() => {
       this.validatePasswords();
-    });
+    })
+   }
+
+   get username():FormControl{
+    return this.myForms.get('username') as FormControl;
+   }
+
+  ngOnInit(): void {
+  }
+  onSubmit(){
+    console.log(this.username.status)
   }
 
-  get username():FormControl {
-    return this.myForm.get('username') as FormControl;
-  }
+  validatePasswords(){
+    let password = this.myForms.get('password') as FormControl;
+    let passwordre = this.myForms.get('passwordRe') as FormControl;
 
-  ngOnInit(): void {}
-
-  onSubmit(): void {
-    console.log('form value', this.myForm.value);
-  }
-
-  validatePasswords() {
-    let password = this.myForm.get('password') as FormControl;
-    let passwordre = this.myForm.get('passwordre') as FormControl;
-
-    if (password.value !== passwordre.value) {
+    if(passwordre.value !== password.value){
       passwordre.setErrors({'invalidPassword': true});
-    } else {
-      passwordre.setErrors(null);
     }
-  }
-
-  getErrorMessages(fc:FormControl): string[] {
-    let messages:string[] = [];
-
-    for (let errorName in fc.errors) {
-      let errorParam = fc.errors[errorName];
-      console.log(errorParam);
-      let errorMsg = generateErrorMsg[errorName](errorParam);
-      messages.push(errorMsg);
-    }
-
-    return messages;
   }
 }

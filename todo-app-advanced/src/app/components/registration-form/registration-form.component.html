@@ -1,0 +1,68 @@
+<form [formGroup]="myForms" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+
+    <!-- FIRST NAME -->
+    <label class="form-label" for="FirstNameInput">Firt Name:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="FirstName"
+      id="FirstNameInput"
+      placeholder="FirstName"
+      formControlName="FirstName"
+    />
+    <div class="text-danger" *ngIf="FirstName.hasError('pattern')">First name must start with a capital letter and be longer than two characters!</div>
+  </div>
+  <!-- LAST NAME -->
+  <div class="mb-3">
+    <label class="form-label" for="LastNameInput">Last Name:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="LastName"
+      id="LastNameInput"
+      placeholder="LastName"
+      formControlName="LastName"
+    />
+    <div class="text-danger" *ngIf="LastName.hasError('pattern')">Last name must start with a capital letter and be longer than two characters!</div>
+
+  </div>
+  <!-- USERNAME -->
+  <div class="mb-3">
+    <label class="form-label" for="UsernameInput">Username*:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="Username"
+      id="UsernameInput"
+      placeholder="Username"
+      formControlName="Username"
+    />
+  </div>
+  <!-- ZIP CODE -->
+  <div class="mb-3">
+    <label class="form-label" for="ZipCodeInput">Zip Code:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="ZipCode"
+      id="ZipCodeInput"
+      placeholder="ZipCode"
+      formControlName="ZipCode"
+    />
+  </div>
+  <!-- PASSWORD -->
+  <div class="mb-3">
+    <label class="form-label" for="PasswordInput">Password*:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="LastName"
+      id="PasswordInput"
+      placeholder="Password"
+      formControlName="Password"
+    />
+  </div>
+
+  <button class="btn btn-primary" type="submit" >Submit</button>
+</form>
