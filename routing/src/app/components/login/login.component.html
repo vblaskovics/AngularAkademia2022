@@ -1,1 +1,46 @@
-<p>login works!</p>
+<!-- <div class="row m-3 justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title text-center">Log In</h2> -->
+
+        <div>
+          <form *ngIf="!loginService.getUser()" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label" for="usernameInput">Username*</label>
+              <input class="form-control" formControlName="username" type="text" id="usernameInput"
+              placeholder="username"
+              [class.is-invalid]="username.touched && username.invalid">
+              <p class="invalid-feedback"
+                       *ngIf="username?.touched && username?.hasError('required')">
+                      Username is required.</p>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="passwordInput">Password*</label>
+              <input class="form-control" formControlName="password" type="text" id="passwordInput"
+              placeholder="password"
+              [class.is-invalid]="password.touched && password.invalid">
+              <p class="invalid-feedback"
+                       *ngIf="password?.touched && password?.hasError('required')">
+                       Password is required.</p>
+            </div>
+
+            <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Log in</button>
+          </form>
+
+          <div *ngIf="message" class="alert alert-danger"> {{ message }} </div>
+
+          <div *ngIf="loginService.getUser()">
+            <p>Logged in as <strong>{{ loginService.getUser() }}</strong></p>
+
+            <button class="btn btn-secondary" (click)="loginService.logout()">Log out</button>
+          </div>
+        </div>
+
+
+      <!-- </div>
+    </div>
+  </div>
+</div> -->
+

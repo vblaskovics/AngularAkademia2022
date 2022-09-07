@@ -2,9 +2,9 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-body">
-        <h2 class="card-title text-center">Sign in</h2>
+        <h2 *ngIf="!signInService.getUser()" class="card-title text-center">Sign in</h2>
 
-        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <form *ngIf="!signInService.getUser()" [formGroup]="myForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label class="form-label" for="firstName">firstname</label>
             <input
@@ -44,13 +44,13 @@
               name="userName"
               placeholder="username"
               formControlName="userName"
-              [class.is-invalid]="userName?.touched && userName?.invalid"
+              [class.is-invalid]="userName.touched && userName.invalid"
             />
             <p class="invalid-feedback"
-               *ngIf="userName?.touched && userName?.hasError('required')">
+               *ngIf="userName.touched && userName.hasError('required')">
               Required field</p>
               <p class="invalid-feedback"
-               *ngIf="userName?.touched && userName?.hasError('pattern')">
+               *ngIf="userName.touched && userName.hasError('pattern')">
               Required pattern: contains only lower-case letters or digits, min 4 characters.</p>
           </div>
           <div class="mb-3">
@@ -77,13 +77,13 @@
               name="password"
               placeholder="password"
               formControlName="password"
-              [class.is-invalid]="password?.touched && password?.invalid"
+              [class.is-invalid]="password.touched && password.invalid"
             />
             <p class="invalid-feedback"
-               *ngIf="password?.touched && password?.hasError('required')">
+               *ngIf="password.touched && password.hasError('required')">
               Required field</p>
               <p class="invalid-feedback"
-               *ngIf="password?.touched && password?.hasError('pattern')">
+               *ngIf="password.touched && password.hasError('pattern')">
               Required pattern: min 8 characters, contains at least one letter or digit and one of these special characters: #@.* .</p>
           </div>
           <div class="row justify-content-center">
@@ -93,6 +93,15 @@
           </div>
 
         </form>
+
+        <div *ngIf="message" class="alert alert-danger"> {{ message }} </div>
+
+        <div *ngIf="signInService.getUser()">
+          <p>Signed in as <strong>{{ signInService.getUser() }}</strong></p>
+
+          <button class="btn btn-secondary" (click)="signInService.signOut()">Sign out</button>
+        </div>
+
       </div>
     </div>
   </div>

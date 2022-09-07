@@ -1,3 +1,4 @@
+import { TodoServiceService } from './../../services/todo-service.service';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { progress, Todo } from 'src/app/models/todo';
@@ -9,9 +10,13 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./todo-table.component.css'],
 })
 export class TodoTableComponent implements OnInit {
-  @Input() todos?: Todo[];
-  @Input() users?: User[];
-  @Input() subTodos?: Todo[];
+  // @Input() todos?: Todo[];
+  // @Input() users?: User[];
+  // @Input() subTodos?: Todo[];
+
+  todos: Todo[] = this.todoService.todos;
+  users: User[] = this.todoService.users;
+  subTodos: Todo[] = this.todoService.subTodos;
 
   @Output() selectedTodo?: Todo;
   isSelected: boolean;
@@ -20,7 +25,7 @@ export class TodoTableComponent implements OnInit {
   myForm: FormGroup;
 
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private todoService: TodoServiceService) {
     this.myForm = fb.group({
       todoInput: ['',
     [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
