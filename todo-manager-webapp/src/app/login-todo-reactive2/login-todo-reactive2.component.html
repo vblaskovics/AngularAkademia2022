@@ -99,6 +99,12 @@
       </div>
     </div>
 
-    <button class="btn btn-primary mb-0" [disabled]="!f.valid">Sign Up</button>
+    <button
+      [routerLink]="['/signup']"
+      class="btn btn-primary mb-0"
+      [disabled]="!f.valid"
+    >
+      Sign Up
+    </button>
   </form>
 </div>

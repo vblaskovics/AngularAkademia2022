@@ -1,9 +1,8 @@
 <nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">{{title}}</a>
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">{{title}}</a>
-
     <form [formGroup]="myForm" (ngSubmit)="onCreate()">
-        <button class="btn btn-primary" (click)="goToSignUp()">Sign Up</button>
+        <button class="btn btn-primary" [routerLink]="['/signup']" (click)="goToSignUp()">Sign Up</button>
     </form>
     <span style="padding: 30px;">{{ inProgressCounter }}In Progress:1</span>
 
@@ -23,5 +22,7 @@
     </form>
   </div>
 </nav>
+
+<router-outlet></router-outlet>
 
 

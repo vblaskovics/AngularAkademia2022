@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginTodoComponent } from './login-todo-template driven/login-todo.component';
 import { LoginTodoReactiveComponent } from './login-todo-reactive/login-todo-reactive.component';
 import { LoginTodoReactive2Component } from './login-todo-reactive2/login-todo-reactive2.component';
+
+const routes: Routes = [
+  { path: 'signup', component: LoginTodoReactive2Component },
+];
 
 @NgModule({
   declarations: [
@@ -27,11 +31,8 @@ import { LoginTodoReactive2Component } from './login-todo-reactive2/login-todo-r
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-        { path: 'login-todo-reactive2-component', component: LoginTodoReactive2Component },
-  ]),
+    RouterModule.forRoot(routes),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
