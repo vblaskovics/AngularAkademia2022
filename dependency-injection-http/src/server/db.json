@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "first_name": "Madeline",
+      "last_name": "Spearett",
+      "email": "mspearett1@comcast.net",
+      "gender": "Female"
+    },
+    {
+      "id": 3,
+      "first_name": "Renado",
+      "last_name": "Hobbema",
+      "email": "rhobbema2@unc.edu",
+      "gender": "Male"
+    },
+    {
+      "id": 4,
+      "first_name": "Tripp",
+      "last_name": "McFade",
+      "email": "tmcfade3@hc360.com",
+      "gender": "Male"
+    },
+    {
+      "id": 5,
+      "first_name": "Woodman",
+      "last_name": "Jeffreys",
+      "email": "wjeffreys4@admin.ch",
+      "gender": "Male"
+    },
+    {
+      "id": 6,
+      "first_name": "Powell",
+      "last_name": "Bucham",
+      "email": "pbucham5@globo.com",
+      "gender": "Male"
+    },
+    {
+      "id": 8,
+      "first_name": "Giselle",
+      "last_name": "Lamlin",
+      "email": "glamlin7@unblog.fr",
+      "gender": "Female"
+    },
+    {
+      "id": 10,
+      "first_name": "Muire",
+      "last_name": "Spearing",
+      "email": "mspearing9@ask.com",
+      "gender": "Female"
+    },
+    {
+      "first_name": "Toth",
+      "last_name": "Flora",
+      "email": "shdhffs@shf.com",
+      "gender": "Female",
+      "id": 12
+    },
+    {
+      "first_name": "Toth",
+      "last_name": "Abel",
+      "email": "skmdfks@gmail.com",
+      "gender": "Female",
+      "id": 13
+    },
+    {
+      "first_name": "Haho",
+      "last_name": "Foki",
+      "email": "ksjdfk@gmail.com",
+      "gender": "Female",
+      "id": 14
+    },
+    {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "sjdo@sd.hu",
+      "gender": "Female",
+      "id": 16
+    },
+    {
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "email": "s@sdfs.com",
+      "gender": "Female",
+      "id": 17
+    },
+    {
+      "first_name": "asdasd",
+      "last_name": "asd",
+      "email": "asd",
+      "gender": "Female",
+      "id": 18
+    }
+  ]
+}
