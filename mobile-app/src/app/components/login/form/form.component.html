@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="inputContainer">
+    <input
+      class="formInput"
+      type="text"
+      placeholder="Username"
+      name="username"
+      formControlName="username"
+    />
+    <img src="../../../../assets/usernameIcon.svg"/>
+  </div>
+  <div class="inputContainer">
+    <input
+      class="formInput"
+      type="text"
+      placeholder="Password"
+      name="password"
+      formControlName="password"
+    />
+    <img src="../../../../assets/passwordicon.svg"/>
+  </div>
+  <div class="btn-register-container">
+    <button type="submit">Login</button>
+    <p class="register-text">No account yet? <a>Register</a></p>
+  </div>
+</form>

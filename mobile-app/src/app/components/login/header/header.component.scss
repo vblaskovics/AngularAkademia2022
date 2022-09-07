@@ -1,0 +1,29 @@
+.main {
+  position: absolute;
+  height: 167px;
+  left: 1px;
+  right: -1px;
+  top: -25px;
+
+  background: url(../../../../shared/navbar_image.png) no-repeat;
+}
+h1 {
+  position: absolute;
+  width: 61px;
+  height: 16px;
+  left: calc(50% - 61px / 2 + 2px);
+  top: 182px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 16px;
+  /* identical to box height, or 67% */
+
+  text-align: center;
+
+  /* custom/secondary */
+
+  color: #424242;
+}
