@@ -28,9 +28,20 @@
       </form>
     </div>
 
-    <div class="nav-item col-2">
+    <!-- <div class="nav-item col-2">
       <button *ngIf="!showSignIn" id="signInBtn" class="btn btn-warning m-2" (click)="toggleSignIn()">Sign In</button>
       <button *ngIf="showSignIn" id="toListBtn" class="btn btn-warning m-2" (click)="toggleSignIn()">To List</button>
+    </div> -->
+
+    <div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/todo-table']">Todo List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/sign-in']">Sign in</a>
+        </li>
+      </ul>
     </div>
 
     <div class="nav-item mx-2">In progress: {{ inProgressNumber }}</div>
@@ -40,9 +51,13 @@
 
 </nav>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-12">
     <app-todo-table *ngIf="!showSignIn" [todos]="todos" [users]="users" [subTodos]="subTodos"></app-todo-table>
     <app-sign-in *ngIf="showSignIn" ></app-sign-in>
   </div>
+</div> -->
+
+<div class="container p-4">
+  <router-outlet></router-outlet>
 </div>
