@@ -8,11 +8,16 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProtectiveComponent } from './protective/protective.component';
+import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'protective', component: ProtectiveComponent, canActivate: [
+    LoggedInGuard
+  ]},
 ]
   
 
@@ -21,7 +26,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    LoginComponent
+    LoginComponent,
+    ProtectiveComponent
   ],
   imports: [
     BrowserModule,

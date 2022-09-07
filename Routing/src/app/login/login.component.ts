@@ -30,8 +30,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
 
-    this.login(this.username.value, this.password.value)
+    // this.login(this.username.value, this.password.value)
     // this.form.reset()
+    this.login(this.form.controls.username.value, this.form.controls.password.value)
+    
   }
 
   login(username: string, password: string){
