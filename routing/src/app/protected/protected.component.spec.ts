@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginTodoComponent } from './login-todo.component';
+import { ProtectedComponent } from './protected.component';
 
-describe('LoginTodoComponent', () => {
-  let component: LoginTodoComponent;
-  let fixture: ComponentFixture<LoginTodoComponent>;
+describe('ProtectedComponent', () => {
+  let component: ProtectedComponent;
+  let fixture: ComponentFixture<ProtectedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginTodoComponent ]
+      declarations: [ ProtectedComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LoginTodoComponent);
+    fixture = TestBed.createComponent(ProtectedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

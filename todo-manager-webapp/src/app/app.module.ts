@@ -8,8 +8,6 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { DetailsComponent } from './details/details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginTodoComponent } from './login-todo-template driven/login-todo.component';
-import { LoginTodoReactiveComponent } from './login-todo-reactive/login-todo-reactive.component';
 import { LoginTodoReactive2Component } from './login-todo-reactive2/login-todo-reactive2.component';
 
 const routes: Routes = [
@@ -23,8 +21,6 @@ const routes: Routes = [
     TodoListComponent,
     DetailsComponent,
     NavbarComponent,
-    LoginTodoComponent,
-    LoginTodoReactiveComponent,
     LoginTodoReactive2Component,
   ],
   imports: [

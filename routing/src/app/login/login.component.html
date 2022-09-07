@@ -1,1 +1,47 @@
-<p>login works!</p>
+<form  ngIf="!loginService.getUser()" formGroup="form" (ngSubmit)="onSubmit()">
+  <div class="form-outline mb-4" >
+    Username
+    <input
+      type="text"
+      id="username"
+      placeholder="Enter Username"
+      class="form-control"
+      formControlName="username"
+    />
+    <div class="alert alert-danger">Username is required.</div>
+    <label class="form-label"></label>
+  </div>
+  <div class="form-outline mb-4">
+    Password
+    <input
+      type="email"
+      id="password"
+      placeholder="Enter Pasword"
+      class="form-control"
+      formControlName="password"
+    />
+    <div class="alert alert-danger">Password is required.</div>
+    <label class="form-label"></label>
+  </div>
+
+  <div class="col">
+    <a href="#!">Forgot password?</a>
+  </div>
+<hr>
+  <button
+    type="submit"
+    class="btn btn-primary btn-block mb-4 w-100"
+    [routerLink]="['/']"
+  >
+    Login
+  </button>
+</form>
+
+<div *ngIf="message">{{message}}</div>
+
+<div *ngIf="loginService.getUser()">
+  Looged in as <strong>{{ loginService.getUser() }}</strong>
+
+  <button class="btn btn-primary" (close)="loginService.logOut()">Log Out</button>
+
+</div>
