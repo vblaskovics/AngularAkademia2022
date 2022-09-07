@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { __values } from 'tslib';
 
 @Component({
@@ -9,7 +9,6 @@ import { __values } from 'tslib';
 })
 export class TodoNavbarComponent implements OnInit {
   myForm: FormGroup;
-  @Output() movingTosignIn: EventEmitter<boolean> = new EventEmitter<boolean>();
   IsValidForm: boolean = false;
 
   navigateToLogin: boolean = true;
@@ -44,8 +43,5 @@ export class TodoNavbarComponent implements OnInit {
       this.onSubmit();
       this.onReset();
     }
-  }
-  movetoSignIn(){
-    this.movingTosignIn.emit(this.navigateToLogin);
   }
 }
