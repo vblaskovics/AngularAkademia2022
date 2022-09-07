@@ -1,0 +1,38 @@
+<div>
+  <h2 class="mb-4">Login</h2>
+  <form
+    *ngIf="!loginService.getUser()"
+    [formGroup]="form"
+    (ngSubmit)="onLogin()"
+    class="w-50"
+  >
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      formControlName="username"
+      class="form-control mb-3"
+    />
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
+      class="form-control mb-3"
+    />
+    <button [disabled]="this.form.invalid" class="btn btn-primary w-100">
+      Log In
+    </button>
+  </form>
+
+  <div *ngIf="message" class="alert alert-danger">
+    {{ message }}
+  </div>
+
+  <div *ngIf="loginService.getUser()">
+    Logged in as <strong>{{ loginService.getUser() }}</strong>
+    <button class="btn btn-secondary" (click)="loginService.logout()">
+      Log out
+    </button>
+  </div>
+</div>

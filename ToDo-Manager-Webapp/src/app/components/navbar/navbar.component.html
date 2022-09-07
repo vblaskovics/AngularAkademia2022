@@ -1,8 +1,8 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#" (click)="onSignInClicked(false)">Flora's Todo</a>
+  <a [routerLink]="['/']" class="navbar-brand" href="#" (click)="onSignInClicked(false)">Flora's Todo</a>
+  <a [routerLink]="['/sign-in']" class="navbar-item" (click)="onSignInClicked(true)">Sign in</a>
 
   <form [formGroup]="todoTitleForm" class="navbarForm">
-    <button class="btn btn-primary m-4" (click)="onSignInClicked(true)">Sign in</button>
     <div class="newTodoInputContainer">
       <label for="newTodoInput">New Todo:</label>
       <input
@@ -27,5 +27,5 @@
     <button class="btn" (click)="handleNewTodoForm()">➕</button>
   </form>
 
-  <button class="btn btn-warning">In progress: {{ inProgressCounter }}</button>
+<!--   <button class="btn btn-warning">In progress: {{ inProgressCounter }}</button> -->
 </nav>
