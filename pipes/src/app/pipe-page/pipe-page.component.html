@@ -1,0 +1,29 @@
+<!-- <h2>{{ user }}</h2>
+<h2>{{ user | uppercase }}</h2>
+<h2>{{ 'ez a bemenet' | uppercase }}</h2>
+<h2>{{ user | lowercase }}</h2>
+<h2>{{ currentDate }}</h2>
+<h2>{{ currentDate | date }}</h2>
+<h2>{{ currentDate | date:'short' }}</h2> 
+<h2>{{ currentDate | date:'hh:mm' }}</h2> 
+<h2>{{ 300 | currency }}</h2> 
+<h2>{{ 300 | currency: 'EUR' }}</h2> 
+<h2>{{ 300 | currency: 'EUR':'code' }}</h2> 
+<h2>{{ 30.12315151414 }}</h2> 
+<h2>{{ 30.12315151414 | number }}</h2> 
+<h2>{{ 30.12315151414 | number:'4.0-4' }}</h2> 
+<h2>{{ 1412.12315151414 | number:'4.0-4' }}</h2> 
+<h2>{{ 332.12315151414 | number:'4.0-4' }}</h2> 
+<h2>{{ 1.12315151414 | number:'4.0-4' }}</h2> 
+<h2>{{ 0.25 | percent }}</h2>  -->
+
+<h2>{{ user | hello }}</h2>
+<h2>{{ user | hello | uppercase }}</h2>
+
+<h2> {{ 'Ez egy rövid mondat!' | order: '-'}}</h2>
+
+<div *ngIf="showCounter">
+    <h2>{{ 'hello' | counter}}</h2>
+</div>
+
+<button (click)="showCounter = !showCounter">Toggle Counter</button>

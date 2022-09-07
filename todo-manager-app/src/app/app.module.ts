@@ -8,6 +8,12 @@ import { TodoDetailsComponent } from './components/todo-details/todo-details.com
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path:'', component: TodoListComponent },
+  { path:'signup', component: SignInComponent}
+]
 
 @NgModule({
   declarations: [
@@ -22,7 +28,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

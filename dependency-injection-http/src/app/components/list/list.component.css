@@ -1,0 +1,8 @@
+div {
+    width: 50%;
+    margin: 20px auto;
+    box-shadow: 4px 4px 6px 0 rgba(107, 92, 92, 0.5);
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}

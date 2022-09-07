@@ -1,19 +1,20 @@
-<nav class="navbar navbar-light bg-dark">
-    <a class="navbar-brand" href="#">
-        <h1 (click)="navigateHome()">Best Todo App</h1>
+<nav class="navbar navbar-dark bg-dark">
+    <a  class="navbar-brand" [routerLink]="['/']">
+        <h1>Best Todo App</h1>
     </a>
+    <a class="nav-link" [routerLink]="['/signup']" style="color: whitesmoke">Sign In</a>
     <form [formGroup]="myForm" (ngSubmit)="onAddTodo()">
         <div class="d-flex" style="gap: 10px">
             <div class="d-flex align-items-center" style="gap: 10px">
                 <label for="newTodoInput" style="color: whitesmoke;">Todo:</label>
                 <input
-                    class="form-control" 
-                    [class.is-invalid] = "myForm.get('title')?.invalid && myForm.get('username')?.touched"
-                    type="text" 
-                    id="newTodoInput" 
-                    name="newTodo" 
-                    placeholder="Todo title"
-                    formControlName="title">
+                class="form-control" 
+                [class.is-invalid] = "myForm.get('title')?.invalid && myForm.get('username')?.touched"
+                type="text" 
+                id="newTodoInput" 
+                name="newTodo" 
+                placeholder="Todo title"
+                formControlName="title">
                 <div>
                     <p *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.touched && myForm.get('title')?.hasError('required')" style="color: whitesmoke">
                         Required field!
@@ -29,7 +30,6 @@
             <button [disabled]="myForm.invalid" class="btn btn-warning" type="submit">Add Todo</button>
         </div>
     </form>
-    <button class="btn btn-warning" (click)="navigateToSignIn()">Sign up</button>
     <h3>
         In progress: {{ count }}
     </h3>

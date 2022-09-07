@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Todo } from 'src/app/models/todo';
-import { todos2 } from 'src/app/todo2list';
-import { todosBasic } from 'src/app/todolist';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-navigation',
@@ -11,27 +10,21 @@ import { todosBasic } from 'src/app/todolist';
 })
 export class NavigationComponent implements OnInit {
 
-  @Input() count?: number
-  // @Output() newTodo?: Todo = new EventEmitter<Todo>()
-
+  count?: number
   todoTemplate: Todo;
   myForm: FormGroup;
   todoStart: boolean
-  @Input() todoListType?: boolean
-  signInPage: boolean
 
-  @Output() isSignInPage = new EventEmitter<boolean>() 
-
-  constructor(fb: FormBuilder) { 
+  constructor(fb: FormBuilder, private todoService: TodoService) { 
     this.todoTemplate= {id: 1, title: "This is sample todo", progress: "in progress", description: "This is a sample", date: "2022-08-17", user_id:1, subTodoIds: []},
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)] ] 
     }),
     this.todoStart = true
-    this.signInPage = false;
   }
 
   ngOnInit(): void {
+    this.count = this.todoService.numberOfInProgessTodos()
   }
 
   onAddTodo() {
@@ -40,29 +33,19 @@ export class NavigationComponent implements OnInit {
   }
 
   createTodo(): void{
-    this.todoTemplate.id = todosBasic.length + 1;
+    this.todoTemplate.id = this.todoService.todosBasic.length + 1;
     this.todoTemplate.title = this.myForm.value.title
     let newObject = {...this.todoTemplate}
-    console.log(this.todoListType)
-    if(this.todoListType || this.todoStart){
-      todosBasic.push(newObject)
+    if(this.todoService.isBasicTodoListType || this.todoStart){
+      this.todoService.todosBasic.push(newObject)
       this.todoStart = false;
-      this.todoListType = true;
+      this.todoService.isBasicTodoListType = true;
     } else {
-      todos2.push(newObject)
+      this.todoService.todos2.push(newObject)
     }
   }
 
   resetForm(): void {
     this.myForm.reset()
-  }
-
-  navigateToSignIn(): void{
-    this.signInPage = true;
-    this.isSignInPage.emit(this.signInPage)
-  }
-  navigateHome(): void{
-    this.signInPage = false;;
-    this.isSignInPage.emit(this.signInPage)
   }
 }

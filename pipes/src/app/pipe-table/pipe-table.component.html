@@ -1,0 +1,27 @@
+<button class="btn btn-primary" (click)="convertToMb()">MB</button>
+<button class="btn btn-primary" (click)="convertToGb()">GB</button>
+
+<table class="table table-dark" style="width: 70%; margin: 20px auto">
+    <thead>
+        <tr>
+            <th scope="col">File Name</th>
+            <th scope="col">Modify Date</th>
+            <th scope="col">File Size</th>
+            <th scope="col">Extension</th>
+            <th scope="col">Last modified diff</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let file of files, let i = index">
+            <td>{{ file.name | splitName }}</td>
+            <td>{{ file.modify | date }}</td>
+            <td *ngIf="isMb; else gb">{{ file.size | convertMb | number:'1.0-2'}} MB</td>
+            <ng-template #gb>
+                <td>{{ file.size | convertGb | number:'1.0-2'}} GB</td>
+            </ng-template>
+            <td>{{ file.name | splitExtension }}</td>
+            <td>{{ file.modify | lastModif }}</td>
+        </tr>
+    </tbody>
+</table>
+

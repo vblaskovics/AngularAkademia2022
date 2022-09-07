@@ -43,12 +43,6 @@ export class NewClassComponent implements OnInit {
   }
 
   addStudent(){
-    // console.log(this.numberOfStudents.value)
-    // console.log(Number(this.students.length))
-    // if(this.students.length === Number(this.numberOfStudents.value)) {
-    //   return
-    // }
-    
     const studentFormGroup: FormGroup = this.fb.group({
       name: ['', Validators.required],
       gender: ['', Validators.required],
@@ -65,8 +59,8 @@ export class NewClassComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log('form', this.classForm)
-    // console.log('form', this.classForm.value)
+    console.log('form', this.classForm)
+    console.log('form', this.classForm.value)
   }
 
 }

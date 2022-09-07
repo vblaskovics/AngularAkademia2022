@@ -1,10 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
-import { todosBasic, usersBasic } from 'src/app/todolist';
-import { todos2, users2 } from 'src/app/todo2list';
 
 import { initializeApp } from "firebase/app";
+import { TodoService } from 'src/app/services/todo.service';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDXI8OKa1-HOhvmfVoVrY5U92Mp_WBgNc4",
@@ -25,36 +24,26 @@ const app = initializeApp(firebaseConfig);
 })
 export class TodoListComponent implements OnInit {
 
-  @Output() todos?: Todo[] = new Array();
+  todos: Todo[] = new Array();
   users: User[] = new Array();
+
   isTodoSelected: boolean;
   selectedTodo?: any;
-  @Output() inProgressCounter?: number;
-  numberOfInProgress?: number
   progressState :number
   todosList1: boolean;
 
-  @Output() numberOfProgress = new EventEmitter<number>()
-  @Output() todoListType = new EventEmitter<boolean>()
-
-  constructor() { 
-    this.todos = todosBasic,
-    this.users = usersBasic,
+  constructor(private todoService: TodoService) { 
+    this.todos = this.todoService.todosBasic,
+    this.users = this.todoService.usersBasic,
     this.isTodoSelected = false,
-    this.inProgressCounter = 0,
     this.progressState = 0;
     this.todosList1 = true;
   }
 
   ngOnInit(): void {
-    this.getNumberOfInprogressTodos()
+    
   }
   
-  // ngDoCheck(){
-  //   if(this.todosList1){
-  //     this.getTodosBasicFromDatabase()
-  //   }
-  // }
 
   getUser(todo: Todo) {
     let user = this.users.find(user => user.id === todo.user_id)
@@ -64,18 +53,6 @@ export class TodoListComponent implements OnInit {
   selectTodo(todo: Todo): Todo {
     this.isTodoSelected = true;
     return this.selectedTodo = todo
-  }
-
-  getNumberOfInprogressTodos(){
-    let counter = 0
-    console.log("counter fv")
-    this.todos?.forEach(todo => {
-      if(todo.progress === "in progress") {
-        counter++
-      }
-    })
-    this.numberOfProgress.emit(counter)    
-    return counter
   }
 
   sortByProgress(){
@@ -90,29 +67,15 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  updateTodo(event: Todo) {
-    this.getNumberOfInprogressTodos()
-  }
-
   changeListOfTodos(): void {
     if(!this.todosList1){
-      this.todos = todosBasic;
-      this.users = usersBasic
-      this.todosList1 = true;
+      this.todos = this.todoService.todosBasic;
+      this.users = this.todoService.usersBasic
+      this.todosList1 = this.todoService.changeTodoListType()
     } else {
-      this.todos = todos2;
-      this.users = users2
-      this.todosList1 = false;
+      this.todos = this.todoService.todos2;
+      this.users = this.todoService.users2
+      this.todosList1 = this.todoService.changeTodoListType()
     }
-    this.getNumberOfInprogressTodos()
-    this.todoListType.emit(this.todosList1)
-  }
-
-  getTodosBasicFromDatabase() {
-    fetch(`https://angular-todo-46213-default-rtdb.europe-west1.firebasedatabase.app/todoBasic.json`)
-      .then(res => res.json())
-      .then(todos => {
-        this.todos = todos
-      })
   }
 }

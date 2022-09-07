@@ -1,5 +1,8 @@
-<app-navigation [count]="count" [todoListType]="todoListType" (isSignInPage)="isSignInPage($event)"></app-navigation>
-<app-todo-list *ngIf="!signInPage; else signIn" (numberOfProgress)="getCounter($event)" (todoListType)="getTodoListType($event)"></app-todo-list>
+<app-navigation></app-navigation>
+
+<router-outlet></router-outlet>
+
+<!-- <app-todo-list *ngIf="!signInPage; else signIn" (numberOfProgress)="getCounter($event)" (todoListType)="getTodoListType($event)"></app-todo-list>
 <ng-template #signIn>
     <app-sign-in ></app-sign-in>
-</ng-template>
+</ng-template> -->

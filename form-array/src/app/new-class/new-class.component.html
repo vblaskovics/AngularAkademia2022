@@ -13,7 +13,7 @@
         <p *ngIf="classForm.hasError('NumberOfStudentsError')">
             Limit of student reached!
         </p>
-        
+
         <div class="row" *ngFor="let studentFormGroup of students.controls; let i = index" [formGroup]="getStudent(studentFormGroup)">
             <div class="col">
                 <label class="form-label" for="nameInput">Name</label>

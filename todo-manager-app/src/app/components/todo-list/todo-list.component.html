@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr app-todo-item *ngFor="let todo of todos, let i = index" [todo]="todo" [user]="getUser(todo)" (click)="selectTodo(todo)" [class.bgGrey]="i%2===0" (itemState)="updateTodo($event)"></tr>
+                <tr app-todo-item *ngFor="let todo of todos, let i = index" [todo]="todo" [user]="getUser(todo)" (click)="selectTodo(todo)" [class.bgGrey]="i%2===0"></tr>
             </tbody>            
         </table>
         <!-- <div class="delete-buttons">
