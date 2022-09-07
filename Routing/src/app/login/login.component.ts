@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     return this.form.get('password') as FormControl;
   }
 
-  constructor( private loginService: LoginService) { }
+  constructor( public loginService: LoginService) { }
 
   ngOnInit(): void {
   }

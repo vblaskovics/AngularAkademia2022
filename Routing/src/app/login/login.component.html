@@ -1,7 +1,7 @@
 <div class="my-3">
   <h4 class="text-secondary">Log in</h4>
   
-  <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form *ngIf="!loginService.getUser()" class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="my-3">
       <label for="username" class="form-label"></label>
       <input
@@ -34,5 +34,11 @@
   </form>
 
   <div *ngIf="message" class="alert alert-danger"> {{ message }} </div>
+
+  <div *ngIf="loginService.getUser()">
+    logged in as <h4> {{ loginService.getUser() }}</h4>
+    <button class="btn btn-warning" (click)="loginService.logout()">Log out</button>
+  </div>
+
 
 </div>
