@@ -32,4 +32,7 @@
       <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Log in</button>
     </div>
   </form>
+
+  <div *ngIf="message" class="alert alert-danger"> {{ message }} </div>
+
 </div>
