@@ -33,5 +33,4 @@ import { HttpMockSeviceComponent } from './services/http-mock-sevice/http-mock-s
 })
 export class AppModule {}
 
-
 //          \{^_^}/
