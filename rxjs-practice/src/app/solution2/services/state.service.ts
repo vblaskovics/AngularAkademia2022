@@ -26,7 +26,6 @@ export class StateService {
       return this.counterDeadline - sec;
     }));
 
-    // Check counter is zero
     this.counter$.pipe(filter((counter) => {
       return counter === 0 ? true : false
     })).subscribe(() => {
@@ -67,6 +66,9 @@ export class StateService {
     if (typedValue === this.word.value) {
       this.resetWord();
       this.addScore();
+    } else {
+      this.resetWord();
+      this.resetCounter();
     }
   }
 }

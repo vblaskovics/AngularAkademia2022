@@ -63,10 +63,13 @@ export class StateService {
     this.score.value++;
   }
 
-  typingCheck(typedValue:string) {
+  typingCheck(typedValue: string) {
     if (typedValue === this.word.value) {
       this.resetWord();
       this.addScore();
+    } else {
+      this.resetWord();
+      this.resetCounter();
     }
   }
 }
