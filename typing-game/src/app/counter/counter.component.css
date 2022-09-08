@@ -1,0 +1,12 @@
+.counter-container {
+  border: 2px solid rgb(255, 157, 157);
+  border-radius: 4px;
+  width: 60%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+p {
+  text-align: center;
+  font-size: 36px;
+}
