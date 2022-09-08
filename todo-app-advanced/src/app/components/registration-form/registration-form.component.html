@@ -1,6 +1,5 @@
 <form [formGroup]="myForms" (ngSubmit)="onSubmit()">
   <div class="mb-3">
-
     <!-- FIRST NAME -->
     <label class="form-label" for="FirstNameInput">Firt Name:</label>
     <input
@@ -11,7 +10,10 @@
       placeholder="FirstName"
       formControlName="FirstName"
     />
-    <div class="text-danger" *ngIf="FirstName.hasError('pattern')">First name must start with a capital letter and be longer than two characters!</div>
+    <div class="text-danger" *ngIf="FirstName.hasError('pattern')">
+      First name must start with a capital letter and be longer than two
+      characters!
+    </div>
   </div>
   <!-- LAST NAME -->
   <div class="mb-3">
@@ -24,8 +26,10 @@
       placeholder="LastName"
       formControlName="LastName"
     />
-    <div class="text-danger" *ngIf="LastName.hasError('pattern')">Last name must start with a capital letter and be longer than two characters!</div>
-
+    <div class="text-danger" *ngIf="LastName.hasError('pattern')">
+      Last name must start with a capital letter and be longer than two
+      characters!
+    </div>
   </div>
   <!-- USERNAME -->
   <div class="mb-3">
@@ -64,5 +68,5 @@
     />
   </div>
 
-  <button class="btn btn-primary" type="submit" >Submit</button>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>

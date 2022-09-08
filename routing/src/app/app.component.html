@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Routing</a>
+  <a class="navbar-brand" [routerLink]="['']">Routing</a>
   <div class="collapse navbar-collapse" id="navbarNav">
     <a [routerLink]="['/home']" class="nav-link m-2">Home</a>
     <a [routerLink]="['/about']" class="nav-link m-2">About</a>
     <a [routerLink]="['/login']" class="nav-link m-2">Login</a>
+    <a [routerLink]="['/protected']" class="nav-link m-2">Protected</a>
   </div>
 </nav>
 

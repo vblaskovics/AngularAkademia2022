@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegistrationModel } from './model/user-registration-form.model';
+import { RegistrationForm } from './registration.form';
 
 @Component({
   selector: 'app-registration-form',
@@ -8,16 +10,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RegistrationFormComponent implements OnInit {
 
-  myForms: FormGroup;
+  public myForms: FormGroup<RegistrationModel> = new RegistrationForm();
 
-  constructor(fb: FormBuilder) {
-    this.myForms = fb.group({
-      FirstName: ['',Validators.pattern(/^[A-Z][a-z]+/)],
-      LastName: ['',Validators.pattern(/^[A-Z][a-z]+/)],
-      Username: ['',[Validators.required, Validators.pattern(/[a-zá-ű0-9]+/), Validators.minLength(4)]],
-      ZipCode: ['', [Validators.min(1000), Validators.max(9999)]],
-      Password: ['',[Validators.required, Validators.minLength(8), Validators.pattern(/[a-zA-Z]+[@#]+/)]]
-    })
+  constructor() {
+
    }
    get FirstName(): FormControl{
     return this.myForms.get('FirstName') as FormControl;

@@ -1,0 +1,25 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!loginService.getUser()">
+  <div class="container">
+    <input
+      type="text"
+      class="form-control mt-5"
+      placeholder="Username"
+      formControlName="username"
+    />
+
+    <input
+      type="text"
+      class="form-control mt-2"
+      placeholder="Password"
+      formControlName="password"
+    />
+
+    <button class="btn btn-primary mt-2" type="submit" [disabled]="loginForm.status === 'VALID'? false: true">Login</button>
+  </div>
+</form>
+
+<div class="container">
+  <div *ngIf="invalidLoginMessage" class="alert alert-danger mt-2">
+    {{ invalidLoginMessage }}
+  </div>
+</div>

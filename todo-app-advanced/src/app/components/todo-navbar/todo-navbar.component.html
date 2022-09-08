@@ -1,26 +1,50 @@
 <nav class="navbar navbar-dark bg-dark">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-      <span [routerLink]="['/todoApp']" class="navbar-brand mb-0 h1">Todo App</span>
-      <form [formGroup]="myForm" (ngSubmit)="handler()">
+      <span [routerLink]="['/todoApp']" class="navbar-brand mb-0 m-2 h1"
+        >Todo App</span
+      >
+      <form *ngIf="loginService.getUser()" [formGroup]="myForm" (ngSubmit)="handler()">
         <label class="form-label" for="titleInput">Todo Title: </label>
         <input
           class="form-control"
           type="text"
           name="title"
           id="titleInput"
-          placeholder="title"
+          placeholder="Title"
           formControlName="title"
         />
-        <div id="titleInput" class="text-danger" *ngIf="title.hasError('required') && title.touched === true">Required field</div>
-        <div class="text-danger" *ngIf="title.hasError('minlength') && title.pristine === false">The title must have atleast 3 or more characters!</div>
-        <div class="text-danger" *ngIf="title.hasError('maxlength') && title.pristine === false">The Title cannot contain more than 15 characters!!</div>
+        <div
+          id="titleInput"
+          class="text-danger"
+          *ngIf="title.hasError('required') && title.touched === true"
+        >
+          Required field
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="title.hasError('minlength') && title.pristine === false"
+        >
+          The title must have atleast 3 or more characters!
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="title.hasError('maxlength') && title.pristine === false"
+        >
+          The Title cannot contain more than 15 characters!!
+        </div>
         <button class="btn btn-primary">Submit</button>
       </form>
     </li>
   </ul>
   <div class="my-2 my-lg-0">
-    <button class="btn btn-primary" [routerLink]="['/registration']" >Sign In</button>
+    <button class="btn btn-primary m-1" [routerLink]="['/registration']">
+      Add user
+    </button>
+
+    <button *ngIf="!loginService.getUser()" class="btn btn-primary m-1" [routerLink]="['/login']">Login</button>
+    <button class="btn btn-secondary m-1" *ngIf="loginService.getUser()" (click)="loginService.logout()">Logout</button>
+
     <span class="navbar-text"> Current todos: {{ numberofTodos }} </span>
   </div>
 </nav>

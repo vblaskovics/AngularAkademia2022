@@ -9,9 +9,13 @@ import { RegistrationFormComponent } from './components/registration-form/regist
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'todoApp', pathMatch: 'full'},
   { path: 'registration', component: RegistrationFormComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'todoApp', component: TodoListComponent, children: [
     { path: 'todoApp/todo-details', component: TodoDetailsComponent}
   ]  }
@@ -24,7 +28,9 @@ const routes: Routes = [
     TodoItemComponent,
     TodoDetailsComponent,
     TodoNavbarComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,45 @@
-<p>login works!</p>
+<h2>Login</h2>
+
+<form
+  *ngIf="!loginService.getUser()"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+>
+  <label class="form-label" for="username">Username:</label>
+  <input
+    class="form-control"
+    type="text"
+    id="username"
+    formControlName="username"
+  />
+
+  <label class="form-label" for="password">Password:</label>
+  <input
+    class="form-control"
+    type="text"
+    id="password"
+    formControlName="password"
+  />
+
+  <button
+    class="btn btn-primary m-2"
+    type="submit"
+    [disabled]="loginForm.status === 'VALID' ? false : true"
+  >
+    Login
+  </button>
+</form>
+
+<div *ngIf="message" class="alert alert-danger">{{ message }}</div>
+
+<div *ngIf="loginService.getUser()">
+  <div class="container">
+    <p>
+      Logged in as <strong>{{ loginService.getUser() }}</strong>
+    </p>
+
+    <button class="btn btn-secondary" (click)="loginService.logout()">
+      Logout
+    </button>
+  </div>
+</div>
