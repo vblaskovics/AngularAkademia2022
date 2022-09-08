@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Modify Date</th>
+      <th>File Size</th>
+      <th>Extension</th>
+      <th>Elapsed seconds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of files">
+      <td>{{ file.name | fileName: "name" }}</td>
+      <td>{{ file.modifyDate | date: "YYYY-MM-dd" }}</td>
+      <td>{{ file.size | fileSize: fileFormat }}</td>
+      <td>{{ file.name | fileName: "format" }}</td>
+      <td>{{ file.modifyDate | elapsedSeconds }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="fileFormat = 'Mb'">toMb</button>
+<button (click)="fileFormat = 'Gb'">toGb</button>

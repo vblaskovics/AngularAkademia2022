@@ -1,0 +1,21 @@
+table{
+    border: 2px solid black;
+}
+*{
+    border: none;
+    padding: 0 0;
+    margin: 0 0;
+    font-size: 1.5rem;
+}
+thead{
+    color: white;
+    background-color: rgb(62, 61, 61);
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+button {
+    padding: 25px;
+    margin: 25px;
+}

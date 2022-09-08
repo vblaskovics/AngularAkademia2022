@@ -1,0 +1,50 @@
+<form
+  *ngIf="!loginService.isLoggedIn()"
+  [formGroup]="loginForm"
+  (ngSubmit)="handleSubmit()"
+>
+  <div class="form-group">
+    <label>Username</label>
+    <input
+      type="text"
+      class="form-control"
+      [class.is-invalid]="username.invalid && username.touched"
+      [formControl]="username"
+    />
+  </div>
+  <div *ngIf="username.invalid && username.touched">
+    <p *ngIf="username.hasError('required')" class="text-danger">
+      Ezt a mezőt kötelező kitölteni
+    </p>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input
+      type="password"
+      class="form-control"
+      [class.is-invalid]="password.invalid && password.touched"
+      [formControl]="password"
+    />
+  </div>
+  <div *ngIf="password.invalid && password.touched">
+    <p *ngIf="password.hasError('required')" class="text-danger">
+      Ezt a mezőt kötelező kitölteni
+    </p>
+  </div>
+  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-dark m-3">
+    Login
+  </button>
+  <div *ngIf="message" class="alert alert-danger">
+    {{ message }}
+  </div>
+</form>
+<div *ngIf="loginService.isLoggedIn()">
+  <div class="container">
+    <p>
+      logged in as <strong>{{ loginService.getUser() }}</strong>
+    </p>
+    <button (click)="loginService.logout()" class="btn btn-secondary">
+      Log out
+    </button>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +13,8 @@ export class NavbarComponent implements OnInit {
   @Input() asdTo!: string;
   @Output() emitChange = new EventEmitter<any>();
   @Output() todoPushEmit = new EventEmitter<string>();
-  @Output() switchWindow = new EventEmitter<any>();
   todoAddForm: FormGroup;
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, public authService: AuthService) {
     this.todoAddForm = fb.group({
       title: [
         '',

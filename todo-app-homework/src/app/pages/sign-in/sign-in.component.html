@@ -1,0 +1,45 @@
+<div class="sign-up-container">
+  <div class="container">
+    <h3>Sign In</h3>
+    <form (ngSubmit)="submitForm()" [formGroup]="loginForm">
+      <div class="m-auto p-3">
+        <div class="form-container">
+          <label class="form-label" for="userNameInput">Username*</label>
+          <input
+            type="text"
+            class="form-control"
+            [formControl]="username"
+            [class.is-invalid]="username.touched && !username.valid"
+          />
+        </div>
+        <div *ngIf="username.touched && !username.valid">
+          <p class="error-p" *ngIf="username.hasError('required')">
+            A mező kitöltése kötelező
+          </p>
+        </div>
+      </div>
+      <div class="m-auto p-3">
+        <div class="form-container">
+          <label class="form-label" for="userNameInput">Password*</label>
+          <input
+            type="password"
+            class="form-control"
+            [formControl]="password"
+            [class.is-invalid]="password.touched && !password.valid"
+          />
+        </div>
+        <div *ngIf="password.touched && !password.valid">
+          <p class="error-p" *ngIf="password.hasError('required')">
+            A mező kitöltése kötelező
+          </p>
+        </div>
+      </div>
+      <div *ngIf="errorMessage">
+        <p class="error-p">{{ errorMessage }}</p>
+      </div>
+      <div class="w-100 d-flex justify-content-end p-3">
+        <button class="btn btn-success" type="submit">Sign up</button>
+      </div>
+    </form>
+  </div>
+</div>

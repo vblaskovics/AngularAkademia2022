@@ -1,4 +1,4 @@
-<app-navbar
+<!-- <app-navbar
   (emitChange)="changeData()"
   (todoPushEmit)="pushTodo($event)"
   [title]="title"
@@ -31,3 +31,9 @@
 <ng-template #elseBlock>
   <app-sign-up></app-sign-up>
 </ng-template>
+ -->
+
+<app-navbar [title]="title"> </app-navbar>
+<main>
+  <router-outlet></router-outlet>
+</main>

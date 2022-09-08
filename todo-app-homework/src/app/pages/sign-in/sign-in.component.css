@@ -1,0 +1,34 @@
+.error-p{
+    color: rgb(255, 46, 46);
+    font-weight: 500;
+    margin: 0 0;
+    padding: 10px 5px;
+}
+.error-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sign-up-container{
+    width: 100%;
+    min-height: calc(100vh - 57px);
+    background-image: url('https://images5.alphacoders.com/711/711093.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+}
+.container{
+    width: 100%;
+    max-width: 600px;
+    background-color: rgb(251, 251, 251);
+    font-size: 14px;
+    box-shadow: 5px 5px 12px rgba(39, 39, 39, 0.49);
+    border-radius: 10px ;
+    padding: 15px;
+
+}
