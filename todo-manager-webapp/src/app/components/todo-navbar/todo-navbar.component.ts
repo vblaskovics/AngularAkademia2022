@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ export class TodoNavbarComponent implements OnInit {
   @Input() progressCounter: number = 0;
   @Output() signInPressed = new EventEmitter<boolean>();
 
-  constructor() {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {}
 

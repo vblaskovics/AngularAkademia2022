@@ -9,6 +9,20 @@ import { TodoNavbarComponent } from './components/todo-navbar/todo-navbar.compon
 import { TodoNavbarFormComponent } from './components/todo-navbar-form/todo-navbar-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoSigninPageComponent } from './components/todo-signin-page/todo-signin-page.component';
+import { RouterModule, Routes } from '@angular/router';
+import { TodoLoginPageComponent } from './components/todo-login-page/todo-login-page.component';
+import { LoggedInGuard } from './services/logged-in.guard';
+
+const routes: Routes = [
+  { path: '', component: TodoTableListComponent },
+  { path: 'signin', component: TodoSigninPageComponent },
+  { path: 'login', component: TodoLoginPageComponent },
+  {
+    path: 'todonavbarform',
+    component: TodoNavbarFormComponent,
+    canActivate: [LoggedInGuard],
+  },
+];
 
 @NgModule({
   declarations: [
@@ -19,8 +33,14 @@ import { TodoSigninPageComponent } from './components/todo-signin-page/todo-sign
     TodoNavbarComponent,
     TodoNavbarFormComponent,
     TodoSigninPageComponent,
+    TodoLoginPageComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
