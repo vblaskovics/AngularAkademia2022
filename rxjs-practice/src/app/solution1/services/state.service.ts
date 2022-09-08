@@ -18,7 +18,8 @@ export class StateService {
   }
 
   constructor() {
-    this.getClock().subscribe(() => {
+    this.clock.subscribe((value) => {
+      console.log(value);
       this.counter.value--;
       if (this.counter.value === 0) {
         this.resetCounter();
@@ -65,11 +66,9 @@ export class StateService {
 
   typingCheck(typedValue: string) {
     if (typedValue === this.word.value) {
-      this.resetWord();
       this.addScore();
-    } else {
-      this.resetWord();
-      this.resetCounter();
     }
+    this.resetWord();
+    this.resetCounter();
   }
 }
