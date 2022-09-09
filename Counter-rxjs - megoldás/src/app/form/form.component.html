@@ -1,0 +1,31 @@
+<form class="form-group width" [formGroup]="myForm">
+  <div class="row">
+    <div class="col-md-8">
+      <input
+        type="text"
+        id="text"
+        class="form-control my-3"
+        name="text"
+        placeholder="Type the same text"
+        [(ngModel)]="inputWord"
+        (keydown.enter)="onSubmit()"
+        formControlName="text"
+        [class.is-invalid]="text.touched && text.hasError('required')"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <button
+        type="submit"
+        class="btn btn-warning my-3"
+        (click)="onSubmit()"
+      >
+        OK
+      </button>
+    </div>
+
+    <p>{{ inputWord }}</p>
+    
+
+  </div>
+</form>
