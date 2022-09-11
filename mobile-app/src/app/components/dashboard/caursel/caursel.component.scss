@@ -1,0 +1,41 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 24px;
+
+  width: 343px;
+  height: 36px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+h1 {
+  /* Let’s start a new trip! */
+
+  width: 225px;
+  height: 16px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 16px;
+  /* identical to box height, or 67% */
+
+  /* custom/secondary */
+
+  color: #424242;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
