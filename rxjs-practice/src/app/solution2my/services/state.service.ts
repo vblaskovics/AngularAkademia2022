@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, Subject } from 'rxjs';
+import { filter, interval, map, Observable, Subject } from 'rxjs';
 
 export class StateService {
 
-  clock: Observable<number> = interval(2000);
+  clock: Observable<number> = interval(1000);
+
+  counter$: Observable<number>;
+  counterDeadline: number = 6;
+  elapsedTime: number = 0;
 
   counter: { value: number } = {
     value: 0
@@ -19,12 +23,17 @@ export class StateService {
 
   constructor() {
     this.clock.subscribe((value) => {
-      console.log(value);
-      this.counter.value--;
-      if (this.counter.value === 0) {
-        this.resetCounter();
-        this.resetWord();
-      }
+      this.elapsedTime++;
+    })
+
+    this.counter$ = this.clock.pipe(map((count) => {
+      return this.counterDeadline - count;
+    }))
+
+    this.counter$.pipe(filter((counter) => {
+      return counter === 0;
+    })).subscribe((value) => {
+      this.resetCounter();
     })
 
     this.resetCounter();
@@ -35,12 +44,8 @@ export class StateService {
     return this.clock;
   }
 
-  getCounter() {
-    return this.counter;
-  }
-
   resetCounter(): void {
-    this.counter.value = Math.floor(Math.random() * 3) + 3;
+    this.counterDeadline = this.elapsedTime + Math.floor(Math.random() * 3) + 3;
   }
 
   getWord() {
