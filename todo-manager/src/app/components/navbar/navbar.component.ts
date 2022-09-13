@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { todos } from 'src/app/mock/todo-mock';
+import { StorageService } from 'src/app/service/storage.service';
 import { Progress } from 'src/app/users-model/progress-enum';
 import { Todo } from 'src/app/users-model/todo';
 
@@ -15,8 +16,9 @@ export class NavbarComponent implements OnInit {
   todos = todos;
   @Output() showSignInForm: EventEmitter<boolean> = new EventEmitter();
   isDisplayed: boolean = false;
+  @Input() title!: string;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder,private signedIn: StorageService) {
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     })
@@ -25,6 +27,14 @@ export class NavbarComponent implements OnInit {
   showForm(): void {
     this.isDisplayed = !this.isDisplayed;
     this.showSignInForm.emit(this.isDisplayed);
+  }
+
+  signIn() {
+    this.signedIn.signIn();
+  }
+
+  isSignedIn(): boolean {
+    return this.signedIn.isSignedIn();
   }
 
   ngOnInit(): void {
@@ -60,7 +70,6 @@ export class NavbarComponent implements OnInit {
       }
       console.log(this.myForm.value['title']);
     }
-
 
     get form() {
       return this.myForm.controls;

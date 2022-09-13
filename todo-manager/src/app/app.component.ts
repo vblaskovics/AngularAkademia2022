@@ -9,7 +9,8 @@ export class AppComponent {
   details: any;
   subtodoTitle: any;
   showSignInForm: boolean = false;
-  
+ // title = 'Todo Manager'
+
 
   passToDetails(event: any) {
     this.details = event;

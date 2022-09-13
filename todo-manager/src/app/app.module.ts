@@ -9,6 +9,13 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignInFormComponent } from './components/sign-in-form/sign-in-form.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: NavbarComponent},
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +28,8 @@ import { SignInFormComponent } from './components/sign-in-form/sign-in-form.comp
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

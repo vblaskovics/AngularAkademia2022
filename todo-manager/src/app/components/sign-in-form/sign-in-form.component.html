@@ -1,9 +1,10 @@
-<h3 class="sign-in mt-3">Sign in</h3>
+<h3 class="sign-in mt-3" [routerLink]="['/signin']">Sign in</h3>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <div class="form-container">
     <div class="form-group">
-      <label class="mt-2">First name</label>
+      <label for="firstname" class="mt-2">First name</label>
       <input
+        id="firstname"
         type="text"
         formControlName="firstname"
         placeholder="First Name"

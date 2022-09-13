@@ -1,13 +1,10 @@
-<h2>Details</h2>
-
 <ul *ngIf="details">
+  <h2>Details</h2>
   <li>
     {{ details.title }}
   </li>
 
-  <li (click)="nextProgress()">
-    {{ details.progress }} ⏩
-  </li>
+  <li (click)="nextProgress()">{{ details.progress }} ⏩</li>
 
   <li>
     {{ details.description }}
@@ -27,10 +24,10 @@
 </ul>
 
 <div *ngIf="details">
-  <h2 >Sub-todo:</h2>
+  <h2>Sub-todo:</h2>
   <ul>
     <li *ngFor="let subTodo of findSubtodos(details.subTodoIds)">
-      {{subTodo.title}}
+      {{ subTodo.title }}
     </li>
   </ul>
 </div>
