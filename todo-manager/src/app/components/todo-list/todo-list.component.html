@@ -7,16 +7,16 @@
           <tr>
             <th>Id</th>
             <th>Title</th>
-            <th (click)="sortProgress()">Progress
-              <span *ngIf="isAscending">⬆️</span>
-              <span *ngIf="!isAscending">⬇️</span>
+            <th (click)="this.todoService.sortProgress()">Progress
+              <span *ngIf="this.todoService.isAscending">⬆️</span>
+              <span *ngIf="!this.todoService.isAscending">⬇️</span>
             </th>
             <th>Date</th>
             <th>User id</th>
           </tr>
         </thead>
         <tbody>
-          <tr app-todo-item *ngFor="let item of todos" [todoItem]="item" (click)="showTodoDetails(item)"></tr>
+          <tr app-todo-item *ngFor="let item of this.todoService.todos" [todoItem]="item" (click)="showTodoDetails(item)"></tr>
         </tbody>
       </table>
     </div>
