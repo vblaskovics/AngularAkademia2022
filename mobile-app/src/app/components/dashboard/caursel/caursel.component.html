@@ -1,5 +1,17 @@
-<a [routerLink]="['/login']">Katt</a>
-
-<div class="header-container">
-  <h2>Let's start a new trip!</h2> <img src="../../../../assets/mat-avatar.svg">
+<div class="header-carousel-container">
+  <div class="header-container">
+    <h3>Let's start a new trip!</h3>
+    <a [routerLink]="['/login']">
+      <img class="header-img" src="../../../../assets/mat-avatar.svg"
+    /></a>
+  </div>
+  <div class="carousel-container">
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let item of images">
+        <div class="picsum-img-wrapper">
+          <img src="{{ item.imgUrl }}" />
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
 </div>

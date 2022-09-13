@@ -12,6 +12,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterDashboardComponent } from './components/dashboard/footer/footer-dashboard.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BookingNotificationComponent } from './components/dashboard/booking-notification/booking-notification.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -30,12 +34,16 @@ const routes: Routes = [
     CardsComponent,
     LoginComponent,
     DashboardComponent,
-    FooterDashboardComponent
+    FooterDashboardComponent,
+    BookingNotificationComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TodoDataService } from 'src/app/services/todo-data.service';
 import { progress, Todo } from 'src/app/shared/todo';
 
 @Component({
@@ -9,14 +10,15 @@ import { progress, Todo } from 'src/app/shared/todo';
 export class TodoItemComponent implements OnInit {
 
 
-  @Input() todo?: Todo;
+  todo?: Todo;
   @Output()clickedElement: EventEmitter<Todo> = new EventEmitter<Todo>();
   @Output() deleteItemFromTable: EventEmitter<Todo> = new EventEmitter<Todo>();
   @Output() elementProgress: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   isclicked: boolean = false;
 
-  constructor() {
+  constructor(public todoService: TodoDataService) {
+    console.log(this.todoService.todoItems);
 
   }
 
@@ -24,6 +26,7 @@ export class TodoItemComponent implements OnInit {
 
   tableDataClicked() {
     this.clickedElement.emit(this.todo);
+
   }
   removeItem(){
     this.deleteItemFromTable.emit(this.todo)

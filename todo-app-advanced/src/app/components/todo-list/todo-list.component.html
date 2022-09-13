@@ -1,12 +1,11 @@
-
 <table class="table table-striped table-dark table-hover">
   <thead>
     <tr>
       <th class="col">Id</th>
       <th class="col">Title</th>
       <th class="col">
-        Progress <span (click)="sortAscending()">🔼</span>
-        <span (click)="sortDescending()" type>🔽</span>
+        Progress <span (click)="(todoService.sortAscending)">🔼</span>
+        <span (click)="(todoService.sortDescending)" type>🔽</span>
       </th>
       <th class="col">Username</th>
       <th class="col">View details</th>
@@ -14,22 +13,15 @@
       <th class="col">Update Status</th>
     </tr>
   </thead>
-  <tbody>
-    <tr
-      class="centerThis"
-      (clickedElement)="selectedTodoHandler($event)"
-      app-todo-item
-      *ngFor="let item of items; let i = index"
-      [todo]="item"
-      (deleteItemFromTable)="removeThisItem($event)"
-      (elementProgress)="updateProgressOfitem($event)"
-    ></tr>
-  </tbody>
+  <tbody app-todo-item></tbody>
 </table>
 
-
-<div *ngIf="toDoElementSelected" >
-  <app-todo-details [todoItem]="selectedTodo" (closeItem)="closeTheDetails($event)
-  "
-  (elementProgress)="updateProgressOfitem($event)"></app-todo-details>
+<div *ngIf="todoService.toDoElementSelected">
+  <app-todo-details
+    [todoItem]="todoService.selectedTodo"
+    (closeItem)="todoService.closeTheDetails($event)"
+    (elementProgress)="todoService.updateProgressOfitem($event)"
+  ></app-todo-details>
 </div>
+
+<!-- [todo]="todoService.todoItems" -->

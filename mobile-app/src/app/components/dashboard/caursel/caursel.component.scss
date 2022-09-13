@@ -1,3 +1,21 @@
+.header-carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+  margin-bottom: 32px;
+
+  width: 343px;
+  height: 322px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
 .header-container {
   display: flex;
   flex-direction: row;
@@ -16,7 +34,8 @@
   align-self: stretch;
   flex-grow: 0;
 }
-h1 {
+
+h3 {
   /* Let’s start a new trip! */
 
   width: 225px;
@@ -27,6 +46,8 @@ h1 {
   font-weight: 700;
   font-size: 24px;
   line-height: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   /* identical to box height, or 67% */
 
   /* custom/secondary */
@@ -38,4 +59,62 @@ h1 {
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+.header-img {
+  /* mat-avatar */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  padding-right: 0px;
+  gap: 10px;
+
+  border-radius: 50px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+
+  width: 343px;
+  height: 262px;
+
+  /* custom/primary */
+
+  background: #3f51b5;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+::ng-deep .carousel-indicators {
+  margin: 0;
+  margin-bottom: -3rem;
+}
+::ng-deep .carousel-indicators > button[data-bs-target]{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-bottom: 3px;
+  background: url(../../../../assets/carousel-icon-incative.svg) no-repeat;
+}
+::ng-deep .carousel-indicators > button.active[data-bs-target]{
+  background: url(../../../../assets/carousel-icon-active.svg) no-repeat;
+}
+::ng-deep .carousel-control-next , ::ng-deep .carousel-control-prev{
+  display: none;
 }

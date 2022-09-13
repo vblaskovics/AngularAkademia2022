@@ -5,3 +5,6 @@
 .makeMePointable:hover {
   cursor: pointer;
 }
+.centerThis{
+  text-align: center;
+}

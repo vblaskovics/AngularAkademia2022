@@ -1,8 +1,16 @@
-<td scope="row">{{ todo?.id }}</td>
-<td >{{ todo?.title }}</td>
-<td >{{ todo?.progress }}</td>
-<td  *ngFor="let item of todo?.user_id ">{{ item.name }}</td>
-<td class="makeMePointable short" (click)="tableDataClicked()" [routerLink]="['/todoApp/todo-details']">🔍</td>
-<td class="makeMePointable short" (click)="removeItem()">❌</td>
-<td class="makeMePointable short" (click)="changeTodoStatus()">▶</td>
-
+<tr *ngFor="let item of todoService.todoItems; let i = index">
+  <td scope="row">{{item.id}}</td>
+  <td>{{item.title}}</td>
+  <td>{{item.progress}}</td>
+  <td *ngFor="let item of todoService.todoItems[i].user_id">{{item.name}}</td>
+  <td
+    class="makeMePointable short"
+    (click)="tableDataClicked()"
+    [routerLink]="['/todoApp/todo-details']"
+  >
+    🔍
+  </td>
+  <td class="makeMePointable short" (click)="removeItem()">❌</td>
+  <td class="makeMePointable short" (click)="changeTodoStatus()">▶</td>
+</tr>
+<!-- *ngFor="let item of todo?.user_id "  {{ item.name }} -->
