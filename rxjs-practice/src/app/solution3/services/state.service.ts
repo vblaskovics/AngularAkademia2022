@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, map, filter } from 'rxjs';
+import { interval, Observable, map, filter, Subject, BehaviorSubject } from 'rxjs';
 
 export class StateService {
 
@@ -13,12 +13,14 @@ export class StateService {
     value: 'empty'
   }
 
+  word$: Subject<string> = new BehaviorSubject<string>("");
+
   score: { value: number } = {
     value: 0
   }
 
   constructor() {
-    this.clock$.subscribe(() => {
+    this.clock$.subscribe((c) => {
       this.elapsedTime++;
     });
 

@@ -4,6 +4,8 @@ import { interval, Observable, map, filter } from 'rxjs';
 export class StateService {
 
   clock$: Observable<number> = interval(1000);
+
+  elapsedTime$: Observable<number> = new Observable();
   elapsedTime: number = 0;
 
   public counter$: Observable<number>;
@@ -21,6 +23,7 @@ export class StateService {
     this.clock$.subscribe(() => {
       this.elapsedTime++;
     });
+    this.elapsedTime$ = this.clock$.pipe(map(() => this.elapsedTime));
 
     this.counter$ = this.clock$.pipe(map((sec) => {
       return this.counterDeadline - sec;
@@ -31,7 +34,7 @@ export class StateService {
     })).subscribe(() => {
       this.resetCounter();
       this.resetWord();
-    })
+    });
 
     this.resetCounter();
     this.resetWord();

@@ -7,6 +7,8 @@ import { SolutionComponent } from './solution.component';
 import { ScoreComponent } from './components/score/score.component';
 import { StateService } from './services/state.service';
 import { FormsModule } from '@angular/forms';
+import { TimeLoggerComponent } from './components/time-logger/time-logger.component';
+import { TimeLogger2Component } from './components/time-logger2/time-logger2.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { FormsModule } from '@angular/forms';
     TypingFieldComponent,
     ScoreComponent,
     SolutionComponent,
+    TimeLoggerComponent,
+    TimeLogger2Component,
   ],
   providers: [StateService],
 })
