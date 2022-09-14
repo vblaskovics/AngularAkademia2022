@@ -56,6 +56,10 @@ akkor az email alatt legyen egy "Sub-todos:" címke is, ami alatt fel vannak sor
 
 Az alkalmazás kapjon egy nav bar-t, aminek a bal felső sarkában az alkalmazás neve szerepeljen, jobb sarkában pedig egy számláló, ami azt mutatja, hogy mennyi "In Progress" állapotú todo van a listában.
 
+#### Technikai követelmények
+- A navigációt Routing segítségével oldd meg!
+- A számlálót service segítségével oldd meg! 
+
 ### 7. Todo állapotának változtatása
 
 Bárhol(!), ahol megjelenik a ToDo állapota (Progress), az állapot mellett jelenjen meg egy kis gomb is, amire kattintva a todo a következő állapotba rakható, az alábbi sorrend szerint:
@@ -78,3 +82,10 @@ A todo táblázat rendezhető legyen növekvő vagy csökkenő sorrendben a Prog
   - Zip ( 1000 és 9999 közé eső szám )
   - Password ( minimum 8 karaktert tartalmaz, tartalmazza valamelyiket: # @ . *
   - Password again ( egyeznie kell a Password-el )
+  
+ 
+### 10. Jogosultságok
+
+- Új todo-t csak az tudjon felvenni, aki be van jelentkezve
+- Todo-t csak az tudjon módosítani, aki be van jelentkezve
+- A todo-k bejelentkezés nélkül is láthatóak legyenek
