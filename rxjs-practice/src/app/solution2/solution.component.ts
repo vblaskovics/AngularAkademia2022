@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-solution2',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SolutionComponent implements OnInit {
   timerState: 'Mutat'|'Elrejt' = 'Elrejt';
 
-  constructor() { }
+  constructor(public stateService:StateService) { }
 
   ngOnInit(): void {
   }

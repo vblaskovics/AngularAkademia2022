@@ -1,5 +1,6 @@
 <div class="navbar bg-dark text-light">
   <h1 class="px-3">Typing RxJs Game</h1>
+  <p class="px-4">Eltelt idő: {{ stateService.elapsedTime$ | async }}</p>
 </div>
 <div class="container">
   <div class="d-flex justify-content-center m-5">
@@ -15,6 +16,9 @@
     <app-score></app-score>
   </div>
 </div>
+
+<!-- <app-special-event></app-special-event> -->
+<app-special-event2></app-special-event2>
 
 <div class="container d-flex">
   <button class="btn btn-primary mx-4" (click)="toggleTimerState()">{{ timerState }}</button>
