@@ -1,0 +1,15 @@
+
+a {
+    text-decoration: none;
+    /* position: relative;  ------------emiatt ment fel a headerre a óz in progress button!
+    left: 10px; */
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    background-color: rgb(141, 169, 196);
+    color: white
+}

@@ -1,0 +1,121 @@
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+
+      <h4 class="mt-5 pt-5">Log in</h4>
+
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="col-xs-6">
+        <div class="text-center">
+          <label class="form-label col-xs-3" for="firstname"></label>
+          <input
+            class="form-control col-xs-3"
+            placeholder="firstname*"
+            type="text"
+            id="firstname"
+            name="firstname"
+            formControlName="firstname"
+            [class.is-invalid]="firstname.touched && firstname.invalid"
+          />
+      
+          <p *ngIf="firstname.hasError('required')" class="invalid-feedback" id="firstname"> Required field!</p>
+      
+        </div> 
+       
+      
+        <div class="text-center">
+          <label class="form-label col-xs-3" for="lastname"></label>
+          <input
+            class="form-control col-xs-3"
+            placeholder="lastname*"
+            type="text"
+            id="lastname"
+            name="lastname"
+            formControlName="lastname"
+            [class.is-invalid]="lastname.touched && lastname.invalid"
+          />
+      
+          <p *ngIf="lastname.hasError('required')" class="invalid-feedback" id="lastname"> Required field!</p>
+      
+        </div> 
+    
+      
+        <div class="text-center">
+          <label class="form-label col-xs-3" for="username"></label>
+          <input
+            class="form-control col-xs-3"
+            placeholder="username*"
+            type="text"
+            id="username"
+            name="username"
+            formControlName="username"
+            [class.is-invalid]="username.touched && username.invalid"
+          />
+      
+          <p *ngIf="username.errors?.['required']" class="invalid-feedback" > Required field!</p>
+          <p *ngIf="username.hasError('pattern') && username.touched" class="invalid-feedback" > Username must contain at least 1 number!</p>
+      
+        </div> 
+      
+      
+        <div class="text-center">
+          <label class="form-label col-xs-3" for="zip"></label>
+          <input
+            class="form-control col-xs-3"
+            placeholder="zip*"
+            type="text"
+            id="zip"
+            name="zip"
+            formControlName="zip"
+            [class.is-invalid]="zip.touched && zip.invalid"
+          />
+      
+          <p *ngIf="zip.hasError('required')" class="invalid-feedback" id="zip"> Required field!</p>
+          <p *ngIf="zip.hasError('max')" class="invalid-feedback" id="zip"> Maximum numbers: 9999 </p>
+          <p *ngIf="zip.hasError('min')" class="invalid-feedback" id="zip"> Minimum numbers: 1000 </p>
+      
+        </div> 
+   
+      
+        <div class="text-center">
+          <label class="form-label col-xs-3" for="password"></label>
+          <input
+            class="form-control col-xs-3"
+            placeholder="password*"
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+            [class.is-invalid]="password.touched && password.hasError('minlength')"
+          />
+      
+          <p *ngIf="password.hasError('required')" class="invalid-feedback" id="password"> Required field!</p>
+          <p *ngIf="password.hasError('minlength')" class="invalid-feedback" id="password"> It must be minimum 8 characters!</p>
+      
+        </div> 
+      
+          <br>
+
+
+        <div class="my-3">
+          <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Log in</button>
+        </div>
+        
+      </form>
+
+      <div *ngIf="message" class="alert alert-danger"> {{ message }} </div>
+
+  <div *ngIf="loginService.getUser()">
+    logged in as <h4> {{ loginService.getUser() }}</h4>
+    <button class="btn btn-warning" (click)="logout()">Log out</button>
+  </div>
+      
+          
+    </div>
+  </div>
+</div>
+
+
+

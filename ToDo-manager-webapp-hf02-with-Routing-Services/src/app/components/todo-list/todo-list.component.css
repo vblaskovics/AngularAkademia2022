@@ -1,0 +1,13 @@
+
+.col {
+    text-align: center;
+  }
+
+  table{
+    margin-top: 100px;
+  }
+
+  .near{
+    display: flex;
+    justify-content: space-around;
+  }

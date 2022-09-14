@@ -1,0 +1,9 @@
+
+
+<td scope="row" >{{ todo?.id }}</td>
+<td  >{{ todo?.title }}</td>
+<td class="clickable" (click)="onCellClick()">{{ todo?.progress }} <a (click)="onSelectStatus()">⏩</a> </td>
+<td   *ngFor="let item of todo?.user_id ">{{ item.name }}</td>
+<!-- <td style="cursor: pointer;" (click)="onChangeStatus()">🔽</td> -->
+
+

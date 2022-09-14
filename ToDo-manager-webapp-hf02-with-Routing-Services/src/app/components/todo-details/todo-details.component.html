@@ -1,0 +1,14 @@
+
+    <div class="fw-bold hr" >Details:</div>
+    
+    <ul>
+        <li >Title:  {{todoItem?.title}}</li>
+        <li appDropDown (click)="onSelectStatusDetails()" >Status: {{todoItem?.progress}}<a></a>  </li> 
+        <!-- anchorok közé tenni egy in porgress gombot, kattintható legyen! -->
+        <li >Details:  {{todoItem?.description}}</li>
+        <li >Creation Date:  {{todoItem?.date}}</li>
+        <li *ngFor="let item of todoItem?.user_id ">User:  {{item.name}}</li>
+        <li *ngFor="let item of todoItem?.user_id ">Email:  {{item.email}}</li>
+        <li *ngFor="let item of todoItem?.subTodoIds ">Sub-todo's titles: {{item.title}}</li>
+        <button class="right btn btn-outline-danger my-2 " (click)="onCloseButton()">Collapse</button>
+    </ul>
