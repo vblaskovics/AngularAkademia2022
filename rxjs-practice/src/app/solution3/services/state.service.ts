@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, Subject } from 'rxjs';
+import { interval, Observable, map, filter } from 'rxjs';
 
 export class StateService {
 
-  clock: Observable<number> = interval(2000);
+  clock$: Observable<number> = interval(1000);
+  elapsedTime: number = 0;
 
-  counter: { value: number } = {
-    value: 0
-  }
+  public counter$: Observable<number>;
+  counterDeadline: number = 5;
 
   word: { value: string } = {
     value: 'empty'
@@ -18,29 +18,27 @@ export class StateService {
   }
 
   constructor() {
-    this.clock.subscribe((value) => {
-      console.log(value);
-      this.counter.value--;
-      if (this.counter.value === 0) {
-        this.resetCounter();
-        this.resetWord();
-      }
+    this.clock$.subscribe(() => {
+      this.elapsedTime++;
+    });
+
+    this.counter$ = this.clock$.pipe(map((sec) => {
+      return this.counterDeadline - sec;
+    }));
+
+    this.counter$.pipe(filter((counter) => {
+      return counter === 0 ? true : false
+    })).subscribe(() => {
+      this.resetCounter();
+      this.resetWord();
     })
 
     this.resetCounter();
     this.resetWord();
   }
 
-  getClock(): Observable<number> {
-    return this.clock;
-  }
-
-  getCounter() {
-    return this.counter;
-  }
-
   resetCounter(): void {
-    this.counter.value = Math.floor(Math.random() * 3) + 3;
+    this.counterDeadline = this.elapsedTime + Math.floor(Math.random() * 3) + 3;
   }
 
   getWord() {
@@ -66,9 +64,11 @@ export class StateService {
 
   typingCheck(typedValue: string) {
     if (typedValue === this.word.value) {
+      this.resetWord();
       this.addScore();
+    } else {
+      this.resetWord();
+      this.resetCounter();
     }
-    this.resetWord();
-    this.resetCounter();
   }
 }
