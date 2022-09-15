@@ -1,0 +1,6 @@
+<strong *ngIf="showTimeElapsedStatus"
+  >Time elapsed: {{ time$ | async }} seconds</strong
+>
+<div *ngIf="isSpecial" class="alert alert-danger">
+  Special Event {{ time$ | async }}
+</div>

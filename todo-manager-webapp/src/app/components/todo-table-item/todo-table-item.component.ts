@@ -8,31 +8,31 @@ import { User } from 'src/app/models/user-model';
   styleUrls: ['./todo-table-item.component.css'],
 })
 export class TodoTableItemComponent implements OnInit {
-  @Input() todo?: Todo;
-  @Input() users?: User[];
+  // @Input() todo?: Todo;
+  // @Input() users?: User[];
 
-  @Output() clickOnTable = new EventEmitter<Todo>();
-  @Output() changeProgressStatus = new EventEmitter<Todo>();
+  // @Output() clickOnTable = new EventEmitter<Todo>();
+  // @Output() changeProgressStatus = new EventEmitter<Todo>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  findUser(id: number) {
-    const findId = this.users?.find((obj) => {
-      if (obj.id === id) {
-        return obj.name;
-      }
-      return;
-    });
-    return findId?.name;
-  }
+  // findUser(id: number) {
+  //   const findId = this.users?.find((obj) => {
+  //     if (obj.id === id) {
+  //       return obj.name;
+  //     }
+  //     return;
+  //   });
+  //   return findId?.name;
+  // }
 
-  showDetails(): void {
-    this.clickOnTable.emit(this.todo);
-  }
+  // showDetails(): void {
+  //   this.clickOnTable.emit(this.todo);
+  // }
 
-  changeProgress(): void {
-    this.changeProgressStatus.emit(this.todo);
-  }
+  // changeProgress(): void {
+  //   this.changeProgressStatus.emit(this.todo);
+  // }
 }
