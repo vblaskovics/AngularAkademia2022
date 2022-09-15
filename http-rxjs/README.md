@@ -8,4 +8,5 @@ Hozz létre egy componens-t UserList néven, ami táblázatos formában megjelen
 - Szükséges field-ek: id, name, username, email
 
 A megvalósítás során hozz létre egy user service-t, ahonnan le lehet kérni a szükséges Observable-t, amit
-a komponensen belül async pipe-al használunk!
+a komponensen belül async pipe-al használunk! 
+Továbbá definiáld és használd a user type-ot is!
