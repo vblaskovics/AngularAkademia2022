@@ -20,4 +20,10 @@ export class UserService {
   getUser(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.API}/${id}`);
   }
+
+  getUserByUsername(username: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.API}?username=${username}`);
+  }
+
+  
 }
