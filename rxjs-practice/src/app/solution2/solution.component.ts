@@ -6,16 +6,19 @@ import { StateService } from './services/state.service';
   templateUrl: './solution.component.html'
 })
 export class SolutionComponent implements OnInit {
+  timerState: 'Mutat'|'Elrejt' = 'Elrejt';
 
-  isVisible: boolean = true;
-  time$;
-
-
-  constructor(public stateService: StateService) { 
-    this.time$ = this.stateService.time$
-  }
+  constructor(public stateService:StateService) { }
 
   ngOnInit(): void {
+  }
+
+  get showTimer():boolean {
+    return this.timerState === 'Mutat' ? false : true;
+  }
+
+  toggleTimerState(): void {
+    this.timerState = this.timerState === 'Mutat' ? 'Elrejt' : 'Mutat'; 
   }
 
 }

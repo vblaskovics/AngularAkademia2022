@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, map, filter, tap } from 'rxjs';
+import { interval, Observable, map, filter, Subject } from 'rxjs';
 
 export class StateService {
 
-  isVisible: boolean = true;
   clock$: Observable<number> = interval(1000);
-  elapsedTime: number = 0;
-  elapsedTimeCounter: Observable<number> | undefined;
-  elapsedTime$: Observable<number>;
 
-  time$: Observable<number> = new Observable();
-  
+  time$: Observable<Number> = new Observable;
+
+  elapsedTime$: Observable<number> = new Observable();
+  elapsedTime: number = 0;
+  elapsedPrime$: Observable<number> = new Observable();
 
   public counter$: Observable<number>;
   counterDeadline: number = 5;
@@ -23,40 +22,44 @@ export class StateService {
     value: 0
   }
 
+  specialEvent$:Subject<number> = new Subject<number>();
+
   constructor() {
     this.clock$.subscribe(() => {
       this.elapsedTime++;
     });
-
-    this.elapsedTime$ = this.clock$.pipe(map(()=> this.elapsedTime));
+    this.elapsedTime$ = this.clock$.pipe(map(() => this.elapsedTime));
 
     this.counter$ = this.clock$.pipe(map((sec) => {
       return this.counterDeadline - sec;
     }));
-    
+
     this.counter$.pipe(filter((counter) => {
       return counter === 0 ? true : false
     })).subscribe(() => {
       this.resetCounter();
       this.resetWord();
-    })
+    });
+
+    this.elapsedPrime$ = this.createElapsedPrime$();
+    this.elapsedPrime$.subscribe(this.specialEvent$)
 
     this.resetCounter();
     this.resetWord();
-
-
-
-    this.time$ = this.clock$.pipe(
-      filter((t) => t % 5 === 0),
-      tap((t) => {if(t % 5 === 0 && t > 0) { console.log('váltás ${t-5} -> ${t}')}
-       
-     }
-     )
-    )
-
-
   }
 
+  createElapsedPrime$(): Observable<number> {
+    return this.elapsedTime$.pipe(
+      filter((t) => t > 5),
+      filter((t) => {
+        if (t === 0) return false;
+        if (t === 1) return true;
+        for (let i = 2; i < t; i++) {
+          if (t % i === 0) return false;
+        }
+        return true;
+      }))
+  }
 
   resetCounter(): void {
     this.counterDeadline = this.elapsedTime + Math.floor(Math.random() * 3) + 3;
@@ -84,6 +87,8 @@ export class StateService {
   }
 
   typingCheck(typedValue: string) {
+    this.cheatCodeHandler(typedValue);
+
     if (typedValue === this.word.value) {
       this.resetWord();
       this.addScore();
@@ -93,5 +98,9 @@ export class StateService {
     }
   }
 
-  
+  cheatCodeHandler(value:string) {
+    if (value === 'special_event'){
+      this.specialEvent$.next(0);
+    }
+  }
 }

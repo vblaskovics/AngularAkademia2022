@@ -18,11 +18,25 @@ export class Timer2Component implements OnInit {
     //   tap((t) => {if(t%5 === 0 && t > 0) { console.log('váltás ${t-5} -> ${t}')}})
     // )
 
-    this.time$ = this.stateService.elapsedTime$.pipe(
-      filter((t) => t % t === 0),
-      tap((t) => {if(t%t === 0 ) { alert('Magic happened 💥')}})
-    )
+    // this.time$ = this.stateService.elapsedTime$.pipe(
+    //   filter((t) => t % t === 0),
+    //   tap((t) => {if(t%t === 0 ) { 
+    //     console.log(t)
+    //     alert('Magic happened 💥')
+    //   }})
+    // )
+
+  //   for (var i = 1; i <= 60; i++) {
+  //     console.log(i + (this.stateService.isPrime(i) ? ", isPrime" : ""));
+  // }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.time$ = this.stateService.elapsedTime$.pipe(
+      filter((t) => t % 5 === 0),
+      tap((t) => {
+        console.log(t === 0 ? 'Kezdés' : `Váltás ${t - 5} -> ${t}`);
+      })
+    );
+  }
 }
