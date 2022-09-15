@@ -40,3 +40,10 @@ Email alapján random fotó. Írj switchMap-el sequential request-eket:
 - UserId alapján lekérjük az albumokat
 - Valamelyik albumnak lekérjük a fotóit
 - Valamelyik fotónak az url-jét kiírjuk
+
+## 5. feladat
+
+Jelenítsd meg táblázatban az 1,2,3 id-vel rendelkező userek nevét, és azoknak a post-jaiknak a számát, amik címe e betűvel kezdődik!
+
+- A post-ok lekéréséhez használd: https://jsonplaceholder.typicode.com/posts?userId=1&userId=2&userId=3
+- Minden hívásnak rakj be 2-4 mp- es véletlenszerű delay-t, amivel szimuláljuk a szerver lassúságát!

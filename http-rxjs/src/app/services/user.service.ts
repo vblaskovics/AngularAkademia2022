@@ -21,8 +21,12 @@ export class UserService {
     return this.httpClient.get<User>(`${this.API}/${id}`);
   }
 
-  getUserByUsername(username: string): Observable<User[]> {
+  getUsersByUsername(username: string): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.API}?username=${username}`);
+  }
+
+  getUsersByEmail(username: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.API}?email=${username}`);
   }
 
   

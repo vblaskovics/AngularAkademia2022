@@ -18,7 +18,7 @@ export class PostCountComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.user$ = timer(0, 3000).pipe(
-      switchMap(() => this.userService.getUserByUsername('Bret'))
+      switchMap(() => this.userService.getUsersByUsername('Bret'))
     );
 
     this.postCount$ = this.user$.pipe(
