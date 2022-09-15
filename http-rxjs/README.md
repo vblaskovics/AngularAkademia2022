@@ -26,4 +26,8 @@ Továbbá definiáld és használd a user type-ot is!
   - User Name: Bret
   - Email: Sincere@april.biz
 - 3 másodpercenként frissüljön az oldal egy másik véletlenszerű user adataival.
-- Írd ki a user-hez tartozó post-ok számát is!
+
+## 3. feladat
+
+- Jelenítsd meg a "Bret" username-el rendelkező user adatait 3 másodpercenként
+- Jelenítsd meg a post-jainak a számát is!
