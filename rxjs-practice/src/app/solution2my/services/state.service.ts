@@ -1,31 +1,41 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, Subject } from 'rxjs';
+import { filter, interval, map, Observable, Subject } from 'rxjs';
 
 export class StateService {
+  clock: Observable<number> = interval(1000);
 
-  clock: Observable<number> = interval(2000);
-
-  counter: { value: number } = {
-    value: 0
-  }
+  counter$: Observable<number>;
+  counterDeadline: number = 6;
+  elapsedTime: number = 0;
 
   word: { value: string } = {
-    value: 'empty'
-  }
+    value: 'empty',
+  };
 
   score: { value: number } = {
-    value: 0
-  }
+    value: 0,
+  };
 
   constructor() {
     this.clock.subscribe((value) => {
-      console.log(value);
-      this.counter.value--;
-      if (this.counter.value === 0) {
-        this.resetCounter();
-        this.resetWord();
-      }
-    })
+      this.elapsedTime++;
+    });
+
+    this.counter$ = this.clock.pipe(
+      map((count) => {
+        return this.counterDeadline - count;
+      })
+    );
+
+    let zeroAlert$ = this.counter$.pipe(
+      filter((counter) => {
+        return counter === 0;
+      })
+    );
+
+    zeroAlert$.subscribe((value) => {
+      this.resetCounter();
+    });
 
     this.resetCounter();
     this.resetWord();
@@ -35,12 +45,8 @@ export class StateService {
     return this.clock;
   }
 
-  getCounter() {
-    return this.counter;
-  }
-
   resetCounter(): void {
-    this.counter.value = Math.floor(Math.random() * 3) + 3;
+    this.counterDeadline = this.elapsedTime + Math.floor(Math.random() * 3) + 3;
   }
 
   getWord() {

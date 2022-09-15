@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { StateService } from '../../services/state.service';
 
 @Component({
@@ -7,10 +8,10 @@ import { StateService } from '../../services/state.service';
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
-  counter: { value: number };
+  counter$:Observable<number>;
 
   constructor(private stateService: StateService) {
-    this.counter = this.stateService.getCounter();
+    this.counter$ = this.stateService.counter$
   }
 
   ngOnInit(): void { }
