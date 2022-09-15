@@ -1,0 +1,16 @@
+
+<p>Eltelt idő: {{time$ | async}}</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input 
+        type="text" 
+        name="special" 
+        id="special"
+        formControlName="special"
+        >
+    <button type="submit">Ok</button>
+</form>
+
+<div class="modal-container-noshow" [ngClass]="delay ? 'modal-container' : ''">
+    <h1 style="text-align: center; margin: auto;">{{eventCounter}} Special Event!</h1>
+</div>

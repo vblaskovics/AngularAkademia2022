@@ -1,0 +1,30 @@
+<h2>List of todos</h2>
+<div class="list">
+    <button class="btn btn-warning" style="margin: 10px auto 20px auto; text-align: center;" (click)="changeListOfTodos()">Change data</button>
+    <div class="table-container">
+        <table class="table text-white bg-dark">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">title</th>
+                    <th scope="col" (click)="sortByProgress()">
+                        progress
+                        <span *ngIf="progressState === 0 ||  progressState === 2; else amugy">⬇</span>
+                        <ng-template #amugy>
+                            <span>⬆</span>
+                        </ng-template>
+                    </th>
+                    <th scope="col">user name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr app-todo-item *ngFor="let todo of todos, let i = index" [todo]="todo" [user]="getUser(todo)" (click)="selectTodo(todo)" [class.bgGrey]="i%2===0"></tr> -->
+                <tr *ngFor="let todo of todos$ | async, let i = index"></tr>
+            </tbody>            
+        </table>
+    </div>
+    
+    <!-- <div>
+        <app-todo-details  *ngIf="isTodoSelected" [user]="getUser(selectedTodo)" [todo]="selectedTodo" [todos]="todos"></app-todo-details>       
+    </div> -->
+</div>
