@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RandomUserComponent } from './components/random-user/random-user.component';
 import { PostCountComponent } from './components/post-count/post-count.component';
 import { PhotoUrlsComponent } from './components/photo-urls/photo-urls.component';
+import { UserPostsComponent } from './components/user-posts/user-posts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '1_feladat', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: '2_feladat', component: RandomUserComponent },
   { path: '3_feladat', component: PostCountComponent },
   { path: '4_feladat', component: PhotoUrlsComponent },
+  { path: '5_feladat', component: UserPostsComponent },
 ]
 
 @NgModule({
@@ -23,7 +25,8 @@ const routes: Routes = [
     UserListComponent,
     RandomUserComponent,
     PostCountComponent,
-    PhotoUrlsComponent
+    PhotoUrlsComponent,
+    UserPostsComponent
   ],
   imports: [
     BrowserModule,

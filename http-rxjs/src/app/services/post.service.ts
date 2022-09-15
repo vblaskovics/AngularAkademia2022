@@ -16,6 +16,10 @@ export class PostService {
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.API}`);
   }
+  
+  getPostsByParams(params:string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.API}/?${params}`);
+  }
 
   getPostsByUserId(userId: number): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.API}?userId=${userId}`);
