@@ -31,3 +31,12 @@ Továbbá definiáld és használd a user type-ot is!
 
 - Jelenítsd meg a "Bret" username-el rendelkező user adatait 3 másodpercenként
 - Jelenítsd meg a post-jainak a számát is!
+
+## 4. feladat
+
+Email alapján random fotó. Írj switchMap-el sequential request-eket:
+
+- Email alapján lekérünk egy user-t
+- UserId alapján lekérjük az albumokat
+- Valamelyik albumnak lekérjük a fotóit
+- Valamelyik fotónak az url-jét kiírjuk
