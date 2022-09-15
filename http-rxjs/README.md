@@ -26,4 +26,4 @@ Továbbá definiáld és használd a user type-ot is!
   - User Name: Bret
   - Email: Sincere@april.biz
 - 3 másodpercenként frissüljön az oldal egy másik véletlenszerű user adataival.
-
+- Írd ki a user-hez tartozó post-ok számát is!

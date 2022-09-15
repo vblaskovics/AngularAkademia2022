@@ -11,11 +11,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RandomUser2Component implements OnInit {
 
+  randomUser$: Observable<User> = new Observable();
+
   constructor(private userService: UserService) { }
 
-
   ngOnInit(): void {
-
+    timer(0, 3000).pipe(
+      map(() => Math.floor(Math.random() * 10) + 1),
+    ).subscribe((userId) => {
+      this.randomUser$ = this.userService.getUser(userId);
+    })
   }
 
 }

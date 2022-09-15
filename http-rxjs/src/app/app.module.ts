@@ -11,7 +11,7 @@ import { RandomUser2Component } from './components/random-user2/random-user2.com
 const routes: Routes = [
   { path: '', redirectTo: '1_feladat', pathMatch: 'full'},
   { path: '1_feladat', component: UserListComponent },
-  { path: '2_feladat', component: RandomUserComponent },
+  { path: '2_feladat', component: RandomUser2Component },
 ]
 
 @NgModule({
