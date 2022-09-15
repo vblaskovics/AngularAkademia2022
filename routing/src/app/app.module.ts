@@ -10,19 +10,27 @@ import { LoginComponent } from './login/login.component';
 import { ProtectedComponent } from './protected/protected.component';
 
 const routes: Routes = [
-  { path:'', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'protected', component: ProtectedComponent, canActivate: [ LoggedInGuard ] },
+  {
+    path: 'protected',
+    component: ProtectedComponent,
+    canActivate: [LoggedInGuard],
+  },
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, LoginComponent, ProtectedComponent],
-
-  imports: [BrowserModule,
-            RouterModule.forRoot(routes)
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    LoginComponent,
+    ProtectedComponent,
   ],
+
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
 
   providers: [],
 

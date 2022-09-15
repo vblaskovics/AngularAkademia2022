@@ -1,0 +1,28 @@
+<table class="table table-bordered table-sm">
+  <thead class="table-dark">
+      <tr>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+      </tr>
+  </thead>
+  <!-- <tbody>
+      <tr *ngIf="users$ | async as user">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+  </tr>
+  </tbody> -->
+
+  <tbody>
+    <app-post-count></app-post-count>
+    <tr *ngIf="posts$ | async as post">
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.body }}</td>
+</tr>
+</tbody>
+
+</table>
