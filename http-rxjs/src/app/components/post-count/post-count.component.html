@@ -1,0 +1,13 @@
+<h2>3. feladat</h2>
+
+Bret user data:
+
+<ng-container *ngIf="user$ | async as user">
+    <p><strong>User ID:</strong><span>{{user?.[0]?.id}}</span></p>
+    <p><strong>Name:</strong><span>{{user?.[0]?.name}}</span></p>
+    <p><strong>Username:</strong><span>{{user?.[0]?.username}}</span></p>
+    <p><strong>Email:</strong><span>{{user?.[0]?.email}}</span></p>
+    
+    <strong>Post count:</strong> {{ postCount$ | async }}
+</ng-container>
+
