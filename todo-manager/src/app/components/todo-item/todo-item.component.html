@@ -4,3 +4,4 @@
     <td (click)="nextProgress()">{{todoItem.progress}}⏩</td>
     <td>{{todoItem.date}}</td>
     <td>{{todoItem.userId}}</td>
+    <td [routerLink]="['/edit-todo/' + todoItem.id]">✏️</td>

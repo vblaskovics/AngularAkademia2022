@@ -10,10 +10,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignInFormComponent } from './components/sign-in-form/sign-in-form.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { EditTodoItemComponent } from './components/edit-todo-item/edit-todo-item.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: NavbarComponent},
+  {path: '', component:HomeComponent},
+  {path: 'todo-list', component: TodoListComponent},
+  {path: 'edit-todo/:id', component: EditTodoItemComponent},
 ];
 
 @NgModule({
@@ -23,7 +26,9 @@ const routes: Routes = [
     TodoListComponent,
     TodoDetailsComponent,
     NavbarComponent,
-    SignInFormComponent
+    SignInFormComponent,
+    HomeComponent,
+    EditTodoItemComponent
   ],
   imports: [
     BrowserModule,

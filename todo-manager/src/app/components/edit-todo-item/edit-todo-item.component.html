@@ -1,0 +1,23 @@
+<div class="container-fluid text-center ">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    Edit Title
+    <input
+      id="editInput"
+      name="editInput"
+      type="text"
+      class="form-control mb-1"
+      placeholder="Title"
+      formControlName="title"
+    />
+    <div *ngIf="submitted && form['title'].errors">
+      <div class="text-danger" *ngIf="form['title'].errors['required']">
+        Title is required!*
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <button class="btn btn-primary" (click)="editTodo()">Edit</button>
+      </div>
+    </div>
+  </form>
+</div>
