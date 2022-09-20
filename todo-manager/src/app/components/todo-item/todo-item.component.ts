@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TodoService } from 'src/app/service/todo.service';
 import { Progress } from 'src/app/users-model/progress-enum';
 import { Subtodo } from 'src/app/users-model/subtodo';
 import { Todo } from 'src/app/users-model/todo';
@@ -13,7 +14,9 @@ export class TodoItemComponent implements OnInit {
   @Output() subTodo!: EventEmitter<Subtodo>;
   @Input() subtodoTitle!: Subtodo;
 
-  constructor() {}
+  constructor(public todoService: TodoService) {
+
+  }
 
   ngOnInit(): void {}
 
@@ -22,14 +25,6 @@ export class TodoItemComponent implements OnInit {
   }
 
   nextProgress() {
-    let nextProgress;
-    if (this.todoItem.progress == Progress.OPEN) {
-      nextProgress = Progress.IN_PROGRESS;
-    } else if (this.todoItem.progress == Progress.IN_PROGRESS) {
-      nextProgress = Progress.DONE;
-    } else {
-      nextProgress = Progress.OPEN;
-    }
-    this.todoItem.progress = nextProgress;
+    this.todoService.nextProgress(this.todoItem);
   }
 }
