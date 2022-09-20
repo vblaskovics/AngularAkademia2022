@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { subTodos } from 'src/app/mock/subtodo-mock';
 import { users } from 'src/app/mock/user-mock';
+import { TodoService } from 'src/app/service/todo.service';
 import { Progress } from 'src/app/users-model/progress-enum';
 import { Subtodo } from 'src/app/users-model/subtodo';
 import { Todo } from 'src/app/users-model/todo';
@@ -16,7 +17,7 @@ export class TodoDetailsComponent implements OnInit {
   subTodos = subTodos;
   commonSubtodos: Subtodo[] = [];
 
-  constructor() {}
+  constructor(public todoService: TodoService) {}
 
   ngOnInit(): void {}
 
@@ -37,16 +38,8 @@ export class TodoDetailsComponent implements OnInit {
   }
 
   nextProgress() {
-    let nextProgress;
-    if (this.details?.progress == Progress.OPEN) {
-      nextProgress = Progress.IN_PROGRESS;
-    } else if (this.details?.progress == Progress.IN_PROGRESS) {
-      nextProgress = Progress.DONE;
-    } else {
-      nextProgress = Progress.OPEN;
-    }
     if (this.details) {
-      this.details.progress = nextProgress;
+      this.todoService.nextProgress(this.details);
     }
   }
 }

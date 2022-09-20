@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //extract todoService
   countInProgressTodos(): number {
     let count = 0;
     this.todos.forEach((current: Todo) => {
