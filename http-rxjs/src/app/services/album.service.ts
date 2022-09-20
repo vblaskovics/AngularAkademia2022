@@ -1,8 +1,4 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
@@ -18,5 +14,9 @@ export class AlbumService {
 
   getAlbumById() {
     return this.http.get<Album[]>(`${this.API}`);
+  }
+
+  getAlbumsByUserId(userId: number): Observable<Album> {
+    return this.http.get<Album>(`${this.API}?userId=${userId}`);
   }
 }

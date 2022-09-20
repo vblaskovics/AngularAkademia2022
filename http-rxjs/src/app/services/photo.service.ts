@@ -19,4 +19,8 @@ export class PhotoService {
   getRandomPhoto() {
     return this.http.get<Photo[]>(`${this.API}`);
   }
+
+  getPhotoByAlbumId(albumId: number): Observable<Photo[]> {
+    return this.http.get<Photo[]>(`${this.API}?albumId=${albumId}`);
+  }
 }

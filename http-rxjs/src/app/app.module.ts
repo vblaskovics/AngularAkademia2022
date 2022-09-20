@@ -15,9 +15,11 @@ import { PhotoCountComponent } from './photo-count/photo-count.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 
 const routes: Routes = [
-  {path: '#', component: UserListComponent},
-  {path: 'user-site2', component: UserSiteComponent}
-
+  { path: '1_feladat', component: UserListComponent },
+  { path: '2_feladat', component: UserSite2Component },
+  { path: '3_feladat', component: PostCountComponent },
+  { path: '4_feladat', component: PhotoCountComponent },
+  { path: '5_feladat', component: UserPostsComponent },
 ]
 
 @NgModule({

@@ -1,7 +1,5 @@
 import {
   HttpClient,
-  HttpErrorResponse,
-  HttpParams,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
@@ -28,5 +26,9 @@ export class UserService {
 
   getUserByUsername(username: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.API}?username=${username}`);
+  }
+
+  getUsersByEmail(username: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.API}?email=${username}`);
   }
 }
