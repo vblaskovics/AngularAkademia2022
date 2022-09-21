@@ -1,1 +1,16 @@
-<p>todo-list works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Progress</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr app-todo-items
+    *ngFor="let todo of todos"
+    [todo]="todo">
+    </tr>
+  </tbody>
+</table>

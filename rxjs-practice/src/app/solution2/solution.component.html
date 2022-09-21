@@ -1,5 +1,6 @@
 <div class="navbar bg-dark text-light">
     <h1 class="px-3">Typing RxJs Game</h1>
+    <h1>{{ elapsedTotalTime$ | async }}</h1>
   </div>
   <div class="container">
     <div class="d-flex justify-content-center m-5">
@@ -14,4 +15,10 @@
     <div class="d-flex justify-content-center m-5">
       <app-score></app-score>
     </div>
+    <section>
+      <p>Elapsed Time</p>
+      <input type="checkbox" (click)="showElapsedTime()">
+      <app-elapsed-time-save *ngIf="elapsedBoolean"></app-elapsed-time-save>
+    </section>
+    <app-special-event2></app-special-event2>
   </div>

@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, map, filter } from 'rxjs';
+import { interval, Observable, map, filter, Subject } from 'rxjs';
 
 export class StateService {
 
   clock$: Observable<number> = interval(1000);
+  elapsedTime$: Observable<number> = interval(1000);
   elapsedTime: number = 0;
+  elapsedPrime$: Observable<number> = new Observable();
 
   public counter$: Observable<number>;
+  public counter2$: Observable<number>;
   counterDeadline: number = 5;
 
   word: { value: string } = {
@@ -17,13 +20,21 @@ export class StateService {
     value: 0
   }
 
+  specialEvent$:Subject<number> = new Subject<number>();
+
   constructor() {
     this.clock$.subscribe(() => {
       this.elapsedTime++;
     });
 
+    this.elapsedTime$ = this.clock$.pipe(map(() => this.elapsedTime))
+
     this.counter$ = this.clock$.pipe(map((sec) => {
       return this.counterDeadline - sec;
+    }));
+
+    this.counter2$ = this.clock$.pipe(map((sec) => {
+      return this.elapsedTime
     }));
 
     this.counter$.pipe(filter((counter) => {
@@ -33,8 +44,24 @@ export class StateService {
       this.resetWord();
     })
 
+    this.elapsedPrime$ = this.createElapsedPrime$();
+    this.elapsedPrime$.subscribe(this.specialEvent$)
+
     this.resetCounter();
     this.resetWord();
+  }
+
+  createElapsedPrime$(): Observable<number> {
+    return this.elapsedTime$.pipe(
+      filter((t) => t > 5),
+      filter((t) => {
+        if (t === 0) return false;
+        if (t === 1) return true;
+        for (let i = 2; i < t; i++) {
+          if (t % i === 0) return false;
+        }
+        return true;
+      }))
   }
 
   resetCounter(): void {
@@ -44,6 +71,8 @@ export class StateService {
   getWord() {
     return this.word;
   }
+
+
 
   resetWord() {
     let newWord = '';
@@ -63,6 +92,8 @@ export class StateService {
   }
 
   typingCheck(typedValue: string) {
+    this.cheatCodeHandler(typedValue);
+
     if (typedValue === this.word.value) {
       this.resetWord();
       this.addScore();
@@ -71,4 +102,13 @@ export class StateService {
       this.resetCounter();
     }
   }
+
+  cheatCodeHandler(value:string) {
+    if (value === 'special_event'){
+      this.specialEvent$.next(0);
+    }
+  }
+
+
+
 }

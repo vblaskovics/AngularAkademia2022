@@ -1,0 +1,22 @@
+<table class="table table-bordered table-sm">
+  <thead class="table-dark">
+    <tr>
+      <th>User ID</th>
+      <th>Name</th>
+      <th>User Name</th>
+      <th>Email</th>
+      <th>Post Count</th>
+    </tr>
+  </thead>
+  <ng-container *ngIf="user$ | async as user">
+  <tbody>
+        <tr>
+            <td>{{user?.[0]?.id}}</td>
+            <td>{{user?.[0]?.name}}</td>
+            <td>{{user?.[0]?.username}}</td>
+            <td>{{user?.[0]?.email}}</td>
+            <td>{{ postCount }}</td>
+        </tr>
+      </tbody>
+    </ng-container>
+  </table>
