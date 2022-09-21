@@ -1,5 +1,6 @@
 export interface Character {
     attack: number,
     defense: number,
-    hp: number
+    hp: number,
+    name: string
 }
