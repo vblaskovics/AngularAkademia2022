@@ -1,0 +1,22 @@
+<h2>User By Email:</h2>
+
+<ng-container *ngIf="user$ | async as user">
+    <p>{{ user[0].email }}</p>
+</ng-container>
+
+<hr>
+
+<!-- <h2>Albums:</h2>
+
+<ng-container *ngIf="albums$ | async as albums">
+  <ng-container *ngFor="let a of albums">
+    <p>{{ a.id }}</p>
+    <p>{{ a.title }}</p>
+  </ng-container>
+</ng-container> -->
+
+<h2></h2>
+
+<ng-container *ngIf="albumCount$ | async as albumCount">
+    <p>{{ albumCount }}</p>
+</ng-container>
