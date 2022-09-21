@@ -1,5 +1,7 @@
+import { Todo } from './../../models/todo';
+import { TodoService } from 'src/app/shared/todo.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Todo, progress } from 'src/app/models/todo';
+
 
 
 @Component({
@@ -9,36 +11,24 @@ import { Todo, progress } from 'src/app/models/todo';
 })
 export class TodoDetailsComponent implements OnInit {
   @Input() todoItem?: Todo;
-  @Output() closedItem: EventEmitter<boolean> = new EventEmitter<boolean>();
   closingFunction: boolean = true;
   @Output() todoInProgressDetails: EventEmitter<Todo> = new EventEmitter<Todo>();
+  // todoDetails!: Todo
 
-  constructor() { }
+  constructor(public TodoService: TodoService) { }
 
   ngOnInit(): void {
   }
 
   onCloseButton(){
-    this.closedItem.emit(this.closingFunction);
+    this.TodoService.closeDetails(this.closingFunction)
   }
 
   onSelectStatusDetails(){
-    console.log('Működik a kattintás - child comp!')
-    this.todoInProgressDetails.emit(this.todoItem);
+    // console.log('Működik a kattintás - child comp!')
+    // this.todoInProgressDetails.emit(this.todoItem);
+    this.TodoService.actualProgressItemDetails;
   }
 
   
-  // detailsProgressChange(todo: Todo){
-  //   const todoIndex = this.todoItem.indexOf(todo);
-  //   if (this.todoItem[todoIndex].progress === progress.Open) {
-  //     this.todoItem[todoIndex].progress = progress.InProgress;
-  //   }
-  //    else if(this.todoItem[todoIndex].progress === progress.InProgress) {
-  //     this.todoItem[todoIndex].progress = progress.Done;
-  //   }
-  //    else if (this.todoItem[todoIndex].progress === progress.Done) {
-  //     this.todoItem[todoIndex].progress = progress.Open;
-  //   }
-  // }
-
 }

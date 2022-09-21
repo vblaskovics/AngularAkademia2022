@@ -3,7 +3,8 @@
     
     <ul>
         <li >Title:  {{todoItem?.title}}</li>
-        <li appDropDown (click)="onSelectStatusDetails()" >Status: {{todoItem?.progress}}<a></a>  </li> 
+        <li appDropDown (click)="onSelectStatusDetails()">Status: {{todoItem?.progress}}<a></a>  </li> 
+        <!-- (click)="onSelectStatusDetails($event)"  -->
         <!-- anchorok közé tenni egy in porgress gombot, kattintható legyen! -->
         <li >Details:  {{todoItem?.description}}</li>
         <li >Creation Date:  {{todoItem?.date}}</li>

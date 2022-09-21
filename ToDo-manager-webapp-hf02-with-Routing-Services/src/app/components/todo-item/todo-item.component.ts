@@ -10,14 +10,13 @@ import { TodoService } from 'src/app/shared/todo.service';
 })
 export class TodoItemComponent implements OnInit {
 
-
   @Input() todo?: Todo;
   @Output()clickedItem: EventEmitter<Todo> = new EventEmitter<Todo>();
   @Input() status?: progress;
   @Output() todoInProgress: EventEmitter<Todo> = new EventEmitter<Todo>();
 
 
-  constructor() { }
+  constructor(public todoService: TodoService) { }
 
   ngOnInit(): void {}
 
@@ -30,9 +29,9 @@ export class TodoItemComponent implements OnInit {
     this.todoInProgress.emit(this.todo)
   }
 
-  onChangeStatus(){
-    this.todoInProgress.emit(this.todo)
-  }
+  // onChangeStatus(){
+  //   this.todoInProgress.emit(this.todo)
+  // }
 
  
  

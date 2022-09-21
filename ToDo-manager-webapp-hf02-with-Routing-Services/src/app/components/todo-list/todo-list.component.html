@@ -1,11 +1,4 @@
 
-<!-- <app-header [todoCounter]="TodosInProgress" #headerTodoInput></app-header> -->
-
-
-<!-- <app-sign-in *ngIf="loadedSelected === 'sign-in'"></app-sign-in> -->
-
-
-
 <div > 
 <table class="table table-striped table-bordered">
     <thead>
@@ -14,26 +7,26 @@
         <th class="col">Title</th>
         <th class="col near" style="cursor:pointer">Progress <div (click)="this.todoService.onSortReasing()">🔼</div> <div (click)="this.todoService.onSortDecreasing()">🔽</div></th>
         <th class="col">Username</th>
-        <!-- <th class="col">Sort</th> -->
       </tr>
     </thead>
     <tbody>
       <tr
         class="text-center"
         (click)="this.todoService.onSelectedItem(item)"
-        
         *ngFor="let item of items; let i = index"
         [todo]="item"
         app-todo-item >
-        (todoInProgress)="this.todoService.actualProgressItem($event)"
-        (todoInProgress)="currentProgOfItem($event)"
-        (addNewTodo)="newTodoInList(item)" -->
+        
         <!-- (addnewTodo)="headerTodoInput($event) app-todo-itembe" -->
+        <!-- (todoInProgress)="actualProgressItem($event)"
+        (todoInProgress)="currentProgOfItem($event)" -->
       </tr>
     </tbody>
   </table>
   <div *ngIf="this.todoService.wichElementSelected; else infotext">
-    <app-todo-details [todoItem]="todoSelected" (closedItem)="closeDetails($event)" (todoInProgressDetails)="this.todoService.actualProgressItemDetails($event)"></app-todo-details>
+    <app-todo-details (todoInProgressDetails)="actualProgressItemDetails($event)">
+      <!-- [todoItem]="todoSelected"   -->
+    </app-todo-details>
   </div>
 
   <ng-template #infotext> 
