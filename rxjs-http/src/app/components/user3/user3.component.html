@@ -1,5 +1,5 @@
 <ng-container *ngIf="user$ | async as user">
-  <p> {{user?.[0]?.name}} data:</p>
+  <p><strong> {{user?.[0]?.name}} </strong>data:</p>
 </ng-container>
 <ng-container *ngIf="photo$ | async as photo">
   <p><strong>Photo Url: </strong><span> {{photo?.[0]?.url}}</span></p>
