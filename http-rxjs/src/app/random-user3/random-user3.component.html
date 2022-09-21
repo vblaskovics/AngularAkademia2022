@@ -1,0 +1,38 @@
+
+
+
+<body>
+ <div class="col-4 mx-5 field rounded">
+        <ul class="list-group ">
+        <li style="font-weight: 700;">Bret's data:
+        </li>
+        <li> {{(user$ | async)?.[0]?.id}} </li>
+        <li> {{(user$ | async)?.[0]?.name}} </li>
+        <li> {{(user$ | async)?.[0]?.username}} </li>
+        <li> {{(user$ | async)?.[0]?.email}}</li>
+        <li > Number of posts:
+         {{  postCount$ }}
+        </li>
+    </ul>
+</div> 
+<!-- better solution: --> -->
+
+<!-- <div class="col-4 mx-5 field rounded">
+
+    <ng-container *ngIf="user$ | async as user"></ng-container>
+    <ul class="list-group ">
+    <li style="font-weight: 700;">Bret's data:
+    </li>
+    <li> {{ user?.[0]?.id}} </li>
+    <li> {{ user?.[0]?.name}} </li>
+    <li> {{ user?.[0]?.username}} </li>
+    <li> {{ user?.[0]?.email}} </li>
+    
+    <li > Number of posts:
+     {{  postCount }}
+    </li>
+   
+</ul>
+</div> -->
+</body>
+

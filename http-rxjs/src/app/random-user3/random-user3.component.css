@@ -1,0 +1,10 @@
+body {
+    background-image: url('../../assets/users.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+}
+
+.field {
+    background-color: rgb(247, 241, 241, 0.6);
+}
