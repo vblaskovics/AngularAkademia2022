@@ -1,0 +1,27 @@
+<h2>The Big Fighting RPG</h2>
+
+<h3>Characters</h3>
+
+<h4>Character1</h4>
+<ol>
+  <li>name: {{ c1.name }}</li>
+  <li>attack: {{ c1.attack }}</li>
+  <li>defense: {{ c1.defense }}</li>
+  <li>hp: {{ c1.hp }}</li>
+</ol>
+
+<h4>Character2</h4>
+<ol>
+  <li>name: {{ c2.name }}</li>
+  <li>attack: {{ c2.attack }}</li>
+  <li>defense: {{ c2.defense }}</li>
+  <li>hp: {{ c2.hp }}</li>
+</ol>
+
+<div style="border: solid 1px black; background-color: beige">
+  <span type="" style="white-space: pre-line">
+    {{ textToDisplay }}
+  </span>
+</div>
+
+<button (click)="onAttack()">ATTACK</button>
