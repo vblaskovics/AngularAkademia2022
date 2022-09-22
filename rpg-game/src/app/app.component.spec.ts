@@ -34,5 +34,11 @@ describe('AppComponent', () => {
         expect(textContainer.nativeElement.textContent).toBe(' Test value ');
     });
 
+    it('should contain character selects', () => {
+        const select1 = el.query(By.css('#char1'));
+        expect(select1).toBeTruthy();
+        const select2 = el.query(By.css('#char2'));
+        expect(select2).toBeTruthy();
+    });
 
 });

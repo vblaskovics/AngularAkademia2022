@@ -2,27 +2,9 @@
 
 <h3>Characters</h3>
 
-<h4>Character1</h4>
-<ol>
-  <li>name: {{c1.name}}</li>
-  <li>attack: {{c1.attack}}</li>
-  <li>defense: {{c1.defense}}</li>
-  <li>hp: {{c1.hp}}</li>
-</ol>
+<app-character-select id="char1" [character$]="gameService.character1$"></app-character-select>
+<app-character-select id="char2" [character$]="gameService.character2$"></app-character-select>
 
-<h4>Character2</h4>
-<ol>
-  <li>name: {{c2.name}}</li>
-  <li>attack: {{c2.attack}}</li>
-  <li>defense: {{c2.defense}}</li>
-  <li>hp: {{c2.hp}}</li>
-</ol>
-
-<!-- <div style="border: solid 1px black; background-color: beige;">
-  <span id="textContainer" type="" style="white-space: pre-line;">
-    {{ textToDisplay }}
-  </span>
-</div> -->
 <app-display-area [textToDisplay]="textToDisplay"></app-display-area>
 
 <button (click)="onAttack()">Támadás</button>

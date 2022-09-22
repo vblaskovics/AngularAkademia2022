@@ -4,6 +4,8 @@ import { DisplayService } from './display.service';
 import { LoggerService } from './logger.service';
 import { RandomService } from './random.service';
 
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,9 @@ export class GameService {
   static readonly ATTACK_EVENT_MSG = `=== TÁMADÁS ===`
   static readonly ATTACK_EVENT_DAMAGE_MSG = (n1: string, n2: string) => `${n1} megsebezte ${n2}-t (-2 hp)`
   static readonly ATTACK_EVENT_NODAMAGE_MSG = (n1: string, n2: string) => `${n1} nem sebezte meg ${n2}-t`
+
+  character1$:BehaviorSubject<Character | null> = new BehaviorSubject<Character | null>(null);
+  character2$:BehaviorSubject<Character | null> = new BehaviorSubject<Character | null>(null);
 
   constructor(private logger: LoggerService,
     private displayService: DisplayService,

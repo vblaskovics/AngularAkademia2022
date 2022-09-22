@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Character } from './interfaces/character';
 import { DisplayService } from './services/display.service';
 import { GameService } from './services/game.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CharacterService } from './services/character.service';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +12,21 @@ import { GameService } from './services/game.service';
 })
 export class AppComponent {
   title = 'rpg-game';
-  c1: Character = {
-    name: 'Hero',
-    attack: 3,
-    defense: 5,
-    hp: 8
-  }
-  c2: Character = {
-    name: 'Orc',
-    attack: 1,
-    defense: 6,
-    hp: 5
-  }
+  character2$: BehaviorSubject<Character | null> = this.gameService.character2$;
+
+  charNames$: Observable<string[]>;
   textToDisplay: string = ""
 
-  constructor(private gameService: GameService, private displayService: DisplayService) { }
+  constructor(public gameService: GameService, private displayService: DisplayService, private characterService:CharacterService) {
+    this.charNames$ = this.characterService.getCharacterNames();
+
+  }
 
   onAttack(): void {
-    this.gameService.attack(this.c1, this.c2);
+    let c1 = this.gameService.character1$.getValue();
+    let c2 = this.gameService.character2$.getValue();
+    if (!c1 || !c2) return;
+    this.gameService.attack(c1, c2);
     this.textToDisplay = this.displayService.getHistoryText();
   }
 }
