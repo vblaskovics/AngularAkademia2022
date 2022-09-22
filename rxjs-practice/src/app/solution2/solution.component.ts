@@ -13,9 +13,9 @@ export class SolutionComponent implements OnInit {
   constructor(private stateService: StateService) { }
 
   ngOnInit(): void {
-    this.stateService.showLogger.subscribe((value) => {
-      this.showLogger = value
-    })
+    // this.stateService.showLogger.subscribe((value) => {
+    //   this.showLogger = value
+    // })
   }
 
 }

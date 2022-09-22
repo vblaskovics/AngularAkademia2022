@@ -8,9 +8,9 @@ import { ScoreComponent } from './components/score/score.component';
 import { StateService } from './services/state.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoggerComponent } from './components/logger/logger.component';
-import { HiderComponent } from './components/hider/hider.component';
-import { ContiniousCounterComponent } from './components/continious-counter/continious-counter.component';
-import { PrimeGameComponent } from './components/prime-game/prime-game.component';
+// import { HiderComponent } from './components/hider/hider.component';
+// import { ContiniousCounterComponent } from './components/continious-counter/continious-counter.component';
+// import { PrimeGameComponent } from './components/prime-game/prime-game.component';
 
 
 @NgModule({
@@ -29,9 +29,9 @@ import { PrimeGameComponent } from './components/prime-game/prime-game.component
     ScoreComponent,
     SolutionComponent,
     LoggerComponent,
-    HiderComponent,
-    ContiniousCounterComponent,
-    PrimeGameComponent,
+    // HiderComponent,
+    // ContiniousCounterComponent,
+    // PrimeGameComponent,
   ],
   providers: [StateService],
 })

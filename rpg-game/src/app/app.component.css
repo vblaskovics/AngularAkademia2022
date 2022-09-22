@@ -1,0 +1,26 @@
+.chars-div {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.card {
+    padding: 15px;
+    width: 20%;
+}
+
+.card h3, .card p {
+    color: whitesmoke;
+}
+
+.button-div {
+    margin: 20px, auto;
+    text-align: center;
+}
+
+.result-div {
+    text-align: center;
+    margin: 20px auto
+}

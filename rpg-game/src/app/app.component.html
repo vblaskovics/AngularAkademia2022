@@ -1,0 +1,28 @@
+<div class="chars-div">
+  <div class="card bg-dark">
+    <h3>Character 1</h3>
+    <p>Name: {{char1.name}}</p>
+    <p>Attack: {{char1.attack}}</p>
+    <p>Defense: {{char1.defense}}</p>
+    <p>HP: {{char1.hp}}</p>
+  </div>
+  
+  <div class="card bg-dark">
+    <h3>Character 2</h3>
+    <p>Name: {{char2.name}}</p>
+    <p>Attack: {{char2.attack}}</p>
+    <p>Defense: {{char2.defense}}</p>
+    <p>HP: {{char2.hp}}</p>
+  </div>
+</div>
+
+<div class="button-div">
+
+  <button class="btn btn-success" (click)="onAttack(char1, char2)">Attack!</button>
+</div>
+
+<div class="result-div">
+  <span class="" style="white-space: pre-line;">
+    {{ historyLog }}
+  </span>
+</div>
