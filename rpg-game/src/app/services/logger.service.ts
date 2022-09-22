@@ -10,4 +10,5 @@ export class LoggerService {
   log(logMsg: string) {
     console.log(logMsg);
   }
+
 }

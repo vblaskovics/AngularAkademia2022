@@ -12,14 +12,14 @@ export class AppComponent {
   title = 'rpg-game';
   c1: Character = {
     name: 'Hero',
-    attack: 4,
+    attack: 3,
     defense: 5,
     hp: 8
   }
   c2: Character = {
     name: 'Orc',
-    attack: 3,
-    defense: 3,
+    attack: 1,
+    defense: 6,
     hp: 5
   }
   textToDisplay: string = ""

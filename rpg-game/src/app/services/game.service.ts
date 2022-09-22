@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Character } from '../interfaces/character';
 import { DisplayService } from './display.service';
 import { LoggerService } from './logger.service';
+import { RandomService } from './random.service';
 
 
 @Injectable({
@@ -13,10 +14,13 @@ export class GameService {
   static readonly ATTACK_EVENT_DAMAGE_MSG = (n1: string, n2: string) => `${n1} megsebezte ${n2}-t (-2 hp)`
   static readonly ATTACK_EVENT_NODAMAGE_MSG = (n1: string, n2: string) => `${n1} nem sebezte meg ${n2}-t`
 
-  constructor(private logger: LoggerService, private displayService: DisplayService) { }
+  constructor(private logger: LoggerService,
+    private displayService: DisplayService,
+    private randomService: RandomService) { }
 
   attackFromTo(c1: Character, c2: Character) {
-    if (c1.attack > c2.defense) {
+    let rand = this.randomService.random();
+    if (c1.attack + rand > c2.defense) {
       c2.hp -= 2;
       this.displayService.addHistoryEvent(GameService.ATTACK_EVENT_DAMAGE_MSG(c1.name, c2.name))
     } else {
@@ -30,5 +34,8 @@ export class GameService {
 
     this.attackFromTo(c1, c2);
     this.attackFromTo(c2, c1);
+
   }
+
+
 }
