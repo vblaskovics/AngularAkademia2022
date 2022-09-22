@@ -21,9 +21,13 @@ export class GameService {
   attackFromTo(c1: Character, c2: Character) {
     if (c1.attack > c2.defense) {
       c2.hp -= 2;
-/*       this.loggerService.log(`${c1.name} megsebezte ${c2.name} - t`);
-      this.loggerService.log(`${c2.name} nem sebezte meg ${c1.name} - t`); */
-      this.displayService.logWinnerAndLoser(c1, c2);
+      this.loggerService.log(`${c1.name} megsebezte ${c2.name} - t`);
+      this.loggerService.log(`${c2.name} nem sebezte meg ${c1.name} - t`);
+      this.displayService.addHistoryEvent(`${c1.name} megsebezte ${c2.name}-t`);
+    } else {
+      this.displayService.addHistoryEvent(
+        `${c1.name} nem sebezte meg ${c2.name}-t`
+      );
     }
   }
 }

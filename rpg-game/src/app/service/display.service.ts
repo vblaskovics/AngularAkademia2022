@@ -20,14 +20,6 @@ export class DisplayService {
   }
 
   logAttackStart(): void {
-    console.log(
-      '=============================TÁMADÁS=============================='
-    );
-  }
-
-  logWinnerAndLoser(player1: Character, player2: Character): void {
-    console.log(
-      `${player1.name} megsebezte ${player2.name} - t\n${player2.name} nem sebezte meg ${player1.name} - t`
-    );
+    this.history.push('=============================TÁMADÁS==============================');
   }
 }

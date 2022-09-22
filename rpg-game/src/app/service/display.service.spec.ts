@@ -23,13 +23,13 @@ describe('DisplayService', () => {
       expect(displayService.getHistoryText()).toBe('New Attack');
     });
 
-    it('should log winner and loser', () => {
+/*     it('should log winner and loser', () => {
       spyOn(displayService, 'logWinnerAndLoser');
       displayService.logWinnerAndLoser(
         { attack: 4, defense: 8, hp: 8, name: 'WIZARD' },
         { attack: 4, defense: 8, hp: 8, name: 'UNICORN' }
       );
       expect(displayService.logWinnerAndLoser).toHaveBeenCalledTimes(1);
-    });
+    }); */
   });
 });

@@ -1,0 +1,16 @@
+<h2>Characters:</h2>
+
+<h4>{{ character1.name }}</h4>
+<p>Attack: {{ character1.attack }}</p>
+<p>Defense: {{ character1.defense }}</p>
+<p>Hp: {{ character1.hp }}</p>
+
+<h4>{{ character2.name }}</h4>
+<p>Attack: {{ character2.attack }}</p>
+<p>Defense: {{ character2.defense }}</p>
+<p>Hp: {{ character2.hp }}</p>
+
+<span style="white-space: pre-line;">
+  <p class="historyText">{{ historyText }}</p>
+</span>
+<button (click)="onAttackClicked()" >Támadás!</button>

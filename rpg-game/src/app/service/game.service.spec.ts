@@ -43,8 +43,14 @@ describe('GameService', () => {
       // akkor tudom meghívni ha volt rajta spy
       expect(displayService.logAttackStart).toHaveBeenCalledTimes(1);
     });
+
     it('should log winner and loser', () => {
-      
-    })
+      spyOn(displayService, 'logWinnerAndLoser');
+      gameService.attack(
+        { attack: 0, defense: 0, hp: 0, name: 'hero' },
+        { attack: 0, defense: 0, hp: 0, name: 'ork' }
+      );
+      expect(displayService.logWinnerAndLoser).toHaveBeenCalledTimes(1);
+    });
   });
 });
