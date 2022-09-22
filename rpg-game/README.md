@@ -1,27 +1,39 @@
 # RpgGame
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+Hozz létre egy játékot, amiben 2 karakter tud harcolni egymással.
 
-## Development server
+## Technical requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1. Használj JSON Server-t
 
-## Code scaffolding
+- legalább 10 karakter közül lehessen választani
+- a karaktereket a szervertől kelljen elkérni
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2. Karakterek kiválasztása név alapján
 
-## Build
+- a karaktereket név alapján lehet kiválasztani
+- amikor kiválasztunk egy karaktert, akkor az adatai is jelenjenek meg
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 3. Támadás
 
-## Running unit tests
+- ha a támadás gombra kattintunk, akkor elindul a csata
+- a csata közben másodpercenként történjen egy támadás
+- ha valamelyik karakter hp-ja 0 alá csökken, akkor vége a csatának
+- írasd ki a győztest
+- lehessen újraindítani a támadást
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 4. siker sorozat üzenet
 
-## Running end-to-end tests
+- ha valaki egymás után 3-szor sikeresen megebezte az ellenfelet, akkor jelenjen meg erről üzenet
+  - pl: "Orc is on a killing spree"
+- az üzenet 3 mp után tűnjön el
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Non technical requirements
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- használj unit test-eket, ahol csak tudsz
+  - http-nél nem kell
+  - rxjs-nél nem kell
+- törekedj a reactive megközelítésre (rxjs)
+- törekedj egy jól felépített, moduláris architektúrát kialakítani
+  - alakíts ki service-eket saját felelősségi körökkel
+  - legyen több komponensed is
