@@ -1,0 +1,35 @@
+<div class="container text-center">
+
+  <div class="row my-3">
+    <div class="col-6 bg-light rounded">
+      <h4>Character 1</h4>
+      <p>Name: {{ c1.name}} </p>
+      <p>Attack: {{ c1.attack}} </p>
+      <p>Defense: {{ c1.defense}} </p>
+      <p>HP: {{ c1.hp}} </p>
+    </div>
+
+    <div class="col-6 bg-light rounded">
+      <h4>Character 2</h4>
+      <p>Name: {{ c2.name}} </p>
+      <p>Attack: {{ c2.attack}} </p>
+      <p>Defense: {{ c2.defense}} </p>
+      <p>HP: {{ c2.hp}} </p>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col-9 text-center field">
+      <h4>History:</h4>
+      <hr>
+      <p style="white-space: pre">{{ historyText }}</p>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col-9 text-center field">
+      <button class="btn btn-danger" (click)="onAttack()">A T T A C K</button>
+  </div>
+
+
+</div>
