@@ -1,3 +1,4 @@
+import { RandomService } from './random.service';
 import { Injectable } from '@angular/core';
 import { Character } from '../models/character.model';
 import { DisplayService } from './display.service';
@@ -15,11 +16,13 @@ export class GameService {
 
   constructor(
     private logger: LoggerService,
-    private displayService: DisplayService
+    private displayService: DisplayService,
+    private randomService: RandomService
   ) {}
 
   attackFromTo(c1: Character, c2: Character) {
-    if (c1.attack > c2.defense) {
+    let random = this.randomService.randomNumber();
+    if (c1.attack + random > c2.defense) {
       c2.hp -= 2;
       this.displayService.addHistoryEvent(
         GameService.ATTACK_EVENT_DAMAGE_MSG(c1.name, c2.name)
