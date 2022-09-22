@@ -1,0 +1,7 @@
+<label for="selectChar">Please select 2 characters:</label>
+<select name="selectChar" id="selectChar" [(ngModel)]="selectedValue" (change)="onSelect()">
+  <option *ngFor="let char of characters$ | async" [value]="char.name">
+    {{ char.name }}
+  </option>
+</select>
+

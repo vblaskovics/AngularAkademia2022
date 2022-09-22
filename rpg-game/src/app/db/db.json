@@ -1,0 +1,64 @@
+{
+  "characters": [
+    {
+      "name": "Bunyós Pityu",
+      "attack": 10,
+      "defense": 7,
+      "hp": 7
+    },
+    {
+      "name": "Leonidasz",
+      "attack": 8,
+      "defense": 8,
+      "hp": 6
+    },
+    {
+      "name": "Szalacsi Sándor",
+      "attack": 5,
+      "defense": 9,
+      "hp": 7
+    },
+    {
+      "name": "Blahai Láma",
+      "attack": 9,
+      "defense": 6,
+      "hp": 9
+    },
+    {
+      "name": "Jóskagyerek",
+      "attack": 6,
+      "defense": 11,
+      "hp": 7
+    },
+    {
+      "name": "Mónika",
+      "attack": 5,
+      "defense": 8,
+      "hp": 9
+    },
+    {
+      "name": "Milinte",
+      "attack": 10,
+      "defense": 13,
+      "hp": 4
+    },
+    {
+      "name": "Rózsi",
+      "attack": 7,
+      "defense": 5,
+      "hp": 10
+    },
+    {
+      "name": "Malvin",
+      "attack": 12,
+      "defense": 7,
+      "hp": 6
+    },
+    {
+      "name": "Kocsis Pista",
+      "attack": 5,
+      "defense": 4,
+      "hp": 10
+    }
+  ]
+}

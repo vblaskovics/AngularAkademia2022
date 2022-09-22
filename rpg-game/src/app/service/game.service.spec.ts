@@ -3,6 +3,7 @@ import { Character } from '../model/character';
 import { DisplayService } from './display.service';
 import { GameService } from './game.service';
 import { LoggerService } from './logger.service';
+import { RandomService } from './random.service';
 
 describe('GameService', () => {
   let loggerService: LoggerService;
@@ -20,12 +21,15 @@ describe('GameService', () => {
       'addHistoryEvent',
       'getHistoryText',
     ]);
+    let randomServiceSpy = jasmine.createSpyObj('RandomService', ['random']);
+    randomServiceSpy.random.and.returnValue(1);
 
     TestBed.configureTestingModule({
       providers: [
         { provide: LoggerService, useValue: LoggerServiceSpy },
         { provide: DisplayService, useValue: DisplayServiceSpy },
-        GameService,
+        { provide: RandomService, useValue: randomServiceSpy },
+        /* { provide: RandomService, useValue: { random: () => 1 } }, */
       ],
     });
 
@@ -50,8 +54,8 @@ describe('GameService', () => {
 
       gameService.attack(c1, c2);
 
-      expect(c1.hp).withContext('Character1 hp should be 8').toBe(8);
-      expect(c2.hp).withContext('Character1 hp should be 8').toBe(8);
+      expect(c1.hp).withContext('Character1 hp should be 8').toBe(6);
+      expect(c2.hp).withContext('Character1 hp should be 8').toBe(6);
     });
 
     it('should log TÁMADÁS by the DisplayService', () => {

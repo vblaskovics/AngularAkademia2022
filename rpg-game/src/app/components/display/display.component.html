@@ -10,7 +10,6 @@
 <p>Defense: {{ character2.defense }}</p>
 <p>Hp: {{ character2.hp }}</p>
 
-<span style="white-space: pre-line;">
-  <p class="historyText">{{ historyText }}</p>
-</span>
-<button (click)="onAttackClicked()" >Támadás!</button>
+<app-display-area [historyText]="historyText"></app-display-area>
+
+<button (click)="onAttackClicked()">Támadás!</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Character } from 'src/app/model/character';
 import { DisplayService } from 'src/app/service/display.service';
 import { GameService } from 'src/app/service/game.service';
@@ -10,7 +10,7 @@ import { GameService } from 'src/app/service/game.service';
 })
 export class DisplayComponent implements OnInit {
 
-  historyText: string = this.displayService.getHistoryText();
+  historyText: string;
   character1: Character;
   character2: Character;
 
@@ -19,7 +19,7 @@ export class DisplayComponent implements OnInit {
     private gameService: GameService
   ) {
     this.character1 = { attack: 4, defense: 7, hp: 8, name: 'Harry' };
-    this.character2 = { attack: 8, defense: 6, hp: 8, name: 'Piton' };
+    this.character2 = { attack: 4, defense: 6, hp: 8, name: 'Piton' };
     this.historyText = this.displayService.getHistoryText();
   }
 
@@ -29,4 +29,6 @@ export class DisplayComponent implements OnInit {
     this.gameService.attack(this.character1, this.character2);
     this.historyText = this.displayService.getHistoryText();
   }
+
+
 }
