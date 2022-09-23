@@ -8,13 +8,15 @@ import { DisplayAreaComponent } from './components/display-area/display-area.com
 import { HttpClientModule } from '@angular/common/http';
 import { SelectCharacterComponent } from './components/select-character/select-character.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayComponent,
     DisplayAreaComponent,
-    SelectCharacterComponent
+    SelectCharacterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

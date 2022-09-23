@@ -1,7 +1,40 @@
-<label for="selectChar">Please select 2 characters:</label>
-<select name="selectChar" id="selectChar" [(ngModel)]="selectedValue" (change)="onSelect()">
-  <option *ngFor="let char of characters$ | async" [value]="char.name">
-    {{ char.name }}
-  </option>
-</select>
+<div class="row select-container">
+  <div class="col">
+    <label for="selectChar1">Select your first fighter:</label>
+    <select
+      class="form-select"
+      name="selectChar1"
+      id="selectChar1"
+      [(ngModel)]="selectedChar1"
+      (change)="onSelectChar1()"
+    >
+      <option *ngFor="let char of characters$ | async" [ngValue]="char">
+        {{ char.name }}
+      </option>
+    </select>
+  </div>
 
+  <div class="col">
+    <label for="selectChar2">Select your second fighter:</label>
+    <select
+      class="form-select"
+      name="selectChar2"
+      id="selectChar2"
+      [(ngModel)]="selectedChar2"
+      (change)="onSelectChar2()"
+    >
+      <option *ngFor="let char of characters$ | async" [ngValue]="char">
+        {{ char.name }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="row mt-5 justify-content-around">
+  <div class="col-4" *ngIf="selectedChar1">
+    <app-display [selectedChar]="selectedChar1"></app-display>
+  </div>
+  <div class="col-4" *ngIf="selectedChar2">
+    <app-display [selectedChar]="selectedChar2"></app-display>
+  </div>
+</div>
