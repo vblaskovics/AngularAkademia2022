@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container" *ngIf="!gameService.isFightStarted">
   <app-select-character></app-select-character>
+</div>
+<div *ngIf="gameService.isFightStarted">
+  <p>Fight started!</p>
 </div>

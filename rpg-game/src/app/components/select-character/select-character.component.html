@@ -38,3 +38,7 @@
     <app-display [selectedChar]="selectedChar2"></app-display>
   </div>
 </div>
+
+<div *ngIf="selectedChar1 && selectedChar2" class="d-grid col-6 mx-auto button_container">
+  <button class="btn btn-dark btn-lg" (click)="onStartFightButtonClicked()" >Start The Fight</button>
+</div>

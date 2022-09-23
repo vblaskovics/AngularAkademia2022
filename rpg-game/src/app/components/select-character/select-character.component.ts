@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Character } from 'src/app/model/character';
 import { CharacterService } from 'src/app/service/character.service';
+import { GameService } from 'src/app/service/game.service';
 
 @Component({
   selector: 'app-select-character',
@@ -14,7 +15,10 @@ export class SelectCharacterComponent implements OnInit {
 
   characters$!: Observable<Character[]>;
 
-  constructor(private characterService: CharacterService) {}
+  constructor(
+    private characterService: CharacterService,
+    private gameService: GameService
+  ) {}
 
   ngOnInit(): void {
     this.characters$ = this.characterService.getCharacters();
@@ -26,5 +30,12 @@ export class SelectCharacterComponent implements OnInit {
 
   onSelectChar2() {
     console.log('selectedChar2', this.selectedChar2);
+  }
+
+  onStartFightButtonClicked() {
+    console.log(this.gameService.isFightStarted);
+    this.gameService.isFightStarted = true;
+    console.log(this.gameService.isFightStarted);
+
   }
 }

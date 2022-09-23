@@ -8,6 +8,8 @@ import { RandomService } from './random.service';
   providedIn: 'root',
 })
 export class GameService {
+  private _isFightStarted: boolean = false;
+
   constructor(
     private loggerService: LoggerService,
     private displayService: DisplayService,
@@ -18,6 +20,14 @@ export class GameService {
     this.displayService.logAttackStart();
     this.attackFromTo(c1, c2);
     this.attackFromTo(c2, c1);
+  }
+
+  public get isFightStarted(): boolean {
+    return this._isFightStarted;
+  }
+
+  public set isFightStarted(value: boolean) {
+    this._isFightStarted = value;
   }
 
   attackFromTo(c1: Character, c2: Character) {
