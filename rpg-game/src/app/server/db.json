@@ -1,0 +1,14 @@
+{
+  "characters": [
+    {"name":"Troll","attack":5,"defense":4,"hp":10},
+    {"name":"Prince","attack":4,"defense":2,"hp":20},
+    {"name":"Orc","attack":3,"defense":5,"hp":19},
+    {"name":"Dragon","attack":3,"defense":5,"hp":13},
+    {"name":"Ogre","attack":3,"defense":4,"hp":17},
+    {"name":"Mage","attack":2,"defense":5,"hp":16},
+    {"name":"Paladin","attack":3,"defense":1,"hp":17},
+    {"name":"Dwarf","attack":3,"defense":1,"hp":14},
+    {"name":"Undead","attack":3,"defense":5,"hp":15},
+    {"name":"Scorpion","attack":5,"defense":5,"hp":19}
+  ]
+}

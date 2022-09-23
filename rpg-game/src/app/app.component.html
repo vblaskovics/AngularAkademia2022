@@ -3,20 +3,30 @@
 <h3>Characters</h3>
 
 <h4>Character1</h4>
-<ol>
-  <li>name: {{ c1.name }}</li>
-  <li>attack: {{ c1.attack }}</li>
-  <li>defense: {{ c1.defense }}</li>
-  <li>hp: {{ c1.hp }}</li>
+<select [(ngModel)]="c1" (change)="onFirstCharSelected()" class="form-select">
+  <option *ngFor="let character of characterList$ | async">
+    {{ character.name }}
+  </option>
+</select>
+<ol *ngIf="c1Selected">
+  <li>name: {{ c1!.name }}</li>
+  <li>attack: {{ c1!.attack }}</li>
+  <li>defense: {{ c1!.defense }}</li>
+  <li>hp: {{ c1!.hp }}</li>
 </ol>
 
-<h4>Character2</h4>
-<ol>
+<!-- <h4>Character2</h4>
+<select class="form-select" #character2 (change)="onSecondCharSelected()">
+  <option *ngFor="let character of characterList$ | async">
+    {{ character.name }}
+  </option>
+</select>
+<ol *ngIf="c2Selected">
   <li>name: {{ c2.name }}</li>
   <li>attack: {{ c2.attack }}</li>
   <li>defense: {{ c2.defense }}</li>
   <li>hp: {{ c2.hp }}</li>
-</ol>
+</ol> -->
 
 <app-display-box [textToDisplay]="textToDisplay"></app-display-box>
 
