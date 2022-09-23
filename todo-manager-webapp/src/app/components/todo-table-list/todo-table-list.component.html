@@ -3,7 +3,7 @@
     <tr>
       <th class="col-xs-3" scope="col">Id</th>
       <th class="col-xs-3" scope="col">Title</th>
-      <th class="col-xs-3" scope="col">
+      <!-- <th class="col-xs-3" scope="col">
         Progress
         <a *ngIf="ascending; else descending" href="#" (click)="sortProgress()"
           >⬆</a
@@ -11,7 +11,7 @@
         <ng-template #descending
           ><a href="#" (click)="sortProgress()">⬇</a></ng-template
         >
-      </th>
+      </th> -->
       <th class="col-xs-3" scope="col">User's Name</th>
     </tr>
   </thead>
@@ -28,8 +28,8 @@
   </tbody>
 </table>
 <div *ngIf="isTodoClicked">
-  <app-todo-details
+  <!-- <app-todo-details
     [todoSelected]="clickedTodo"
     [users]="users"
-  ></app-todo-details>
+  ></app-todo-details> -->
 </div>
