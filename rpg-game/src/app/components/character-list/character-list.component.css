@@ -1,0 +1,15 @@
+select {
+  text-align: center;
+  border: 1px solid black;
+  width: auto;
+
+}
+
+.form-select {
+  display: block;
+  margin: 0 auto;
+}
+
+.properties {
+  text-align: center;
+}

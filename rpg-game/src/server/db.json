@@ -1,0 +1,56 @@
+{
+  "characters": [
+    {
+      "name": "Marin",
+      "attack": "6",
+      "defense": "7",
+      "hp": "9"
+    }, {
+      "name": "Harlie",
+      "attack": "6",
+      "defense": "2",
+      "hp": "6"
+    }, {
+      "name": "Jean",
+      "attack": "9",
+      "defense": "7",
+      "hp": "7"
+    }, {
+      "name": "Naoma",
+      "attack": "9",
+      "defense": "7",
+      "hp": "7"
+    }, {
+      "name": "Belinda",
+      "attack": "3",
+      "defense": "5",
+      "hp": "8"
+    }, {
+      "name": "Andriette",
+      "attack": "1",
+      "defense": "7",
+      "hp": "8"
+    }, {
+      "name": "Janella",
+      "attack": "7",
+      "defense": "5",
+      "hp": "3"
+    }, {
+      "name": "Hayes",
+      "attack": "1",
+      "defense": "7",
+      "hp": "3"
+    }, {
+      "name": "Man",
+      "attack": "6",
+      "defense": "7",
+      "hp": "5"
+    }, {
+      "name": "Anselma",
+      "attack": "6",
+      "defense": "2",
+      "hp": "4"
+    }
+
+  ]
+}
