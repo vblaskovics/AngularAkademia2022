@@ -10,10 +10,10 @@ import { GameService } from 'src/app/service/game.service';
   styleUrls: ['./select-character.component.css'],
 })
 export class SelectCharacterComponent implements OnInit {
-  selectedChar1!: Character;
-  selectedChar2!: Character;
+  selectedChar1: Character;
+  selectedChar2: Character;
 
-  characters$!: Observable<Character[]>;
+  characters$: Observable<Character[]>;
 
   constructor(
     private characterService: CharacterService,
@@ -24,18 +24,11 @@ export class SelectCharacterComponent implements OnInit {
     this.characters$ = this.characterService.getCharacters();
   }
 
-  onSelectChar1() {
-    console.log('selectedChar1', this.selectedChar1);
-  }
-
-  onSelectChar2() {
-    console.log('selectedChar2', this.selectedChar2);
-  }
-
   onStartFightButtonClicked() {
-    console.log(this.gameService.isFightStarted);
     this.gameService.isFightStarted = true;
-    console.log(this.gameService.isFightStarted);
+    this.gameService.fight(this.selectedChar1, this.selectedChar2);
+
+    /* this.historyText = this.displayService.getHistoryText(); */
 
   }
 }

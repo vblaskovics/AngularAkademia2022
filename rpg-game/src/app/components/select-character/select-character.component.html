@@ -6,7 +6,6 @@
       name="selectChar1"
       id="selectChar1"
       [(ngModel)]="selectedChar1"
-      (change)="onSelectChar1()"
     >
       <option *ngFor="let char of characters$ | async" [ngValue]="char">
         {{ char.name }}
@@ -21,7 +20,6 @@
       name="selectChar2"
       id="selectChar2"
       [(ngModel)]="selectedChar2"
-      (change)="onSelectChar2()"
     >
       <option *ngFor="let char of characters$ | async" [ngValue]="char">
         {{ char.name }}

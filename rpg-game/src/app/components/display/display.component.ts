@@ -10,14 +10,14 @@ import { GameService } from 'src/app/service/game.service';
 })
 export class DisplayComponent implements OnInit {
 
-  historyText: string;
+
   @Input() selectedChar!: Character;
 
   constructor(
-    private displayService: DisplayService,
+
     /* private gameService: GameService */
   ) {
-    this.historyText = this.displayService.getHistoryText();
+
   }
 
   ngOnInit(): void {}

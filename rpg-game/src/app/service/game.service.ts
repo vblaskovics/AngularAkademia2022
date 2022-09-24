@@ -8,7 +8,9 @@ import { RandomService } from './random.service';
   providedIn: 'root',
 })
 export class GameService {
-  private _isFightStarted: boolean = false;
+  isFightStarted: boolean = false;
+  private attackInterval: any;
+  winner: Character;
 
   constructor(
     private loggerService: LoggerService,
@@ -16,30 +18,44 @@ export class GameService {
     private randomService: RandomService
   ) {}
 
-  attack(c1: Character, c2: Character): void {
+  fight(c1: Character, c2: Character) {
     this.displayService.logAttackStart();
-    this.attackFromTo(c1, c2);
-    this.attackFromTo(c2, c1);
+    this.attackInterval = setInterval(() => {
+      this.attack(c1, c2);
+      if (!this.isGameover(c1.hp, c2.hp)) {
+        this.attack(c2, c1);
+      }
+    }, 1000);
   }
 
-  public get isFightStarted(): boolean {
-    return this._isFightStarted;
-  }
-
-  public set isFightStarted(value: boolean) {
-    this._isFightStarted = value;
-  }
-
-  attackFromTo(c1: Character, c2: Character) {
-    if (c1.attack + this.randomService.random(1, 6) > c2.defense) {
-      c2.hp -= 2;
-      this.loggerService.log(`${c1.name} megsebezte ${c2.name} - t`);
-      this.loggerService.log(`${c2.name} nem sebezte meg ${c1.name} - t`);
-      this.displayService.addHistoryEvent(`${c1.name} megsebezte ${c2.name}-t`);
+  attack(attacker: Character, defender: Character): void {
+    if (attacker.attack > defender.defense) {
+      defender.hp -= 2;
+      this.displayService.addHistoryEvent(
+        `${attacker.name} megsebezte ${defender.name}-t`
+      );
+      this.displayService.addHistoryEvent(
+        `${defender.name} -2 hp! ${defender.name}\'s hp is: ${defender.hp}`
+      );
+      if (this.isGameover(attacker.hp, defender.hp)) {
+        clearInterval(this.attackInterval);
+        this.winner = this.checkWinner(attacker, defender);
+        this.displayService.addHistoryEvent(
+          `📢📢📢THE WINNER IS: ${this.winner.name}!📢📢📢`
+        );
+      }
     } else {
       this.displayService.addHistoryEvent(
-        `${c1.name} nem sebezte meg ${c2.name}-t`
+        `${attacker.name} nem sebezte meg ${defender.name}-t`
       );
     }
+  }
+
+  isGameover(hp1: number, hp2: number): boolean {
+    return hp1 <= 0 || hp2 <= 0;
+  }
+
+  checkWinner(char1: Character, char2: Character): Character {
+    return char1.hp > char2.hp ? char1 : char2;
   }
 }

@@ -42,7 +42,7 @@ describe('GameService', () => {
       let c1: Character = { attack: 4, defense: 2, hp: 8, name: 'hero23' };
       let c2: Character = { attack: 4, defense: 2, hp: 8, name: 'ork43' };
 
-      gameService.attack(c1, c2);
+      gameService.fight(c1, c2);
 
       expect(c1.hp).withContext('Character1 hp should be lower by 2').toBe(6);
       expect(c2.hp).withContext('Character1 hp should be lower by 2').toBe(6);
@@ -52,7 +52,7 @@ describe('GameService', () => {
       let c1: Character = { attack: 4, defense: 8, hp: 8, name: 'hero4' };
       let c2: Character = { attack: 8, defense: 4, hp: 8, name: 'ork' };
 
-      gameService.attack(c1, c2);
+      gameService.fight(c1, c2);
 
       expect(c1.hp).withContext('Character1 hp should be 8').toBe(6);
       expect(c2.hp).withContext('Character1 hp should be 8').toBe(6);
@@ -60,7 +60,7 @@ describe('GameService', () => {
 
     it('should log TÁMADÁS by the DisplayService', () => {
       /* spyOn(displayService, 'logAttackStart'); */
-      gameService.attack(
+      gameService.fight(
         { attack: 0, defense: 0, hp: 0, name: 'hero' },
         { attack: 0, defense: 0, hp: 0, name: 'ork' }
       );

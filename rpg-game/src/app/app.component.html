@@ -2,6 +2,6 @@
 <div class="container" *ngIf="!gameService.isFightStarted">
   <app-select-character></app-select-character>
 </div>
-<div *ngIf="gameService.isFightStarted">
-  <p>Fight started!</p>
+<div class="container" *ngIf="gameService.isFightStarted">
+  <app-display-area></app-display-area>
 </div>
