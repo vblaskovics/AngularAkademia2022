@@ -1,0 +1,38 @@
+.card-container{
+  //make a card container for the arena
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  //make a card for each pokemon
+
+}
+button{
+  //center the button
+  display: block;
+  margin: 0 auto;
+  //make the button look nice
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover{
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+}

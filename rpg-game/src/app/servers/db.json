@@ -1,0 +1,64 @@
+{
+    "Characters": [
+        {
+            "name": "Leanora",
+            "attack": 5,
+            "defense": 3,
+            "health": 5
+        },
+        {
+            "name": "Leopold",
+            "attack": 8,
+            "defense": 4,
+            "health": 13
+        },
+        {
+            "name": "Benny",
+            "attack": 10,
+            "defense": 4,
+            "health": 22
+        },
+        {
+            "name": "Sharlene",
+            "attack": 6,
+            "defense": 5,
+            "health": 6
+        },
+        {
+            "name": "Onfroi",
+            "attack": 3,
+            "defense": 1,
+            "health": 21
+        },
+        {
+            "name": "Orelee",
+            "attack": 3,
+            "defense": 4,
+            "health": 21
+        },
+        {
+            "name": "Patience",
+            "attack": 5,
+            "defense": 3,
+            "health": 25
+        },
+        {
+            "name": "Pyotr",
+            "attack": 5,
+            "defense": 2,
+            "health": 25
+        },
+        {
+            "name": "Georgette",
+            "attack": 3,
+            "defense": 2,
+            "health": 14
+        },
+        {
+            "name": "Walther",
+            "attack": 2,
+            "defense": 2,
+            "health": 19
+        }
+    ]
+}

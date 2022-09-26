@@ -1,0 +1,9 @@
+<div class="card m-1" style="width: 18rem;" *ngFor="let item of chars | async">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" [class.selected]="isSelected(item)" >Name: {{item.name}}</li>
+    <li class="list-group-item">Attack: {{item.attack}}</li>
+    <li class="list-group-item">Defense: {{item.defense}}</li>
+    <li class="list-group-item">Health: {{item.health}}</li>
+    <button class="btn btn-primary" (click)="onSelect(item)">Select character</button>
+  </ul>
+</div>

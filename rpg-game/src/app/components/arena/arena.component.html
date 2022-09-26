@@ -1,0 +1,19 @@
+<div class="card-container">
+  <div
+    class="card m-1"
+    style="width: 18rem"
+    *ngFor="let item of characterService.selectedCharactersArray"
+  >
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: {{ item.name }}</li>
+      <li class="list-group-item">Attack: {{ item.attack }}</li>
+      <li class="list-group-item">Defense: {{ item.defense }}</li>
+      <li class="list-group-item">Health: {{ item.health }}</li>
+    </ul>
+  </div>
+</div>
+
+<p *ngIf="showWinner">The winner is:  {{getWinner()}}</p>
+
+<button class="btn btn-primary" (click)="startFight()">Start fight!</button>
+
