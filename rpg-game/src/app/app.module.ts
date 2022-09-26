@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelectCharacterComponent } from './components/select-character/select-character.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DisplayComponent,
     DisplayAreaComponent,
     SelectCharacterComponent,
-    NavbarComponent
+    NavbarComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

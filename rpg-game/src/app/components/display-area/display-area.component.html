@@ -1,3 +1,14 @@
-<span style="white-space: pre-line" id="textContainer">
-  <p class="historyText">{{ this.displayService.getHistoryText() }}</p>
-</span>
+<div
+  style="white-space: pre-line"
+  id="textContainer"
+  class="text-center container mt-4"
+>
+  <div class="row justify-content-center">
+    <div class="col-6 historyText_container">
+      <p class="historyText pt-2">{{ this.displayService.getHistoryText() }}</p>
+    </div>
+  </div>
+  <div *ngIf="isKillingSpree" class="popup-container">
+    <app-popup [name]="killerName"></app-popup>
+  </div>
+</div>

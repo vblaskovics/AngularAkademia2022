@@ -1,8 +1,12 @@
-.historyText {
-  background-color: rgb(161, 231, 213);
-  margin-top: 20px;
+.historyText_container {
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
-p {
-  margin: 0;
+.popup-container {
+  position: absolute;
+  top: 74px;
+  right: 50px;
+  border: 1px solid rgb(255, 44, 234);
+  border-radius: 4px;
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Character } from '../model/character';
 import { DisplayService } from './display.service';
 import { LoggerService } from './logger.service';
@@ -11,6 +12,7 @@ export class GameService {
   isFightStarted: boolean = false;
   private attackInterval: any;
   winner: Character;
+  damageSubject: Subject<string> = new Subject<string>();
 
   constructor(
     private loggerService: LoggerService,
@@ -37,6 +39,7 @@ export class GameService {
       this.displayService.addHistoryEvent(
         `${defender.name} -2 hp! ${defender.name}\'s hp is: ${defender.hp}`
       );
+      this.damageSubject.next(attacker.name);
       if (this.isGameover(attacker.hp, defender.hp)) {
         clearInterval(this.attackInterval);
         this.winner = this.checkWinner(attacker, defender);

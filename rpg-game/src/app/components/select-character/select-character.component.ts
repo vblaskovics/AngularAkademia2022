@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Character } from 'src/app/model/character';
 import { CharacterService } from 'src/app/service/character.service';
 import { GameService } from 'src/app/service/game.service';
+import { KillingSpreeCounterService } from 'src/app/service/killing-spree-counter.service';
 
 @Component({
   selector: 'app-select-character',
@@ -17,7 +18,8 @@ export class SelectCharacterComponent implements OnInit {
 
   constructor(
     private characterService: CharacterService,
-    private gameService: GameService
+    private gameService: GameService,
+    private killingSpreeCounterService: KillingSpreeCounterService
   ) {}
 
   ngOnInit(): void {
@@ -26,9 +28,10 @@ export class SelectCharacterComponent implements OnInit {
 
   onStartFightButtonClicked() {
     this.gameService.isFightStarted = true;
+    this.killingSpreeCounterService.setFighters(
+      this.selectedChar1.name,
+      this.selectedChar2.name
+    );
     this.gameService.fight(this.selectedChar1, this.selectedChar2);
-
-    /* this.historyText = this.displayService.getHistoryText(); */
-
   }
 }

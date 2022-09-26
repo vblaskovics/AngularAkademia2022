@@ -19,6 +19,6 @@ export class DisplayService {
   }
 
   logAttackStart(): void {
-    this.history.push('=============================TÁMADÁS==============================');
+    this.history.push('============FIGHT STARTED============');
   }
 }
