@@ -6,6 +6,7 @@ import { LoggerService } from './logger.service';
 })
 export class DisplayService {
   history: string[] = [];
+  killingSpreeMessage = '';
 
   constructor(private loggerService: LoggerService) {}
 
@@ -17,13 +18,16 @@ export class DisplayService {
     return this.history;
   }
 
-  // log(msg: string) {
-  //   console.log(msg);
-  // }
+  storeKillingSpreeMsg(message: string) {
+    this.killingSpreeMessage = message;
+    setTimeout(() => {
+      this.killingSpreeMessage = '';
+    }, 3000);
+  }
 
-  // winnerOrLoser(c1: Character, c2: Character) {
-  //   console.log(` ${c1} + attack + ${c1.attack} + and he defense ${c2.defense} + . + He lost ${c2.hp} + .`);
-  //   console.log(` ${c2} + attack + ${c2.attack} + and he defense + ${c1.defense} + . +  He lost ${c1.hp} + .`);
-  // }
+    getKillingSpreeMsg() {
+      return this.killingSpreeMessage;
+    }
+
 
 }

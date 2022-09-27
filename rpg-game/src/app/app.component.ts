@@ -50,6 +50,10 @@ export class AppComponent {
     return this.displayService.getHistoryText();
   }
 
+  displayKillingSpreeMsg() {
+    return this.displayService.getKillingSpreeMsg();
+  }
+
   reset() {
     this.subscription.unsubscribe();
   }

@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class DisplayAreaComponent {
 
   @Input() history: string[] = [];
+  @Input() killingSpreeMsg: string = '';
 
   constructor() { }
 

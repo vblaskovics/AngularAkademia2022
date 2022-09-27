@@ -8,6 +8,9 @@ import { RandomService } from './random.service';
   providedIn: 'root',
 })
 export class GameService {
+  characterOneKillingSpreeCounter = 0;
+  characterTwoKillingSpreeCounter = 0;
+
   constructor(
     private logger: LoggerService,
     private randomService: RandomService,
@@ -23,6 +26,8 @@ export class GameService {
     let random = this.randomService.randomDmgNoise();
     if (characterOne.attack + random > characterTwo.defense) {
       characterTwo.hp -= 2;
+      this.characterTwoKillingSpreeCounter = 0
+      this.characterOneKillingSpreeCounter++
       this.displayService.addHistoryEvent(
         `${characterOne.name} damaged ${characterTwo.name} for 2`
       );
@@ -33,6 +38,8 @@ export class GameService {
     }
     if (characterTwo.attack + random > characterOne.defense) {
       characterOne.hp -= 2;
+      this.characterTwoKillingSpreeCounter++
+      this.characterOneKillingSpreeCounter = 0
       this.displayService.addHistoryEvent(
         `${characterTwo.name} damaged ${characterOne.name} for 2`
       );
@@ -41,5 +48,18 @@ export class GameService {
         `${characterTwo.name} not damaged ${characterOne.name}`
       );
     }
+    this.killingSpreeCounter(characterOne, characterTwo);
+  }
+
+  private killingSpreeCounter(characterOne: Character, characterTwo: Character) {
+    if (this.characterOneKillingSpreeCounter >= 3) {
+      this.characterOneKillingSpreeCounter = 0;
+      this.displayService.storeKillingSpreeMsg(`${characterOne.name} is on a killing spree.`);
+    }
+    if (this.characterTwoKillingSpreeCounter >= 3) {
+      this.characterTwoKillingSpreeCounter = 0;
+      this.displayService.storeKillingSpreeMsg(`${characterTwo.name} is on a killing spree.`);
+    }
   }
 }
+
