@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor(
     private gameService: GameService,
-    private displayService: DisplayService,
+    private displayService: DisplayService
   ) {}
 
   recieveCharacter(event: Character[]) {
@@ -30,11 +30,17 @@ export class AppComponent {
     this.subscription = timer(0, 4000).subscribe(() => {
       this.gameService.attack(this.characters[0], this.characters[1]);
       if (this.characters[0].hp <= 0) {
-        this.displayService.addHistoryEvent(`${this.characters[0].name} defeated.`);
+        this.displayService.addHistoryEvent(
+          `${this.characters[0].name} defeated.`
+        );
+        this.displayService.addHistoryEvent(`${this.characters[1].name} is the winner.`);
         this.subscription.unsubscribe();
       }
       if (this.characters[1].hp <= 0) {
-        this.displayService.addHistoryEvent(`${this.characters[1].name} defeated.`);
+        this.displayService.addHistoryEvent(
+          `${this.characters[1].name} defeated.`
+        );
+        this.displayService.addHistoryEvent(`${this.characters[0].name} is the winner.`);
         this.subscription.unsubscribe();
       }
     });
