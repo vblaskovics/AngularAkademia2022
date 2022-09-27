@@ -1,7 +1,7 @@
 
 
 <div class="select">
-  <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacter" >
+  <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacter" (change)="selectCharacter()" >
     <option selected *ngFor="let character of characters$ | async" [ngValue]="character">{{character.name}}</option>
   </select>
 </div>
@@ -11,4 +11,17 @@
   <p class="mb-0">Attack: {{selectedCharacter.attack}}</p>
   <p class="mb-0">Defense: {{selectedCharacter.defense}}</p>
 </div>
+
+<div class="select">
+  <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacterTwo" (change)="selectCharacterTwo()">
+    <option selected *ngFor="let character of characters$ | async" [ngValue]="character">{{character.name}}</option>
+  </select>
+</div>
+
+<div class="properties" *ngIf="selectedCharacterTwo">
+  <p class="mb-0">Hp: {{selectedCharacterTwo.hp}}</p>
+  <p class="mb-0">Attack: {{selectedCharacterTwo.attack}}</p>
+  <p class="mb-0">Defense: {{selectedCharacterTwo.defense}}</p>
+</div>
+
 

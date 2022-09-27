@@ -9,8 +9,14 @@ export class RandomService {
 
   constructor(private loggerService: LoggerService) { }
 
-  random(): number {
+  randomDmgNoise(): number {
     this.loggerService.log('Random number generated');
     return Math.floor(Math.random() * 6) + 1;
   }
+
+  isCharacterOneAttacking(): boolean {
+    return Math.random() > 0.5;
+  }
+
+
 }

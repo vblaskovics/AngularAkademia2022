@@ -2,36 +2,49 @@ import { Component } from '@angular/core';
 import { Character } from './model/character.interface';
 import { DisplayService } from './services/display.service';
 import { GameService } from './services/game.service';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'rpg-game';
 
-  displayText: string = "";
+  characters: Character[] = [];
+  subscription!: Subscription;
 
-  characterOne: Character = {
-    name: 'Hero',
-    attack: 4,
-    defense: 5,
-    hp: 8
-  }
-  characterTwo: Character = {
-    name: 'Orc',
-    attack: 3,
-    defense: 3,
-    hp: 5
+  constructor(
+    private gameService: GameService,
+    private displayService: DisplayService,
+  ) {}
+
+  recieveCharacter(event: Character[]) {
+    this.characters = event;
+    console.log(event);
   }
 
-  constructor(private gameService: GameService, private displayService: DisplayService) {
-    displayService.getHistoryText();
+  simulateFight(): void {
+    this.displayService.addHistoryEvent('Fight started');
+    this.subscription = timer(0, 4000).subscribe(() => {
+      this.gameService.attack(this.characters[0], this.characters[1]);
+      if (this.characters[0].hp <= 0) {
+        this.displayService.addHistoryEvent(`${this.characters[0].name} defeated.`);
+        this.subscription.unsubscribe();
+      }
+      if (this.characters[1].hp <= 0) {
+        this.displayService.addHistoryEvent(`${this.characters[1].name} defeated.`);
+        this.subscription.unsubscribe();
+      }
+    });
   }
 
-  duringAttack() {
-    this.gameService.attack(this.characterOne, this.characterTwo);
-    this.displayText = this.displayService.getHistoryText();
+  logCombat() {
+    return this.displayService.getHistoryText();
+  }
+
+  reset() {
+    this.subscription.unsubscribe();
   }
 }

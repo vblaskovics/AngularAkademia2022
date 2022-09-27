@@ -1,31 +1,18 @@
 <div class="container">
   <h2>RPG game</h2>
 
-  <h3>Characters:</h3>
+  <h4>Choose characters:</h4>
 
-  <h4>Character1</h4>
-  <ol>
-    <li>name: {{ characterOne.name }}</li>
-    <li>attack: {{ characterOne.attack }}</li>
-    <li>defense: {{ characterOne.defense }}</li>
-    <li>hp: {{ characterOne.hp }}</li>
-  </ol>
-
-  <h4>Character2</h4>
-  <ol>
-    <li>name: {{ characterTwo.name }}</li>
-    <li>attack: {{ characterTwo.attack }}</li>
-    <li>defense: {{ characterTwo.defense }}</li>
-    <li>hp: {{ characterTwo.hp }}</li>
-  </ol>
-
-  <div>
-    <span type="" style="white-space: pre-line">
-      <app-display-area [displayText]="displayText"></app-display-area>
-    </span>
-  </div>
-</div>
 <div class="row">
-  <app-character-list></app-character-list>
+  <app-character-list (characters)="recieveCharacter($event)"></app-character-list>
+  <button class="btn btn-primary" (click)="simulateFight()">Attack!</button>
 </div>
-<button (click)="duringAttack()">Támadás</button>
+
+<div class="row">
+  <app-display-area [history]="logCombat()"></app-display-area>
+</div>
+</div>
+
+<div class="row">
+  <button class="btn btn-primary" (click)="reset()">Reset</button>
+</div>

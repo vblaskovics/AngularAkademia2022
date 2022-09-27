@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Character } from 'src/app/model/character.interface';
 import { CharacterHttpService } from 'src/app/services/character-http.service';
@@ -12,18 +12,31 @@ export class CharacterListComponent implements OnInit {
 
   characters$: Observable<Character[]> = new Observable();
   selectedCharacter: Character | null = null;
+  selectedCharacterTwo: Character | null = null;
+  @Output() characters: EventEmitter<Character[]> = new EventEmitter();
+  selectedCharacters: Character[] = [];
 
-  constructor(private characterHttp: CharacterHttpService) { }
+  constructor(private characterHttp: CharacterHttpService) {
+   }
 
   ngOnInit(): void {
   //this.characterHttp.getCharacter().subscribe((data) => console.log(data));
   this.characters$ = this.characterHttp.getCharacter();
   }
 
-  selectCharacter(event: any) {
-    console.log(event.target.value);
+  selectCharacter() {
+    this.selectedCharacters.push(this.selectedCharacter!);
+
   }
 
+  selectCharacterTwo() {
+    this.selectedCharacters.push(this.selectedCharacterTwo!);
+    this.emitCharacters();
+  }
+
+  emitCharacters() {
+    this.characters.emit(this.selectedCharacters);
+  }
 
 
 }

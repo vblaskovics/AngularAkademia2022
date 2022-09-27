@@ -10,12 +10,11 @@ export class DisplayService {
   constructor(private loggerService: LoggerService) {}
 
   addHistoryEvent(event: string): void {
-    this.loggerService.log('DisplayService add history event');
     this.history.push(event);
   }
 
-  getHistoryText(): string {
-    return this.history.join('\n');
+  getHistoryText(): string[] {
+    return this.history;
   }
 
   // log(msg: string) {

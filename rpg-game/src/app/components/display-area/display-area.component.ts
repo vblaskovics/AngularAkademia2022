@@ -1,19 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-display-area',
   templateUrl: './display-area.component.html',
   styleUrls: ['./display-area.component.css']
 })
-export class DisplayAreaComponent implements OnInit {
+export class DisplayAreaComponent {
 
-  @Input() displayText: string = "";
+  @Input() history: string[] = [];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-
 
 }

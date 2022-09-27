@@ -16,6 +16,5 @@ export class CharacterHttpService {
   getCharacter(): Observable<Character[]> {
     return this.http.get<Character[]>(this.BASE_URL);
   }
-
   
 }

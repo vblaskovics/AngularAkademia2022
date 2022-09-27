@@ -1,1 +1,6 @@
-<p id="textContainer">{{displayText}}</p>
+Combat log:
+<div class="container">
+  <div class="row">
+    <p id="textContainer" *ngFor="let logItem of history">{{logItem}}</p>
+  </div>
+</div>
