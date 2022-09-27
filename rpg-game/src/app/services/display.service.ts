@@ -29,5 +29,9 @@ export class DisplayService {
       return this.killingSpreeMessage;
     }
 
+    clearHistory() {
+      this.history = [];
+    }
+
 
 }

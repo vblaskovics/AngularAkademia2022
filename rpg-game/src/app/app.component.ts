@@ -56,5 +56,7 @@ export class AppComponent {
 
   reset() {
     this.subscription.unsubscribe();
+    this.displayService.clearHistory();
+    
   }
 }
