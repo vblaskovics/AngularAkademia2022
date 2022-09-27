@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Character } from './model/character.interface';
 import { DisplayService } from './services/display.service';
 import { GameService } from './services/game.service';
-import { Subscription, timer } from 'rxjs';
+import { Observable, Subscription, timer } from 'rxjs';
+import { CharacterHttpService } from './services/character-http.service';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,12 @@ export class AppComponent {
 
   characters: Character[] = [];
   subscription!: Subscription;
+  characters$: Observable<Character[]> = new Observable();
 
   constructor(
     private gameService: GameService,
-    private displayService: DisplayService
+    private displayService: DisplayService,
+    private characterHttp: CharacterHttpService
   ) {}
 
   recieveCharacter(event: Character[]) {
@@ -57,6 +60,6 @@ export class AppComponent {
   reset() {
     this.subscription.unsubscribe();
     this.displayService.clearHistory();
-    
+    this.characters$ = this.characterHttp.getCharacter();
   }
 }

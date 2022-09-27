@@ -1,7 +1,10 @@
 
 
 <div class="select">
-  <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacter" (change)="selectCharacter()" >
+  <select *ngIf="characterDB | async" class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacter" (change)="selectCharacter()">
+    <option selected *ngFor="let character of characters$ | async" [ngValue]="character">{{character.name}}</option>
+  </select>
+  <select *ngIf="!(characterDB | async)" class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacter" (change)="selectCharacter()" >
     <option selected *ngFor="let character of characters$ | async" [ngValue]="character">{{character.name}}</option>
   </select>
 </div>
@@ -13,7 +16,10 @@
 </div>
 
 <div class="select">
-  <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacterTwo" (change)="selectCharacterTwo()">
+  <select *ngIf="characterDB | async" class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacterTwo" (change)="selectCharacterTwo()">
+    <option selected *ngFor="let character of characters$ | async" [ngValue]="character">{{character.name}}</option>
+  </select>
+  <select *ngIf="!(characterDB | async)"class="form-select" aria-label="Default select example" [(ngModel)]="selectedCharacterTwo" (change)="selectCharacterTwo()">
     <option selected *ngFor="let character of characters$ | async" [ngValue]="character">{{character.name}}</option>
   </select>
 </div>
