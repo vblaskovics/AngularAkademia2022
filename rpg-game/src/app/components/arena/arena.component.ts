@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 import { CharacterService } from 'src/app/services/character.service';
 import { GameService } from 'src/app/services/game.service';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-arena',

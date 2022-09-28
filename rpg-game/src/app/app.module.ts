@@ -8,6 +8,8 @@ import { CharacterSelectorContainerComponent } from './components/character-sele
 import { CharactersComponent } from './components/characters/characters.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArenaComponent } from './components/arena/arena.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ArenaComponent } from './components/arena/arena.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
