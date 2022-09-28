@@ -18,6 +18,11 @@ export class DisplayService {
     this._history.push(event);
   }
 
+  resetHistoryEvent(): void {
+    this.loggerService.log('DisplayService reset history event');
+    this._history = [];
+  }
+
   getHistoryText(): string {
     return this._history.join('\n');
   }

@@ -4,8 +4,8 @@
 
 <h4>Character1</h4>
 <select [(ngModel)]="c1" (change)="onFirstCharSelected()" class="form-select">
-  <option *ngFor="let character of characterList$ | async">
-    {{ character.name }}
+  <option *ngFor="let c1 of characterList$ | async" [ngValue]="c1">
+    {{ c1.name }}
   </option>
 </select>
 <ol *ngIf="c1Selected">
@@ -15,19 +15,22 @@
   <li>hp: {{ c1!.hp }}</li>
 </ol>
 
-<!-- <h4>Character2</h4>
-<select class="form-select" #character2 (change)="onSecondCharSelected()">
-  <option *ngFor="let character of characterList$ | async">
-    {{ character.name }}
+<h4>Character2</h4>
+<select [(ngModel)]="c2" class="form-select" (change)="onSecondCharSelected()">
+  <option *ngFor="let c2 of characterList$ | async" [ngValue]="c2">
+    {{ c2.name }}
   </option>
 </select>
 <ol *ngIf="c2Selected">
-  <li>name: {{ c2.name }}</li>
-  <li>attack: {{ c2.attack }}</li>
-  <li>defense: {{ c2.defense }}</li>
-  <li>hp: {{ c2.hp }}</li>
-</ol> -->
+  <li>name: {{ c2!.name }}</li>
+  <li>attack: {{ c2!.attack }}</li>
+  <li>defense: {{ c2!.defense }}</li>
+  <li>hp: {{ c2!.hp }}</li>
+</ol>
 
 <app-display-box [textToDisplay]="textToDisplay"></app-display-box>
 
 <button (click)="onAttack()">ATTACK</button>
+<button (click)="onReset()">RESET</button>
+
+<div *ngIf="endGame" class="mt-5">The Winner is: {{ winner!.name }}</div>
