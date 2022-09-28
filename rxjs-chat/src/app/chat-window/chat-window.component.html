@@ -1,0 +1,33 @@
+<div class="chat-window-container">
+    <div class="chat-window">
+        <div class="panel-container">
+            <div class="panel panel-default">
+
+                <div class="panel-heading top-bar">
+                    <div class="panel-title-container">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-comment">
+                                Chat - 
+                            </span>
+                        </h3>
+                        <!-- .panel-buttons-container -->
+                    </div>
+                </div>
+
+                <div class="panel-body msg-container-base">
+                    <app-chat-message *ngFor="let message of messages | async" [message]="message">
+                    </app-chat-message>
+                </div>
+
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="chat-input" placeholder="Type here...">
+                        <span class="input-group-btn">
+                            <button class="btn-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

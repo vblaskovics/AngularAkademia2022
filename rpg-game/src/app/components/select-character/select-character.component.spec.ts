@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectCharacterComponent } from './select-character.component';
 
-describe('SelectCharacterComponent', () => {
+/* describe('SelectCharacterComponent', () => {
   let component: SelectCharacterComponent;
   let fixture: ComponentFixture<SelectCharacterComponent>;
 
@@ -17,7 +17,7 @@ describe('SelectCharacterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); */
