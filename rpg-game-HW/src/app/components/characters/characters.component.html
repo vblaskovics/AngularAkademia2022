@@ -1,0 +1,41 @@
+<div class="row my-3">
+    <h4>Choose the characters: </h4>
+    <select
+    (change)="onSelect($event)"
+    class="form-control"
+    name="char1"
+    >
+    <option *ngFor="let char of chars$ | async">
+      {{ char.name }}
+    </option>
+    </select>
+
+    <div class="col-6 bg-light rounded">
+      <!-- <h4 *ngIf="( names$ | async); else #char2"> Character 1 </h4>
+       <p>Name: {{ c1.name }} </p>
+      <p>Attack: {{ c1.attack}} </p>
+      <p>Defense: {{ c1.defense}} </p>
+      <p>HP: {{ c1.hp}} </p> -->
+    </div>
+
+    <div class="col-6 bg-light rounded">
+      <h4>Character 2</h4>
+      <ng-template #char2 ></ng-template>
+      <!-- <p>Name: {{ c2.name}} </p>
+      <p>Attack: {{ c2.attack}} </p>
+      <p>Defense: {{ c2.defense}} </p>
+      <p>HP: {{ c2.hp}} </p> --> 
+    </div>
+
+    <div class="properties" *ngIf="selectedC01">
+      <p class="mb-0">Hp: {{selectedC01.hp}}</p>
+      <p class="mb-0">Attack: {{selectedC01.attack}}</p>
+      <p class="mb-0">Defense: {{selectedC01.defense}}</p>
+    </div>
+    
+    <div class="properties" *ngIf="selectedC02">
+      <p class="mb-0">Hp: {{selectedC02.hp}}</p>
+      <p class="mb-0">Attack: {{selectedC02.attack}}</p>
+      <p class="mb-0">Defense: {{selectedC02.defense}}</p>
+    </div>
+    

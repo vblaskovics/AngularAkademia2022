@@ -1,0 +1,68 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Character } from 'src/app/models/character';
+import { DisplayService } from 'src/app/services/display.service';
+import { GameService } from 'src/app/services/game.service';
+import { HttpService } from 'src/app/services/http.service';
+
+@Component({
+  selector: 'app-characters',
+  templateUrl: './characters.component.html',
+  styleUrls: ['./characters.component.scss']
+})
+export class CharactersComponent implements OnInit {
+
+  chars$: Observable<Character[]> = this.httpService.getChars();
+  @Output() characters: EventEmitter<Character[]> = new EventEmitter();
+  // names$ = this.httpService.getCharNames();
+  historyText: string = ""
+
+  // c1!: Character;
+  // c2!: Character;
+  selectedCs: Character[] = [];
+  selectedC01: Character | null = null;
+  selectedC02: Character | null = null;
+
+  constructor(public httpService: HttpService) { 
+    }
+
+  ngOnInit(): void {
+    // let id = 1;
+    // this.httpService.getChar(id).subscribe((c) => {
+    //   this.chars = c;
+    // })
+  }
+  
+
+  // onAttack(): void {
+  // this.gameService.attack(this.c1, this.c2);
+  // this.historyText = this.displayService.getHistoryText();
+  // console.log(this.historyText)
+  // }
+
+  onSelect(event: Event){
+    // if( typeof event ==='string'){
+    //   this.httpService.getCharByName(event).subscribe(()=>{
+    //     this.names$
+    //   })
+    }
+
+
+  onSelectC01() {
+    this.selectedCs.push(this.selectedC01!);
+
+  }
+
+  onSelectC02() {
+    this.selectedCs.push(this.selectedC02!);
+    this.onEmitCharacters();
+  }
+
+  onEmitCharacters() {
+    this.characters.emit(this.selectedCs);
+  }
+  }
+
+
+

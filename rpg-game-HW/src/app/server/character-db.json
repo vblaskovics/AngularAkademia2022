@@ -1,0 +1,64 @@
+{
+    "characters": [
+      { "id": 1,
+        "attack": 1,
+        "defense": 3,
+        "hp": 2,
+        "name": "Jason"
+      },
+      { "id": 2,
+        "attack": 2,
+        "defense": 4,
+        "hp": 5,
+        "name": "Angus"
+      },
+      { "id": 3,
+        "attack": 2,
+        "defense": 0,
+        "hp": 0,
+        "name": "Jesus"
+      },
+      { "id": 4,
+        "attack": 1,
+        "defense": 6,
+        "hp": 10,
+        "name": "Michael"
+      },
+      { "id": 5,
+        "attack": 10,
+        "defense": 0,
+        "hp": 10,
+        "name": "Chris"
+      },
+      { "id": 6,
+        "attack": 12,
+        "defense": 2,
+        "hp": 10,
+        "name": "Mary"
+      },
+      { "id": 7,
+        "attack": 4,
+        "defense": 4,
+        "hp": 0,
+        "name": "Angel"
+      },
+      { "id": 8,
+        "attack": 0,
+        "defense": 2,
+        "hp": 0,
+        "name": "Dedee"
+      },
+      { "id": 9,
+        "attack": 8,
+        "defense": 9,
+        "hp": 1,
+        "name": "Zizy"
+      },
+      { "id": 10,
+        "attack": 2,
+        "defense": 1,
+        "hp": 1,
+        "name": "Earl"
+      }
+    ]
+}
