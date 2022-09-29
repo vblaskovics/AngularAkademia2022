@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { now } from 'moment';
 import { filter, map, Observable, scan, share, Subject } from 'rxjs';
 import { Thread } from '../thread/thread.model';
 import { User } from '../user/user.model';
@@ -44,7 +43,18 @@ export class MessageService {
 
     this.updates$.subscribe(() => console.log('update happened'));
 
-    // felpusholt megoldást is érdemes megnézni!
+    // felpusholt megoldás (tap-et kéne importálni)
+    // this.dates$.pipe(
+    //   tap(() => console.log('readOldMessages$ event')),
+    //   map((d: Date): IMessageOperator => {
+    //     return (msgs: Message[]) => msgs.map((m) => {
+    //       if (m.sentAt < d) {
+    //         m.isRead = true;
+    //       }
+    //       return m
+    //     })
+    //   })).subscribe(this.updates$);
+
     this.dates$
       .pipe(
         map((date: Date) => {
