@@ -31,9 +31,9 @@ export class MessageService {
     this.messages$ = this.updates$.pipe(
       scan((messages: Message[], operation: IMessageOperator) => {
         return operation(messages);
-      }, []),
+      }, [])
       // így nem tölti be duplán az adatokat, lásd rxjs-basics learn_05_multicast része. Ide azért nem kell setTimeout, mert Subject-ünk is van, amúgy kéne
-      share()
+      // share()
     );
 
     this.messageNumber$ = this.messages$.pipe(
@@ -44,6 +44,7 @@ export class MessageService {
 
     this.updates$.subscribe(() => console.log('update happened'));
 
+    // felpusholt megoldást is érdemes megnézni!
     this.dates$
       .pipe(
         map((date: Date) => {
@@ -64,8 +65,9 @@ export class MessageService {
       .pipe(
         map((message: Message) => {
           return (messages: Message[]) => {
-            messages.push(message);
-            return messages;
+            // push helyben módosítja, de nekünk concat kell h ne legyen duplikált (unicastol 2xer) az első 5 msg-ünk! Ha a push-t hagynánk, akkor kell a share() a this.messages$ végére!
+            // messages.push(message);
+            return messages.concat(message);
           };
         })
       )
