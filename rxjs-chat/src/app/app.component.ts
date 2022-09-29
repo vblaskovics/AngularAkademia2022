@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { map, Observable, take, tap } from 'rxjs';
 import { Message } from './message/message.model';
 import { MessageService } from './message/message.service';
 
@@ -11,14 +12,14 @@ export class AppComponent {
   title = 'Rxjs Chat App';
 
   constructor(private messageService:MessageService) {
-
-    let msg3:Message = new Message({text:'Hello world 3'});
-
     this.messageService.messages$.subscribe((messages: Message[]) => {
       console.log('messages:', messages);
     })
 
+    this.messageService.messageCounter$.subscribe((count) => console.log("Messages count", count));
+    
     this.messageService.create$.next(new Message({text:'Hello world 1'}));
+
     this.messageService.create$.next(new Message({text:'Hello world 2', sentAt: new Date("2022-09-01")}));
     this.messageService.create$.next(new Message({text:'Hello world 3'}));
 

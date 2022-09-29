@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { filter, map, Observable, scan, Subject, tap } from 'rxjs';
+import { filter, map, Observable, scan, share, Subject, tap } from 'rxjs';
 import { Thread } from '../thread/thread.model';
 import { User } from '../user/user.model';
 import { Message } from './message.model';
@@ -29,14 +29,17 @@ export class MessageService {
   readOldMessages$ = new Subject<Date>();
 
   // 3. feladat
-  messageCounter$ = new Observable<number>();
+  messageCounter$: Observable<number>;
 
   constructor() {
 
     this.messages$ = this.updates$
-      .pipe(scan((messages: Message[], operation: IMessageOperator) => {
-        return operation(messages);
-      }, []));
+      .pipe(
+        scan((messages: Message[], operation: IMessageOperator) => {
+          return operation(messages);
+        }, []),
+        share()
+      );
 
     this.create$.pipe(map((message: Message) => {
       return (messages: Message[]) => {
@@ -76,8 +79,11 @@ export class MessageService {
       })).subscribe(this.updates$);
 
     // 3. feladat
-    this.messageCounter$ = this.messages$.pipe(map((msgs: Message[]) => msgs.length));
-    this.messageCounter$.subscribe((count) => console.log("Messages count", count));
+    this.messageCounter$ = this.messages$.pipe(
+      map((msgs: Message[]) => msgs.length))
+
+    // .subscribe(this.messageCounter$);
+    // this.messageCounter$.subscribe((count) => console.log("Messages count", count));
 
 
   }
