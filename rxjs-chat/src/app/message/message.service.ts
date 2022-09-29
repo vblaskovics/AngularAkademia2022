@@ -10,6 +10,7 @@ import {
   scan,
   Subject,
   switchMap,
+  tap,
 } from 'rxjs';
 import { Thread } from '../thread/thread.model';
 import { User } from '../user/user.model';
@@ -29,7 +30,32 @@ export class MessageService {
   create$: Subject<Message> = new Subject<Message>();
   createMessage$: Subject<Message[]> = new Subject<Message[]>();
   censor$: Subject<string[]> = new Subject<string[]>();
+  date$: Subject<Date> = new Subject<Date>();
+  counter$: Observable<number> = new Observable<number>();
   constructor() {
+    this.updates$.pipe(tap((x) => console.log('updating'))).subscribe();
+    this.counter$ = this.updates$.pipe(
+      scan((message: Message[], operation: IMessageOperator) => {
+        return operation(message);
+      }, []),
+      map((messages: Message[]) => messages.length)
+    );
+    this.date$
+      .pipe(
+        map((date: Date) => {
+          return (messages: Message[]) => {
+            messages.forEach((m: Message) => {
+              if (date > m.sentAt) {
+                m.isRead = true;
+              } else {
+                m.isRead = false;
+              }
+            });
+            return messages;
+          };
+        })
+      )
+      .subscribe(this.updates$);
     this.createMessage$
       .pipe(
         map((msg: Message[]) => {
@@ -53,8 +79,8 @@ export class MessageService {
         })
       )
       .subscribe(this.updates$);
-
     this.messages$ = this.updates$.pipe(
+      // tap((x) => console.log('updating')),
       scan((message: Message[], operation: IMessageOperator) => {
         return operation(message);
       }, [])
