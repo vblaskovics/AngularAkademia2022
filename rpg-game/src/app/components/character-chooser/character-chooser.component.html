@@ -1,0 +1,16 @@
+<div *ngIf="characters$ | async as characters">
+  <div>
+    Character #1
+    <app-character-selector
+      (selectedCharacter)="selectFirstCharacter($event)"
+      [characters]="characters"
+    ></app-character-selector>
+  </div>
+  <div>
+    Character #2
+    <app-character-selector
+      (selectedCharacter)="selectSecondCharacter($event)"
+      [characters]="characters"
+    ></app-character-selector>
+  </div>
+</div>

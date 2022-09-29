@@ -1,0 +1,4 @@
+<div *ngIf="photoURL$ | async as photo">
+  <p>{{ photo }}</p>
+  <img [src]="photo" alt="" />
+</div>

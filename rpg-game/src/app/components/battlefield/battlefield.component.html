@@ -1,0 +1,44 @@
+<div>
+  <div *ngIf="winner$ | async as winner">The Winner is: {{ winner }}</div>
+  <div>
+    <p>{{ firstCharacterHitCounter$ | async }}</p>
+    <p>{{ secondCharacterHitCounter$ | async }}</p>
+    <ng-container *ngIf="firstChar$ | async as firstChar">
+      <ng-container *ngIf="secondChar$ | async as secondChar">
+        <!--           
+ -->
+
+        <app-character-card
+          [hitCounter$]="firstCharacterHitCounter$"
+          [needsMirror]="true"
+          [character]="firstChar"
+        ></app-character-card>
+        <!--           
+ -->
+        <app-character-card
+          [hitCounter$]="secondCharacterHitCounter$"
+          [needsMirror]="true"
+          [character]="secondChar"
+        ></app-character-card>
+        <button (click)="startBattle(firstChar, secondChar)">Attack</button>
+      </ng-container>
+    </ng-container>
+    <!--     <ng-container *ngIf="firstChar$ | async as firstCharacter">
+      <ng-container *ngIf="secondChar$ | async as secondCharacter">
+        <app-character-card
+          [needsMirror]="true"
+          [character]="firstCharacter"
+        ></app-character-card>
+        <app-character-card
+          [needsMirror]="true"
+          [character]="secondCharacter"
+        ></app-character-card>
+        <button (click)="startBattle(firstCharacter, secondCharacter)">
+          Attack
+        </button>
+      
+      </ng-container>
+    </ng-container>
+ -->
+  </div>
+</div>

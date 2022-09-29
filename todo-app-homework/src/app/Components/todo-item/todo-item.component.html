@@ -9,8 +9,15 @@
 <td>{{ todo.title }}</td>
 <td>
   {{ todo.progress }}
+  <!--   (click)="changeProgressStateEmmiter.emit(todo)"
+ -->
   <button
-  (click)="changeProgressStateEmmiter.emit(todo)"
-  type="button" style="margin: 0 25px;" class="btn btn-primary btn-sm">🖊</button>
+    (click)="changeProgressState(todo.id)"
+    type="button"
+    style="margin: 0 25px"
+    class="btn btn-primary btn-sm"
+  >
+    🖊
+  </button>
 </td>
-<td>{{ findUserById(todo.user_id) }}</td>
+<td>{{ (findUser(todo.user_id) | async)?.name }}</td>

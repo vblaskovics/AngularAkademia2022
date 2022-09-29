@@ -1,1 +1,36 @@
-<p>add-todo works!</p>
+<form
+  class="form-container"
+  [formGroup]="todoAddForm"
+  (ngSubmit)="handleForm()"
+>
+  <h1>New Todo Page</h1>
+
+  <label style="color: white" for="todoTitleInput">Title*</label>
+  <input
+    class="form-control"
+    formControlName="title"
+    id="todoTitleInput"
+    type="text"
+    placeholder="csinalni kene valamit..."
+    [class.is-invalid]="
+      todoAddForm.get('title')?.touched && !todoAddForm.get('title')?.valid
+    "
+  />
+  <div *ngIf="todoAddForm.get('title')?.touched">
+    <p
+      class="invalid-report"
+      *ngIf="todoAddForm.get('title')?.hasError('required')"
+    >
+      Valamit be kell írni
+    </p>
+    <p class="invalid-report" *ngIf="title?.hasError('minlength')">
+      Legalább {{ title?.getError("minlength").requiredLength }}
+      karakter hosszú
+    </p>
+    <p class="invalid-report" *ngIf="title?.hasError('maxlength')">
+      Maximum
+      {{ title?.getError("maxlength").requiredLength }} karakter hosszú
+    </p>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

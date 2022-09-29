@@ -1,0 +1,15 @@
+<p>feladat2 works!</p>
+<div *ngIf="currentUser$ | async as user">
+  <p>
+    id: <strong>{{ user.id }}</strong>
+  </p>
+  <p>
+    name: <strong>{{ user.name }}</strong>
+  </p>
+  <p>
+    username: <strong>{{ user.username }}</strong>
+  </p>
+  <p>
+    email: <strong>{{ user.email }}</strong>
+  </p>
+</div>

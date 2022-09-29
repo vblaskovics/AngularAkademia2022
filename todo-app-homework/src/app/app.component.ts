@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TODO } from './Interfaces/todo.interface';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,12 @@ import { TODO } from './Interfaces/todo.interface';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ToDo List Advanced';
   todo1IsSelected = true;
 
   selectedTodo?: TODO;
-  constructor() {}
+  constructor(private userService: UsersService) {
+    this.userService.getUserFromId(1);
+  }
   handleSelectTodo(selectedTodo: TODO) {
     this.selectedTodo = selectedTodo;
   }

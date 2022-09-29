@@ -8,7 +8,7 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class GameComponent implements OnInit {
   constructor(private gameService: GameService) {
-    this.gameService.startCounter();
+    this.gameService.newGame();
   }
 
   ngOnInit(): void {}

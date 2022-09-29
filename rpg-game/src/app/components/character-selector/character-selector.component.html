@@ -1,0 +1,6 @@
+<select (change)="handleOnChange($event)">
+  <option [value]="null"></option>
+  <option *ngFor="let character of characters" [value]="character.id">
+    {{ character.name }}
+  </option>
+</select>

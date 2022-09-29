@@ -1,22 +1,48 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { USER } from 'src/app/Interfaces/user.interface';
 import { TODO } from 'src/app/Interfaces/todo.interface';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { TodosService } from 'src/app/services/todos.service';
+import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })
-export class DetailsComponent implements OnInit {
-  @Input() todo!: TODO;
-  @Input() users!: USER[];
-  @Input() todos!: TODO[];
-
-  @Output() changeProgressStateEmmiter: EventEmitter<TODO> =
-    new EventEmitter<TODO>();
-  constructor() {}
-
+export class DetailsComponent implements OnInit, OnDestroy {
+  currentTodo?: TODO;
+  currentTodoSub: Subscription;
+  constructor(
+    private todoService: TodosService,
+    private userService: UsersService
+  ) {
+    this.currentTodoSub = todoService.currentDetail$.subscribe(
+      (x: TODO | undefined) => {
+        this.currentTodo = x;
+      }
+    );
+  }
+  getUser(id: number): Observable<USER> {
+    return this.userService.getUserFromId(id);
+  }
+  getTodoFromId(id: number): Observable<TODO> {
+    return this.todoService.getTodo(id);
+  }
+  ngOnDestroy(): void {
+    this.currentTodoSub.unsubscribe();
+  }
+  changeProgressState(todoId: number) {
+    this.todoService.changeProgressState(todoId);
+  }
   ngOnInit(): void {}
-  selectedUserName(userId: number) {
+  /*   selectedUserName(userId: number) {
     let i = 0;
     while (i < this.users.length && this.users[i].id !== userId) {
       i++;
@@ -36,5 +62,5 @@ export class DetailsComponent implements OnInit {
       i++;
     }
     return i < this.todos.length && this.todos[i].title;
-  }
+  } */
 }

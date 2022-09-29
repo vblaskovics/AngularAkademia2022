@@ -7,15 +7,16 @@ import { GameService } from 'src/app/services/game.service';
   styleUrls: ['./word-display.component.css'],
 })
 export class WordDisplayComponent implements OnInit {
-  currentWord = '';
+  currentWord;
   constructor(private gameService: GameService) {
+    this.currentWord = gameService.currentWord$;
     /* gameService.currentWord$.subscribe((word) => {
       this.currentWord = word;
     }); */
-    this.currentWord = gameService.currentWord;
+    /* this.currentWord = gameService.currentWord;
     gameService.game$.subscribe(() => {
       this.currentWord = gameService.currentWord;
-    });
+    }); */
   }
 
   ngOnInit(): void {}

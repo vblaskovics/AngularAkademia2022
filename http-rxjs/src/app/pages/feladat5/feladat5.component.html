@@ -1,0 +1,16 @@
+<table *ngIf="usersWithPosts$ | async as usersWithPosts" class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Post ami e-vel kezdodik</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userWithPosts of usersWithPosts">
+      <th scope="row">{{ userWithPosts.user.id }}</th>
+      <td>{{ userWithPosts.user.name }}</td>
+      <td>{{ userWithPosts.posts.length }}</td>
+    </tr>
+  </tbody>
+</table>

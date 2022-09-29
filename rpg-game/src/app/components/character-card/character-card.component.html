@@ -1,0 +1,19 @@
+<div>
+  <div *ngIf="showMessage">
+    <p>{{ character.name }} is on Killing Spree</p>
+  </div>
+  <h4>{{ character.name }}</h4>
+  <img
+    [style.transform]="needsMirror && 'scaleX(-1)'"
+    [src]="character.avatar"
+  />
+  <p>
+    Attack: <strong>{{ character.attack }}</strong>
+  </p>
+  <p>
+    Defense: <strong>{{ character.defense }}</strong>
+  </p>
+  <p>
+    Hp: <strong>{{ character.hp }}</strong>
+  </p>
+</div>

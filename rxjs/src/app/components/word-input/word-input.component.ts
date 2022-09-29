@@ -9,7 +9,7 @@ import { GameService } from 'src/app/services/game.service';
 export class WordInputComponent implements OnInit {
   input: string = '';
   constructor(private gameService: GameService) {
-    gameService.game$.subscribe(() => {
+    gameService.currentTurn$.subscribe(() => {
       this.input = '';
     });
   }
@@ -20,7 +20,7 @@ export class WordInputComponent implements OnInit {
   }
   handleKeyPress(event: KeyboardEvent) {
     if (event.key == 'Enter') {
-      this.gameService.submit(this.input);
+      this.handleOKClick();
     }
   }
 }

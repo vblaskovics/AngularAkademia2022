@@ -16,7 +16,6 @@ const routes: Routes = [
   {
     path: 'todo',
     component: TodosComponent,
-    canActivate: [AuthGuard],
   },
   { path: 'todo/new', component: AddTodoComponent, canActivate: [AuthGuard] },
   {
@@ -26,6 +25,10 @@ const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'todo',
   },
 ];
 @NgModule({

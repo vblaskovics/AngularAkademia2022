@@ -1,7 +1,9 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TODO } from 'src/app/Interfaces/todo.interface';
 import { USER } from 'src/app/Interfaces/user.interface';
 import { progress } from 'src/app/progress';
+import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,75 +11,74 @@ import { progress } from 'src/app/progress';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
-  @Input() todos!: TODO[];
-  @Input() users!: USER[];
-  @Output() selectTodoEmitter = new EventEmitter<TODO>();
-  @Output() changeProgressStateEmmiter = new EventEmitter<TODO>();
+  /*   @Input() todos!: TODO[];
+   */ /*   @Input() users!: USER[];
+   */ /*   @Output() selectTodoEmitter = new EventEmitter<TODO>();
+   */ /*   @Output() changeProgressStateEmmiter = new EventEmitter<TODO>();
+   */ todos$: Observable<TODO[]>;
   renderByProgressDown: boolean = false;
   inputs: string[];
-  constructor() {
+  constructor(private todoService: TodosService) {
+    this.todos$ = this.todoService.todos$;
     this.inputs = ['id', 'title', 'progress', 'user name'];
   }
 
   ngOnInit(): void {}
   handleSelectClick(selectedTodo: TODO) {
-    this.selectTodoEmitter.emit(selectedTodo);
+    /*     this.selectTodoEmitter.emit(selectedTodo);
+     */
+    this.todoService.showDetailOfTodo(selectedTodo);
   }
-  onRenderByProgress(): void {
-    //chad algoritmus
-    /* for (let i = 0; i < this.todos.length; i++) {
-      for (let j = i + 1; j <= this.todos.length; j++) {
-        let todoStandBy: TODO;
-        if (
-          this.todos[i].progress != progress.open &&
-          this.todos[j].progress == progress.open
-        ) {
-          todoStandBy = this.todos[i];
-          this.todos[i] = this.todos[j];
-          this.todos[j] = todoStandBy;
-        }
-        if (
-          this.todos[i].progress != progress.open &&
-          this.todos[i].progress != progress.done &&
-          this.todos[j].progress == progress.done
-        ) {
-          todoStandBy = this.todos[i];
-          this.todos[i] = this.todos[j];
-          this.todos[j] = todoStandBy;
-        }
-      }
-    } */
-    //CSALO ALGORITMUS
-    /* let openTodos = this.todos.filter(todo=> todo.progress == progress.open)
-    let inProgressTodos = this.todos.filter(todo=> todo.progress == progress.inProgress)
-    let doneTodos = this.todos.filter(todo=> todo.progress == progress.done)
+  onRenderByProgress() {
     this.renderByProgressDown = !this.renderByProgressDown;
-
-    if(this.renderByProgressDown){
-      this.todos = openTodos.concat(inProgressTodos, doneTodos)
-    }else{
-      this.todos = doneTodos.concat(inProgressTodos, openTodos)
-    } */
-    /* For I = 0 to N - 2
-       For J = 0 to N - 2
-         If (A(J) > A(J + 1)
-           Temp = A(J)
-           A(J) = A(J + 1)
-           A(J + 1) = Temp
-         End-If
-       End-For
-     End-For*/
-    /* for (let i = 0; i < this.todos.length ; i++) {
-    let Smallsub = i
-    for (let j = i + 1; j < this.todos.length; j++) {
-      if(this.todos[i].progress == progress.inProgress && this.todos[j].progress == progress.open){
-
-      }
-      console.log(this.todos[i].id,this.todos[j].id)
-      
+  }
+  renderProgress(todos: TODO[] | null): TODO[] | null {
+    if (todos) {
+      const valueOfProgress = (progress: string) => {
+        switch (progress) {
+          case 'open':
+            return 0;
+            break;
+          case 'in progress':
+            return 1;
+            break;
+          case 'done':
+            return 2;
+            break;
+          default:
+            return 0;
+            break;
+        }
+      };
+      /*  for (let i = 0; i < todos.length; i++) {
+        for (let j = 0; j < todos.length - i - 1; j++) {
+          if (!this.renderByProgressDown) {
+            if (
+              valueOfProgress(todos[j].progress) >
+              valueOfProgress(todos[j + 1].progress)
+            ) {
+              let temp = todos[j];
+              todos[j] = todos[j + 1];
+              todos[j + 1] = temp;
+            }
+          } else {
+            if (
+              valueOfProgress(todos[j].progress) <
+              valueOfProgress(todos[j + 1].progress)
+            ) {
+              let temp = todos[j];
+              todos[j] = todos[j + 1];
+              todos[j + 1] = temp;
+            }
+          }
+        }
+      } */
+      return todos;
+    } else {
+      return null;
     }
-    
-  } */
+  }
+  /*  onRenderByProgress(): void {
     const valueOfProgress = (progress: string) => {
       switch (progress) {
         case 'open':
@@ -105,22 +106,6 @@ export class TodoListComponent implements OnInit {
             this.todos[j] = this.todos[j + 1];
             this.todos[j + 1] = temp;
           }
-          /* if (
-            this.todos[j].progress != progress.inProgress &&
-            this.todos[j + 1].progress == progress.inProgress
-          ) {
-            let temp = this.todos[j];
-            this.todos[j] = this.todos[j + 1];
-            this.todos[j + 1] = temp;
-          }
-          if (
-            this.todos[j].progress != progress.open &&
-            this.todos[j + 1].progress == progress.open
-          ) {
-            let temp = this.todos[j];
-            this.todos[j] = this.todos[j + 1];
-            this.todos[j + 1] = temp;
-          } */
         } else {
           if (
             valueOfProgress(this.todos[j].progress) <
@@ -130,25 +115,9 @@ export class TodoListComponent implements OnInit {
             this.todos[j] = this.todos[j + 1];
             this.todos[j + 1] = temp;
           }
-          /* if (
-            this.todos[j].progress != progress.inProgress &&
-            this.todos[j + 1].progress == progress.inProgress
-          ) {
-            let temp = this.todos[j];
-            this.todos[j] = this.todos[j + 1];
-            this.todos[j + 1] = temp;
-          }
-          if (
-            this.todos[j].progress != progress.done &&
-            this.todos[j + 1].progress == progress.done
-          ) {
-            let temp = this.todos[j];
-            this.todos[j] = this.todos[j + 1];
-            this.todos[j + 1] = temp;
-          } */
         }
       }
     }
     this.renderByProgressDown = !this.renderByProgressDown;
-  }
+  } */
 }

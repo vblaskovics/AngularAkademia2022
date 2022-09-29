@@ -1,5 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,15 +15,19 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   @Input() title!: string;
   @Input() counter!: number;
-  @Input() asdTo!: string;
   @Output() emitChange = new EventEmitter<any>();
   @Output() todoPushEmit = new EventEmitter<string>();
-  todoAddForm: FormGroup;
+  userIsLogedInSub: Subscription;
+  userIsLogedIn: boolean = false;
+  // todoAddForm: FormGroup;
   constructor(fb: FormBuilder, public authService: AuthService) {
-    this.todoAddForm = fb.group({
+    this.userIsLogedInSub = this.authService.userIsLogedIn.subscribe((x) => {
+      this.userIsLogedIn = x;
+    });
+    /*   this.todoAddForm = fb.group({
       title: [
         '',
         [
@@ -24,13 +36,19 @@ export class NavbarComponent implements OnInit {
           Validators.maxLength(15),
         ],
       ],
-    });
+    }); */
   }
-  get titleCont() {
+  ngOnDestroy(): void {
+    this.userIsLogedInSub.unsubscribe();
+  }
+  /*  get titleCont() {
     return this.todoAddForm.get('title');
+  } */
+  signOut() {
+    this.authService.logout();
   }
   ngOnInit(): void {}
-  handleForm() {
+  /* handleForm() {
     if (this.todoAddForm.valid) {
       this.todoPushEmit.emit(this.todoAddForm.value.title);
       this.todoAddForm.reset();
@@ -39,5 +57,5 @@ export class NavbarComponent implements OnInit {
     }
 
     console.log(this.todoAddForm);
-  }
+  } */
 }

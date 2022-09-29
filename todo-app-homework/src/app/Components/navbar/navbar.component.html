@@ -11,42 +11,7 @@
           Sign-up
         </a>
       </div>
-      <form
-        class="form-container"
-        [formGroup]="todoAddForm"
-        (ngSubmit)="handleForm()"
-      >
-        <label style="color: white" for="todoTitleInput">Title*</label>
-        <input
-          class="form-control"
-          formControlName="title"
-          id="todoTitleInput"
-          type="text"
-          placeholder="csinalni kene valamit..."
-          [class.is-invalid]="
-            todoAddForm.get('title')?.touched &&
-            !todoAddForm.get('title')?.valid
-          "
-        />
-        <div *ngIf="todoAddForm.get('title')?.touched">
-          <p
-            class="invalid-report"
-            *ngIf="todoAddForm.get('title')?.hasError('required')"
-          >
-            Valamit be kell írni
-          </p>
-          <p class="invalid-report" *ngIf="titleCont?.hasError('minlength')">
-            Legalább {{ titleCont?.getError("minlength").requiredLength }}
-            karakter hosszú
-          </p>
-          <p class="invalid-report" *ngIf="titleCont?.hasError('maxlength')">
-            Maximum
-            {{ titleCont?.getError("maxlength").requiredLength }} karakter
-            hosszú
-          </p>
-        </div>
-        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
-      </form>
+      
 
       <span class="navbar-brand">{{ counter }}</span>
     </div>
@@ -59,17 +24,22 @@
     <a class="navbar-brand" [routerLink]="['/']">Todo App</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li *ngIf="!userIsLogedIn" class="nav-item">
           <a class="nav-link" [routerLink]="['/sign-in']">Sign-in</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!userIsLogedIn" class="nav-item">
           <a class="nav-link" [routerLink]="['/sign-up']">Sign-up</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="userIsLogedIn" class="nav-item">
           <a class="nav-link" [routerLink]="['/todo']">Todo</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="userIsLogedIn" class="nav-item">
           <a class="nav-link" [routerLink]="['/todo/new']">New Todo</a>
+        </li>
+        <li *ngIf="userIsLogedIn" class="nav-item">
+          <a (click)="signOut()" class="nav-link" [routerLink]="['/']"
+            >Sign-out</a
+          >
         </li>
       </ul>
     </div>

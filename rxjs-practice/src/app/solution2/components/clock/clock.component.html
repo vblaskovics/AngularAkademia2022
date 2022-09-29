@@ -1,0 +1,5 @@
+<div class="clock bg-dark text-white">
+  <strong>
+    {{ (elapsedTime$ | async)! * 1000 | date: "mm:ss" }}
+  </strong>
+</div>

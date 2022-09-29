@@ -1,0 +1,7 @@
+.clock{
+    position: fixed;
+    top: 100px;
+    right: 100px;
+    padding: 15px;
+    border-radius: 10px;
+}

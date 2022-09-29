@@ -4,8 +4,9 @@
       <!-- <th *ngFor="let input of inputs" scope="col">{{ input }}</th> -->
       <th scope="col">id</th>
       <th scope="col">title</th>
-      <th scope="col" (click)="onRenderByProgress()">
-        <div>
+      <th scope="col">
+        <!-- (click)="onRenderByProgress()"(click)="onRenderByProgress()" -->
+        <div (click)="onRenderByProgress()">
           progress
           <span *ngIf="!renderByProgressDown; else elseBlock"> 🔽 </span>
           <ng-template #elseBlock>
@@ -21,11 +22,12 @@
     <tr
       app-todo-item
       [class.table-active]="(i + 1) % 2 == 0"
-      *ngFor="let todo of todos; let i = index"
-      [users]="users"
+      *ngFor="let todo of renderProgress(todos$ | async); let i = index"
       [todo]="todo"
       (click)="handleSelectClick(todo)"
-      (changeProgressStateEmmiter)="changeProgressStateEmmiter.emit($event)"
     ></tr>
+    <!--       (click)="handleSelectClick(todo)"
+ -->
+    <!--  (changeProgressStateEmmiter)="changeProgressStateEmmiter.emit($event)" -->
   </tbody>
 </table>

@@ -1,39 +1,52 @@
-<div class="card text-white bg-dark mb-3" style="width: 85%; margin: auto">
+<div
+  *ngIf="currentTodo"
+  class="card text-white bg-dark mb-3"
+  style="width: 60%; margin: auto"
+>
   <div class="card-header">Todo Details</div>
   <div class="card-body">
-    <div class="card-div" *ngIf="todo.title">
+    <div class="card-div" *ngIf="currentTodo.title">
       <h5 class="card-title">Title</h5>
-      <p class="card-text">{{ todo.title }}</p>
+      <p class="card-text">{{ currentTodo.title }}</p>
     </div>
-    <div class="card-div" *ngIf="todo.progress">
+    <div class="card-div" *ngIf="currentTodo.progress">
       <h5 class="card-title">Status</h5>
-      <p class="card-text ">
-        {{ todo.progress }}
+      <p class="card-text">
+        {{ currentTodo.progress }}
         <button
-        (click)="changeProgressStateEmmiter.emit(this.todo)"
-        type="button" style="margin: 0 25px;" class="btn btn-primary btn-sm">🖊</button>
+          type="button"
+          style="margin: 0 25px"
+          class="btn btn-primary btn-sm"
+          (click)="changeProgressState(currentTodo.id)"
+        >
+          🖊
+        </button>
       </p>
     </div>
-    <div class="card-div" *ngIf="todo.description">
+    <div class="card-div" *ngIf="currentTodo.description">
       <h5 class="card-title">Details</h5>
-      <p class="card-text">{{ todo.description }}</p>
+      <p class="card-text">{{ currentTodo.description }}</p>
     </div>
-    <div class="card-div" *ngIf="todo.date">
+    <div class="card-div" *ngIf="currentTodo.date">
       <h5 class="card-title">Creation Date</h5>
-      <p class="card-text">{{ todo.date }}</p>
+      <p class="card-text">{{ currentTodo.date }}</p>
     </div>
-    <div class="card-div" *ngIf="todo.date">
+    <div class="card-div" *ngIf="currentTodo.user_id">
       <h5 class="card-title">User Name</h5>
-      <p class="card-text">{{ selectedUserName(todo.user_id) }}</p>
+      <p class="card-text">
+        {{ (getUser(currentTodo.user_id) | async)?.name }}
+      </p>
     </div>
-    <div class="card-div" *ngIf="todo.date">
+    <div class="card-div" *ngIf="currentTodo.user_id">
       <h5 class="card-title">User Email</h5>
-      <p class="card-text">{{ selectedUserEmail(todo.user_id) }}</p>
+      <p class="card-text">
+        {{ (getUser(currentTodo.user_id) | async)?.email }}
+      </p>
     </div>
-    <div class="card-div" *ngIf="todo.subTodoIds">
+    <div class="card-div" *ngIf="currentTodo.subTodoIds">
       <h5 class="card-title">Sub-todos</h5>
-      <p *ngFor="let todoId of todo.subTodoIds" class="card-text">
-        {{ findTodoTitleById(todoId) }}
+      <p *ngFor="let todoId of currentTodo.subTodoIds" class="card-text">
+        {{ (getTodoFromId(todoId) | async)?.title }}
       </p>
     </div>
   </div>

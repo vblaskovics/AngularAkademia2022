@@ -1,0 +1,19 @@
+<p>feladat2 works!</p>
+<div *ngIf="user$ | async as user">
+  <p>
+    id: <strong>{{ user.id }}</strong>
+  </p>
+  <p>
+    name: <strong>{{ user.name }}</strong>
+  </p>
+  <p>
+    username: <strong>{{ user.username }}</strong>
+  </p>
+  <p>
+    email: <strong>{{ user.email }}</strong>
+  </p>
+
+  <p>
+    post Count: <strong>{{ postCount$ | async }}</strong>
+  </p>
+</div>

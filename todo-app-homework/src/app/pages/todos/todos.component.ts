@@ -17,7 +17,7 @@ export class TodosComponent implements OnInit {
   todo1IsSelected = true;
 
   ngOnInit(): void {}
-  handleSelectTodo(selectedTodo: TODO) {
+  /* handleSelectTodo(selectedTodo: TODO) {
     this.selectedTodo = selectedTodo;
-  }
+  } */
 }

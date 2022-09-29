@@ -1,27 +1,27 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { TODO } from 'src/app/Interfaces/todo.interface';
 import { USER } from 'src/app/Interfaces/user.interface';
+import { TodosService } from 'src/app/services/todos.service';
+import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: '[app-todo-item]',
   templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.css']
+  styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent implements OnInit {
-  @Input() todo!:TODO
-  @Input() users!:USER[]
-  @Output() changeProgressStateEmmiter : EventEmitter<TODO> = new EventEmitter<TODO>()
+  @Input() todo!: TODO;
 
-  constructor() { }
+  constructor(
+    private userService: UsersService,
+    private todoService: TodosService
+  ) {}
 
-  ngOnInit(): void {
-    console.log(this.todo)
+  ngOnInit(): void {}
+  findUser(userId: number): Observable<USER> {
+    return this.userService.getUserFromId(userId);
   }
-  findUserById(id: number) {
-    let i = 0;
-    while (i < this.users.length && id !== this.users[i].id) {
-      i++;
-    }
-    return i < this.users.length && this.users[i].name;
+  changeProgressState(todoId: number) {
+    this.todoService.changeProgressState(todoId);
   }
-
 }
