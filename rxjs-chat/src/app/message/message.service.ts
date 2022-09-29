@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { now } from 'moment';
-import { filter, map, Observable, scan, Subject } from 'rxjs';
+import { filter, map, Observable, scan, share, Subject } from 'rxjs';
 import { Thread } from '../thread/thread.model';
 import { User } from '../user/user.model';
 import { Message } from './message.model';
@@ -31,7 +31,9 @@ export class MessageService {
     this.messages$ = this.updates$.pipe(
       scan((messages: Message[], operation: IMessageOperator) => {
         return operation(messages);
-      }, [])
+      }, []),
+      // így nem tölti be duplán az adatokat, lásd rxjs-basics learn_05_multicast része. Ide azért nem kell setTimeout, mert Subject-ünk is van, amúgy kéne
+      share()
     );
 
     this.messageNumber$ = this.messages$.pipe(
