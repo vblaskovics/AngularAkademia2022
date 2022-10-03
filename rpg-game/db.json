@@ -1,0 +1,64 @@
+{
+  "characters": [
+    {
+      "attack": 7,
+      "defense": 15,
+      "hp": 28,
+      "name": "Lebbie"
+    },
+    {
+      "attack": 9,
+      "defense": 18,
+      "hp": 11,
+      "name": "Zaccaria"
+    },
+    {
+      "attack": 4,
+      "defense": 2,
+      "hp": 17,
+      "name": "Parrnell"
+    },
+    {
+      "attack": 16,
+      "defense": 18,
+      "hp": 27,
+      "name": "Maryl"
+    },
+    {
+      "attack": 28,
+      "defense": 15,
+      "hp": 14,
+      "name": "Lindy"
+    },
+    {
+      "attack": 18,
+      "defense": 14,
+      "hp": 28,
+      "name": "Corrine"
+    },
+    {
+      "attack": 30,
+      "defense": 23,
+      "hp": 26,
+      "name": "Steven"
+    },
+    {
+      "attack": 25,
+      "defense": 26,
+      "hp": 16,
+      "name": "Hammad"
+    },
+    {
+      "attack": 3,
+      "defense": 14,
+      "hp": 21,
+      "name": "Catha"
+    },
+    {
+      "attack": 7,
+      "defense": 7,
+      "hp": 8,
+      "name": "Clayson"
+    }
+  ]
+}

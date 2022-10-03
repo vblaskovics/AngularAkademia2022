@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container m-3">
   <div class="row">
-    <div class="col-3">
-      <ul>
+    <div class="col-12">
+      <!-- <ul>
         <li>{{ Char1.name }}</li>
         <li>{{ Char1.attack }}</li>
         <li>{{ Char1.defense }}</li>
@@ -12,15 +12,31 @@
         <li>{{ Char2.attack }}</li>
         <li>{{ Char2.defense }}</li>
         <li>{{ Char2.hp }}</li>
-      </ul>
+      </ul> -->
+      <!-- <div class="d-flex p-2 m-3 justify-content-center">
+        <select class="form-select m-2" aria-label="Default select example">
+          <option selected>Choose a character</option>
+          <option *ngFor="let char of characters$ | async">{{ char.name }}</option>
+        </select>
+        <select class="form-select m-2" aria-label="Default select example">
+          <option selected>Choose a character</option>
+          <option *ngFor="let char of characters$ | async">{{ char.name }}</option>
+        </select>
+      </div> -->
+      <app-character-select></app-character-select>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-4">
-      <!-- <p id="textContainer">History: {{ historyText }}</p> -->
-      <app-display-area [historyText]="historyText"></app-display-area>
-      <button type="button" class="btn btn-danger" (click)="onAttack()">Támadás</button>
+    <div class="col-12 d-flex p-2 m-3 justify-content-center">
+        <!-- <p id="textContainer">History: {{ historyText }}</p> -->
+        <!-- <app-display-area [historyText]="historyText"></app-display-area> -->
+        <app-display-area></app-display-area>
     </div>
+  </div>
+  <div class="row">
+    <!-- <div class="col-12 d-flex p-2 m-3 justify-content-center">
+        <button type="button" class="btn btn-danger" (click)="onAttack()">Attack</button>
+    </div> -->
   </div>
 </div>

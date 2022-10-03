@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DisplayService } from 'src/app/services/display.service';
-import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-display-area',
@@ -9,12 +8,21 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class DisplayAreaComponent implements OnInit {
 
-  @Input() historyText?: string;
+  history?: string[] = this.displayService.history;
 
-  constructor(private gameService: GameService, private displayService: DisplayService) {
-   }
+  constructor(
+    private displayService: DisplayService
+    ) {}
 
   ngOnInit(): void {
+  }
+
+  displayMessage1() {
+    return this.displayService.getMessage1();
+  }
+
+  displayMessage2() {
+    return this.displayService.getMessage2();
   }
 
 }

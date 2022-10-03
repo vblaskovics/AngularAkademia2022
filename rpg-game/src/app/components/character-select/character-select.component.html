@@ -1,0 +1,36 @@
+<div class="d-flex p-2 m-3 justify-content-center">
+  <select class="form-select m-2" aria-label="Default select example" (change)="onSelect1($event)">
+    <option selected>Choose a character</option>
+    <option *ngFor="let char of characters$ | async">{{ char.name }}</option>
+  </select>
+  <select class="form-select m-2" aria-label="Default select example" (change)="onSelect2($event)">
+    <option selected>Choose a character</option>
+    <option *ngFor="let char of characters$ | async">{{ char.name }}</option>
+  </select>
+</div>
+
+<div class="col-12 d-flex p-2 m-3 justify-content-center">
+  <button type="button" class="btn btn-danger" (click)="onAttack()">Attack</button>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ul *ngIf="selectedChar1" style="list-style-type:none;">
+      <li>{{ selectedChar1.name }}</li>
+      <li>Attack: {{ selectedChar1.attack }}</li>
+      <li>Defense: {{ selectedChar1.defense }}</li>
+      <li>HP: {{ selectedChar1.hp }}</li>
+    </ul>
+  </div>
+
+  <div class="col">
+    <ul *ngIf="selectedChar2" style="list-style-type:none;">
+      <li>{{ selectedChar2.name }}</li>
+      <li>Attack: {{ selectedChar2.attack }}</li>
+      <li>Defense: {{ selectedChar2.defense }}</li>
+      <li>HP: {{ selectedChar2.hp }}</li>
+    </ul>
+  </div>
+</div>
+
+

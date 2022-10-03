@@ -1,3 +1,9 @@
+<div *ngIf="displayMessage1()" class="alert alert-primary d-flex justify-content-center" role="alert">
+  😈💪⚔ {{ displayMessage1() }} ⚔💪😈
+</div>
+<div *ngIf="displayMessage2()" class="alert alert-primary d-flex justify-content-center" role="alert">
+  😈💪⚔ {{ displayMessage2() }} ⚔💪😈
+</div>
 <div class="container">
-  <p id="textContainer">History: {{ historyText }}</p>
+  <p id="textContainer" *ngFor="let hist of history">{{ hist }}</p>
 </div>
