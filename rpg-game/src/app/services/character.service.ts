@@ -22,7 +22,7 @@ export class CharacterService {
     )
   }
 
-  getCharacterByName(name: string): Observable<Character> {
-    return this.httpClient.get<Character>(`${this.API_URL}?name=${name}`);
+  getCharacterByName(name: string): Observable<Character[]> {
+    return this.httpClient.get<Character[]>(`${this.API_URL}?name=${name}`);
   }
 }

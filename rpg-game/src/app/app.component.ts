@@ -12,7 +12,6 @@ import { CharacterService } from './services/character.service';
 })
 export class AppComponent {
   title = 'rpg-game';
-  character2$: BehaviorSubject<Character | null> = this.gameService.character2$;
 
   charNames$: Observable<string[]>;
   textToDisplay: string = ""
@@ -27,6 +26,7 @@ export class AppComponent {
     let c2 = this.gameService.character2$.getValue();
     if (!c1 || !c2) return;
     this.gameService.attack(c1, c2);
-    this.textToDisplay = this.displayService.getHistoryText();
+
+    // this.textToDisplay = this.displayService.getHistoryText();
   }
 }

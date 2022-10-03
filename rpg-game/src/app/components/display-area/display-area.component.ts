@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {DisplayService} from "../../services/display.service";
+import {map, Observable} from "rxjs";
 
 @Component({
   selector: 'app-display-area',
@@ -7,10 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DisplayAreaComponent implements OnInit {
 
-  @Input() textToDisplay: string = ""
-  constructor() { }
+  textToDisplay: Observable<string> = this.displayService.getHistoryText()
+  constructor(private displayService: DisplayService) { }
 
   ngOnInit(): void {
+
   }
 
 }

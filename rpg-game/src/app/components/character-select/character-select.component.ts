@@ -19,12 +19,12 @@ export class CharacterSelectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSelect(event:Event): void {
+  onSelect(event:any): void {
     if (!event) return;
-    if (typeof event === 'string') {
-      this.characterService.getCharacterByName(event).subscribe((character) => {
-        console.log(character)
-        this.character$.next(character);
+    if (event) {
+      this.characterService.getCharacterByName(event.target.value).subscribe((character) => {
+        console.log(character[0])
+        this.character$.next(character[0]);
       });
     }
   }

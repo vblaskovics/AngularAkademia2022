@@ -1,14 +1,14 @@
 {
     "characters": [
-        {"name": "John", "attack": 3, "defense": 2, "health": 10},
-        {"name": "Jane", "attack": 2, "defense": 3, "health": 12},
-        {"name": "Mike", "attack": 4, "defense": 1, "health": 7},
-        {"name": "Mary", "attack": 1, "defense": 4, "health": 9},
-        {"name": "Chris", "attack": 5, "defense": 5, "health": 11},
-        {"name": "Matt", "attack": 2, "defense": 2, "health": 9},
-        {"name": "Emily", "attack": 3, "defense": 3, "health": 10},
-        {"name": "Josh", "attack": 4, "defense": 4, "health": 12},
-        {"name": "Sarah", "attack": 5, "defense": 1, "health": 8},
-        {"name": "Tom", "attack": 1, "defense": 5, "health": 11}
+        {"name": "John", "attack": 3, "defense": 2, "hp": 10},
+        {"name": "Jane", "attack": 2, "defense": 3, "hp": 12},
+        {"name": "Mike", "attack": 4, "defense": 1, "hp": 7},
+        {"name": "Mary", "attack": 1, "defense": 4, "hp": 9},
+        {"name": "Chris", "attack": 5, "defense": 5, "hp": 11},
+        {"name": "Matt", "attack": 2, "defense": 2, "hp": 9},
+        {"name": "Emily", "attack": 3, "defense": 3, "hp": 10},
+        {"name": "Josh", "attack": 4, "defense": 4, "hp": 12},
+        {"name": "Sarah", "attack": 5, "defense": 1, "hp": 8},
+        {"name": "Tom", "attack": 1, "defense": 5, "hp": 11}
     ]
 }
