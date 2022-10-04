@@ -20,7 +20,7 @@ export class DisplayService {
   addHistoryEvent(event:string): void {
     this.loggerService.log('DisplayService add history event');
     // this._history.push(event);
-    let currentValue = this.historyText.getValue();
+    let currentValue: string[] = this.historyText.getValue();
     currentValue.push(event);
     this.historyText.next(currentValue);
   }

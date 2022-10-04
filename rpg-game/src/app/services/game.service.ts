@@ -50,6 +50,8 @@ export class GameService {
        // c1 streak
        if(c1Result) {
          this.c1Streak++;
+       } else {
+         this.c1Streak = 0;
        }
        if(this.c1Streak >= 3) {
          this.streakMessage(c1);
@@ -58,6 +60,8 @@ export class GameService {
         // c2 streak
        if(c2Result) {
          this.c2Streak++;
+       } else {
+         this.c2Streak = 0;
        }
        if(this.c2Streak >= 3) {
          this.streakMessage(c2);

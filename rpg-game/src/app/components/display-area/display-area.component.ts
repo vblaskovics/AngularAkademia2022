@@ -9,7 +9,7 @@ import {map, Observable} from "rxjs";
 })
 export class DisplayAreaComponent implements OnInit {
 
-  textToDisplay: Observable<string> = this.displayService.getHistoryText()
+  textToDisplay: Observable<string> = this.displayService.getHistoryText();
   constructor(private displayService: DisplayService) { }
 
   ngOnInit(): void {
