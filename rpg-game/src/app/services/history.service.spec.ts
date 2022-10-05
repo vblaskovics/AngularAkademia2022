@@ -2,17 +2,29 @@ import { GameService } from './game.service';
 import { HistoryService } from './history.service';
 import { Character } from "../interfaces/character";
 import { LoggerService } from './logger.service';
+import { RandomService } from './random.service';
+import { TestBed } from '@angular/core/testing'
+import { CharacterService } from './character.service';
 
 describe('HistoryService', () => {
 
   let historyService: HistoryService;
   let gameService: GameService;
   let loggerService: LoggerService;
+  let randomService: RandomService;
+  let charService: CharacterService
   
   beforeEach(() => {
     loggerService = new LoggerService()
     historyService = new HistoryService(loggerService);
-    gameService = new GameService(loggerService, historyService )
+    gameService = new GameService(loggerService, historyService, randomService, charService )
+
+    TestBed.configureTestingModule({
+      providers: [
+          { provide: RandomService, useValue: { getRandomNumber: () => 1 }}
+      ]
+    });
+    randomService = TestBed.inject(RandomService)
   })
 
   describe("HistoryService", () => {

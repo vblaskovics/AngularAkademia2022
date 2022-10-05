@@ -7,6 +7,7 @@ import { LoggerService } from './logger.service';
 })
 export class HistoryService {
 
+  // Ez lehet egy observable
   history: string[] = []
 
   constructor(private loggerService: LoggerService) { }

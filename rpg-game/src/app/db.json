@@ -1,0 +1,47 @@
+{
+    "characters": [
+
+        {
+            "attack": 5,
+            "defense": 8,
+            "hp": 10,
+            "name": "Troll"
+        },
+        {
+            "attack": 6,
+            "defense": 5,
+            "hp": 12,
+            "name": "Ork"
+        },
+        {
+            "attack": 3,
+            "defense": 8,
+            "hp": 6,
+            "name": "Undead"
+        },
+        {
+            "attack": 6,
+            "defense": 6,
+            "hp": 8,
+            "name": "Gnome"
+        },
+        {
+            "attack": 8,
+            "defense": 2,
+            "hp": 6,
+            "name": "Dwarf"
+        },
+        {
+            "attack": 4,
+            "defense": 7,
+            "hp": 14,
+            "name": "Elf"
+        },
+        {
+            "attack": 8,
+            "defense": 4,
+            "hp": 6,
+            "name": "Human"
+        }
+    ]
+}

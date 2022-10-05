@@ -1,0 +1,30 @@
+<div>
+    <div>
+        <label for="character-one">Character 1</label>
+        <select #firstCharSelect name="character-one" id="character-one" (change)="onSelectFirstChar()">
+            <option value="">Select Character</option>
+            <option *ngFor="let char of characters$ | async" [value]="char.name">{{char.name}}</option>
+        </select>
+
+        <div *ngIf="isChar1Selected">
+            <h3>Name: {{char1?.name}}</h3>
+            <p>Attack: {{char1?.attack}}</p>
+            <p>Defense: {{char1?.defense}}</p>
+            <p>Hp: {{char1?.hp}}</p>
+        </div>
+    </div>
+    <div>
+        <label for="character-two">Character 2</label>
+        <select #secondCharSelect name="character-two" id="character-two" (change)="onSelectSecondChar()">
+            <option value="">Select Character</option>
+            <option *ngFor="let chararacter of characters$ | async" [value]="chararacter.name">{{chararacter.name}}</option>
+        </select>
+
+        <div *ngIf="isChar2Selected">
+            <h3>Name: {{char2?.name}}</h3>
+            <p>Attack: {{char2?.attack}}</p>
+            <p>Defense: {{char2?.defense}}</p>
+            <p>Hp: {{char2?.hp}}</p>
+        </div>
+    </div>
+</div>
