@@ -1,1 +1,0 @@
-Angular akadémia kurzus 2022
