@@ -1,0 +1,16 @@
+<div class="note-div">
+    <!-- <h1 [ngStyle]="{'text-align' : alignmentService.horizontalAlignment}">{{note?.stickyTitle}}</h1>
+    <p [ngStyle]="{'text-align' : alignmentService.horizontalAlignment}">{{note?.stickyNote}}</p> -->
+    <h1>{{note?.stickyTitle}}</h1>
+    <p>{{note?.stickyNote}}</p>
+</div>
+<div class="edit-main-container">
+    <div class="edit-div">
+        <div class="icon-img-div" (click)="editNote(note!.id)">
+            <img src="assets/images/edit-icon.png" alt="">
+        </div>
+        <div class="icon-img-div" (click)="deleteNote(note!.id)">
+            <img src="assets/images/delete-icon.png" alt="">
+        </div>
+    </div>
+</div>

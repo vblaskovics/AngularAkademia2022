@@ -1,0 +1,13 @@
+<div class="row field">
+    <div class="col-xs-12">
+        <h3>Details: </h3>
+        <ul *ngFor="let player of players; let i = index;">
+            <li>Player Name: {{ player.name }} </li>
+            <li>Player number of Shirt: {{ player.shirtNumber }} </li>
+            <li>Player Wage: {{ player.wage }} </li>
+            <li>Player Age: {{ player.age }} </li>
+            <li>Player team: {{ player.team }} </li>
+            <li>Player end of contract: {{ player.endOfContractDate }} </li>
+        </ul>
+    </div>
+</div>

@@ -15,9 +15,6 @@ items: Todo[];
 evenTodo: boolean = false;
 
 
-
-
-
   constructor() { 
     this.items = [{
       id: 1,

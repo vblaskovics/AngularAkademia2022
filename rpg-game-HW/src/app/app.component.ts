@@ -13,11 +13,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
 
   // chars?: Character[]
-  chars$: Observable<Character[]> = this.httpService.getChars();
-  historyText: string = ""
+  // chars$: Observable<Character[]> = this.httpService.getChars();
+  // historyText: string = ""
 
-  c1!: Character;
-  c2!: Character;
+  // c1!: Character;
+  // c2!: Character;
 
   constructor(private gameService: GameService, private displayService: DisplayService, public httpService: HttpService) { 
     }
@@ -30,10 +30,6 @@ export class AppComponent implements OnInit{
   }
   
 
-  onAttack(): void {
-  this.gameService.attack(this.c1, this.c2);
-  this.historyText = this.displayService.getHistoryText();
-  console.log(this.historyText)
+  
   }
 
-}

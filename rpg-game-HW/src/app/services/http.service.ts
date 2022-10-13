@@ -30,8 +30,8 @@ export class HttpService {
   }
   
 
-  getCharByName(name: string): Observable<Character> {
-    return this.http.get<Character>(`${this.BASE_URL}?name=${name}`);
+  getCharByName(name: string): Observable<Character[]> {
+    return this.http.get<Character[]>(`${this.BASE_URL}?name=${name}`);
   }
 
   // public postChars(characters: Character): Observable<Character>{

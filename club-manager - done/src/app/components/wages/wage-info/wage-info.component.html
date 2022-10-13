@@ -1,0 +1,23 @@
+<div class="my-3">
+<div class="row">
+    <div class="col">
+        <input type="number" placeholder="Club current money" class="form-control" [(ngModel)]="currentMoney">
+    </div>
+    <div class="col">
+        <input type="number" placeholder="Club monthly income" class="form-control"  [(ngModel)]="monthlyIncome">
+    </div>
+</div>
+
+<div class="row field rounded my-3 p-2">
+        <h5 class="text-secondary my-3">Wage-info box</h5>
+        <p>Current money: {{ currentMoney }}</p>
+        <p>Current monthly income: {{ monthlyIncome }}</p>
+        <p>Expected money at the end of next month: {{ currentMoney + sumOfWage + monthlyIncome }}</p>
+
+        <span>Club financial stability: 
+            <p *ngIf="currentMoney < monthlyIncome">The club is financially stable</p> 
+            <p *ngIf="currentMoney > monthlyIncome">The club's financial reserves run out after {{currentMoney/0.112}} month</p>
+        </span>
+</div>
+    
+</div>

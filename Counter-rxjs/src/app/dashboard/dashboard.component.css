@@ -1,0 +1,14 @@
+.dashboard {
+    width: 500px;
+    height: 200px;
+    background-color: orangered;
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    align-items: center;
+    font-weight: 700;
+    margin: 10px;
+    padding:50px
+    
+    
+}

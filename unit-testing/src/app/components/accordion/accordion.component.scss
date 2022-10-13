@@ -1,0 +1,61 @@
+@import './../../../assets/styles/variables';
+
+.accordion-button {
+    background-color: $secondColor;
+    color: $secondTextColor;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom: 1px;
+    position: relative;
+    display: block;
+}
+
+.accordion-clicked-class{
+    background-color: $mainColor;
+}
+
+.panel {
+    background-color: rgb(230, 230, 230);
+    padding: 20px 20px 10px 20px;
+}
+
+.arrow {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+
+    &::before, &::after {
+        position: relative;
+        content: '';
+        display: block;
+        width: 10px;
+        height: 1px;
+        background: white;
+        transition: 0.3s ease-in-out;
+    }
+    &:before {
+        transform: rotate(45deg);
+    }
+    
+    &:after {
+        left: 6px;
+        top: -1px;
+        transform: rotate(-45deg);
+    }
+}
+
+button.active .arrow::before {
+    transform: rotate(-45deg);
+}
+  
+button.active .arrow::after {
+    transform: rotate(45deg);
+}
+  
+

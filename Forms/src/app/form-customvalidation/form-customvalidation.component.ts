@@ -40,7 +40,7 @@ export class FormCustomvalidationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    debugger;
+    // debugger;
   console.log(this.myForm.value);
     
   }

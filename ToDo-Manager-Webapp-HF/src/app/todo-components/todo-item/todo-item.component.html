@@ -8,7 +8,9 @@
     <li class="list-group-item">{{todo?.user_id}}</li>
   </ul> -->
 
-<table class="table table-bordered text-center">
+  <!-- table-bordered -->
+
+<table class="table text-center table-striped table-bordered">
     <thead>
       <tr class="col-xs-3">
         <!-- <th scope="col" >Id</th>
@@ -27,7 +29,7 @@
             <td style="width:20%;cursor:pointer" *ngFor="let item of todo?.user_id">{{ item.name }}</td>
         <!-- </div> -->
       </tr>
-      <ul *ngIf="todo?.subTodoIds">
+      <ul *ngIf="todo?.subTodoIds" (click)="clickDetails()">
         <app-todo-item *ngFor="let item of todo?.subTodoIds" [todo]="item"  (detailedTodo)="detailedItem($event)"> </app-todo-item>
         <!-- <li>{{ todo?.user_id}} {{ todo?.title}} {{ todo?.date}} {{todo?.description}}</li> -->
         

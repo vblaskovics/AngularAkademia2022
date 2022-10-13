@@ -1,0 +1,12 @@
+.score {
+    width: 500px;
+    height: 50px;
+    border: 2px dashed orangered;
+    color:blueviolet;
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    font-weight: 700;
+    margin: 20px;
+    
+}

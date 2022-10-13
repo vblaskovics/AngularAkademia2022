@@ -1,0 +1,8 @@
+<div class="sticky-notes-main-container">
+    <h1>Sticky Notes</h1>
+    <app-sticky-note-form></app-sticky-note-form>
+    <app-alignment-bar></app-alignment-bar>
+    <button *ngIf="noteService.stickyNotes?.length !== 0" class="btn btn-danger" (click)="onDeleteAll()">Delete Notes</button>
+    <hr>
+    <app-sticky-notes-list></app-sticky-notes-list>
+</div>

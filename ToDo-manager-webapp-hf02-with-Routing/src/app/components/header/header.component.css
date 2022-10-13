@@ -1,0 +1,18 @@
+
+
+.error {
+    border: 3px solid red
+}
+
+nav {
+    width: 100%;
+    position:fixed;
+    top:0px;
+    left:0px;
+
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}

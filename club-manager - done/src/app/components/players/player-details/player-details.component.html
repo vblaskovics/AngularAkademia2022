@@ -1,0 +1,14 @@
+<div class="row field">
+    <div class="col-xs-12">
+        <h3 class="my-3">{{ players.name }}</h3>
+        <ul >
+            <li>Player's number of Shirt: {{ players.shirtNumber }} </li>
+            <li>Player's Wage: {{ players.wage }} </li>
+            <li>Player's Age: {{ players.age }} </li>
+            <li>Player's team: {{ players.team }} </li>
+            <li>Player's end of contract: {{ players.endOfContract }} </li>
+        </ul>
+            <button class="btn btn-danger mx-2 my-3" (click)="deletePlayer(players)">X</button>
+            <button class="btn btn-primary col-6" [routerLink]="['/', 'add', players.id]">Edit player</button>
+    </div>
+</div>

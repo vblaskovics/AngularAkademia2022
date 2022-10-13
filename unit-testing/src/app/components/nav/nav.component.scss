@@ -1,0 +1,60 @@
+@import './../../../assets/styles/variables';
+
+.navbar-div {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.router-link-active {
+	background-color: $mainColor;
+}
+
+.link-item-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border: 2px solid black
+}
+
+.nav-link-custom {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: $secondTextColor;
+    padding-top: 7px;
+    // margin: 0 auto;
+    // padding: 0;
+}
+
+button {
+    padding-top: 3.5px;
+    padding-bottom: 3.5px;
+    transition: all 0.5s;
+    cursor: pointer;
+    span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        &:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        &:hover span {
+            padding-right: 25px;
+        }
+        &:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+      }
+}

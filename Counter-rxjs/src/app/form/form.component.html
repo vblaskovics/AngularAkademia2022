@@ -1,0 +1,40 @@
+<form class="form-group width" [formGroup]="myForm">
+  <div class="row">
+    <div class="col-md-8">
+      <input
+        type="text"
+        id="text"
+        class="form-control m-3"
+        name="text"
+        placeholder="Type the same text"
+        [(ngModel)]="word"
+        formControlName="text"
+        [class.is-invalid]="text.touched && text.invalid"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <button
+        type="submit"
+        class="btn btn-warning m-3 px-3"
+        (click)="onSubmit()"
+      >
+        OK
+      </button>
+    </div>
+
+    <p>{{ word }}</p>
+    <p
+      *ngIf="
+        text.touched &&
+        text.hasError('required') ||
+        text.hasError('pattern') ||
+        text.hasError('minlength') ||
+        text.hasError('maxlength')
+      "
+      class="invalid-feedback"
+    >
+      The text must be contain minimum 4 characters!
+    </p>
+  </div>
+</form>

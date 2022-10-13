@@ -1,0 +1,6 @@
+<h2 *ngIf="noteService.stickyNotes?.length === 0">No Notes yet!</h2>
+<div class="notes-container" [ngStyle]="{'justify-content': alignmentService.horizontalAlignment, 'align-items': alignmentService.verticalAlignment}">
+    <app-sticky-note *ngFor="let note of noteService.stickyNotes" [note]="note"></app-sticky-note>
+</div>
+
+

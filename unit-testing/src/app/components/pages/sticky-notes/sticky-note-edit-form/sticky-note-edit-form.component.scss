@@ -1,0 +1,34 @@
+@import '../../../../../assets/styles/variables';
+
+.container {
+    width: calc(100vw - 250px);
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 50%;
+}
+
+button {
+    height: 40px;
+    width: 100%;
+    background-color: $secondColor;
+    color: $secondTextColor;
+    padding: 4px 6px;
+    // border: 1px solid $mainColor;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: $mainColor;
+    color: $secondTextColor;
+    border: none;
+}
+
+button:active {
+    margin-left: 1px 1px 0;
+    box-shadow: -1px -1px 1px #000;
+    outline: 1px solid black;
+}

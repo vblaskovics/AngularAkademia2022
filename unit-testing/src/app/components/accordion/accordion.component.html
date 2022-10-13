@@ -1,0 +1,10 @@
+<div *ngFor="let accord of accordionList">
+    <button 
+        class="accordion-button" 
+        (click)="toggleAccordion(accord.id)" 
+        [ngClass]="{'active': accord.toggled, 'accordion-clicked-class': accord.toggled}"
+        >{{accord.title}} <span class="arrow"></span></button>
+    <div *ngIf="accord.toggled" class="panel">
+        <p>{{accord.description}}</p>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
@@ -8,6 +9,11 @@ import { TodoDetailsComponent } from './components/todo-details/todo-details.com
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { DropdownDirective } from './shared/dropdown.directive';
+
+const routes : Routes = [
+  {}
+]
 
 @NgModule({
   declarations: [
@@ -16,7 +22,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     TodoItemComponent,
     TodoDetailsComponent,
     HeaderComponent,
-    SignInComponent
+    SignInComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

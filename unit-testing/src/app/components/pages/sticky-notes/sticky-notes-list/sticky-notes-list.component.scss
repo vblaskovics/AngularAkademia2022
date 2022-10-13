@@ -1,0 +1,15 @@
+.notes-container {
+    display: flex;
+    min-height: 600px;
+    width: calc(100vw - 300px);
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 18px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 18px;
+}

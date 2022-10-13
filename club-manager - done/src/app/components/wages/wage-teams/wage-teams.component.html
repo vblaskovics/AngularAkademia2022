@@ -1,0 +1,65 @@
+<div class="row field rounded my-3 p-2">
+    <h5 class="text-secondary my-3">Football team players</h5>
+    <p>Team full wage: {{ ftWages }}</p>
+
+    <table class="table table-bordered my-3">
+        <thead class="">
+          <tr>
+            <th scope="col-2">Name</th>
+            <th scope="col-1">Shirt number</th>
+            <th scope="col-2">Team</th>
+            <th scope="col-1">Age</th>
+            <th scope="col-2">Wage (HUF)</th>
+            <th scope="col-2">End of contract</th>
+            <th scope="col-2">Action icons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ft of footballTeam; let i = index">
+            <th scope="row"> {{ ft.name }} </th>
+            <td > {{ ft.shirtNumber }} </td>
+            <td> {{ ft.team }} </td>
+            <td> {{ ft.age }} </td>
+            <td> {{ ft.wage }} </td>
+            <td> {{ ft.endOfContract | date}} </td>
+            <td> <button class="btn btn-warning mx-1" [routerLink]="['/', 'details', ft.id]" >
+              <!-- <app-player-details [players]="players"></app-player-details> -->
+              Details</button> 
+              <button class="btn btn-danger mx-1" (click)="deletePlayer(ft)">X</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h5 class="text-secondary my-3">Badminton team players</h5>
+      <p>Team full wage: {{ btWages }}</p>
+  
+      <table class="table table-bordered my-3">
+          <thead class="">
+            <tr>
+              <th scope="col-2">Name</th>
+              <th scope="col-1">Shirt number</th>
+              <th scope="col-2">Team</th>
+              <th scope="col-1">Age</th>
+              <th scope="col-2">Wage (HUF)</th>
+              <th scope="col-2">End of contract</th>
+              <th scope="col-2">Action icons</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bt of badmintonTeam; let i = index">
+              <th scope="row"> {{ bt.name }} </th>
+              <td > {{ bt.shirtNumber }} </td>
+              <td> {{ bt.team }} </td>
+              <td> {{ bt.age }} </td>
+              <td> {{ bt.wage }} </td>
+              <td> {{ bt.endOfContract | date}} </td>
+              <td> <button class="btn btn-warning mx-1" [routerLink]="['/', 'details', bt.id]" >
+                <!-- <app-player-details [players]="players"></app-player-details> -->
+                Details</button> 
+                <button class="btn btn-danger mx-1" (click)="deletePlayer(bt)">X</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+</div>

@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DisplayAreaComponent implements OnInit {
 
   // @Input() historyText: string = "";
-  @Input() EventMessage: string = "";
+  // @Input() EventMessage: string = "";
   history = this.displayService.History
 
   constructor(private displayService: DisplayService) { }

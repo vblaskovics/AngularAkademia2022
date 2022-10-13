@@ -16,7 +16,7 @@ export class ListComponent implements OnInit, OnDestroy{
   // @Input() userSaved: boolean = false;
   // @Output() resetUserSaved: EventEmitter<void> = new EventEmitter<void>(); sibling komm. miatt
 
-  public userList: UserModel[] = [];
+  // public userList: UserModel[] = [];
   // private subscription: Subscription | undefined
   private subscription?: Subscription; //ha kérdőjeles akkor az alapértéke undefined
 

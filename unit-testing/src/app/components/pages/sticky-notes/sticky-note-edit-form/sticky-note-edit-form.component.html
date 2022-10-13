@@ -1,0 +1,13 @@
+<div class="container">
+    <form [formGroup]="editedStickyForm" (ngSubmit)="onEditStickyNote()" class="p-5">
+        <div>
+            <label class="form-label mt-1" for="editStickyTitleInput">Title:</label>
+            <input class="form-control" type="text" id="editStickyTitleInput" formControlName="editStickyTitle">
+        </div>
+        <div>
+            <label class="form-label mt-1" for="editStickyNoteInput">Note:</label>
+            <textarea class="form-control" type="text" id="editStickyNoteInput" formControlName="editStickyNote"></textarea>
+        </div>
+        <button class="mt-3">Edit Note</button>
+    </form>
+</div>

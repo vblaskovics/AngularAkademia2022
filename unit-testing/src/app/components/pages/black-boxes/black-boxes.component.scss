@@ -1,0 +1,16 @@
+.main-div {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: calc(50% + 125px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.red-div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border: 1px solid black;
+}

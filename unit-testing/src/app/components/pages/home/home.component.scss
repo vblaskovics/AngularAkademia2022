@@ -1,0 +1,24 @@
+ .body-main-container {
+    min-height: 100vh;
+    display: flex;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.navigation-div {
+    background-color: rgb(34, 34, 34);
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.outlet-div {
+    background-color: white;
+    width: 500px;
+    display: flex;
+}

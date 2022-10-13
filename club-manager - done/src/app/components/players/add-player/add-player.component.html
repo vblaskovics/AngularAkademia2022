@@ -1,0 +1,102 @@
+<div class="row rounded field">
+  <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <input formControlName="id" name="id" type="hidden" />
+      <div class="col-2">
+        <input
+          type="text"
+          placeholder="Name"
+          id="name"
+          class="form-control"
+          [class.is-invalid]="name.touched && name.invalid"
+          formControlName="name"
+        />
+        <p *ngIf="name.hasError('required')" class="invalid-feedback" id="name">
+          This field is required!
+        </p>
+      </div>
+
+      <div class="col">
+        <input
+          type="number"
+          placeholder="Shirt number"
+          id="shirtNumber"
+          class="form-control"
+          [class.is-invalid]="shirtNumber.touched && shirtNumber.invalid"
+          formControlName="shirtNumber"
+        />
+        <p
+          *ngIf="shirtNumber.hasError('required')"
+          class="invalid-feedback"
+          id="name"
+        >
+          This field is required!
+        </p>
+      </div>
+
+      <div class="col">
+        <input
+          type="text"
+          placeholder="Team"
+          id="team"
+          class="form-control"
+          [class.is-invalid]="team.touched && team.invalid"
+          formControlName="team"
+        />
+        <p *ngIf="team.hasError('required')" class="invalid-feedback" id="name">
+          This field is required!
+        </p>
+      </div>
+
+      <div class="col-1">
+        <input
+          type="number"
+          placeholder="Age"
+          id="age"
+          class="form-control"
+          [class.is-invalid]="age.touched && age.invalid"
+          formControlName="age"
+        />
+        <p *ngIf="age.hasError('required')" class="invalid-feedback" id="name">
+          This field is required!
+        </p>
+      </div>
+
+      <div class="col">
+        <input
+          type="number"
+          placeholder="Wage"
+          id="wage"
+          class="form-control"
+          [class.is-invalid]="wage.touched && wage.invalid"
+          formControlName="wage"
+        />
+        <p *ngIf="wage.hasError('required')" class="invalid-feedback" id="name">
+          This field is required!
+        </p>
+      </div>
+
+      <div class="col">
+        <input
+          type="date"
+          id="endOfContract"
+          class="form-control"
+          [class.is-invalid]="endOfContract.touched && endOfContract.invalid"
+          formControlName="endOfContract"
+        />
+        <p
+          *ngIf="endOfContract?.hasError('required')"
+          class="invalid-feedback"
+        >
+          This field is required!
+        </p>
+      </div>
+
+      <div class="col-2">
+        <button class="btn btn-outline-primary" type="submit" [disabled]="form.invalid">
+          Save player
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

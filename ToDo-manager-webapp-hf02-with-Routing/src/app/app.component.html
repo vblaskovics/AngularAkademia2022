@@ -1,0 +1,16 @@
+
+<!-- <app-header></app-header> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 my-3">
+     <app-header [todoCounter]="TodosInProgress"></app-header>
+     <!-- <app-todo-list></app-todo-list>  -->
+     <!-- router-outlet kelleni fog a routinghoz, csak service-zel működik. -->
+     
+     <router-outlet></router-outlet> 
+    </div>
+    
+  </div>
+</div>
+

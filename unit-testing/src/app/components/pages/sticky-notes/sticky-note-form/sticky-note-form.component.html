@@ -1,0 +1,11 @@
+<form [formGroup]="stickyForm" (ngSubmit)="onSubmitStickyNote()" class="p-5">
+    <div>
+        <label class="form-label mt-1" for="stickyTitleInput">Title:</label>
+        <input class="form-control" type="text" id="stickyTitleInput" formControlName="stickyTitle">
+    </div>
+    <div>
+        <label class="form-label mt-1" for="stickyNoteInput">Note:</label>
+        <input class="form-control" type="text" id="stickyNoteInput" formControlName="stickyNote">
+    </div>
+    <button type="submit" [disabled]="stickyForm.invalid" class="mt-3">Add Note</button>
+</form>

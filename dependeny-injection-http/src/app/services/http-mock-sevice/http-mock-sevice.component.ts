@@ -59,7 +59,7 @@ export class HttpMockSeviceComponent implements HttpServiceInterface{
   public postUser(user: UserDto): Observable<UserDto>{
     const newUser: UserDto = {
       ...user, 
-      id: this.mockUserList.length + 1
+      id: this.mockUserList.length + 1 
     }
 
     this.mockUserList.push(newUser);

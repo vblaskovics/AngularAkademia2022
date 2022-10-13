@@ -1,0 +1,19 @@
+$color-green: rgb(93, 230, 212);
+
+.field {
+    width: 70%;
+    margin-left:220px;
+    margin-top: 20px;
+
+    h3 {
+        color:$color-green;
+    }
+    .row > button {
+        width:10%;
+        margin-right: 12px;
+        
+    }
+    .title {
+        justify-content: space-between;
+    }
+}

@@ -12,7 +12,7 @@ import { ProtectiveComponent } from './protective/protective.component';
 import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch:'full'} //ha nincs elérési út, home-ra megy
+  {path: '', redirectTo: 'home', pathMatch:'full'} ,//ha nincs elérési út, home-ra megy
   { path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
   { path: 'login', component: LoginComponent},

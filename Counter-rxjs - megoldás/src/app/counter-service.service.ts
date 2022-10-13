@@ -9,7 +9,7 @@ export class CounterServiceService {
   
   //counter part:
 
-  clock: Observable<number> = interval(1000);
+  clock: Observable<number> = interval(2000);
 
   counter: {value: number} = {
     value:5

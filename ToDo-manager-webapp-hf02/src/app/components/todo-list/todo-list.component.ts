@@ -7,7 +7,8 @@ import { Todo, progress } from 'src/app/models/todo';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  
+
+  //header onNavigate-hez:
   loadedSelected: string = 'sign-in'
   
   items: Todo[];
@@ -190,9 +191,11 @@ export class TodoListComponent implements OnInit {
   onNavigate(feature: string){
     this.loadedSelected = feature;
   }
-  
 
-
+  newTodoInList(newTodo: Todo){
+    console.log('működik a newTodoInList');
+    return this.items.push(newTodo);
+  }
   
 
 }

@@ -1,0 +1,43 @@
+.note-div {
+    width: 200px;
+    min-height: 200px;
+    background-color: #facadc;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    padding: 10px; 
+    overflow-wrap: break-word;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.note-div:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+h1, p {
+    width: 180px;
+    text-align: center;
+}
+
+.edit-div {
+    width: 200px;
+    height: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    bottom: 26px;
+}
+
+.icon-img-div {
+    cursor: pointer;
+    padding-right: 6px;
+}
+
+img {
+    width: 16px;
+    height: 16px;
+}
