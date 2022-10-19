@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,18 +15,21 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit /* OnDestroy */ {
   @Input() title!: string;
   @Input() counter!: number;
   @Output() emitChange = new EventEmitter<any>();
   @Output() todoPushEmit = new EventEmitter<string>();
-  userIsLogedInSub: Subscription;
-  userIsLogedIn: boolean = false;
+  /*   userIsLogedInSub: Subscription;
+   */ userIsLogedIn: boolean = false;
+  isLogedIn$: Observable<Boolean>;
+
   // todoAddForm: FormGroup;
   constructor(fb: FormBuilder, public authService: AuthService) {
-    this.userIsLogedInSub = this.authService.userIsLogedIn.subscribe((x) => {
+    this.isLogedIn$ = this.authService.userIsLogedIn;
+    /* this.userIsLogedInSub = this.authService.userIsLogedIn.subscribe((x) => {
       this.userIsLogedIn = x;
-    });
+    }); */
     /*   this.todoAddForm = fb.group({
       title: [
         '',
@@ -38,9 +41,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       ],
     }); */
   }
-  ngOnDestroy(): void {
+  /*   ngOnDestroy(): void {
     this.userIsLogedInSub.unsubscribe();
-  }
+  } */
   /*  get titleCont() {
     return this.todoAddForm.get('title');
   } */

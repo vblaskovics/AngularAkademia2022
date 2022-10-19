@@ -1,30 +1,24 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './Components/todo-list/todo-list.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { AddTodoComponent } from './pages/add-todo/add-todo.component';
-import { TodoItemComponent } from './Components/todo-item/todo-item.component';
-import { DetailsComponent } from './Components/details/details.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { AuthGuard } from './auth.guard';
-import { TodosComponent } from './pages/todos/todos.component';
+import { LoginModule } from './features/login/login.module';
+import { TodoModule } from './features/todo/todo.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlreadyInGuard } from './utils/guards/already-in.guard';
+import { SharedModule } from './shared/shared.module';
 const routes: Routes = [
   {
     path: 'todo',
-    component: TodosComponent,
-  },
-  { path: 'todo/new', component: AddTodoComponent, canActivate: [AuthGuard] },
-  {
-    path: 'sign-up',
-    component: SignUpComponent,
+    loadChildren: () =>
+      import('./features/todo/todo.module').then((m) => m.TodoModule),
   },
   {
-    path: 'sign-in',
-    component: SignInComponent,
+    path: 'auth',
+    loadChildren: () =>
+      import('./features/login/login.module').then((m) => m.LoginModule),
   },
   {
     path: '**',
@@ -32,21 +26,12 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoListComponent,
-    TodoItemComponent,
-    DetailsComponent,
-    NavbarComponent,
-    SignUpComponent,
-    AddTodoComponent,
-    SignInComponent,
-    TodosComponent,
-  ],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
+    BrowserAnimationsModule,
+
+    SharedModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],

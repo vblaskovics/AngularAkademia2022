@@ -1,0 +1,14 @@
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    [id]="id"
+    [type]="type"
+    matInput
+    [formControl]="control"
+    [placeholder]="placeholder"
+  />
+
+  <mat-error class="required-field" *ngIf="control.hasError('required')">
+    This field <strong>required</strong>
+  </mat-error>
+</mat-form-field>

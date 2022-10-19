@@ -17,14 +17,16 @@ import { SignInForm } from './sign-in-form.interface';
 export class SignInComponent implements OnInit {
   loginForm: FormGroup<SignInForm>;
   errorMessage = '';
-  constructor(
-    fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.loginForm = fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+  constructor(private authService: AuthService, private router: Router) {
+    this.loginForm = new FormGroup({
+      username: new FormControl('', {
+        validators: [Validators.required],
+        nonNullable: true,
+      }),
+      password: new FormControl('', {
+        validators: [Validators.required],
+        nonNullable: true,
+      }),
     });
   }
   get username(): FormControl {

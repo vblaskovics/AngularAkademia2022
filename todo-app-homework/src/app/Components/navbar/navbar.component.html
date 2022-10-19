@@ -24,23 +24,29 @@
     <a class="navbar-brand" [routerLink]="['/']">Todo App</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li *ngIf="!userIsLogedIn" class="nav-item">
-          <a class="nav-link" [routerLink]="['/sign-in']">Sign-in</a>
-        </li>
-        <li *ngIf="!userIsLogedIn" class="nav-item">
-          <a class="nav-link" [routerLink]="['/sign-up']">Sign-up</a>
-        </li>
-        <li *ngIf="userIsLogedIn" class="nav-item">
-          <a class="nav-link" [routerLink]="['/todo']">Todo</a>
-        </li>
-        <li *ngIf="userIsLogedIn" class="nav-item">
-          <a class="nav-link" [routerLink]="['/todo/new']">New Todo</a>
-        </li>
-        <li *ngIf="userIsLogedIn" class="nav-item">
-          <a (click)="signOut()" class="nav-link" [routerLink]="['/']"
-            >Sign-out</a
-          >
-        </li>
+        <ng-container
+          *ngIf="isLogedIn$ | async as userIsLogedIn; else elseBlock"
+        >
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/todo']">Todo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/todo/new']">New Todo</a>
+          </li>
+          <li class="nav-item">
+            <a (click)="signOut()" class="nav-link" [routerLink]="['/']"
+              >Sign-out</a
+            >
+          </li>
+        </ng-container>
+        <ng-template #elseBlock>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/auth/sign-in']">Sign-in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/auth/sign-up']">Sign-up</a>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </div>
