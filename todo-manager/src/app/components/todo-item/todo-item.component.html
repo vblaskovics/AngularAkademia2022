@@ -1,7 +1,15 @@
-
+<!-- 
     <td>{{todoItem.id}}</td>
     <td>{{todoItem.title}}</td>
     <td (click)="todoService.nextProgress(todoItem)">{{todoItem.progress}}⏩</td>
     <td>{{todoItem.date}}</td>
     <td>{{todoItem.userId}}</td>
-    <td [routerLink]="['/edit-todo/' + todoItem.id]">✏️</td>
+    <td [routerLink]="['/edit-todo/' + todoItem.id]">✏️</td> -->
+
+    <td mat-cell *matCellDef="let element"> {{todoItem.id}} </td>
+    <td mat-cell *matCellDef="let element"> {{todoItem.title}} </td>
+    <td mat-cell (click)="todoService.nextProgress(todoItem)"*matCellDef="let todoItem"> {{todoItem.progress}}⏩ </td>
+    <td mat-cell *matCellDef="let element"> {{todoItem.date}} </td>
+    <td mat-cell *matCellDef="let element"> {{todoItem.userId}} </td>
+    <td mat-cell [routerLink]="['/edit-todo/' + todoItem.id]" *matCellDef="let todoItem"> ✏️</td>
+

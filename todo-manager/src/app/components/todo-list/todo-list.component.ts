@@ -9,6 +9,7 @@ import { Todo } from 'src/app/users-model/todo';
 })
 export class TodoListComponent implements OnInit {
   @Output() item: EventEmitter<Todo> = new EventEmitter();
+  columndefs: any[] = ["id", "title", "progress", "date", "userId", "edit"];
 
   constructor(public todoService: TodoService) {
     this.todoService.sortProgress();

@@ -1,10 +1,11 @@
 <nav class="navbar bg-light">
   <div class="container-fluid text-center">
     <span class="navbar-brand mb-0 h1" [routerLink]="['/home']">Todo manager</span>
-    <button class="btn btn-primary mb-1" type="sign in" (click)="signIn()" *ngIf="!isSignedIn()">
+    <!-- <button class="btn btn-primary mb-1" type="sign in" (click)="signIn()" *ngIf="!isSignedIn()">
       Sign in
-    </button>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    </button> -->
+    <button mat-raised-button color="primary" type="sign in" id="signIn" (click)="signIn()" *ngIf="!isSignedIn()">Sign in</button>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" id="form">
       <ng-container *ngIf="isSignedIn()">
         <input
         id="titleInput"
@@ -14,7 +15,9 @@
         placeholder="Title"
         formControlName="title"
         />
-        <button class="btn btn-primary" type="submit" >Submit</button>
+        <!-- <button class="btn btn-primary" type="submit" id="submitButton">Submit</button> -->
+        <button mat-raised-button color="primary" id="submitButton">Submit</button>
+
         <div *ngIf="submitted && form['title'].errors">
           <div class="text-danger" *ngIf="form['title'].errors['required']">
 
