@@ -4,8 +4,15 @@
   {{ todo?.progress }}
 </td>
 <td>
-  <button class="btn btn-warning" (click)="onProgressChangerClicked(todo!)">
+  <!-- <button class="btn btn-warning" (click)="onProgressChangerClicked(todo!)">
     💫
+  </button> -->
+  <button
+    mat-raised-button
+    (click)="onProgressChangerClicked(todo!)"
+    color="primary"
+  >
+    Change progress
   </button>
 </td>
 <td>{{ user?.name }}</td>

@@ -9,6 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInFormComponent } from './components/sign-in-form/sign-in-form.component';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   { path: '', component: TodoListComponent },
@@ -29,6 +32,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

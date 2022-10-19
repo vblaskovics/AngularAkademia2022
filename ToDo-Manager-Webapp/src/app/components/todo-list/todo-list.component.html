@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<!-- <table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -26,11 +26,49 @@
       (progressChanged)="changeProgress($event)"
     ></tr>
   </tbody>
+</table> -->
+
+<table mat-table [dataSource]="items" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="progress">
+    <th mat-header-cell *matHeaderCellDef>
+      <button class="btn btn-light sort_button" (click)="onSortButtonClicked()">
+        {{ sortButtonEmoji }}
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.progress }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="change-progress">
+    <th mat-header-cell *matHeaderCellDef>Change progress</th>
+    <td mat-cell *matCellDef="let element">{{ element.progress }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef>Username</th>
+    <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columndefs"></tr>
+  <tr mat-row *matRowDef="let row; columns: columndefs"></tr>
 </table>
 
-<app-todo-item-info
+<!-- <app-todo-item-info
   *ngIf="isRowClicked"
   [clickedTodo]="clickedToDo"
   [clickedUser]="getUser(clickedToDo!.user_id)"
   [clickedSubtodos]="clickedSubtodos"
-></app-todo-item-info>
+></app-todo-item-info> -->

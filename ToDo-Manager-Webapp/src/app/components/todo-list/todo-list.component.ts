@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatTable, MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { ToDo } from 'src/app/model/to-do';
 import { User } from 'src/app/model/user';
 
@@ -10,9 +11,11 @@ import { User } from 'src/app/model/user';
 export class TodoListComponent implements OnInit {
   @Output() inProgressCount: EventEmitter<number> = new EventEmitter<number>();
 
+  dataSource: ToDo[] = new Array();
   items: ToDo[] = new Array();
   users: User[] = new Array();
   subTodos: ToDo[] = new Array();
+  columndefs : any[] = ['id','title', 'progress', 'change-progress', 'username'];
 
   isRowClicked: boolean;
   clickedToDo?: ToDo;
@@ -193,20 +196,22 @@ export class TodoListComponent implements OnInit {
   }
 
   onSortButtonClicked(): void {
+    console.log("onSortButtonClicked()");
+
     if (this.sortDirectionIncrement) {
+
       this.items.sort(
         (a, b) =>
-          this.progressArray.indexOf(a.progress) -
-          this.progressArray.indexOf(b.progress)
-      );
-    } else {
+        this.progressArray.indexOf(a.progress) -
+        this.progressArray.indexOf(b.progress)
+        );
+      } else {
       this.items.sort(
         (a, b) =>
           this.progressArray.indexOf(b.progress) -
           this.progressArray.indexOf(a.progress)
       );
     }
-
     this.sortDirectionIncrement = !this.sortDirectionIncrement;
     this.sortDirectionIncrement
       ? (this.sortButtonEmoji = this.incrementEmoji)
