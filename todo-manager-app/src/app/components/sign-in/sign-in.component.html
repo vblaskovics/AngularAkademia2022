@@ -1,116 +1,112 @@
 <h2>Sign up</h2>
 
-<form class="card text-white bg-dark" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-        <label class="form-label" for="firstNameInput">First Name</label>
-        <input              
-            id="firstNameInput" 
-            class="form-control"
-            [class.is-invalid] = "firstName.invalid && firstName.hasError('pattern')"
-            type="text" 
-            name="firstName" 
-            placeholder="First Name"
-            formControlName="firstName">
-    </div>
-    <p *ngIf="firstName.invalid && firstName.hasError('pattern')" style="color: red">
-        First name must contain only letters   
-    </p>
-
-    <div class="mb-3">
-        <label class="form-label" for="lastNameInput">Last Name</label>
-        <input              
-            id="lastNameInput" 
-            class="form-control"
-            [class.is-invalid] = "lastName.invalid && lastName.hasError('pattern')"
-            type="text" 
-            name="lastName" 
-            placeholder="Last Name"
-            formControlName="lastName">
-    </div>
-    <p *ngIf="lastName.invalid && lastName.hasError('pattern')" style="color: red">
-        Last name must contain only letters   
-    </p>
-
-    <div class="mb-3">
-        <label class="form-label" for="usernameInput">Username*</label>
-        <input              
-        id="usernameInput" 
-        class="form-control"
-        [class.is-invalid] = "username.invalid && username.touched"
-        type="text" 
-        name="username" 
-        placeholder="Username"
-        formControlName="userName">
-    </div>
-    <p *ngIf="username.invalid && username.touched && username.hasError('required')" style="color: red">
-        Required field!  
-    </p>
-    <p *ngIf="username.invalid && username.hasError('pattern')" style="color: red">
-        Username must contain only letters!  
-    </p>
-    <p *ngIf="username.invalid && username.hasError('minlength')" style="color: red">
-        Username must be atleast 4 characters!   
-    </p>
-
-    <div class="mb-3">
-        <label class="form-label" for="birthDateInput">Date of Birth </label>
-        <input              
-        id="birthDateInput" 
-        class="form-control"
-        [class.is-invalid]="birthDate.invalid && birthDate.hasError('pattern')"
-        type="text" 
-        name="birthDate" 
-        placeholder="(DD/MM/YY or DD/MM/YYYY)"
-        formControlName="birthDate">
-    </div>
-    <p *ngIf="birthDate.invalid && birthDate.hasError('pattern')" style="color: red">
-        Invalid Date!
-    </p>
-
+<mat-card class="sign-up-card">
+    <form id="#myForm" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="formControl">
+            <mat-label for="firstNameInput">First Name</mat-label>
+            <input matInput             
+                id="firstNameInput" 
+                [class.is-invalid] = "firstName.invalid && firstName.hasError('pattern')"
+                type="text" 
+                name="firstName" 
+                placeholder="First Name"
+                formControlName="firstName">
+        </mat-form-field>
+        <mat-error *ngIf="firstName.invalid && firstName.hasError('pattern')" style="color: red">
+            First name must contain only letters   
+        </mat-error>
     
-    <div class="mb-3">
-        <label class="form-label" for="zipInput">ZIP code</label>
-        <input              
-            id="zipInput" 
-            class="form-control"
-            [class.is-invalid] = "zip.invalid && zip.hasError('min') || zip.hasError('max')"
-            type="text" 
-            name="zip" 
-            placeholder="ZIP"
-            formControlName="zip">
-    </div>
-    <p *ngIf="zip.invalid && zip.hasError('min') || zip.hasError('max')"  style="color: red">
-        ZIP code must be betwwen 1000 and 9999   
-    </p>
-    <p *ngIf="zip.invalid && zip.touched && zip.hasError('pattern')"  style="color: red">
-        ZIP code must be numbers  
-    </p>
-
-    <div class="mb-3">
-        <label class="form-label" for="passwordInput">Password*:</label>
-        <input              
-            id="passwordInput" 
-            class="form-control"
-            [class.is-invalid]="password.invalid && password.touched"
-            type="password" 
-            name="password" 
-            placeholder="Password"
-            formControlName="password">
-    </div>
-    <p *ngIf="password.touched && password.hasError('required')" style="color: red">
-        Required field!    
-    </p>
-    <p *ngIf="password.invalid && password.hasError('minlength')" style="color: red">
-        Password must be atleast 8 characters!    
-    </p>
-    <p *ngIf="password.invalid && password.hasError('pattern')" style="color: red">
-        Password must contain atleast one '#' or '@' character!    
-    </p>
-
+        <mat-form-field class="formControl">
+            <mat-label for="lastNameInput">Last Name</mat-label>
+            <input matInput             
+                id="lastNameInput" 
+                [class.is-invalid] = "lastName.invalid && lastName.hasError('pattern')"
+                type="text" 
+                name="lastName" 
+                placeholder="Last Name"
+                formControlName="lastName">
+        </mat-form-field>
+        <mat-error *ngIf="lastName.invalid && lastName.hasError('pattern')" style="color: red">
+            Last name must contain only letters   
+        </mat-error>
     
-    <button 
-    type="submit"
-    class="btn btn-warning m-2">
-    Submit
-    </button>
-</form>
+        <mat-form-field class="formControl">
+            <mat-label for="usernameInput">Username</mat-label>
+            <input matInput             
+            id="usernameInput"
+            [class.is-invalid] = "username.invalid && username.touched"
+            type="text" 
+            name="username" 
+            placeholder="Username"
+            formControlName="userName">
+        </mat-form-field>
+        <mat-error *ngIf="username.invalid && username.touched && username.hasError('required')" style="color: red">
+            Required field!  
+        </mat-error>
+        <mat-error *ngIf="username.invalid && username.hasError('pattern')" style="color: red">
+            Username must contain only letters!  
+        </mat-error>
+        <mat-error *ngIf="username.invalid && username.hasError('minlength')" style="color: red">
+            Username must be atleast 4 characters!   
+        </mat-error>
+    
+        <mat-form-field class="formControl">
+            <mat-label for="birthDateInput">Date of Birth </mat-label>
+            <input matInput             
+            id="birthDateInput"
+            [class.is-invalid]="birthDate.invalid && birthDate.hasError('pattern')"
+            type="text" 
+            name="birthDate" 
+            placeholder="(DD/MM/YY or DD/MM/YYYY)"
+            formControlName="birthDate">
+        </mat-form-field>
+        <mat-error *ngIf="birthDate.invalid && birthDate.hasError('pattern')" style="color: red">
+            Invalid Date!
+        </mat-error>
+    
+        
+        <mat-form-field class="formControl">
+            <mat-label for="zipInput">ZIP code</mat-label>
+            <input matInput             
+                id="zipInput" 
+                [class.is-invalid] = "zip.invalid && zip.hasError('min') || zip.hasError('max')"
+                type="text" 
+                name="zip" 
+                placeholder="ZIP"
+                formControlName="zip">
+        </mat-form-field>
+        <mat-error *ngIf="zip.invalid && zip.hasError('min') || zip.hasError('max')"  style="color: red">
+            ZIP code must be betwwen 1000 and 9999   
+        </mat-error>
+        <mat-error *ngIf="zip.invalid && zip.touched && zip.hasError('pattern')"  style="color: red">
+            ZIP code must be numbers  
+        </mat-error>
+    
+        <mat-form-field class="formControl">
+            <mat-label for="passwordInput">Password:</mat-label>
+            <input matInput             
+                id="passwordInput" 
+                [class.is-invalid]="password.invalid && password.touched"
+                type="password" 
+                name="password" 
+                placeholder="Password"
+                formControlName="password">
+        </mat-form-field>
+        <mat-error *ngIf="password.touched && password.hasError('required')" style="color: red">
+            Required field!    
+        </mat-error>
+        <mat-error *ngIf="password.invalid && password.hasError('minlength')" style="color: red">
+            Password must be atleast 8 characters!    
+        </mat-error>
+        <mat-error *ngIf="password.invalid && password.hasError('pattern')" style="color: red">
+            Password must contain atleast one '#' or '@' character!    
+        </mat-error>
+    
+        
+        <button mat-raised-button color="accent"
+        type="submit"
+        >
+        Submit
+        </button>
+    </form>
+</mat-card>

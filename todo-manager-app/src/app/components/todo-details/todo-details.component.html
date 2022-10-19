@@ -1,17 +1,24 @@
 <h2>Details</h2>
 
-<ul class="list-group">
-    <li class="list-group-item"><span>Title: </span>{{todo?.title}}</li>
-    <li class="list-group-item"><span>Status: </span>{{todo?.progress}}</li>
-    <li class="list-group-item"><span>Details: </span>{{todo?.description}}</li>
-    <li class="list-group-item"><span>Creation date</span>{{todo?.date}}</li>
-    <li class="list-group-item"><span>User: </span>{{user?.name}}</li>
-    <li class="list-group-item"><span>Email: </span>{{user?.email}}</li>
-    <li class="list-group-item">        
-        <ul class="table table-bordered table-dark" name="subtodos" class="list-group">
-            <span for="subtodos" style="width: 96%" >Subtodos</span >
-            <li class="list-group-item" style="width: 96%" *ngFor="let subTodoId of todo?.subTodoIds" >{{getSubtodo(subTodoId)}}</li>
-        </ul>   
-    </li>
-</ul>
+<mat-list class="subTodosList">
+    <mat-list-item><span>Title: </span> {{todo?.title}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><span>Status: </span> {{todo?.progress}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><span>Details: </span> {{todo?.description}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><span>Creation date: </span> {{todo?.date}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><span>User: </span> {{user?.name}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><span>Email: </span> {{user?.email}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <ul>        
+        <span for="subtodos" style="width: 96%" >Subtodos</span >
+        <mat-list name="subtodos">
+            <mat-list-item class="subTodoItem" style="width: 96%" *ngFor="let subTodoId of todo?.subTodoIds" >{{getSubtodo(subTodoId)}}</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>   
+    </ul>
+</mat-list>
 

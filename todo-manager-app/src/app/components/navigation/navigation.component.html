@@ -1,33 +1,33 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navigation-bar">
     <a  class="navbar-brand" [routerLink]="['/']">
         <h1>Best Todo App</h1>
     </a>
-    <a class="nav-link" [routerLink]="['/signup']" style="color: whitesmoke">Sign In</a>
+    <button mat-raised-button color="accent" [routerLink]="['/signup']">Sign In</button>
     <form [formGroup]="myForm" (ngSubmit)="onAddTodo()">
-        <div class="d-flex" style="gap: 10px">
-            <div class="d-flex align-items-center" style="gap: 10px">
-                <label for="newTodoInput" style="color: whitesmoke;">Todo:</label>
+        <div class="d-flex input-div" style="gap: 10px">
+            <mat-form-field class="d-flex align-items-center" style="gap: 10px">
+                <mat-label for="newTodoInput">Todo:</mat-label>
                 <input
-                class="form-control" 
-                [class.is-invalid] = "myForm.get('title')?.invalid && myForm.get('username')?.touched"
-                type="text" 
-                id="newTodoInput" 
-                name="newTodo" 
-                placeholder="Todo title"
-                formControlName="title">
+                    matInput
+                    [class.is-invalid] = "myForm.get('title')?.invalid && myForm.get('username')?.touched"
+                    type="text" 
+                    id="newTodoInput" 
+                    name="newTodo" 
+                    placeholder="Todo title"
+                    formControlName="title">
                 <div>
-                    <p *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.touched && myForm.get('title')?.hasError('required')" style="color: whitesmoke">
+                    <mat-error *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.touched && myForm.get('title')?.hasError('required')">
                         Required field!
-                    </p>
-                    <p *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.hasError('minlength')" style="color: whitesmoke">
+                    </mat-error>
+                    <mat-error *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.hasError('minlength')">
                         Must be atleast 4 characters!
-                    </p>
-                    <p *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.hasError('maxlength')" style="color: whitesmoke">
+                    </mat-error>
+                    <mat-error *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.hasError('maxlength')">
                         Must be max 15 characters!
-                    </p>
+                    </mat-error>
                 </div>
-            </div>
-            <button [disabled]="myForm.invalid" class="btn btn-warning" type="submit">Add Todo</button>
+            </mat-form-field>
+            <button mat-raised-button color="accent" [disabled]="myForm.invalid" type="submit">Add Todo</button>
         </div>
     </form>
     <h3>

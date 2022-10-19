@@ -4,8 +4,15 @@ h2 {
 }
 
 form {
-    width: 600px;
+    width: 90%;
     margin: 0 auto 20px auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
     
+}
+
+.sign-up-card {
+    margin: 0 auto;
+    width: 50%;
 }

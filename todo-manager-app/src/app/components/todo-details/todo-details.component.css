@@ -3,11 +3,20 @@ h2 {
     text-align: center;
 }
 
-ul {
-    width: 1000px;
-    margin: 30px auto
+.subTodosList {
+    margin: 0 auto;
+    width: 50%;
 }
 
 span {
     font-weight: bold;
+    text-align: center;
+}
+
+.subTodoItem {
+    justify-content: center;
+}
+
+.span{
+    justify-content: center;
 }

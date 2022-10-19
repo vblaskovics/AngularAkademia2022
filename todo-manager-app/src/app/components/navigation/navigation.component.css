@@ -1,13 +1,23 @@
-h1 {
-    color: whitesmoke;
-    margin-left: 50px;
+.navigation-bar {
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(231, 229, 229);
 }
 
-h3 {
-    color: whitesmoke;
-    margin-right: 50px;
+.input-div {
+    padding-top: 12px;
+}
+
+h1, h3 {
+    margin: 0
 }
 
 p {
     margin-bottom: 0;
+}
+
+button {
+    height: 40px;
 }
