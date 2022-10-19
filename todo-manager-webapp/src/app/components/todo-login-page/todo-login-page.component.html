@@ -1,35 +1,52 @@
 <h3>Login</h3>
+<mat-divider></mat-divider>
 <div class="form-group">
   <form
     *ngIf="!authService.getUser()"
     [formGroup]="form"
     (ngSubmit)="loginUser()"
   >
-    <label class="mt-3" for="userName">Username</label>
-    <input
-      class="form-control"
-      formControlName="userName"
-      type="text"
-      id="userName"
-      placeholder="Enter username"
-    />
-
-    <label class="mt-3" for="password">Password</label>
-    <input
-      class="form-control"
-      formControlName="password"
-      type="password"
-      id="password"
-      placeholder="Enter password"
-    />
-
-    <button type="submit" class="btn btn-primary mt-3">Send</button>
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="username-container" appearance="fill">
+            <mat-label>Username</mat-label>
+            <input
+              type="text"
+              id="username"
+              matInput
+              formControlName="userName"
+              placeholder="Ex. Bekuci22"
+            />
+            <mat-error *ngIf="this.form.controls.userName.hasError('required')">
+              Please enter a valid username
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="password-container" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              id="password"
+              placeholder="Enter password"
+            />
+            <mat-error *ngIf="this.form.controls.password.hasError('required')">
+              Please enter your correct password
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <button mat-stroked-button color="primary" type="submit">Send</button>
   </form>
 </div>
 
-<div class="alert alert-danger mt-3" *ngIf="message">
+<!-- <div class="alert alert-danger mt-3" *ngIf="message">
   {{ message }}
-</div>
+</div> -->
 
 <div *ngIf="authService.getUser()">
   <div class="container">

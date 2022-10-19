@@ -12,6 +12,12 @@ import { TodoSigninPageComponent } from './components/todo-signin-page/todo-sign
 import { RouterModule, Routes } from '@angular/router';
 import { TodoLoginPageComponent } from './components/todo-login-page/todo-login-page.component';
 import { LoggedInGuard } from './services/logged-in.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Angular Material
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
   { path: '', component: TodoTableListComponent },
@@ -40,6 +46,10 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
