@@ -33,17 +33,17 @@
         >
           The Title cannot contain more than 15 characters!!
         </div>
-        <button class="btn btn-primary">Submit</button>
+        <button  mat-raised-button color="primary" >Submit</button>
       </form>
     </li>
   </ul>
   <div class="my-2 my-lg-0">
-    <button class="btn btn-primary m-1" [routerLink]="['/registration']">
+    <button  mat-raised-button color="primary"  [routerLink]="['/registration']">
       Add user
     </button>
 
-    <button *ngIf="!loginService.getUser()" class="btn btn-primary m-1" [routerLink]="['/login']">Login</button>
-    <button class="btn btn-secondary m-1" *ngIf="loginService.getUser()" (click)="loginService.logout()">Logout</button>
+    <button *ngIf="!loginService.getUser()"  mat-raised-button color="primary" [routerLink]="['/login']">Login</button>
+    <button  mat-raised-button color="primary"  *ngIf="loginService.getUser()" (click)="loginService.logout()">Logout</button>
 
     <span class="navbar-text"> Current todos: {{ todoService.numberOfTodos }} </span>
   </div>

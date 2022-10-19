@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { LoginForm } from './login.form';
 import { LoginFormModel } from './model/userLogin-form.model';
@@ -11,6 +11,8 @@ import { LoginFormModel } from './model/userLogin-form.model';
 })
 export class LoginComponent implements OnInit {
 
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
   invalidLoginMessage: string = ''
   loginForm: FormGroup<LoginFormModel> = new LoginForm();

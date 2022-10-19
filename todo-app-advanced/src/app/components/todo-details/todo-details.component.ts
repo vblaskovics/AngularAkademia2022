@@ -11,6 +11,8 @@ export class TodoDetailsComponent implements OnInit {
   @Output() closeItem: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() elementProgress: EventEmitter<Todo> = new EventEmitter<Todo>();
 
+  tableData = this.todoItem;
+
   closed: boolean = true;
   constructor() { }
 

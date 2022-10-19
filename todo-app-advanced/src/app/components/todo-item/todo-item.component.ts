@@ -12,7 +12,6 @@ export class TodoItemComponent implements OnInit {
 
   todo?: Todo;
   @Output()clickedElement: EventEmitter<Todo> = new EventEmitter<Todo>();
-  @Output() deleteItemFromTable: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   isclicked: boolean = false;
 

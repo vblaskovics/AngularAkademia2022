@@ -1,20 +1,30 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!loginService.getUser()">
   <div class="container">
-    <input
-      type="text"
-      class="form-control mt-5"
-      placeholder="Username"
-      formControlName="username"
-    />
 
-    <input
-      type="text"
-      class="form-control mt-2"
-      placeholder="Password"
-      formControlName="password"
-    />
+ <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input  type="email" matInput formControlName="username" placeholder="Ex. pat@example.com">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+ <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input formControlName="password"
+    type="password" matInput placeholder="Something... something..">
+    <mat-error *ngIf="!passwordControl.hasError('minLength')">
+      Please enter a valid password
+    </mat-error>
+    <mat-error *ngIf="passwordControl.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
 
-    <button class="btn btn-primary mt-2" type="submit" [disabled]="loginForm.status === 'VALID'? false: true">Login</button>
+
+    <button  mat-raised-button color="primary" type="submit" [disabled]="loginForm.status === 'VALID'? false: true">Login</button>
   </div>
 </form>
 
@@ -23,3 +33,18 @@
     {{ invalidLoginMessage }}
   </div>
 </div>
+
+
+
+<!--
+<input
+matInput
+type="text"
+placeholder="Username"
+/>
+
+<input
+type="text"
+class="form-control mt-2"
+placeholder="Password"
+/> -->

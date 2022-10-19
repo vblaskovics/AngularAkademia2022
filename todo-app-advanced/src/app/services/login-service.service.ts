@@ -8,7 +8,7 @@ export class LoginServiceService {
   constructor() { }
 
   login(user: string, password: string): boolean{
-    if(user === 'Username' && password === 'Password'){
+    if(user === 'Username@gmail.com' && password === 'Password'){
       localStorage.setItem('username', user);
       return true;
     }

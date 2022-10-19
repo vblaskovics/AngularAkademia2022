@@ -15,8 +15,6 @@ export class TodoNavbarComponent implements OnInit {
 
   navigateToLogin: boolean = true;
 
-  @Input() numberofTodos?: number;
-  @Output() titleS: EventEmitter<string> = new EventEmitter<string>();
   constructor(fb: FormBuilder, public loginService: LoginServiceService, public todoService: TodoDataService) {
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
@@ -28,7 +26,7 @@ export class TodoNavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.titleS.emit(this.myForm.value.title);
+    this.todoService.addedElementHandler(this.title.value);
   }
   onReset() {
     this.myForm.reset();
