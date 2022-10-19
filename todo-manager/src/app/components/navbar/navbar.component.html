@@ -8,6 +8,7 @@
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" id="form">
       <ng-container *ngIf="isSignedIn()">
         <input
+        matInput
         id="titleInput"
         name="titleInput"
         type="text"
