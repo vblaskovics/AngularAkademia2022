@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
 import { TodoSigninPageComponent } from './todo-signin-page.component';
 
@@ -8,9 +9,9 @@ describe('TodoSigninPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodoSigninPageComponent ]
-    })
-    .compileComponents();
+      declarations: [TodoSigninPageComponent],
+      imports: [AppModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TodoSigninPageComponent);
     component = fixture.componentInstance;

@@ -5,6 +5,7 @@
     *ngIf="!authService.getUser()"
     [formGroup]="form"
     (ngSubmit)="loginUser()"
+    id="loginForm"
   >
     <table>
       <tr>
@@ -52,7 +53,12 @@
   <div class="container">
     Logged in as <strong>{{ authService.getUser() }}</strong>
   </div>
-  <button class="btn btn-secondary mt-3" (click)="authService.logout()">
+  <button
+    id="logout"
+    mat-flat-button
+    color="warn"
+    (click)="authService.logout()"
+  >
     Log out
   </button>
 </div>
