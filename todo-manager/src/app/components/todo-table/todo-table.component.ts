@@ -1,15 +1,18 @@
 import { TodoServiceService } from './../../services/todo-service.service';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { progress, Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
+import {MatSort, Sort} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-todo-table',
   templateUrl: './todo-table.component.html',
   styleUrls: ['./todo-table.component.css'],
 })
-export class TodoTableComponent implements OnInit {
+export class TodoTableComponent implements OnInit, AfterViewInit {
   // @Input() todos?: Todo[];
   // @Input() users?: User[];
   // @Input() subTodos?: Todo[];
@@ -24,8 +27,12 @@ export class TodoTableComponent implements OnInit {
   // nextId: number = 0;
   myForm: FormGroup;
 
+  displayedColumns: string[] = ['id', 'title', 'progress', 'username'];
+  dataSource = new MatTableDataSource(this.todos);
 
-  constructor(fb: FormBuilder, private todoService: TodoServiceService) {
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(fb: FormBuilder, private todoService: TodoServiceService, private _liveAnnouncer: LiveAnnouncer) {
     this.myForm = fb.group({
       todoInput: ['',
     [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
@@ -37,6 +44,10 @@ export class TodoTableComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   nameUser(userId: string | number) {
     let user = this.users?.find((user) => {
@@ -52,6 +63,7 @@ export class TodoTableComponent implements OnInit {
     this.selectedTodo = todo;
     this.isSelected = true;
   }
+
 
   get inProgressCounter() {
     let counter = 0;
@@ -69,15 +81,25 @@ export class TodoTableComponent implements OnInit {
     if(this.selectedTodo.progress == progress.open) {
       nextState = progress.inProgress;
     } else if ( this.selectedTodo.progress == progress.inProgress) {
-     nextState = progress.done;
+      nextState = progress.done;
     } else {
       nextState = progress.open;
     }
     this.selectedTodo.progress = nextState;
   }
 
-  progressSort() {
-    if (this.isAscending) {
+  // announceSortChange(sortState: Sort) {
+  //   if (sortState.direction) {
+  //     this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+  //   } else {
+  //     this._liveAnnouncer.announce('Sorting cleared');
+  //   }
+  // }
+
+  progressSort(sortState: Sort) {
+    console.log('sort', sortState);
+
+    if (sortState.direction === "asc") {
       this.todos?.sort((a, b) =>
         a.progress < b.progress ? 1 : a.progress > b.progress ? -1 : 0
       );
@@ -101,7 +123,6 @@ export class TodoTableComponent implements OnInit {
   get todoInput(): FormControl {
     return this.myForm.get('todoInput') as FormControl;
   }
-
 
 
 

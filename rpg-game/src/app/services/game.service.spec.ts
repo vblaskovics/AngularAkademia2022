@@ -99,6 +99,17 @@ describe("GameService", () => {
 
     })
 
+    it("should warn if not enough characters selected", () => {
+
+      let c1: Character = { attack: 4, defense: 4, hp: 8, name: 'Hero'};
+      let c2: Character = { attack: 4, defense: 4, hp: 8, name: 'Hero'};
+
+      gameService.attack(c1, c2);
+
+      expect(displayService.getHistoryText).withContext("warning").toBe('Válassz két karaktert!');
+
+    })
+
   })
 
 })

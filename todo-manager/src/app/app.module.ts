@@ -9,6 +9,11 @@ import { TodoTableComponent } from './components/todo-table/todo-table.component
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 const routes: Routes = [
   {path: 'todo-table', component: TodoTableComponent},
@@ -27,7 +32,11 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatListModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,17 +1,17 @@
 <div>
   <h3>Details</h3>
 
-  <ul>
-    <li>Title: {{ selectedTodo?.title }}</li>
-    <li>Status: {{ selectedTodo?.progress }} <a (click)="progressChange()">⏩</a></li>
-    <li>Details: {{ selectedTodo?.description }}</li>
-    <li>Creation date: {{ selectedTodo?.date }}</li>
-    <li>User: {{ nameUser(selectedTodo?.user_id!) }}</li>
-    <li>Email: {{ userEmail(selectedTodo?.user_id!) }}</li>
-    <li>SubTodos:
+  <mat-list>
+    <mat-list-item id="title">Title: {{ selectedTodo?.title }}</mat-list-item>
+    <mat-list-item>Status: {{ selectedTodo?.progress }} <a (click)="progressChange()">⏩</a></mat-list-item>
+    <mat-list-item>Details: {{ selectedTodo?.description }}</mat-list-item>
+    <mat-list-item>Creation date: {{ selectedTodo?.date }}</mat-list-item>
+    <mat-list-item>User: {{ nameUser(selectedTodo?.user_id!) }}</mat-list-item>
+    <mat-list-item>Email: {{ userEmail(selectedTodo?.user_id!) }}</mat-list-item>
+    <mat-list-item>SubTodos:
       <app-todo-item *ngFor="let subtodo of listSubTodos()"
       [subTodo]="subtodo">
     </app-todo-item>
-    </li>
-  </ul>
+    </mat-list-item>
+  </mat-list>
 </div>

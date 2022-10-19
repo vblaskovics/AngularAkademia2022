@@ -15,7 +15,8 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppModule] // vagy helyette azt a modult, ami deklarálta az összes komponenst
-      // declarations: [AppComponent, DisplayAreaComponent] //mindent oda kell adni a TestBed-nek, az összes hivatkozást, amit használnia kell (vagy imports: [AppModule])
+      // declarations: [AppComponent, DisplayAreaComponent] //mindent oda kell adni a TestBed-nek, az összes hivatkozást, amit használnia kell 
+      //(vagy imports: [AppModule])
     }).compileComponents(); // compile: ne csak létrehozza, fordítsa is le
 
     fixture = TestBed.createComponent(AppComponent); // ez uaz mint a TestBed.inject a service-nél, csak komponensekre

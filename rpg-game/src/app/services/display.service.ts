@@ -23,8 +23,10 @@ export class DisplayService {
   };
 
   removeHistoryText() {
-    this.logger.log('History cleared')
-    this.history.splice(0, this.history.length);
+    if(this.history.length > 0) {
+      this.logger.log('History cleared')
+      this.history.splice(0, this.history.length);
+    }
   }
 
   showMessage(msg1?: string, msg2?: string) {

@@ -1,53 +1,41 @@
-<!-- <nav class="navbar navbar-expand-lg bg-info">
-  <div class="container-md">
-    <a class="navbar-brand" href="#">Todo Table</a>
-  </div>
-
-  <!-- <div class="nav-item">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-      <div class="p-1">
-        <label for="todoInput" class="form-label">Todo:</label>
-        <input id="todoInput" type="text" class="form-control" name="todo" placeholder="todo" ngModel>
-      </div>
-      <button type="submit" class="btn btn-info">➕</button>
-    </form>
-  </div> -->
-<!--
-  <div>
-    <form class="d-flex" [formGroup]="myForm" (ngSubmit)="handleButton()">
-      <div class="p-1">
-        <label for="todoInput" class="form-label">Todo:</label>
-        <input
-          id="todoInput"
-          type="text"
-          class="form-control"
-          name="todoInput"
-          formControlName="todoInput"
-          [class.is-invalid]="myForm.get('todoInput')?.touched && myForm.get('todoInput')?.hasError"
-        />
-        <div *ngIf="todoInput.errors?.['required']" id="todoInput" class="invalid-feedback">
-          Required field.
-        </div>
-        <div *ngIf="todoInput.touched && todoInput.getError('minLength')" id="todoInput" class="invalid-feedback">
-          The length must be at least 4 characters.
-        </div>
-        <div *ngIf="todoInput.errors?.['maxLength']" id="todoInput" class="invalid-feedback">
-          The length must be shorter than 15 characters.
-        </div>
-      </div>
-      <button type="submit" class="btn btn-info">➕</button>
-    </form>
-  </div>
-
-   <button class="btn btn-warning m-2" (click)="onSignIn()">Sign In</button> -->
-
-
-<!-- </nav> -->
-
 <div class="row">
   <div class="col-10">
-    <table class="table table-striped">
-      <thead>
+    <table mat-table [dataSource]="todos" class="mat-elevation-z8" matSort (matSortChange)="progressSort($event)">
+    <!-- (matSortChange)="announceSortChange($event)"> -->
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let todo" (click)="showDetails(todo)"> {{todo.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let todo" (click)="showDetails(todo)" id="title"> {{todo.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by progress"> Progress
+          <span *ngIf="isAscending">⬆️</span>
+          <span *ngIf="!isAscending">⬇️</span>
+        </th>
+        <td mat-cell *matCellDef="let todo" (click)="showDetails(todo)"> {{todo.progress}}
+          <a (click)="progressChange(todo)">⏩</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> User name </th>
+        <td mat-cell *matCellDef="let todo" (click)="showDetails(todo)"> {{nameUser(todo.user_id)}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
+
+      <!-- <thead>
         <tr>
           <th scope="col">id</th>
           <th scope="col">title</th>
@@ -69,10 +57,7 @@
           <td>{{ todo?.progress }} <a (click)="progressChange(todo)">⏩</a></td>
           <td>{{ nameUser(todo.user_id) }}</td>
         </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+      </tbody> -->
 
 <div *ngIf="isSelected">
   <app-todo-details
