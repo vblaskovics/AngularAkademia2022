@@ -9,9 +9,11 @@ import { DetailsComponent } from './details/details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginTodoReactive2Component } from './login-todo-reactive2/login-todo-reactive2.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
-  { path: 'signup', component: LoginTodoReactive2Component },
+  { path: 'sign', component: LoginTodoReactive2Component },
 ];
 
 @NgModule({
@@ -28,6 +30,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    SharedModule
   ],
   bootstrap: [AppComponent],
 })

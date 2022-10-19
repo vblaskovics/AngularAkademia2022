@@ -1,39 +1,42 @@
+<hr />
 
-<hr>
-
-<table class="table table-striped" style="margin: auto; max-width: 900px;" >
-  <thead>
-    <th scope="col">id</th>
-    <th scope="col">title</th>
-    <th scope="col">progress</th>
-    <th scope="col">userId</th>
-  </thead>
-<tbody>
-  <tr app-todo-item *ngFor="let todo of todo, let i = index" [todo]="todo" (click)="selectTodo(todo)" [class.bgGrey]="i%2===0">
-    {{todo}}
-  </tr>
-    <tr>
+<table
+  mat-table
+  class="table table-striped"
+  style="margin: auto; max-width: 900px"
+>
+  <ng-container>
+    <th mat-header-cell scope="col">id</th>
+    <th mat-header-cell scope="col">title</th>
+    <th mat-header-cell scope="col">progress</th>
+    <th mat-header-cell scope="col">userId</th>
+  </ng-container>
+  <ng-container>
+    <tr
+      mat-cell
+      app-todo-item
+      *ngFor="let todo of todo; let i = index"
+      [todo]="todo"
+      (click)="selectTodo(todo)"
+      [class.bgGrey]="i % 2 === 0"
+    >
+      {{
+        todo
+      }}
     </tr>
-</tbody>
-
+  </ng-container>
 </table>
-<table class="table table-striped" style="margin: auto; max-width: 900px;">
-  <tbody>
-    <tr>
-    <div>
-      <app-details  *ngIf="isTodoSelected" [users]="getUser(selectedTodo)" [todo]="selectedTodo"></app-details>
-    </div>
+<table mat-table>
+  <tr mat-header-cell>
+    <app-details
+      *ngIf="isTodoSelected"
+      [users]="getUser(selectedTodo)"
+      [todo]="selectedTodo"
+    ></app-details>
   </tr>
-  </tbody>
 </table>
 
-
-
-
-
-
-
-<!-- <div class="row">
+<!-- <div class="cell">
   <div class="col-xs-12">
       <table class="table">
           <thead class="thead-light">

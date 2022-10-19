@@ -1,23 +1,14 @@
-h2 {
-  box-shadow: white;
-  text-align: center;
-  margin: auto;
-  color: rgb(255, 255, 255);
+::ng-deep .mat-card-content {
+  padding: 5px !important;
 }
 
-form {
-  width: 500px;
-  text-shadow: 2px black;
-}
 
-.form-control.ng-touched.ng-invalid {
-  border: 2px solid red;
-}
-
-.sign-up-container{
+mat-card {
   width: 100%;
+
   min-height: calc(100vh - 57px);
-  background-image: url(https://images2.alphacoders.com/941/thumb-1920-941898.jpg);
+  /* background-image: url(https://images2.alphacoders.com/941/thumb-1920-941898.jpg); */
+  background-color: purple;
   background-position: center;
   background-size: cover;
   display: flex;
@@ -26,23 +17,39 @@ form {
   padding: 75px;
 }
 
-button {
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  opacity: 0.9;
-}
-
 .container {
   padding: 16px;
 }
 
 label {
-	cursor: pointer;
-	color: rgb(255, 255, 255);
+  cursor: pointer;
+  color: rgb(255, 255, 255);
   font-weight: bold;
-	text-shadow: 3px black;
-	margin: 3px;
+  text-shadow: 3px black;
+  margin: 3px;
+}
+
+mat-card-actions {
+  text-align: center;
+  justify-content: center;
+}
+
+mat-card-title {
+  box-shadow: white;
+  text-align: center;
+  margin: auto;
+  color: rgb(255, 255, 255);
+}
+
+
+button {
+  display: table-cell;
+  width: 500px;
+  height: 50px;
+  background-color: green;
+  color: white;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
 }
