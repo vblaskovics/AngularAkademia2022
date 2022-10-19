@@ -45,6 +45,6 @@
     <button *ngIf="!loginService.getUser()" class="btn btn-primary m-1" [routerLink]="['/login']">Login</button>
     <button class="btn btn-secondary m-1" *ngIf="loginService.getUser()" (click)="loginService.logout()">Logout</button>
 
-    <span class="navbar-text"> Current todos: {{ numberofTodos }} </span>
+    <span class="navbar-text"> Current todos: {{ todoService.numberOfTodos }} </span>
   </div>
 </nav>

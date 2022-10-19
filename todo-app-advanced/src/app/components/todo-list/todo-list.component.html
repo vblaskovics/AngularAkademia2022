@@ -4,8 +4,8 @@
       <th class="col">Id</th>
       <th class="col">Title</th>
       <th class="col">
-        Progress <span (click)="(todoService.sortAscending)">🔼</span>
-        <span (click)="(todoService.sortDescending)" type>🔽</span>
+        Progress <span (click)="(todoService.sortAscending())">🔼</span>
+        <span (click)="(todoService.sortDescending())" type>🔽</span>
       </th>
       <th class="col">Username</th>
       <th class="col">View details</th>
@@ -23,5 +23,3 @@
     (elementProgress)="todoService.updateProgressOfitem($event)"
   ></app-todo-details>
 </div>
-
-<!-- [todo]="todoService.todoItems" -->

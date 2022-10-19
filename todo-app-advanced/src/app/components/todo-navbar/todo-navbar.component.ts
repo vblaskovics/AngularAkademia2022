@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { TodoDataService } from 'src/app/services/todo-data.service';
 import { __values } from 'tslib';
 
 @Component({
@@ -16,7 +17,7 @@ export class TodoNavbarComponent implements OnInit {
 
   @Input() numberofTodos?: number;
   @Output() titleS: EventEmitter<string> = new EventEmitter<string>();
-  constructor(fb: FormBuilder, public loginService: LoginServiceService) {
+  constructor(fb: FormBuilder, public loginService: LoginServiceService, public todoService: TodoDataService) {
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     });

@@ -5,12 +5,11 @@
   <td *ngFor="let item of todoService.todoItems[i].user_id">{{item.name}}</td>
   <td
     class="makeMePointable short"
-    (click)="tableDataClicked()"
+    (click)="tableDataClicked(item)"
     [routerLink]="['/todoApp/todo-details']"
   >
     🔍
   </td>
-  <td class="makeMePointable short" (click)="removeItem()">❌</td>
-  <td class="makeMePointable short" (click)="changeTodoStatus()">▶</td>
+  <td class="makeMePointable short" (click)="todoService.removeThisItem(item)">❌</td>
+  <td class="makeMePointable short" (click)="todoService.updateProgressOfitem(item)">▶</td>
 </tr>
-<!-- *ngFor="let item of todo?.user_id "  {{ item.name }} -->

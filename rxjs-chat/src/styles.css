@@ -13,6 +13,7 @@ html {
 
 body {
   margin: 0;
+  background: #545454 !important;
 }
 
 article,
@@ -8535,8 +8536,8 @@ button.close {
   }
 }
 
-/* 
-  Google Hangouts-like bootstrap css originally from:  
+/*
+  Google Hangouts-like bootstrap css originally from:
   http://bootsnipp.com/snippets/featured/like-hangout-chat
   by SrPatinhas
 

@@ -20,7 +20,7 @@ import { FromNowPipe } from './pipes/from-now.pipe';
     ChatThreadComponent,
     ChatWindowComponent,
     ChatMessageComponent,
-    FromNowPipe
+    FromNowPipe,
   ],
   imports: [
     BrowserModule,

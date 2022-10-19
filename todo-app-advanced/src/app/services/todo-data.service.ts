@@ -19,6 +19,8 @@ export class TodoDataService {
 
   nextId!: number;
 
+  numberOfTodos: number = 0;
+
   SortDescendingOrder: string[] = [
     progress.Open,
     progress.In_Progress,
@@ -114,21 +116,23 @@ export class TodoDataService {
     ];
 
     this.toDoElementSelected = false;
-    this.inProgress();
     this.nextId = this.todoItems.length + 1;
+
+    this.countInProgress();
   }
 
-  inProgress() {
+  countInProgress() {
+    let sum = 0;
     for (let index = 0; index < this.todoItems.length; index++) {
       const element = this.todoItems[index];
       if (element.progress == progress.In_Progress) {
-        this.LastInProgress++;
+        sum++;
       }
     }
-
-    this.OverallInProgress = this.LastInProgress;
-    this.LastInProgress = 0;
+    this.numberOfTodos = sum;
   }
+
+
 
   closeTheDetails(event: boolean) {
     this.toDoElementSelected = !event;
@@ -137,7 +141,6 @@ export class TodoDataService {
   removeThisItem(todo: Todo) {
     let todoIndex = this.todoItems.indexOf(todo);
     this.todoItems.splice(todoIndex, 1);
-    this.inProgress();
   }
 
   addedElementHandler(titleInput: string) {
@@ -160,8 +163,8 @@ export class TodoDataService {
     console.log(this.nextId + 1);
   }
 
-  updateProgressOfitem(event: Todo) {
-    const index = this.todoItems.indexOf(event);
+  updateProgressOfitem(todo: Todo) {
+    const index = this.todoItems.indexOf(todo);
     if (this.todoItems[index].progress === progress.Done) {
       this.todoItems[index].progress = progress.Open;
     } else if (this.todoItems[index].progress === progress.Open) {
@@ -169,7 +172,7 @@ export class TodoDataService {
     } else if (this.todoItems[index].progress === progress.In_Progress) {
       this.todoItems[index].progress = progress.Done;
     }
-    this.inProgress();
+    this.countInProgress();
   }
 
   sortAscending() {
