@@ -1,0 +1,27 @@
+<h2>The Big Fighting RPG</h2>
+
+<h3>Characters</h3>
+
+<h4>Character1</h4>
+<ol>
+  <li>name: {{char1.name}}</li>
+  <li>attack: {{char1.attack}}</li>
+  <li>defense: {{char1.defense}}</li>
+  <li>hp: {{char1.hp}}</li>
+</ol>
+
+<h4>Character2</h4>
+<ol>
+  <li>name: {{char2.name}}</li>
+  <li>attack: {{char2.attack}}</li>
+  <li>defense: {{char2.defense}}</li>
+  <li>hp: {{char2.hp}}</li>
+</ol>
+
+<div style="border: solid 1px black; background-color: beige;">
+  <span id="textContainer" type="" style="white-space: pre-line;">
+    {{ textToDisplay }}
+  </span>
+</div>
+
+<button (click)="onAttack()">Támadás</button>

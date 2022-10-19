@@ -1,0 +1,7 @@
+
+  <td>{{ todoItem.id }}</td>
+  <td>{{ todoItem.title }}</td>
+  <td (click)="sortingService.nextInProgress(todoItem)">{{todoItem.progress}}⏩</td>
+  <td>{{ todoItem.date }}</td>
+  <td>{{ todoItem.userId.id }}</td>
+

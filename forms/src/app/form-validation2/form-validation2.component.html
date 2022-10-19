@@ -1,0 +1,29 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="firstnameInput">First name</label>
+    <input
+      class="form-control"
+      type="text"
+      name="firstname"
+      id="firstnameInput"
+      placeholder="firstname"
+      formControlName="firstname"
+      [class.is-invalid]="myForm.get('firstname')?.invalid && myForm.get('firstname')?.touched"/>
+    <p
+      class="invalid-feedback"
+      *ngIf="myForm.get('firstname')?.hasError('minLength')">
+        Min lenth must be 4 characters
+    </p>
+    <p
+      class="invalid-feedback"
+      *ngIf="myForm.get('firstname')?.hasError('pattern')">
+        userId must begin with {{ myForm.get('firstname')?.getError('pattern').requiredPattern }}!
+    </p>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">
+    Submit
+  </button>
+</form>
+
+<p class="userid-value">{{ myForm.get('firstname')?.value }}</p>

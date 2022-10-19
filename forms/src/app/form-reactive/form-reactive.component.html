@@ -1,0 +1,46 @@
+<h2>Form with Reactive Forms</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="usernameInput"
+      placeholder="Username"
+      formControlName="username"
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="emailaddressInput">Email address</label>
+    <input
+      class="form-control"
+      type="text"
+      name="emailaddress"
+      id="emailaddressInput"
+      placeholder="Email address"
+      formControlName="emailaddress"
+    >
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<button class="btn btn-primary mb-2" (click)="onClickMyFormValue()">myForm value</button>
+
+<div *ngFor="let myEmail of myEmails">
+  <h3>Username:</h3>
+  <p>{{ myEmail }}</p>
+</div>
+<div *ngFor="let myUsername of myUsernames">
+  <h3>Email:</h3>
+  <p>{{ myUsername }}</p>
+</div>
+
+
+<button class="btn btn-primary mb-2" (click)="erease()">Erease Form</button>
+<button class="btn btn-primary mb-2" (click)="getUsername()">Get Username</button>
+<button class="btn btn-primary mb-2" (click)="resetForm()">Reset Form</button>
+<button class="btn btn-primary mb-2" (click)="setForm()">Set Form</button>
+<button class="btn btn-primary mb-2" (click)="patchValue()">Patch Form</button>
