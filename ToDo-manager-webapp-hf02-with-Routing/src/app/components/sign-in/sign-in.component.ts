@@ -15,6 +15,7 @@ import { LoginService } from 'src/app/shared/login.service';
 export class SignInComponent implements OnInit {
   myForm: FormGroup;
   message: string = '';
+  hide = true;
 
   constructor(fb: FormBuilder, public loginService: LoginService) {
     this.myForm = fb.group({
@@ -55,7 +56,9 @@ export class SignInComponent implements OnInit {
     return this.myForm.get('password') as FormControl;
   }
 
-  onSubmit(){
+
+
+  protected onSubmit(){
 
     // this.login(this.username.value, this.password.value)
     // this.form.reset()
@@ -68,7 +71,7 @@ export class SignInComponent implements OnInit {
     let successLogin = this.loginService.login(username, password);
 
     if (!successLogin) {
-      this.message = 'Invalid Username or Pasword';
+      this.message = 'Invalid Username or Password';
       setTimeout(()=> {this.message = ''}, 3000)
     }
   }
@@ -76,5 +79,45 @@ export class SignInComponent implements OnInit {
   logout(){
     this.loginService.logout();
     this.myForm.reset();
+  }
+
+  getFirstNameErrorMessage() {
+    if (this.firstname.hasError('required')) {
+      return 'You must enter your firstname!';
+    }
+
+    return this.firstname.hasError('firstname') ? 'Not a valid firstname' : '';
+  }
+
+  getPasswordErrorMessage() {
+    if (this.password.hasError('required')) {
+      return 'You must enter your password!';
+    }
+
+    return this.password.hasError('password') ? 'Not a valid password' : '';
+  }
+
+  getLastNameErrorMessage() {
+    if (this.lastname.hasError('required')) {
+      return 'You must enter your lastname!';
+    }
+
+    return this.lastname.hasError('lastname') ? 'Not a valid lastname' : '';
+  }
+
+  getUsernameErrorMessage() {
+    if (this.username.hasError('required')) {
+      return 'You must enter your username!';
+    }
+
+    return this.username.hasError('username') ? 'Not a valid username' : '';
+  }
+
+  getZipErrorMessage() {
+    if (this.zip.hasError('required')) {
+      return 'You must enter your zip code!';
+    }
+
+    return this.zip.hasError('zip') ? 'Not a valid zip code' : '';
   }
 }

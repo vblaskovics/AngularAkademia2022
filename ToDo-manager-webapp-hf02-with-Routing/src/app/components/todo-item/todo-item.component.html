@@ -4,6 +4,40 @@
 <td  >{{ todo?.title }}</td>
 <td class="clickable" (click)="onCellClick()">{{ todo?.progress }} <a (click)="onSelectStatus()">⏩</a> </td>
 <td   *ngFor="let item of todo?.user_id ">{{ item.name }}</td>
-<!-- <td style="cursor: pointer;" (click)="onChangeStatus()">🔽</td> -->
+<td style="cursor: pointer;" (click)="onChangeStatus()">🔽</td>
 
 
+<!-- 
+
+
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let todo" > 
+        {{todo.id}} </mat-cell>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let todo"
+       > {{todo.title}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="progress">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let todo"> {{todo.progress}} (click)="onCellClick()">{{ todo?.progress }} <a (click)="onSelectStatus()">⏩</a>  </mat-cell>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let todo"> {{todo.username}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div> -->

@@ -1,4 +1,4 @@
-
+<!-- 
 
 
 <div class="container">
@@ -114,6 +114,117 @@
       
           
     </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+<!-- ng material -->
+
+<div class="form-container text-center my-5">
+  <form
+    [formGroup]="myForm"
+    (ngSubmit)="onSubmit()"
+    id="formLogin"
+    class="form"
+  >
+    <div>
+      <mat-form-field appearance="fill" [style.width.px]=327>
+        <mat-label>Enter your first name</mat-label>
+        <input
+          matInput
+          placeholder="Anne"
+          formControlName="firstname"
+          id="firstname"
+          required
+        />
+        <mat-error *ngIf="firstname.invalid">{{
+          getFirstNameErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" [style.width.px]=327>
+        <mat-label>Enter your last name</mat-label>
+        <input
+          matInput
+          placeholder="williams"
+          formControlName="lastname"
+          id="lastname"
+          required
+        />
+        <mat-error *ngIf="lastname.invalid">{{
+          getLastNameErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" [style.width.px]=327>
+        <mat-label>Enter your username</mat-label>
+        <input
+          matInput
+          placeholder="RattyField89"
+          formControlName="username"
+          id="username"
+          required
+        />
+        <mat-error *ngIf="username.invalid">{{
+          getUsernameErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" [style.width.px]=327>
+        <mat-label>Enter your zip code</mat-label>
+        <input
+          matInput
+          placeholder="4400"
+          formControlName="zip"
+          id="zip"
+          required
+        />
+        <mat-error *ngIf="firstname.invalid">{{
+          getZipErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+
+  <div>
+    <mat-form-field appearance="fill" [style.width.px]=327>
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput [type]="hide ? 'password' : 'text'"
+        placeholder="password"
+        formControlName="password"
+        id="password"
+        required
+      />
+      <mat-error *ngIf="password.invalid">{{
+        getPasswordErrorMessage()
+      }}</mat-error>
+       <span mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+       </span>
+    </mat-form-field>
+  </div>
+
+    <div class="text-center mt-2">
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+    </div>
+  </form>
+
+
+  <div *ngIf="message" class="alert alert-danger"> {{ message }} </div>
+
+  <div *ngIf="loginService.getUser()">
+    logged in as <h4> {{ loginService.getUser() }}</h4>
+    <button class="btn btn-warning" (click)="logout()">Log out</button>
   </div>
 </div>
 

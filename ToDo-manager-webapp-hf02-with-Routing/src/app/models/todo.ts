@@ -9,6 +9,7 @@ export enum progress {
 export interface Todo{
     id: number,
     title: string,
+    username: string,
     progress: string, 
     description?: string,
     date: string,

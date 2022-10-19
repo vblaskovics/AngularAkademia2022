@@ -1,12 +1,6 @@
 
-<!-- <app-header [todoCounter]="TodosInProgress" #headerTodoInput></app-header> -->
 
-
-<!-- <app-sign-in *ngIf="loadedSelected === 'sign-in'"></app-sign-in> -->
-
-
-
-<div > 
+<!-- <div > 
 <table class="table table-striped table-bordered">
     <thead>
       <tr>
@@ -14,7 +8,6 @@
         <th class="col">Title</th>
         <th class="col near" style="cursor:pointer">Progress <div (click)="onSortReasing()">🔼</div> <div (click)="onSortDecreasing()">🔽</div></th>
         <th class="col">Username</th>
-        <!-- <th class="col">Sort</th> -->
       </tr>
     </thead>
     <tbody>
@@ -27,19 +20,64 @@
         (todoInProgress)="currentProgOfItem($event)"
         (addNewTodo)="newTodoInList(item)"
         app-todo-item >
-        <!-- (addnewTodo)="headerTodoInput($event) app-todo-itembe" -->
       </tr>
     </tbody>
-  </table>
-  <div *ngIf="wichElementSelected; else infotext">
+  </table> -->
+
+  <!-- <div *ngIf="wichElementSelected; else infotext">
     <app-todo-details [todoItem]="todoSelected" (closedItem)="closeDetails($event)" (todoInProgressDetails)="actualProgressItemDetails($event)"></app-todo-details>
   </div>
 
   <ng-template #infotext> 
     <p class="text-secondary">For more info click on the Progress column ^</p>
   </ng-template>
-    
+     -->
+<!-- </div> -->
+
+
+<!-- ng material -->
+
+
+<div class="example-container mat-elevation-z8 my-5">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element" > 
+      {{element.id}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"
+     > {{element.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="progress">
+      <mat-header-cell *matHeaderCellDef style="cursor:pointer"> Progress <div (click)="onSortReasing()">🔼</div> <div (click)="onSortDecreasing()">🔽</div> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.progress}}  </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
+
+<div *ngIf="wichElementSelected; else infotext">
+  <app-todo-details [todoItem]="todoSelected" (closedItem)="closeDetails($event)" (todoInProgressDetails)="actualProgressItemDetails($event)"></app-todo-details>
+</div>
+
+<ng-template #infotext> 
+  <p class="text-secondary">For more info click on the Progress column ^</p>
+</ng-template>
+  
 
   
 

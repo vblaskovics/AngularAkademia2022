@@ -3,3 +3,12 @@
     background-repeat: no-repeat;
     
 } */
+
+.form-container {
+    margin-top:100px;
+
+}
+
+::-ms-reveal {
+    display: none
+}

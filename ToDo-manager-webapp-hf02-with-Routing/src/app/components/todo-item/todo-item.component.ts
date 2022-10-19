@@ -14,8 +14,13 @@ export class TodoItemComponent implements OnInit {
   @Input() status?: progress;
   @Output() todoInProgress: EventEmitter<Todo> = new EventEmitter<Todo>();
 
+  // dataSource : any;
+  // displayedColumns = ['id', 'title', 'progress', 'username'];
 
-  constructor() { }
+
+  constructor() {
+    // this.dataSource = this.todo
+   }
 
   ngOnInit(): void {}
 
