@@ -37,7 +37,7 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
 
     //check if todo was created
-    expect(el.querySelectorAll('').length).toBe(4);
+ 
 
   })
 });
