@@ -34,8 +34,8 @@ export class AppComponent {
       .subscribe((books) => this.store.dispatch(retrievedBookList({ books })));
   }
 
-  onRemoveAll() {
+  onRemoveAll(numberOfBooks: number) {
 
-    this.store.dispatch(removeBooks())
+    this.store.dispatch(removeBooks({numberOfBooks}))
   }
 }

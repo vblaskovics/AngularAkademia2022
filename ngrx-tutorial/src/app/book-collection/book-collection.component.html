@@ -1,4 +1,4 @@
-<button *ngIf="(books$ | async)?.length !== 0" (click)="removeAll.emit()"> Remove all</button>
+<button *ngIf="(books$ | async)?.length !== 0" (click)="removeAll.emit(numberOfBooks)"> Remove all</button>
 <div
   class="book-item"
   *ngFor="let book of books$ | async"

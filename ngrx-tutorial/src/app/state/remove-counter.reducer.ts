@@ -8,7 +8,7 @@ export const removeCounterReducer = createReducer(
   on(removeBook, (state) => {
     return state + 1
   }),
-  on(removeBooks, (state) => {
-    return state + 1
+  on(removeBooks, (state, {numberOfBooks}) => {
+    return state + numberOfBooks;
   })
 );
