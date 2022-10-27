@@ -1,0 +1,6 @@
+<h2>Books</h2>
+
+<app-book-list class="book-list" [books]="(books$ | async) ?? []"></app-book-list>
+
+<h2>Collection</h2>
+<app-book-collection class="book-collection" [books]="(bookCollection$ | async) ?? []"></app-book-collection>

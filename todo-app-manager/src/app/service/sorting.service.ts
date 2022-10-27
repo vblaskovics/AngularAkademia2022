@@ -36,4 +36,6 @@ export class SortingService {
     }
     todoItem.progress = nextProgress;
   }
+
+  
 }

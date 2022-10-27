@@ -1,16 +1,18 @@
-<ul *ngIf="details">
-  <h2>Details</h2>
-  <li>{{ details.title }}</li>
-  <li (click)="nextProgress()">{{ details.progress }} ⏩</li>
-  <li>{{ details.description }}</li>
-  <li>{{ details.date }}</li>
-  <li>{{ details.userId.id }}</li>
-  <li>{{ details.userId.name }}</li>
-  <li>{{ details.userId.email }}</li>
-  <div *ngIf="details.subTodo">
-    <h2>Sub-todo:</h2>
-    <ul>
-      <li>{{ details.subTodo.title }}</li>
-    </ul>
-  </div>
-</ul>
+<div class="details-container">
+  <ul *ngIf="details">
+    <h2>Details:</h2>
+    <li>{{ details.title }}</li>
+    <li (click)="nextProgress()">{{ details.progress }} ⏩</li>
+    <li>{{ details.description }}</li>
+    <li>{{ details.date }}</li>
+    <li>{{ details.userId.id }}</li>
+    <li>{{ details.userId.name }}</li>
+    <li>{{ details.userId.email }}</li>
+    <div *ngIf="details.subTodo">
+      <h2>Sub-todo:</h2>
+      <ul>
+        <li>{{ details.subTodo.title }}</li>
+      </ul>
+    </div>
+  </ul>
+</div>

@@ -1,0 +1,108 @@
+<div class="sign-up-container">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form-container">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      id="userNameInput"
+      [class.is-invalid] = "userName.invalid && userName.touched"
+      type="text"
+      name="userName"
+      placeholder="Username"
+      formControlName="userName">
+
+    <p *ngIf="userName.invalid && userName.touched && userName.hasError('required')">
+        Required field!
+    </p>
+    <p *ngIf="userName.invalid && userName.hasError('pattern')">
+        Username must contain only letters!
+    </p>
+    <p *ngIf="userName.invalid && userName.hasError('minlength')">
+        Username must be atleast 4 characters!
+    </p>
+
+
+    <label class="form-label" for="firstNameInput">First Name</label>
+      <input
+        id="firstNameInput"
+        [class.is-invalid] = "firstName.invalid && firstName.hasError('pattern')"
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        formControlName="firstName">
+
+    <p error *ngIf="firstName.invalid && firstName.hasError('pattern')">
+        First name must contain only letters
+    </p>
+
+
+
+
+    <label for="lastNameInput">Last Name</label>
+    <input
+      id="lastNameInput"
+      [class.is-invalid] = "lastName.invalid && lastName.hasError('pattern')"
+      type="text"
+      name="lastName"
+      placeholder="Last Name"
+      formControlName="lastName">
+
+    <p *ngIf="lastName.invalid && lastName.hasError('pattern')">
+        Last name must contain only letters
+    </p>
+
+
+    <label for="birthDateInput">Date of Birth</label>
+    <input
+      id="birthDateInput"
+      [class.is-invalid]= "birthDate.invalid && birthDate.hasError('pattern')"
+      type="text"
+      name="birthDate"
+      placeholder="(DD/MM/YY or DD/MM/YYYY)"
+      formControlName="birthDate">
+
+    <p *ngIf="birthDate.invalid && birthDate.hasError('pattern')">
+        Invalid Date!
+    </p>
+
+
+    <label for="zipCodeInput">ZIP code</label>
+    <input
+        id="zipCodeInput"
+        [class.is-invalid] = "zipCode.invalid && zipCode.hasError('min') || zipCode.hasError('max')"
+        type="text"
+        name="zipCode"
+        placeholder="ZIP"
+        formControlName="zipCode">
+
+      <p *ngIf="zipCode.invalid && zipCode.hasError('min') || zipCode.hasError('max')">
+          ZIP code must be betwwen 1000 and 9999
+      </p>
+      <p *ngIf="zipCode.invalid && zipCode.touched && zipCode.hasError('pattern')">
+          ZIP code must be numbers
+      </p>
+
+
+    <label for="passwordInput">Password:</label>
+    <input
+        id="passwordInput"
+        [class.is-invalid]= "password.invalid && password.touched"
+        type="password"
+        name="password"
+        placeholder="Password"
+        formControlName="password">
+
+    <p *ngIf="password.touched && password.hasError('required')">
+        Required field!
+    </p>
+    <p *ngIf="password.invalid && password.hasError('minlength')">
+        Password must be atleast 8 characters!
+    </p>
+    <p *ngIf="password.invalid && password.hasError('pattern')">
+        Password must contain atleast one '#' or '@' character!
+    </p>
+    <button type="button" [routerLink]="['']">
+      Submit
+    </button>
+
+  </form>
+
+</div>
