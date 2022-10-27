@@ -10,5 +10,6 @@
   class="book-collection"
   [books]="(bookCollection$ | async) ?? []"
   (remove)="onRemove($event)"
+  (removeAll)="onRemoveAll()"
 >
 </app-book-collection>

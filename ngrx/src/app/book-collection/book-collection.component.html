@@ -1,3 +1,4 @@
+<button (click)="removeAll.emit()">Remove all Books from Collection</button>
 <div class="book-item" *ngFor="let book of books">
   <p>{{ book.volumeInfo.title }}</p>
   <span> by {{ book.volumeInfo.authors }}</span>

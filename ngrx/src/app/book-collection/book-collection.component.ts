@@ -9,4 +9,5 @@ import { Book } from '../book-list/books.model';
 export class BookCollectionComponent {
   @Input() books: ReadonlyArray<Book> = [];
   @Output() remove = new EventEmitter<string>();
+  @Output() removeAll = new EventEmitter<void>();
 }
