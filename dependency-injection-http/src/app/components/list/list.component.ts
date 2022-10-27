@@ -22,6 +22,7 @@ export class ListComponent implements OnInit, OnDestroy /* , OnChanges */ {
   public userList$?: Observable<User[]>;
   @Input() updateList!: boolean;
   private subscription?: Subscription;
+
   /* ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
     if (changes.hasOwnProperty('updateList')) {
