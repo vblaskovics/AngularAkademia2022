@@ -23,7 +23,7 @@ export class ListComponent implements OnInit, OnDestroy /* , OnChanges */ {
   @Input() updateList!: boolean;
   private subscription?: Subscription;
 
-  /* ngOnChanges(changes: SimpleChanges): void {
+  /* ngOnChanges(changes:    SimpleChanges): void {
     console.log(changes);
     if (changes.hasOwnProperty('updateList')) {
       console.log(this.updateList);
